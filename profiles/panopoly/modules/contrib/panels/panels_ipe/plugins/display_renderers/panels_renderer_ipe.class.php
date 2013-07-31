@@ -358,7 +358,7 @@ class panels_renderer_ipe extends panels_renderer_editor {
       if (!empty($form_state['clicked_button']['#save-display'])) {
         // Saved. Save the cache.
         panels_edit_cache_save($this->cache);
-        $this->display->skip_cache;
+        $this->display->skip_cache = TRUE;
 
         // Since the layout changed, we have to update these things in the
         // renderer in order to get the right settings.

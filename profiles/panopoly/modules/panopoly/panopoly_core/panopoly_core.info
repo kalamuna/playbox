@@ -4,14 +4,12 @@ core = 7.x
 package = Panopoly
 php = 5.2.4
 project = panopoly_core
-dependencies[] = apps
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = date_api
 dependencies[] = date_popup
 dependencies[] = date_views
 dependencies[] = defaultconfig
-dependencies[] = defaultcontent
 dependencies[] = entity
 dependencies[] = entityreference
 dependencies[] = features
@@ -35,7 +33,6 @@ dependencies[] = token
 dependencies[] = views
 dependencies[] = views_autocomplete_filters
 dependencies[] = views_content
-dependencies[] = views_ui
 stylesheets[all][] = css/panopoly-fonts.css
 stylesheets[all][] = css/panopoly-dropbutton.css
 features[ctools][] = panelizer:panelizer:1
@@ -74,9 +71,9 @@ features[variable][] = panelizer_taxonomy_term:panopoly_categories_allowed_layou
 features[variable][] = panelizer_taxonomy_term:panopoly_categories_allowed_types_default
 features[views_view][] = panopoly_taxonomy
 
-; Information added by drupal.org packaging script on 2013-04-22
-version = "7.x-1.0-rc4"
+; Information added by drupal.org packaging script on 2013-07-31
+version = "7.x-1.0-rc5"
 core = "7.x"
 project = "panopoly_core"
-datestamp = "1366630919"
+datestamp = "1375305386"
 
