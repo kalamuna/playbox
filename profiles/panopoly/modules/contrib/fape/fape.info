@@ -8,9 +8,9 @@ dependencies[] = ctools
 ; dependencies[] = panels
 dependencies[] = entity
 
-; Information added by drush on 2013-07-31
+; Information added by drush on 2014-01-30
 version = "7.x-1.1+2-dev"
 core = "7.x"
 project = "fape"
-datestamp = "1375308092"
+datestamp = "1391040215"
 
