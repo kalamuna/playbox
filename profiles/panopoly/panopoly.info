@@ -47,12 +47,11 @@ dependencies[] = views_ui
 ; Panopoly Recommended - Other
 dependencies[] = devel
 dependencies[] = uuid
-dependencies[] = defaultcontent
 dependencies[] = apps
 
-; Information added by Drupal.org packaging script on 2014-01-30
-version = "7.x-1.1"
+; Information added by Drupal.org packaging script on 2014-03-08
+version = "7.x-1.2"
 core = "7.x"
 project = "panopoly"
-datestamp = "1391040206"
+datestamp = "1394300990"
 

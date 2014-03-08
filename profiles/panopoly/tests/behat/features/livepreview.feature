@@ -63,6 +63,8 @@ Feature: Live preview
     # @todo: we need to test switching the content type, but there's only
     # one included with our demo data.
     # Test changing the "Items to Show".
+    When I select "Content Page" from "exposed[type]"
+      And I wait for live preview to finish
     Then I should see the link "Testing title" in the "Live preview" region
       And I should see the link "Content Demo" in the "Live preview" region
       And I should see the link "Lovely Vegetables" in the "Live preview" region
