@@ -1,3 +1,10 @@
+Panopoly 7.x-1.4, 2014-04-24
+----------------------
+- Update Panopoly Images for #2248591: Update manualcrop.make to match Drupal.org Whitelist.
+- Revert "Starting testing upgrades from the 1.3 release.".
+- Starting testing upgrades from the 1.3 release.
+- Restored drupal-org.make after the 1.3 release.
+
 Panopoly 7.x-1.2, 2014-03-08
 ----------------------
 - Add UPGRADE.txt

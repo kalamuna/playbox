@@ -1,6 +1,8 @@
 default:
   paths:
     features: 'features'
+  filters:
+    tags: "~@chrome"
   extensions:
     Behat\MinkExtension\Extension:
       goutte: ~
@@ -11,8 +13,10 @@ default:
       blackbox: ~
       drush:
         alias: self
-      drupal:
-        drupal_root: "/home/travis/build/lsolesen/drupal"
+      # This will be setup by .travis.yml like so:
+      # export BEHAT_PARAMS="extensions[Drupal\\DrupalExtension\\Extension][drupal][drupal_root]=$DRUPAL_ROOT"
+      #drupal:
+      #  drupal_root: "/path/to/drupal/root"
       region_map:
         # Regions for Panopoly Layouts
         Bryant Content: ".bryant-content"
@@ -38,3 +42,14 @@ default:
         Footer third column: ".region-footer-thirdcolumn"
         Footer fourth column: ".region-footer-fourthcolumn"
         Footer: ".region-footer"
+        Tabs: ".tabs.primary"
+
+# Setup for Google Chrome only tests.
+chrome:
+  filters:
+    tags: "@chrome"
+  extensions:
+    Behat\MinkExtension\Extension:
+      selenium2:
+        browser: chrome
+        capabilities: {"browser": "chrome", "browserName": "chrome", "browserVersion": "ANY", "version": "ANY"}
