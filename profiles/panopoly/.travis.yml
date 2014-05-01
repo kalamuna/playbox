@@ -10,6 +10,7 @@ mysql:
 
 env:
   - UPGRADE=none
+  - UPGRADE=7.x-1.4
   - UPGRADE=7.x-1.2
   - UPGRADE=7.x-1.1
   - UPGRADE=7.x-1.0-rc5
@@ -28,6 +29,8 @@ install:
   # Install the latest Drush 6.
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - composer global require --prefer-source --no-interaction drush/drush:6.*
+  - drush dl -y drupalorg_drush-7.x-1.x-dev --destination=$HOME/.drush
+  - drush cc drush
 
   # Build Behat dependencies
   - cd ./tests/behat
@@ -40,7 +43,7 @@ install:
   - mkdir drupal
   - mv profiles drupal/
 
-  # Test the current branch
+  # Build the current branch.
   - cd drupal
   - drush make --yes profiles/panopoly/drupal-org-core.make --prepare-install
   - drush make --yes profiles/panopoly/drupal-org.make --no-core --contrib-destination=profiles/panopoly
@@ -49,6 +52,10 @@ install:
   - mkdir sites/default/private/files
   - mkdir sites/default/private/temp
   - cd ../
+
+  # Verify that all the .make files will work on Drupal.org.
+  - drush verify-makefile drupal/profiles/panopoly/drupal-org.make
+  - find drupal/profiles/panopoly/modules -name \*.make -print0 | xargs -0 -n1 drush verify-makefile
 
   # Download an old version to test upgrading from.
   - if [[ "$UPGRADE" != none ]]; then drush dl panopoly-$UPGRADE; fi
@@ -113,7 +120,7 @@ script:
 
   # First, run all the tests in Firefox.
   - ./bin/behat --config behat.travis.yml
- 
+
   # Then run some Chrome-only tests.
   - ./bin/behat --config behat.travis.yml -p chrome
 

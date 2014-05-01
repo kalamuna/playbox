@@ -26,7 +26,7 @@ Feature: Add spotlight widget
       | Description                                | Testing description |
       And I attach the file "panopoly.png" to "files[field_basic_spotlight_items_und_0_fid]"
       And I press the "Upload" button
-    Then I should see the "Crop" button in the "CTools modal" region
+    #Then I should see the "Crop" button in the "CTools modal" region
     When I press "edit-return"
       And I press "Save as custom"
       And I wait for the Panels IPE to deactivate

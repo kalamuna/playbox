@@ -1,9 +1,53 @@
+Panopoly 7.x-1.5, 2014-04-30
+----------------------
+- Update Panopoly Widgets for #2251989: Crop on spotlight widget does nothing when Spotlight is new.
+- Update Panopoly Core for #2254999: Update FAPE to version 1.2 for SA-CONTRIB-2014-048.
+- Add test for one time login.
+- Revert "Issue #2252095: Add test for one time login.".
+- Run 'drush make-verify' on Travis-CI to make sure ALL .make files will work on Drupal.org.
+- Update Panopoly Magic for #2246859: Font-family on submit buttons (CSS Error).
+- Update Panopoly Admin for #2244811: Update Date Popup Authored to latest -dev from Git.
+- Update build-*.make files for the 1.4 release.
+- Starting testing upgrades from the 1.4 release.
+- Updated CHANGELOG.txt (the 1.3 changes got lost).
+- Restored drupal-org.make after the 1.4 release.
+
 Panopoly 7.x-1.4, 2014-04-24
 ----------------------
 - Update Panopoly Images for #2248591: Update manualcrop.make to match Drupal.org Whitelist.
 - Revert "Starting testing upgrades from the 1.3 release.".
 - Starting testing upgrades from the 1.3 release.
 - Restored drupal-org.make after the 1.3 release.
+
+Panopoly 7.x-1.3, 2014-04-23
+----------------------
+- Getting ready for the 1.3 release.
+- Upgrade from 1.0-rc5 fails: Table 'pathauto_state' doesn't exist.
+- Update Panopoly Images for #2247561: Improve compatibility with focal_point.
+- Write Behat tests for Panopoly "video" widget.
+- Update Panopoly Admin to revert issue #2235081: Update jquery_update to version 2.4.
+- Update Panopoly Images for #2245127: Manualcrop breaks Video widget.
+- Update to Drupal 7.27 for SA-CORE-2014-002.
+- Update Panopoly Images, Widgets, Users and Pages for #2173079: Crop pictures when inserting them.
+- .gitignore file interferes with adding and committing rebuilds of the full Drupal codebase.
+- Update Panopoly Core for #2192711: Update 'libraries' module to 2.2.
+- Update Panopoly Admin for #2201695: Update library to underscore 1.5.x.
+- Update Panopoly Admin for #2235081: Update jquery_update to version 2.4.
+- Update Panopoly Core for #2223985 by dsnopek: Update 'entity' module to version 1.5.
+- Update Panopoly Core for #2209455: Update views_autocomplete_filters to version 1.1.
+- Tests randomly fail with "MySQL server has gone away".
+- Travis-CI tests randomly failing on WYSIWYG media tests with YouTube/Vimeo.
+- All Goutte-based tests failing on Travis-CI.
+- Update Panopoly Widgets for #2229919: Spotlight Accessibility Improvements.
+- Make behat.travis.yml not care about repository owner.
+- Builds on Travis-CI will randomly fail if over GitHub API limit (take 2).
+- Update Panopoly Admin for #2051967: Error when changing node-edit page.
+- Update Panopoly Theme for #2228095: Classes wrong on "moscone" layouts.
+- Update Panopoly Wysiwyg for #2171121: Update Media to at least 7.x-2.0-alpha3+37-dev for PSA-2014-001.
+- Update Panopoly Widgets and Images for #2171121 by dsnopek, cboyden: Update Media to at least 7.x-2.0-alpha3+37-dev for PSA-2014-001.
+- Update Panoploy Theme for #2220669: Radix span* classes on selby and selby_flipped are incorrect.
+- Include upgrades from version 1.2 in the test suite.
+- Restored drupal-org.make after the 1.2 Release.
 
 Panopoly 7.x-1.2, 2014-03-08
 ----------------------
