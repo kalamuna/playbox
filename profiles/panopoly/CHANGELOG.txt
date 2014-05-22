@@ -1,3 +1,18 @@
+Panopoly 7.x-1.6, 2014-05-22
+----------------------
+- Update Panopoly Core for #2272091: Update Views to 3.8 for DRUPAL-SA-CONTRIB-2014-054.
+- Update Panopoly Core for #2239847: Update "persist" patch to pathauto.
+- Update Panopoly Widgets for #2110183: Could not find "Fixed parent item" when adding Menu Block.
+- Update Panopoly Widgets for #2259793: Update 'menu_block' module to 2.4.
+- Update Panopoly Theme for #2259797: Update 'responsive_bartik' theme to 1.0-rc1.
+- Update Panopoly Core for #2259791: Update 'devel' module to 1.5.
+- Update to Drupal 7.28.
+- Parameters reversed in WYSIWYG testing function.
+- Add version to composer.json for drupalextension.
+- Build script malfunction! Put in a random commit for panopoly_users. Fixing!.
+- Starting testing upgrades from the 1.5 release.
+- Restored drupal-org.make after the 1.5 release.
+
 Panopoly 7.x-1.5, 2014-04-30
 ----------------------
 - Update Panopoly Widgets for #2251989: Crop on spotlight widget does nothing when Spotlight is new.

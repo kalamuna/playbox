@@ -88,7 +88,7 @@ class WysiwygSubContext extends BehatContext implements DrupalSubContextInterfac
   /**
    * @When /^I fill in the "([^"]*)" WYSIWYG editor with "([^"]*)"$/
    */
-  public function iFillInTheWysiwygEditor($text, $instanceId) {
+  public function iFillInTheWysiwygEditor($instanceId, $text) {
     $instance = $this->getWysiwygInstance($instanceId);
     $this->getSession()->executeScript("$instance.setContent(\"$text\");");
   }
