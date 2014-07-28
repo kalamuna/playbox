@@ -1,3 +1,70 @@
+Panopoly 7.x-1.8, 2014-07-25
+----------------------
+- Minor fix to drupal-org-dev.make file for panopoly_test.
+- Update Panopoly WYSIWYG for #2306225 by dsnopek: Packaging error with Panopoly 1.7 release: Unable to download tinymce. (take two).
+- Update to Drupal 7.30 (fixes regression in 7.29).
+- Update Panopoly Test for #2308325: Write Behat test for alt/title text on images in the WYSIWYG.
+- Update Panopoly Widgets for #2308487 by dsnopek: Fixed Alt and Title double encoded in WYSIWYG.
+- Update Panopoly Widgets for #2307007 by dsnopek: Fixed When inserting Image in WYSIWYG, the second set of alt/title fields is ignored. (take two).
+- Update Panopoly Widgets for #2307007 by dsnopek: Fixed When inserting Image in WYSIWYG, the second set of alt/title fields is ignored.
+- Move README.txt to README.md and add link to Travis-CI build status image.
+- Update Panopoly Magic for #2303755 by dsnopek | cboyden: Fixed Live preview does not respond to keyboard events.
+- Update Panopoly Core for #2213769 by caschbre | lsolesen: Added transliteration.
+- Got .make file in sync with other projects after failed 1.8 release.
+- Update Panopoly WYSIWYG for #2306225: Revert Packaging error with Panopoly 1.7 release: Unable to download tinymce.
+- Update Panopoly WYSIWYG for issue #2306225: Packaging error with Panopoly 1.7 release: Unable to download tinymce.
+- Restored drupal-org.make after the 1.7 release.
+
+Panopoly 7.x-1.7, 2014-07-16
+----------------------
+- Update to Drupal 7.29 for SA-CORE-2014-003.
+- Update Panopoly Core for #2304465: Fixed Autocomplete loses item selected via keyboard in CTools dialog.
+- Update Panopoly Core for #2303477 by dsnopek: Fixed views_autocomplete_filter 1.1 is broken on Pantheon.
+- Update Panopoly Test for #2299157 by cboyden: Fixed Login test depends on known credentials.
+- Update Panopoly Test for #2294515 by cboyden: Fixed Behat template for local testing needs Chrome profile.
+- On Travis-CI, panopoly_test should be enabled AFTER completing the upgrade.
+- Move our FeatureContext and *.features into panopoly_test so that child distributions can reuse them.
+- Update Panopoly Magic for #2144021 by Andrew Edwards, dsnopek, whastings: Fixed Panopoly Magic only provides node view modes for view mode.
+- Update Panopoly Admin for #2295513 by dsnopek, Andrew_Mallis: Improve UX of menu titles with clearer labelling.
+- Update Panopoly Core for #2295353: Disable "Nody body" pane in favor of "Field: Body" (which FAPE supports).
+- Update Panopoly Pages, Widgets for #2294097: Move panopoly_page's hook_menu_block_tree_alter() to panopoly_widgets.
+- Parameterize tests as much as possible so they work in child distributions.
+- Fixed WYSIWYG Behat test crashes if toolbar button is not found.
+- Create a panopoly_test module to hold Views and Content Types for testing (forgot some .make files).
+- Create a panopoly_test module to hold Views and Content Types for testing.
+- Move functionality from .travis.yml into a proper script.
+- Switch Behat widget tests to use "Landing page" (fix WYSIWYG tests on Travis-CI).
+- Switch Behat widget tests to use "Landing page" (hopefully, last fixes to the tests).
+- Switch Behat widget tests to use "Landing page" (minor test fix - take 2).
+- Switch Behat widget tests to use "Landing page" (minor fix to tests).
+- Switch Behat widget tests to use "Landing page".
+- Fixed 'file_display' components are always overridden (minor fix to the tests).
+- Update Panopoly Images, Widgets for #2159149: Fixed 'file_display' components are always overridden (update Media / File Entity).
+- Update Panopoly Core for #2289407 by cboyden: Add visual indicator of tab focus on to IPE customize page screen.
+- Fixed Random Behat failures on Travis-CI with the Drupal API.
+- Improve README.txt on how to run Behat tests.
+- Add a Behat test for Linkit.
+- Update Panopoly Magic for #2287315 by cboyden: Fixed "Add" button styling broken on "Add content" dialog.
+- Add Behat test for content page.
+- Update Panopoly Magic for #2283289 by cboyden: Update styling for Add Content links for accessibility changes.
+- Test if Features are Overridden after install on Travis-CI.
+- Update Panopoly Core and Widgets for #2280887 by cboyden: Fixed Accessibility issues for link markup on Add Content overlay.
+- Update Panopoly Admin for #2277549: Update admin_views to version 1.3.
+- Update Panopoly Admin for #2285271: Update 'breakpoints' to version 1.2.
+- Update Panopoly Core for #2285263: Update field_group to version 1.4.
+- Update Panopoly Wysiwyg for #2284269: Added WYSIWYG should show 'outdent' then 'indent' buttons (rather than reverse) like OpenOffice, LibreOffice, Word, etc. (correct commits this time!).
+- Update Panopoly Wysiwyg for #2284269: Added WYSIWYG should show 'outdent' then 'indent' buttons (rather than reverse) like OpenOffice, LibreOffice, Word, etc.
+- Update Panopoly Wysiwyg for #1846322: Fixed Switching between TinyMCE text formats causes textarea to disappear.
+- Pathauto tests failing after update from 1.0-rc3.
+- Added Behat test for pathauto behavior.
+- Update Panopoly Core for #2153941: Fixed Descriptions of views not accurate.
+- Write Behat tests for Panopoly "image" widget.
+- Get answer from Travis faster.
+- Tests randomly fail with "MySQL server has gone away" (take 2).
+- Update Panopoly Images for #2269027: Fixed Cropped image not being served in WYSIWYG as "Original Size".
+- Starting testing upgrades from the 1.6 release.
+- Restored drupal-org.make after the 1.6 release.
+
 Panopoly 7.x-1.6, 2014-05-22
 ----------------------
 - Update Panopoly Core for #2272091: Update Views to 3.8 for DRUPAL-SA-CONTRIB-2014-054.

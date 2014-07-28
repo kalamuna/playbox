@@ -49,9 +49,9 @@ dependencies[] = devel
 dependencies[] = uuid
 dependencies[] = apps
 
-; Information added by Drupal.org packaging script on 2014-05-22
-version = "7.x-1.6"
+; Information added by Drupal.org packaging script on 2014-07-25
+version = "7.x-1.8"
 core = "7.x"
 project = "panopoly"
-datestamp = "1400719428"
+datestamp = "1406303649"
 

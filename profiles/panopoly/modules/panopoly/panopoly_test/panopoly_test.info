@@ -1,0 +1,41 @@
+name = Panopoly Test
+description = Provides configuration and functionality for use in the Panopoly automated tests.
+core = 7.x
+package = Panopoly
+project = panopoly_test
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = image
+dependencies[] = list
+dependencies[] = node
+dependencies[] = options
+dependencies[] = panopoly_core
+dependencies[] = panopoly_pages
+dependencies[] = strongarm
+dependencies[] = taxonomy
+dependencies[] = text
+features[ctools][] = panelizer:panelizer:1
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[field_instance][] = node-panopoly_test_page-body
+features[field_instance][] = node-panopoly_test_page-field_featured_categories
+features[field_instance][] = node-panopoly_test_page-field_featured_image
+features[field_instance][] = node-panopoly_test_page-field_featured_status
+features[node][] = panopoly_test_page
+features[panelizer_defaults][] = node:panopoly_test_page:default
+features[variable][] = field_bundle_settings_node__panopoly_test_page
+features[variable][] = menu_options_panopoly_test_page
+features[variable][] = menu_parent_panopoly_test_page
+features[variable][] = node_options_panopoly_test_page
+features[variable][] = node_preview_panopoly_test_page
+features[variable][] = node_submitted_panopoly_test_page
+features[variable][] = panelizer_defaults_node_panopoly_test_page
+hidden = 1
+
+
+; Information added by drush on 2014-07-25
+version = "7.x-1.8+0-dev"
+core = "7.x"
+project = "panopoly_test"
+datestamp = "1406303650"
+

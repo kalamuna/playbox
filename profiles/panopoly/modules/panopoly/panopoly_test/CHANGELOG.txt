@@ -1,0 +1,11 @@
+Panopoly Test 7.x-1.8, 2014-07-25
+---------------------------
+- Write Behat test for alt/title text on images in the WYSIWYG.
+
+Panopoly Test 7.x-1.7, 2014-07-16
+---------------------------
+- Added an empty CHANGELOG.txt file for the release scripts.
+- Fixed Login test depends on known credentials.
+- Fixed Behat template for local testing needs Chrome profile.
+- Move our FeatureContext and *.features into panopoly_test so that child distributions can reuse them.
+
