@@ -1,3 +1,7 @@
+Panopoly Magic 7.x-1.9, 2014-07-31
+----------------------------
+- No changes since last release.
+
 Panopoly Magic 7.x-1.8, 2014-07-25
 ----------------------------
 - Fixed Live preview does not respond to keyboard events.

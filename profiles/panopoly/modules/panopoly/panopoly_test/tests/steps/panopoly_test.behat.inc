@@ -215,9 +215,10 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
   }
 
   /**
-   * @Then /^I should see the image alt "(?P<link>[^"]*)" in the "(?P<region>[^"]*)"(?:| region)$/
+   * @Then /^I should see the image alt "(?P<alt>(?:[^"]|\\")*)" in the "(?P<region>[^"]*)"(?:| region)$/
    */
   public function assertAltRegion($alt, $region) {
+    $alt = $this->getMainContext()->fixStepArgument($alt);
     $regionObj = $this->getMainContext()->getRegion($region);
     $element = $regionObj->find('css', 'img');
     $tmp = $element->getAttribute('alt');

@@ -156,8 +156,8 @@ Feature: Use rich text editor
     # We need to set the alt/title text differently in the two steps that ask
     # for it - so, that we can test that the 2nd overrides.
     When I fill in the following:
-        | Alt Text   | Alt & some > characters <   |
-        | Title Text | Title & some > characters < |
+        | Alt Text   | Alt & some > "character's" <   |
+        | Title Text | Title & some > "character's" < |
       And I press "Save"
     When I wait 2 seconds
       And I switch to the frame "mediaStyleSelector"
@@ -167,15 +167,15 @@ Feature: Use rich text editor
     When I press "edit-submit"
     # See the image with the 2nd alt text.
     Then I should see the "img" element in the "Bryant Content" region
-      And I should see the image alt "Alt & some > characters <" in the "Bryant Content" region
+      And I should see the image alt "Alt & some > \"character's\" <" in the "Bryant Content" region
     # Next, we edit the node again, so we can verify that the second
     # alt text will load when editing the image again.
     When I click "Edit" in the "Tabs" region
       And I click the "img" element in the "edit-body-und-0-value" WYSIWYG editor
       And I click the "Add media" button in the "edit-body-und-0-value" WYSIWYG editor
       And I switch to the frame "mediaStyleSelector"
-    Then the "Alt Text" field should contain "Alt & some > characters <"
-      And the "Title Text" field should contain "Title & some > characters <"
+    Then the "Alt Text" field should contain "Alt & some > \"character's\" <"
+      And the "Title Text" field should contain "Title & some > \"character's\" <"
       And I switch out of all frames
 
   # TODO: About 10% of the time this test will hang with Firefox, so for now,

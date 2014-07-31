@@ -1,3 +1,7 @@
+Panopoly Widgets 7.x-1.9, 2014-07-31
+------------------------------
+- No changes since last release.
+
 Panopoly Widgets 7.x-1.8, 2014-07-25
 ------------------------------
 - Fixed Alt and Title double encoded in WYSIWYG.

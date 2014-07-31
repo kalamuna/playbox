@@ -72,10 +72,9 @@ features[variable][] = panelizer_taxonomy_term:panopoly_categories_allowed_layou
 features[variable][] = panelizer_taxonomy_term:panopoly_categories_allowed_types_default
 features[views_view][] = panopoly_taxonomy
 
-
-; Information added by drush on 2014-07-25
-version = "7.x-1.8+0-dev"
+; Information added by Drupal.org packaging script on 2014-07-31
+version = "7.x-1.9"
 core = "7.x"
 project = "panopoly_core"
-datestamp = "1406303655"
+datestamp = "1406812435"
 

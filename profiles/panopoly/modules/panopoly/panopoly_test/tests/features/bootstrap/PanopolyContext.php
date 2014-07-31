@@ -52,7 +52,7 @@ class PanopolyContext extends DrupalContext
    * Make it possible to use [random].
    * If you want to use the previous random value [random:1].
    */
-  protected function fixStepArgument($argument) {
+  public function fixStepArgument($argument) {
     $argument = str_replace('\\"', '"', $argument);
 
     // Token replace the argument.

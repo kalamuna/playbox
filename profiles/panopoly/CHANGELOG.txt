@@ -1,3 +1,10 @@
+Panopoly 7.x-1.9, 2014-07-31
+----------------------
+- Update Panopoly Core for #2312787 by dsnopek: Update to Date 2.8 for SA-CONTRIB-2014-073.
+- Update Panopoly Core for #2312509 by dsnopek: Fixed Previews for new Views widgets don't show "more link" even when it should be enabled by default.
+- Update Panopoly Test for #2308325 by dsnopek: Write Behat test for alt/title text on images in the WYSIWYG. (update for quotes).
+- Starting testing upgrades from the 1.8 release.
+
 Panopoly 7.x-1.8, 2014-07-25
 ----------------------
 - Minor fix to drupal-org-dev.make file for panopoly_test.
