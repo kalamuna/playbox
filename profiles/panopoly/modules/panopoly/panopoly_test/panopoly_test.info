@@ -32,9 +32,9 @@ features[variable][] = node_submitted_panopoly_test_page
 features[variable][] = panelizer_defaults_node_panopoly_test_page
 hidden = 1
 
-; Information added by Drupal.org packaging script on 2014-07-31
-version = "7.x-1.9"
+; Information added by Drupal.org packaging script on 2014-08-06
+version = "7.x-1.10"
 core = "7.x"
 project = "panopoly_test"
-datestamp = "1406812752"
+datestamp = "1407362947"
 

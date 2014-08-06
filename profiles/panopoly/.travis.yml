@@ -10,6 +10,7 @@ mysql:
 
 env:
   - UPGRADE=none
+  - UPGRADE=7.x-1.9
   - UPGRADE=7.x-1.8
   - UPGRADE=7.x-1.6
   - UPGRADE=7.x-1.5
