@@ -1,3 +1,8 @@
+Panopoly Widgets 7.x-1.11, 2014-08-14
+------------------------------
+- Update TableField to version 2.3 for SA-CONTRIB-2014-077.
+- Added highlighting to Add Table widget to distinguish header row.
+
 Panopoly Widgets 7.x-1.10, 2014-08-06
 ------------------------------
 - No changes since last release.

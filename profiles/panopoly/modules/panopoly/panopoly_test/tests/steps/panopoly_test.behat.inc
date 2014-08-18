@@ -215,6 +215,22 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
   }
 
   /**
+   * Checks, that the region does not contain text matching specified pattern.
+   *
+   * @Then /^(?:|I )should not see text matching "(?P<pattern>(?:[^"]|\\")*)" in the "(?P<region>[^"]*)"(?:| region)$/
+   */
+  public function assertNotRegionMatchesText($pattern, $region)
+  {
+    $regionObj = $this->getMainContext()->getRegion($region);
+
+    // Find the text within the region
+    $regionText = $regionObj->getText();
+    if (preg_match($pattern, $regionText)) {
+      throw new \Exception(sprintf("Text matching '%s' was found in the region '%s' on the page %s", $pattern, $region, $this->getSession()->getCurrentUrl()));
+    }
+  }
+
+  /**
    * @Then /^I should see the image alt "(?P<alt>(?:[^"]|\\")*)" in the "(?P<region>[^"]*)"(?:| region)$/
    */
   public function assertAltRegion($alt, $region) {

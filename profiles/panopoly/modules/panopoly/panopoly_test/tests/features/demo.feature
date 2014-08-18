@@ -6,5 +6,5 @@ Feature: Demo content
   @panopoly_demo
   Scenario: Homepage
     Given I am an anonymous user
-    When I visit "/"
+    When I visit "/demo"
     Then the "h1" element should contain "Homepage Demo"

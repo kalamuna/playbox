@@ -1,3 +1,7 @@
+Panopoly Magic 7.x-1.11, 2014-08-14
+----------------------------
+- Fixed Descriptive text is not displayed in panopoly magic.
+
 Panopoly Magic 7.x-1.10, 2014-08-06
 ----------------------------
 - No changes since last release.

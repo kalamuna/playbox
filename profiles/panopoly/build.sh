@@ -60,8 +60,12 @@ fi
 
 # Verify the make file
 set -e
-echo 'Verifying make...'
-drush verify-makefile
+if `drush help verify-makefile > /dev/null 2>&1` ; then
+  echo 'Verifying make...'
+  drush verify-makefile
+else
+  echo 'Skipped verifying make because https://drupal.org/project/drupalorg_drush is not installed.'
+fi
 
 # Remove current drupal dir
 echo 'Wiping Drupal directory...'

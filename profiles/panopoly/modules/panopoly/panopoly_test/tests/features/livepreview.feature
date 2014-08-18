@@ -89,16 +89,16 @@ Feature: Live preview
     # @todo: How do I test that there is a table there?
     Then I should not see the link "Read more" in the "Live preview" region
     # Test enabling the table header.
-    Then I should not see "Image" in the "Live preview" region
-      And I should not see "Title" in the "Live preview" region
-      And I should not see "Date" in the "Live preview" region
-      And I should not see "Posted by" in the "Live preview" region
+    Then I should not see text matching "/Image/i" in the "Live preview" region
+      And I should not see text matching "/Title/i" in the "Live preview" region
+      And I should not see text matching "/Date/i" in the "Live preview" region
+      And I should not see text matching "/Posted by/i" in the "Live preview" region
     When I fill in "header_type" with "titles"
       And I wait for live preview to finish
-    Then I should see "Image" in the "Live preview" region
-      And I should see "Title" in the "Live preview" region
-      And I should see "Date" in the "Live preview" region
-      And I should see "Posted by" in the "Live preview" region
+    Then I should see text matching "/Image/i" in the "Live preview" region
+      And I should see text matching "/Title/i" in the "Live preview" region
+      And I should see text matching "/Date/i" in the "Live preview" region
+      And I should see text matching "/Posted by/i" in the "Live preview" region
     # Test removing each of the fields.
     When I uncheck the box "fields_override[field_featured_image]"
       And I wait for live preview to finish

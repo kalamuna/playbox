@@ -5,7 +5,7 @@ core = 7.x
 
 ; Panopoly - Contrib - Fields
 
-projects[tablefield][version] = 2.2
+projects[tablefield][version] = 2.3
 projects[tablefield][subdir] = contrib
 projects[tablefield][patch][2050657] = "http://drupal.org/files/tablefield_event_click_conflict.patch"
 

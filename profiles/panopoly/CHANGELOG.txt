@@ -1,3 +1,16 @@
+Panopoly 7.x-1.11, 2014-08-14
+----------------------
+- Update Panopoly Test for #2320997 by mrfelton: Fixed Tabs region is defined twice in behat.yml which is causing tests to fail in child distributions.
+- Update Panopoly Test for Issue #2320987 by mrfelton: Fixed Demo Homepage test fails on child distributions.
+- Update Panopoly Widgets for #2320851 by dsnopek: Update TableField to version 2.3 for SA-CONTRIB-2014-077.
+- Update Panopoly Magic for #2276291 by eugene.ilyin: Fixed Descriptive text is not displayed in panopoly magic.
+- Update Panopoly Theme for #2209441 by dsnopek: Update respondjs to version 1.3.
+- Fixed build.sh requires drupalorg_drush but doesn't say so.
+- Update Panopoly Widgets for #2293293 by cboyden: Added highlighting to Add Table widget to distinguish header row.
+- Update Panopoly Test for #2316157 by cboyden: Fixed Case sensitivity in live preview test.
+- Starting testing upgrades from the 1.10 release.
+- Restored drupal-org.make after the 1.10 release.
+
 Panopoly 7.x-1.10, 2014-08-06
 ----------------------
 - Update to Drupal 7.31 (fixes SA-CORE-2014-004).

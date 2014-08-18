@@ -52,7 +52,6 @@ default:
         Footer third column: ".region-footer-thirdcolumn"
         Footer fourth column: ".region-footer-fourthcolumn"
         Footer: ".region-footer"
-        Tabs: ".tabs.primary"
       # Look in the profile modules directory and pull in module subcontexts.
       subcontexts:
         paths:
