@@ -1,0 +1,77 @@
+name = Playbox Theme
+description = A Kalatheme subtheme powered by Twitter Bootstrap & Science.
+base theme = kalatheme
+core = 7.x
+
+regions[content] = Content
+
+stylesheets[all][] = css/main.css
+stylesheets[all][] = css/styles.css
+stylesheets[all][] = css/syntax.css
+
+;stylesheets[all][] = css/flexslider.css
+;stylesheets[all][] = css/font-awesome.css
+;stylesheets[all][] = css/font-awesome.min.css
+stylesheets[all][] = css/meflat-blue.css
+;stylesheets[all][] = css/meflat-cyan.css
+;stylesheets[all][] = css/meflat-cyan2.css
+;stylesheets[all][] = css/meflat-grass.css
+;stylesheets[all][] = css/meflat-green.css
+;stylesheets[all][] = css/meflat-light-green.css
+;stylesheets[all][] = css/meflat-orange.css
+;stylesheets[all][] = css/meflat-pink.css
+;stylesheets[all][] = css/meflat-purple.css
+;stylesheets[all][] = css/meflat-red.css
+;stylesheets[all][] = css/meflat-yellow-orange.css
+;stylesheets[all][] = css/meflat-yellow.css
+;stylesheets[all][] = css/style-switcher.css
+stylesheets[all][] = css/tweaks.css
+
+;scripts[] = js/contact.js
+;scripts[] = js/jquery.easing.1.3.js
+;scripts[] = js/jquery.easing.1.3.min.js
+;scripts[] = js/jquery.easypiechart.js
+;scripts[] = js/jquery.fittext.js
+;scripts[] = js/jquery.flexslider.js
+;scripts[] = js/jquery.flexslider.min.js
+;scripts[] = js/jquery.label_better.js
+;scripts[] = js/jquery.label_better.min.js
+;scripts[] = js/jquery.masonry.js
+;scripts[] = js/jquery.masonry.min.js
+;scripts[] = js/jquery.scrollto.js
+;scripts[] = js/jquery-1.8.2.min.js
+;scripts[] = js/jquery-min.js
+;scripts[] = js/modernizr.min.js
+scripts[] = js/meflat.js
+;scripts[] = js/respond.min.js
+;scripts[] = js/respond.src.js
+;scripts[] = js/waypoints.js
+;scripts[] = js/waypoints.min.js
+;scripts[] = js/jquery-1.8.2.min.js
+;scripts[] = js/respond.min.js
+
+features[] = logo
+features[] = node_user_picture
+features[] = comment_user_picture
+features[] = comment_user_verification
+features[] = favicon
+features[] = main_menu
+features[] = secondary_menu
+
+settings[toggle_name] = 0
+settings[toggle_slogan] = 0
+
+fonts[google_fonts_api][] = "Roboto Slab&subset=latin#700"
+fonts[google_fonts_api][] = "Roboto Slab&subset=latin#regular"
+fonts[google_fonts_api][] = "Titillium Web&subset=latin#200"
+fonts[google_fonts_api][] = "Titillium Web&subset=latin#200italic"
+fonts[google_fonts_api][] = "Titillium Web&subset=latin#300"
+fonts[google_fonts_api][] = "Titillium Web&subset=latin#300italic"
+fonts[google_fonts_api][] = "Titillium Web&subset=latin#600"
+fonts[google_fonts_api][] = "Titillium Web&subset=latin#600italic"
+fonts[google_fonts_api][] = "Titillium Web&subset=latin#700"
+fonts[google_fonts_api][] = "Titillium Web&subset=latin#700italic"
+fonts[google_fonts_api][] = "Titillium Web&subset=latin#900"
+fonts[google_fonts_api][] = "Titillium Web&subset=latin#italic"
+fonts[google_fonts_api][] = "Titillium Web&subset=latin#regular"
+
