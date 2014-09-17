@@ -1,0 +1,26 @@
+{
+  "name": "kalamuna/playbox",
+  "description": "CI/CD dependencies for play.kalabox.com",
+  "homepage": "http://play.kalamuna.com",
+  "license": "MIT",
+  "authors": [{
+    "name": "Jon Peck"
+  }],
+  "repositories": [{
+    "type": "package",
+    "package": {
+      "name": "coder/coder",
+      "version": "2.2",
+      "dist": {
+        "url": "http://ftp.drupal.org/files/projects/coder-7.x-2.2.zip",
+        "type": "zip"
+      }
+    }
+  }],
+  "require": {
+    "php": ">=5.3.3"
+  },
+  "require-dev": {
+    "coder/coder": "2.2"
+  }
+}
