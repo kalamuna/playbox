@@ -1,0 +1,16 @@
+.logged-in .navbar-fixed-top {
+  position: inherit;
+}
+
+html.js #features-export-form fieldset.collapsed {
+  min-height: 3em;
+}
+
+#features-export-wrapper .component-select .form-type-checkbox {
+  padding: 0 0 0 20px;
+}
+
+div.features-export-list {
+  padding: 15px;
+  margin-top: 20px;
+}
