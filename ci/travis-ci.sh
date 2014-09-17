@@ -62,8 +62,7 @@ after-success() {
     git config --global user.name "Kala C. Bot"
     git config --global user.email kalacommitbot@kalamuna.com
     git remote add upstream ssh://codeserver.dev.f0072597-f475-4513-af94-13a33b630923@codeserver.dev.f0072597-f475-4513-af94-13a33b630923.drush.in:2222/~/repository.git
-    git add --all
-    git commit -m "KALABOT BUILDING COMMIT ${TRAVIS_COMMIT} FROM ${TRAVIS_REPO_SLUG}"
+    git commit -m "KALABOT MERGING COMMIT ${TRAVIS_COMMIT} FROM ${TRAVIS_REPO_SLUG}" --author "Kala C. Bot <kalacommitbot@kalamuna.com>"  --amend
     git push upstream master -f
   fi
 }
