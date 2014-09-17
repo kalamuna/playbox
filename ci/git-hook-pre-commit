@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# An example hook script to run some tests similar to what the
+# ci will do so you can check your code and things before pushing
+#
+# To enable this hook, rename this file to "pre-commit" and put it in
+# .git/hooks/ and make it executable.
+#
+# You will want to make sure you have the following things installed or run
+#
+#   composer update
+#   pear install pear/PHP_CodeSniffer
+#   phpenv rehash
+#
+# You will also want to have a composer.json file similar to this repo for
+# the things
+#
+
+# Get into the working dir
+cd ../../
+# Lint check PHP files.
+find . -path "*/sites/all/*" \( -type f -name \*.inc -o -name \*.php -o -name \*.module -o -name \*.install \) -print0 | xargs -0 -n 1 -P 4 php -l
+# PHP_CodeSniffer using Drupal Coding Standard.
+phpcs --standard=./vendor/coder/coder/coder_sniffer/Drupal --ignore=*/panopoly_demo/* sites/all/*
