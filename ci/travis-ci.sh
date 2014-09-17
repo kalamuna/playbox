@@ -56,9 +56,9 @@ after-success() {
   if [ $TRAVIS_BRANCH == "master" ] &&
      [ $TRAVIS_PULL_REQUEST == "false" ] &&
      [ $TRAVIS_REPO_SLUG == "kalamuna/playbox" ]; then
-    chmod 600 $HOME/travis.id_rsa
+    chmod 600 $HOME/.ssh/travis.id_rsa
     eval "$(ssh-agent)"
-    ssh-add $HOME/travis.id_rsa
+    ssh-add $HOME/.ssh/travis.id_rsa
     git config --global user.name "Kala C. Bot"
     git config --global user.email kalacommitbot@kalamuna.com
     git remote add upstream ssh://codeserver.dev.f0072597-f475-4513-af94-13a33b630923@codeserver.dev.f0072597-f475-4513-af94-13a33b630923.drush.in:2222/~/repository.git
