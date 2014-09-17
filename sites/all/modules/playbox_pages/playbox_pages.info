@@ -1,0 +1,11 @@
+name = Playbox Pages
+description = This contains all the panels pages for the Playbox
+core = 7.x
+package = Playbox
+version = 7.x-1.0
+project = playbox_pages
+dependencies[] = ctools
+dependencies[] = page_manager
+features[ctools][] = page_manager:pages_default:1
+features[features_api][] = api:2
+features[page_manager_pages][] = playbox_homepage
