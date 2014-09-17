@@ -62,9 +62,8 @@ after-success() {
     git config --global user.name "Kala C. Bot"
     git config --global user.email "kalacommitbot@kalamuna.com"
     git remote add upstream ssh://codeserver.dev.f0072597-f475-4513-af94-13a33b630923@codeserver.dev.f0072597-f475-4513-af94-13a33b630923.drush.in:2222/~/repository.git
-    git remote add origin git@github.com:kalamuna/playbox.git
     git checkout $TRAVIS_BRANCH
-    git commit -m "KALABOT MERGING COMMIT ${TRAVIS_COMMIT} FROM ${TRAVIS_REPO_SLUG}" --amend --author="Kala C. Bot <kalacommitbot@kalamuna.com>" --no-verify
+    git commit -m "KALABOT MERGING COMMIT ${TRAVIS_COMMIT} FROM ${TRAVIS_REPO_SLUG} [ci skip]" --amend --author="Kala C. Bot <kalacommitbot@kalamuna.com>" --no-verify
     git push origin $TRAVIS_BRANCH -f
     git push upstream $TRAVIS_BRANCH -f
   fi
