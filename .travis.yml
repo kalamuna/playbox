@@ -2,9 +2,9 @@ language: php
 php:
 - 5.3
 before_install:
-- cp scripts/travis-ci.sh $HOME/
+- cp ci/travis-ci.sh $HOME/
 - chmod +x $HOME/travis-ci.sh
-- cp scripts/ssh-config $HOME/.ssh/config
+- cp ci/ssh-config $HOME/.ssh/config
 - $HOME/travis-ci.sh before-install
 before_script:
 - $HOME/travis-ci.sh before-script
