@@ -4,7 +4,13 @@
 
 html.js #features-export-form fieldset.collapsed {
   min-height: 3em;
-  margin-bottom: 0;
-  top: 0;
-  padding: 0 0 0 0;
+}
+
+#features-export-wrapper .component-select .form-type-checkbox {
+  padding: 0 0 0 20px;
+}
+
+div.features-export-list {
+  padding: 15px;
+  margin-top: 20px;
 }
