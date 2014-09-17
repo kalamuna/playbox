@@ -1,3 +1,10 @@
 .logged-in .navbar-fixed-top {
   position: inherit;
 }
+
+html.js #features-export-form fieldset.collapsed {
+  min-height: 3em;
+  margin-bottom: 0;
+  top: 0;
+  padding: 0 0 0 0;
+}
