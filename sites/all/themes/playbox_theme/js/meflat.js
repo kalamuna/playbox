@@ -22,6 +22,7 @@
 	/*============================================
 	Header Functions
 	==============================================*/
+	/*
 	$('.imac-screen').flexslider({
 		prevText: '<i class="fa fa-angle-left"></i>',
 		nextText: '<i class="fa fa-angle-right"></i>',
@@ -45,6 +46,7 @@
 	/*============================================
 	Skills Functions
 	==============================================*/
+	/*
 	var color = $('#home').css('backgroundColor');
 
 	$('.skills').waypoint(function(){
@@ -64,6 +66,7 @@
 	/*============================================
 	Project thumbs - Masonry
 	==============================================*/
+	/*
 	$(window).load(function(){
 
 		$('#projects-container').css({visibility:'visible'});
@@ -200,7 +203,7 @@
 	/*============================================
 	Contact Form
 	==============================================*/
-
+	/*
 	$(".label_better").label_better({
 	  easing: "bounce",
 	  offset:5
@@ -214,6 +217,7 @@
 	/*============================================
 	Placeholder Detection
 	==============================================*/
+	/*
 	if (!Modernizr.input.placeholder) {
 		$('#contact-form').addClass('no-placeholder');
 	}
@@ -221,6 +225,7 @@
 	/*============================================
 	Scrolling Animations
 	==============================================*/
+	/*
 	$('.scrollimation').waypoint(function(){
 		$(this).addClass('in');
 	},{offset:function(){
