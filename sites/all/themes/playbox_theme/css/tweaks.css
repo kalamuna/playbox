@@ -1,5 +1,6 @@
 .logged-in .navbar-fixed-top {
   position: inherit;
+  background-color: #3498db;
 }
 
 html.js #features-export-form fieldset.collapsed {
@@ -13,4 +14,8 @@ html.js #features-export-form fieldset.collapsed {
 div.features-export-list {
   padding: 15px;
   margin-top: 20px;
+}
+
+.panel-default > .panel-heading {
+  background-color: #dddddd;
 }

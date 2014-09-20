@@ -99,7 +99,7 @@
           <!-- ======= LOGO (for small screens)========-->
           <?php if ($logo): ?>
             <div class='brand'>
-              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo" class="navbar-brand visible-xs scrollto">
+              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo" class="navbar-brand scrollto visible-xs">
                 <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
               </a>
             </div>
