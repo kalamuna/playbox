@@ -46,7 +46,7 @@
 	/*============================================
 	Skills Functions
 	==============================================*/
-	/*
+
 	var color = $('#home').css('backgroundColor');
 
 	$('.skills').waypoint(function(){
@@ -66,7 +66,7 @@
 	/*============================================
 	Project thumbs - Masonry
 	==============================================*/
-	/*
+/*
 	$(window).load(function(){
 
 		$('#projects-container').css({visibility:'visible'});
@@ -225,7 +225,7 @@
 	/*============================================
 	Scrolling Animations
 	==============================================*/
-	/*
+
 	$('.scrollimation').waypoint(function(){
 		$(this).addClass('in');
 	},{offset:function(){
