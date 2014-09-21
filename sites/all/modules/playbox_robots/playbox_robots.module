@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Playbox Robots feature.
+ */
+
+include_once 'playbox_robots.features.inc';
