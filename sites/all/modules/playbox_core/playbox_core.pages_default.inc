@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * playbox_pages.pages_default.inc
+ * playbox_core.pages_default.inc
  */
 
 /**
  * Implements hook_default_page_manager_pages().
  */
-function playbox_pages_default_page_manager_pages() {
+function playbox_core_default_page_manager_pages() {
   $page = new stdClass();
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;

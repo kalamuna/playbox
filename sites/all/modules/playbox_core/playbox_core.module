@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Playbox Core feature.
+ */
+
+include_once 'playbox_core.features.inc';
