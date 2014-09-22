@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Playbox Scores feature.
+ */
+
+include_once 'playbox_scores.features.inc';
