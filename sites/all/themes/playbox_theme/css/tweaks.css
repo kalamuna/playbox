@@ -1,6 +1,9 @@
 .logged-in .navbar-fixed-top {
   position: inherit;
-  background-color: #3498db;
+}
+
+.logged-in #main-nav {
+  background-color: #38A5DB;
 }
 
 html.js #features-export-form fieldset.collapsed {
@@ -18,4 +21,22 @@ div.features-export-list {
 
 .panel-default > .panel-heading {
   background-color: #dddddd;
+}
+
+.panels-root-content-box, .panels-categories-box {
+  margin-left: 10px;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav {
+    float: none;
+    display:inline-block;
+  }
+  .brand {
+    display:inline-block;
+    vertical-align: middle;
+  }
+  div#site-nav-center {
+    text-align: center;
+  }
 }

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Playbox Presidents feature.
+ */
+
+include_once 'playbox_presidents.features.inc';
