@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Playbox Battles feature.
+ */
+
+include_once 'playbox_battles.features.inc';
