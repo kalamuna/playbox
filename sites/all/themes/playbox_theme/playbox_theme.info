@@ -24,12 +24,10 @@ stylesheets[all][] = css/tweaks.css
 ;scripts[] = js/jquery.label_better.min.js
 ;scripts[] = js/jquery.masonry.js
 ;scripts[] = js/jquery.masonry.min.js
-;scripts[] = js/jquery.scrollto.js
-;scripts[] = js/modernizr.min.js
+;scripts[] = js/jquery.scrollto.js;
+scripts[] = js/modernizr.min.js
 scripts[] = js/waypoints.min.js
-;scripts[] = js/respond.min.js
-;scripts[] = js/respond.src.js
-;scripts[] = js/respond.min.js
+scripts[] = js/respond.min.js
 scripts[] = js/meflat.js
 
 features[] = logo

@@ -107,7 +107,7 @@
 
         </div>
 
-        <!-- ===== THESE SHOULD ALWAYS BE HIDDEN -->
+        <!-- ===== THESE SHOULD ALWAYS BE HIDDEN========-->
         <?php if ($site_name || $site_slogan): ?>
           <div id="site-name-slogan" class="brand navbar-brand <?php if ($hide_site_name && $hide_site_slogan) { print ' element-invisible'; } ?>">
 
@@ -128,23 +128,25 @@
           </div> <!-- /#name-and-slogan -->
         <?php endif; ?>
 
+
+        <!-- ===== MENUZ========-->
         <div id="site-nav" class="navbar-collapse collapse <?php if (!$main_menu && !$secondary_menu) { print 'element-invisible'; } ?>" role="navigation">
-          <ul class="nav navbar-nav">
-            <?php
-              $pri_attributes = array(
-                'class' => array(
-                  'nav',
-                  'navbar-nav',
-                  'links',
-                  'clearfix',
-                ),
-              );
-              if (!$main_menu) {
-                $pri_attributes['class'][] = 'element-invisible';
-              }
-            ?>
+          <?php
+            // define the attibutes
+            $pri_attributes = array(
+              'class' => array(
+                'nav',
+                'navbar-nav',
+                'links',
+              ),
+            );
+            if (!$main_menu) {
+              $pri_attributes['class'][] = 'element-invisible';
+            }
+          ?>
+          <div id="site-nav-center">
             <?php print theme('links__system_main_menu', array(
-              'links' => $main_menu_expanded,
+              'links' => $left_menu_expanded,
               'attributes' => $pri_attributes,
               'heading' => array(
                 'text' => t('Main menu'),
@@ -153,26 +155,26 @@
               ),
             )); ?>
 
-            <?php
-              $sec_attributes = array(
-                'id' => 'secondary-menu-links',
-                'class' => array('nav', 'navbar-nav', 'secondary-links'),
-              );
-              if (!$secondary_menu) {
-                $sec_attributes['class'][] = 'element-invisible';
-              }
-            ?>
+            <!-- ======= LOGO (for larger screens)========-->
+            <?php if ($logo): ?>
+              <div class='brand'>
+                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo" class="navbar-brand scrollto hidden-xs">
+                  <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+                </a>
+              </div>
+            <?php endif; ?>
 
-            <?php print theme('links__system_secondary_menu', array(
-              'links' => $secondary_menu,
-              'attributes' => $sec_attributes,
+            <?php print theme('links__system_main_menu', array(
+              'links' => $right_menu_expanded,
+              'attributes' => $pri_attributes,
               'heading' => array(
-                'text' => t('Secondary menu'),
+                'text' => t('Main menu'),
                 'level' => 'h2',
                 'class' => array('element-invisible'),
               ),
             )); ?>
-          </ul>
+          </div>
+
         </div><!--End navbar-collapse -->
 
       </div><!--End container -->
