@@ -75,7 +75,35 @@ function playbox_presidents_default_page_manager_pages() {
   $display->uuid = '1b959402-e029-40f7-b54b-563dd8e7f420';
   $display->content = array();
   $display->panels = array();
-  $display->hide_title = PANELS_TITLE_FIXED;
+    $pane = new stdClass();
+    $pane->pid = 'new-d58a7343-9019-489d-86f6-bc9faefc5ab8';
+    $pane->panel = 'row1';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'playbox_presidents-playbox_president_grid_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'fields_override' => array(
+        'title' => 1,
+        'field_playbox_portrait' => 1,
+        'field_playbox_nickname' => 1,
+      ),
+      'view_settings' => 'fields',
+      'header_type' => 'none',
+      'view_mode' => 'full',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'd58a7343-9019-489d-86f6-bc9faefc5ab8';
+    $display->content['new-d58a7343-9019-489d-86f6-bc9faefc5ab8'] = $pane;
+    $display->panels['row1'][0] = 'new-d58a7343-9019-489d-86f6-bc9faefc5ab8';
+  $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;

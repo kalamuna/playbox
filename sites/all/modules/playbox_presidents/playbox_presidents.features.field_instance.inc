@@ -18,7 +18,7 @@ function playbox_presidents_field_default_field_instances() {
     'description' => 'A brief description of the playbox character that will drive fear into the hearts of all men and bots.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -68,7 +68,7 @@ function playbox_presidents_field_default_field_instances() {
     'description' => '"Old Hickory", "Old Rough and Ready", "Bubba", etc. ',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -117,7 +117,7 @@ function playbox_presidents_field_default_field_instances() {
     'description' => 'This contains a suitable portrait of the US President. ',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
@@ -203,7 +203,7 @@ function playbox_presidents_field_default_field_instances() {
     'description' => 'This is an example of a power for a playbox character and the strength of that power. For example "Extreme Legislation: 76%". Each character will have 4 powers and you need input them like this "POWER/STRENGTH". Real world example: "Mega Buster/87". ',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
