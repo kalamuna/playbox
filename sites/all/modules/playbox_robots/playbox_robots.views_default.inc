@@ -39,12 +39,6 @@ function playbox_robots_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Nickname */
-  $handler->display->display_options['fields']['field_playbox_nickname']['id'] = 'field_playbox_nickname';
-  $handler->display->display_options['fields']['field_playbox_nickname']['table'] = 'field_data_field_playbox_nickname';
-  $handler->display->display_options['fields']['field_playbox_nickname']['field'] = 'field_playbox_nickname';
-  $handler->display->display_options['fields']['field_playbox_nickname']['label'] = '';
-  $handler->display->display_options['fields']['field_playbox_nickname']['element_label_colon'] = FALSE;
   /* Field: Content: Portrait */
   $handler->display->display_options['fields']['field_playbox_portrait']['id'] = 'field_playbox_portrait';
   $handler->display->display_options['fields']['field_playbox_portrait']['table'] = 'field_data_field_playbox_portrait';
@@ -56,6 +50,12 @@ function playbox_robots_views_default_views() {
     'image_style' => '',
     'image_link' => 'content',
   );
+  /* Field: Content: Nickname */
+  $handler->display->display_options['fields']['field_playbox_nickname']['id'] = 'field_playbox_nickname';
+  $handler->display->display_options['fields']['field_playbox_nickname']['table'] = 'field_data_field_playbox_nickname';
+  $handler->display->display_options['fields']['field_playbox_nickname']['field'] = 'field_playbox_nickname';
+  $handler->display->display_options['fields']['field_playbox_nickname']['label'] = '';
+  $handler->display->display_options['fields']['field_playbox_nickname']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';

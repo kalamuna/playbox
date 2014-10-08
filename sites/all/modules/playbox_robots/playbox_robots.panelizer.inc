@@ -30,7 +30,7 @@ function playbox_robots_panelizer_defaults() {
   $panelizer->link_to_entity = TRUE;
   $panelizer->extra = array();
   $display = new panels_display();
-  $display->layout = 'playbox_rows';
+  $display->layout = 'battler_rows';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -44,6 +44,9 @@ function playbox_robots_panelizer_defaults() {
       'row6' => NULL,
       'row7' => NULL,
       'footer' => NULL,
+      'core' => NULL,
+      'des' => NULL,
+      'powers' => NULL,
     ),
   );
   $display->cache = array();
@@ -53,13 +56,13 @@ function playbox_robots_panelizer_defaults() {
   $display->panels = array();
     $pane = new stdClass();
     $pane->pid = 'new-ce4456b6-cda1-4a12-bf80-9022f112ae67';
-    $pane->panel = 'jumbotron';
+    $pane->panel = 'core';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_playbox_portrait';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'above',
+      'label' => 'hidden',
       'formatter' => 'image',
       'delta_limit' => 0,
       'delta_offset' => '0',
@@ -69,6 +72,8 @@ function playbox_robots_panelizer_defaults() {
         'image_style' => '',
       ),
       'context' => 'panelizer',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -80,22 +85,80 @@ function playbox_robots_panelizer_defaults() {
     $pane->locks = array();
     $pane->uuid = 'ce4456b6-cda1-4a12-bf80-9022f112ae67';
     $display->content['new-ce4456b6-cda1-4a12-bf80-9022f112ae67'] = $pane;
-    $display->panels['jumbotron'][0] = 'new-ce4456b6-cda1-4a12-bf80-9022f112ae67';
+    $display->panels['core'][0] = 'new-ce4456b6-cda1-4a12-bf80-9022f112ae67';
     $pane = new stdClass();
-    $pane->pid = 'new-1eb716c3-93ef-462a-ba55-2c2382235980';
-    $pane->panel = 'jumbotron';
+    $pane->pid = 'new-fc78c257-a66c-46c1-8b1c-9f013f88d3d8';
+    $pane->panel = 'core';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_playbox_bio';
+    $pane->subtype = 'node:field_playbox_nickname';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'above',
+      'label' => 'hidden',
       'formatter' => 'text_default',
       'delta_limit' => 0,
       'delta_offset' => '0',
       'delta_reversed' => FALSE,
       'formatter_settings' => array(),
       'context' => 'panelizer',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = 'fc78c257-a66c-46c1-8b1c-9f013f88d3d8';
+    $display->content['new-fc78c257-a66c-46c1-8b1c-9f013f88d3d8'] = $pane;
+    $display->panels['core'][1] = 'new-fc78c257-a66c-46c1-8b1c-9f013f88d3d8';
+    $pane = new stdClass();
+    $pane->pid = 'new-33770186-b373-4326-9eca-fc6b4e13c423';
+    $pane->panel = 'des';
+    $pane->type = 'node_title';
+    $pane->subtype = 'node_title';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'link' => 1,
+      'markup' => 'h2',
+      'id' => '',
+      'class' => '',
+      'context' => 'panelizer',
+      'override_title' => 1,
+      'override_title_text' => '%node:title',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '33770186-b373-4326-9eca-fc6b4e13c423';
+    $display->content['new-33770186-b373-4326-9eca-fc6b4e13c423'] = $pane;
+    $display->panels['des'][0] = 'new-33770186-b373-4326-9eca-fc6b4e13c423';
+    $pane = new stdClass();
+    $pane->pid = 'new-1eb716c3-93ef-462a-ba55-2c2382235980';
+    $pane->panel = 'des';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_playbox_bio';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'text_default',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(),
+      'context' => 'panelizer',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -107,49 +170,24 @@ function playbox_robots_panelizer_defaults() {
     $pane->locks = array();
     $pane->uuid = '1eb716c3-93ef-462a-ba55-2c2382235980';
     $display->content['new-1eb716c3-93ef-462a-ba55-2c2382235980'] = $pane;
-    $display->panels['jumbotron'][1] = 'new-1eb716c3-93ef-462a-ba55-2c2382235980';
-    $pane = new stdClass();
-    $pane->pid = 'new-fc78c257-a66c-46c1-8b1c-9f013f88d3d8';
-    $pane->panel = 'jumbotron';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_playbox_nickname';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => 'above',
-      'formatter' => 'text_default',
-      'delta_limit' => 0,
-      'delta_offset' => '0',
-      'delta_reversed' => FALSE,
-      'formatter_settings' => array(),
-      'context' => 'panelizer',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $pane->locks = array();
-    $pane->uuid = 'fc78c257-a66c-46c1-8b1c-9f013f88d3d8';
-    $display->content['new-fc78c257-a66c-46c1-8b1c-9f013f88d3d8'] = $pane;
-    $display->panels['jumbotron'][2] = 'new-fc78c257-a66c-46c1-8b1c-9f013f88d3d8';
+    $display->panels['des'][1] = 'new-1eb716c3-93ef-462a-ba55-2c2382235980';
     $pane = new stdClass();
     $pane->pid = 'new-c8403521-e661-4da4-93af-34d773c546eb';
-    $pane->panel = 'jumbotron';
+    $pane->panel = 'powers';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_playbox_powers';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'above',
+      'label' => 'hidden',
       'formatter' => 'text_default',
-      'delta_limit' => 0,
+      'delta_limit' => '0',
       'delta_offset' => '0',
-      'delta_reversed' => FALSE,
+      'delta_reversed' => 0,
       'formatter_settings' => array(),
       'context' => 'panelizer',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -157,41 +195,13 @@ function playbox_robots_panelizer_defaults() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 3;
+    $pane->position = 0;
     $pane->locks = array();
     $pane->uuid = 'c8403521-e661-4da4-93af-34d773c546eb';
     $display->content['new-c8403521-e661-4da4-93af-34d773c546eb'] = $pane;
-    $display->panels['jumbotron'][3] = 'new-c8403521-e661-4da4-93af-34d773c546eb';
-    $pane = new stdClass();
-    $pane->pid = 'new-ece4141f-ac7f-4531-a952-66543d2e753e';
-    $pane->panel = 'jumbotron';
-    $pane->type = 'node_links';
-    $pane->subtype = 'node_links';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => FALSE,
-      'override_title_text' => '',
-      'build_mode' => 'page_manager',
-      'identifier' => '',
-      'link' => TRUE,
-      'context' => 'panelizer',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_class' => 'link-wrapper',
-    );
-    $pane->extras = array();
-    $pane->position = 4;
-    $pane->locks = array();
-    $pane->uuid = 'ece4141f-ac7f-4531-a952-66543d2e753e';
-    $display->content['new-ece4141f-ac7f-4531-a952-66543d2e753e'] = $pane;
-    $display->panels['jumbotron'][4] = 'new-ece4141f-ac7f-4531-a952-66543d2e753e';
-  $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-ece4141f-ac7f-4531-a952-66543d2e753e';
+    $display->panels['powers'][0] = 'new-c8403521-e661-4da4-93af-34d773c546eb';
+  $display->hide_title = PANELS_TITLE_NONE;
+  $display->title_pane = '0';
   $panelizer->display = $display;
   $export['node:playbox_robot:default'] = $panelizer;
 
