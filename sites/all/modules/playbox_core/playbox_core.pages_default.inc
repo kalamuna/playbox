@@ -16,7 +16,10 @@ function playbox_core_default_page_manager_pages() {
   $page->admin_title = 'Playbox Homepage';
   $page->admin_description = 'This is the homepage for the Playbox';
   $page->path = 'home';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array();
   $page->conf = array(
