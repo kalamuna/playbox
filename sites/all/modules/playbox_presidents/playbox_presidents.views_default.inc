@@ -12,7 +12,7 @@ function playbox_presidents_views_default_views() {
 
   $view = new view();
   $view->name = 'playbox_presidents';
-  $view->description = 'Contains the views for Playbox Robots.';
+  $view->description = 'Contains the views for Playbox Presidents.';
   $view->tag = 'default';
   $view->base_table = 'node';
   $view->human_name = 'Playbox Presidents';
@@ -80,7 +80,7 @@ function playbox_presidents_views_default_views() {
   $handler = $view->new_display('panel_pane', 'President Grid', 'playbox_president_grid_1');
   $handler->display->display_options['display_description'] = 'A responsive grid of presidents. ';
   $handler->display->display_options['pane_title'] = 'Preident Grid';
-  $handler->display->display_options['pane_description'] = 'A responsive grid of robots.';
+  $handler->display->display_options['pane_description'] = 'A responsive grid of presidents.';
   $handler->display->display_options['pane_category']['name'] = 'Presidents';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
