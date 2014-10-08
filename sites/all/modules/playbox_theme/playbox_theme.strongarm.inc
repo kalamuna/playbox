@@ -47,8 +47,9 @@ function playbox_theme_strongarm() {
   $strongarm->name = 'theme_playbox_theme_settings';
   $strongarm->value = array(
     'toggle_logo' => 1,
-    'toggle_name' => 0,
-    'toggle_slogan' => 0,
+    'toggle_node_user_picture' => 0,
+    'toggle_comment_user_picture' => '0',
+    'toggle_comment_user_verification' => '0',
     'toggle_favicon' => 1,
     'toggle_main_menu' => 1,
     'toggle_secondary_menu' => 1,
@@ -60,7 +61,11 @@ function playbox_theme_strongarm() {
     'favicon_upload' => '',
     'bootstrap_library' => 'custom',
     'fontawesome' => 1,
+    'bootstrap_upload' => '',
+    'build_subtheme' => 0,
     'magic' => 1,
+    'subtheme_name' => '',
+    'subtheme_base' => 'kalatheme',
     'always_show_page_title' => 0,
     'responsive_toggle' => 1,
     'pane_styles_toggle' => 1,
