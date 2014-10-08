@@ -27,6 +27,15 @@ div.features-export-list {
   margin-left: 10px;
 }
 
+input#edit-title {
+  height: 50px;
+  margin-top: 20px;
+}
+
+#node-edit #edit-title {
+  font-size: 1em;
+}
+
 @media (min-width: 768px) {
   .navbar-nav {
     float: none;
