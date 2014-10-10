@@ -81,6 +81,27 @@ function playbox_core_default_page_manager_pages() {
     $display->content['new-bb2de5a1-19c2-434d-9c6b-00610ade8333'] = $pane;
     $display->panels['footer'][0] = 'new-bb2de5a1-19c2-434d-9c6b-00610ade8333';
     $pane = new stdClass();
+    $pane->pid = 'new-e8bbdb1d-279f-435c-bae2-cee6add42e14';
+    $pane->panel = 'jumbotron';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'playbox_battles-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'view_settings' => 'fields',
+      'header_type' => 'none',
+      'view_mode' => 'teaser',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'e8bbdb1d-279f-435c-bae2-cee6add42e14';
+    $display->content['new-e8bbdb1d-279f-435c-bae2-cee6add42e14'] = $pane;
+    $display->panels['jumbotron'][0] = 'new-e8bbdb1d-279f-435c-bae2-cee6add42e14';
+    $pane = new stdClass();
     $pane->pid = 'new-bb3e543d-b61d-4580-8866-9353a49af3cf';
     $pane->panel = 'row1';
     $pane->type = 'playbox_static_instructions';

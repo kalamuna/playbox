@@ -166,6 +166,27 @@ function playbox_robots_default_page_manager_pages() {
     $pane->uuid = 'e94c7932-9bfc-4251-b64c-45f83137ce4c';
     $display->content['new-e94c7932-9bfc-4251-b64c-45f83137ce4c'] = $pane;
     $display->panels['row3'][0] = 'new-e94c7932-9bfc-4251-b64c-45f83137ce4c';
+    $pane = new stdClass();
+    $pane->pid = 'new-4ddb9261-85ad-4530-a52e-a9d6cc3b845b';
+    $pane->panel = 'row4';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'playbox_battles-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'view_settings' => 'fields',
+      'header_type' => 'none',
+      'view_mode' => 'teaser',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '4ddb9261-85ad-4530-a52e-a9d6cc3b845b';
+    $display->content['new-4ddb9261-85ad-4530-a52e-a9d6cc3b845b'] = $pane;
+    $display->panels['row4'][0] = 'new-4ddb9261-85ad-4530-a52e-a9d6cc3b845b';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

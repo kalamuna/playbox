@@ -29,7 +29,7 @@
 <?php endif; ?>
 
 <?php if ($content['row2']): ?>
-  <section id="feat-project" class="gray-bg padding-top">
+  <section id="feat-project" class="gray-bg padding-top-bottom">
     <div class="container">
       <?php print $content['row2']; ?>
     </div>
@@ -45,7 +45,7 @@
 <?php endif; ?>
 
 <?php if ($content['row4']): ?>
-  <section id="skills" class="white-bg">
+  <section id="skills" class="white-bg padding-top-bottom">
     <div class="container">
       <?php print $content['row4']; ?>
     </div>
@@ -67,7 +67,7 @@
 <?php endif; ?>
 
 <?php if ($content['row7']): ?>
-  <section id="contact" class="dark-bg light-typo padding-top">
+  <section id="contact" class="dark-bg light-typo padding-top-bottom">
     <div class="container">
       <?php print $content['row7']; ?>
     </div>
