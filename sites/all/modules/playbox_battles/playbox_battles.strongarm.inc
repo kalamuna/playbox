@@ -125,7 +125,7 @@ function playbox_battles_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'panelizer_defaults_node_playbox_battle';
   $strongarm->value = array(
-    'status' => 1,
+    'status' => 0,
     'view modes' => array(
       'page_manager' => array(
         'status' => 1,
