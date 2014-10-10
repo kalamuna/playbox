@@ -97,6 +97,27 @@ function playbox_robots_default_page_manager_pages() {
     $display->content['new-2b0094c1-e4f7-4dcb-881e-c87f34d5f7a3'] = $pane;
     $display->panels['footer'][0] = 'new-2b0094c1-e4f7-4dcb-881e-c87f34d5f7a3';
     $pane = new stdClass();
+    $pane->pid = 'new-ab83792c-0bc3-4fae-be89-66487fe44fc0';
+    $pane->panel = 'jumbotron';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'playbox_robots-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'view_settings' => 'fields',
+      'header_type' => 'none',
+      'view_mode' => 'teaser',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'ab83792c-0bc3-4fae-be89-66487fe44fc0';
+    $display->content['new-ab83792c-0bc3-4fae-be89-66487fe44fc0'] = $pane;
+    $display->panels['jumbotron'][0] = 'new-ab83792c-0bc3-4fae-be89-66487fe44fc0';
+    $pane = new stdClass();
     $pane->pid = 'new-d3293caf-4d29-4c6a-a6cf-cebe9149fac7';
     $pane->panel = 'row1';
     $pane->type = 'views_panes';
