@@ -43,7 +43,6 @@ features[field_instance][] = node-playbox_battle-field_playbox_votes_to_win
 features[field_instance][] = node-playbox_battle-field_playbox_winner
 features[node][] = playbox_battle
 features[page_manager_pages][] = playbox_battles
-features[panelizer_defaults][] = node:playbox_battle:default
 features[user_permission][] = create playbox_battle content
 features[user_permission][] = delete any playbox_battle content
 features[user_permission][] = delete own playbox_battle content

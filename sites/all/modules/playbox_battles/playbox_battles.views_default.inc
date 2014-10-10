@@ -77,42 +77,8 @@ function playbox_battles_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Battle Description */
-  $handler->display->display_options['fields']['field_playbox_battle_bio']['id'] = 'field_playbox_battle_bio';
-  $handler->display->display_options['fields']['field_playbox_battle_bio']['table'] = 'field_data_field_playbox_battle_bio';
-  $handler->display->display_options['fields']['field_playbox_battle_bio']['field'] = 'field_playbox_battle_bio';
-  $handler->display->display_options['fields']['field_playbox_battle_bio']['label'] = '';
-  $handler->display->display_options['fields']['field_playbox_battle_bio']['element_label_colon'] = FALSE;
-  /* Field: Content: President Votes */
-  $handler->display->display_options['fields']['field_playbox_president_votes']['id'] = 'field_playbox_president_votes';
-  $handler->display->display_options['fields']['field_playbox_president_votes']['table'] = 'field_data_field_playbox_president_votes';
-  $handler->display->display_options['fields']['field_playbox_president_votes']['field'] = 'field_playbox_president_votes';
-  $handler->display->display_options['fields']['field_playbox_president_votes']['label'] = '';
-  $handler->display->display_options['fields']['field_playbox_president_votes']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_playbox_president_votes']['settings'] = array(
-    'thousand_separator' => ' ',
-    'prefix_suffix' => 1,
-  );
-  /* Field: Content: Robot Votes */
-  $handler->display->display_options['fields']['field_playbox_robot_votes']['id'] = 'field_playbox_robot_votes';
-  $handler->display->display_options['fields']['field_playbox_robot_votes']['table'] = 'field_data_field_playbox_robot_votes';
-  $handler->display->display_options['fields']['field_playbox_robot_votes']['field'] = 'field_playbox_robot_votes';
-  $handler->display->display_options['fields']['field_playbox_robot_votes']['label'] = '';
-  $handler->display->display_options['fields']['field_playbox_robot_votes']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_playbox_robot_votes']['settings'] = array(
-    'thousand_separator' => ' ',
-    'prefix_suffix' => 1,
-  );
-  /* Field: Content: Votes to Win */
-  $handler->display->display_options['fields']['field_playbox_votes_to_win']['id'] = 'field_playbox_votes_to_win';
-  $handler->display->display_options['fields']['field_playbox_votes_to_win']['table'] = 'field_data_field_playbox_votes_to_win';
-  $handler->display->display_options['fields']['field_playbox_votes_to_win']['field'] = 'field_playbox_votes_to_win';
-  $handler->display->display_options['fields']['field_playbox_votes_to_win']['label'] = '';
-  $handler->display->display_options['fields']['field_playbox_votes_to_win']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_playbox_votes_to_win']['settings'] = array(
-    'thousand_separator' => ' ',
-    'prefix_suffix' => 1,
-  );
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: President Nickname */
   $handler->display->display_options['fields']['field_playbox_nickname']['id'] = 'field_playbox_nickname';
   $handler->display->display_options['fields']['field_playbox_nickname']['table'] = 'field_data_field_playbox_nickname';
@@ -134,6 +100,32 @@ function playbox_battles_views_default_views() {
     'image_style' => '',
     'image_link' => '',
   );
+  /* Field: Content: President Votes */
+  $handler->display->display_options['fields']['field_playbox_president_votes']['id'] = 'field_playbox_president_votes';
+  $handler->display->display_options['fields']['field_playbox_president_votes']['table'] = 'field_data_field_playbox_president_votes';
+  $handler->display->display_options['fields']['field_playbox_president_votes']['field'] = 'field_playbox_president_votes';
+  $handler->display->display_options['fields']['field_playbox_president_votes']['label'] = '';
+  $handler->display->display_options['fields']['field_playbox_president_votes']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_playbox_president_votes']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Battle Description */
+  $handler->display->display_options['fields']['field_playbox_battle_bio']['id'] = 'field_playbox_battle_bio';
+  $handler->display->display_options['fields']['field_playbox_battle_bio']['table'] = 'field_data_field_playbox_battle_bio';
+  $handler->display->display_options['fields']['field_playbox_battle_bio']['field'] = 'field_playbox_battle_bio';
+  $handler->display->display_options['fields']['field_playbox_battle_bio']['label'] = '';
+  $handler->display->display_options['fields']['field_playbox_battle_bio']['element_label_colon'] = FALSE;
+  /* Field: Content: Votes to Win */
+  $handler->display->display_options['fields']['field_playbox_votes_to_win']['id'] = 'field_playbox_votes_to_win';
+  $handler->display->display_options['fields']['field_playbox_votes_to_win']['table'] = 'field_data_field_playbox_votes_to_win';
+  $handler->display->display_options['fields']['field_playbox_votes_to_win']['field'] = 'field_playbox_votes_to_win';
+  $handler->display->display_options['fields']['field_playbox_votes_to_win']['label'] = '';
+  $handler->display->display_options['fields']['field_playbox_votes_to_win']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_playbox_votes_to_win']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
   /* Field: Robot Nickname */
   $handler->display->display_options['fields']['field_playbox_nickname_1']['id'] = 'field_playbox_nickname_1';
   $handler->display->display_options['fields']['field_playbox_nickname_1']['table'] = 'field_data_field_playbox_nickname';
@@ -142,6 +134,16 @@ function playbox_battles_views_default_views() {
   $handler->display->display_options['fields']['field_playbox_nickname_1']['ui_name'] = 'Robot Nickname';
   $handler->display->display_options['fields']['field_playbox_nickname_1']['label'] = '';
   $handler->display->display_options['fields']['field_playbox_nickname_1']['element_label_colon'] = FALSE;
+  /* Field: Content: Robot Votes */
+  $handler->display->display_options['fields']['field_playbox_robot_votes']['id'] = 'field_playbox_robot_votes';
+  $handler->display->display_options['fields']['field_playbox_robot_votes']['table'] = 'field_data_field_playbox_robot_votes';
+  $handler->display->display_options['fields']['field_playbox_robot_votes']['field'] = 'field_playbox_robot_votes';
+  $handler->display->display_options['fields']['field_playbox_robot_votes']['label'] = '';
+  $handler->display->display_options['fields']['field_playbox_robot_votes']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_playbox_robot_votes']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
   /* Field: Robot Portrait */
   $handler->display->display_options['fields']['field_playbox_portrait_1']['id'] = 'field_playbox_portrait_1';
   $handler->display->display_options['fields']['field_playbox_portrait_1']['table'] = 'field_data_field_playbox_portrait';
@@ -184,6 +186,8 @@ function playbox_battles_views_default_views() {
 
   /* Display: List of onging Playbox Battles */
   $handler = $view->new_display('panel_pane', 'List of onging Playbox Battles', 'playbox_battles_list_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Ongoing Battles';
   $handler->display->display_options['display_description'] = 'A nice list of the ongoing playbox battles';
   $handler->display->display_options['pane_title'] = 'List of ongoing playbox battles';
   $handler->display->display_options['pane_description'] = 'A list of the ongoing playbox battles';
@@ -200,7 +204,9 @@ function playbox_battles_views_default_views() {
   $handler->display->display_options['allow']['fields_override'] = 'fields_override';
 
   /* Display: List of completed Playbox Battles */
-  $handler = $view->new_display('panel_pane', 'List of completed Playbox Battles', 'panel_pane_1');
+  $handler = $view->new_display('panel_pane', 'List of completed Playbox Battles', 'playbox_battles_list_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Completed Battles';
   $handler->display->display_options['display_description'] = 'A nice list of the completed playbox battles';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
