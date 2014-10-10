@@ -92,6 +92,61 @@ function playbox_robots_views_default_views() {
   $handler->display->display_options['allow']['title_override'] = 0;
   $handler->display->display_options['allow']['exposed_form'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 'fields_override';
+
+  /* Display: Robot Header */
+  $handler = $view->new_display('panel_pane', 'Robot Header', 'panel_pane_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Portrait */
+  $handler->display->display_options['fields']['field_playbox_portrait']['id'] = 'field_playbox_portrait';
+  $handler->display->display_options['fields']['field_playbox_portrait']['table'] = 'field_data_field_playbox_portrait';
+  $handler->display->display_options['fields']['field_playbox_portrait']['field'] = 'field_playbox_portrait';
+  $handler->display->display_options['fields']['field_playbox_portrait']['label'] = '';
+  $handler->display->display_options['fields']['field_playbox_portrait']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_playbox_portrait']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_playbox_portrait']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_playbox_portrait']['settings'] = array(
+    'image_style' => '',
+    'image_link' => 'content',
+  );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 battler-rows-sidebar-area">
+          [field_playbox_portrait]
+        </div>
+        <div class="col-md-8 battler-rows-main-content">
+          <h2>The Robots</h2>
+          In the year 20XX robots reign supreme. Metal Man, Air Man, Mega Man... all bring skills and precision to the table. Can the innovation and creative of Humanity thwart this new, cold and efficient menace or will iron, copper and AI carry the day?
+        </div>
+      </div>
+    </div>
+';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Global: Random */
+  $handler->display->display_options['sorts']['random']['id'] = 'random';
+  $handler->display->display_options['sorts']['random']['table'] = 'views';
+  $handler->display->display_options['sorts']['random']['field'] = 'random';
+  $handler->display->display_options['pane_title'] = 'Robot Header';
+  $handler->display->display_options['pane_description'] = 'A nice little header for the robots';
+  $handler->display->display_options['pane_category']['name'] = 'Robots';
+  $handler->display->display_options['pane_category']['weight'] = '0';
   $export['playbox_robots'] = $view;
 
   return $export;

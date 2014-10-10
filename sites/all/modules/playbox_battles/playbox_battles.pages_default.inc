@@ -99,8 +99,29 @@ function playbox_battles_default_page_manager_pages() {
     $display->content['new-33f38f03-deec-495e-956f-84de7ba81ec8'] = $pane;
     $display->panels['footer'][0] = 'new-33f38f03-deec-495e-956f-84de7ba81ec8';
     $pane = new stdClass();
-    $pane->pid = 'new-7677d2bf-6bbf-4e03-96fb-6e8b5ceee193';
+    $pane->pid = 'new-5f94c76c-e8f9-461a-b5cf-9ce9eb3576fd';
     $pane->panel = 'row1';
+    $pane->type = 'playbox_static_instructions';
+    $pane->subtype = 'playbox_static_instructions';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'instructions_html' => ' <div class="container"><div class="row"><div class="col-md-12"><h2>So, how does this work?</h2><p>You need to vote on who would win in a fight: A president or a Megaman boss. The first player to the predetermined vote total is named the winner. You should consider the following factors:</p></div><div class="row"><div class="col-md-3 text-center"><i class="fa fa-bomb fa-5x space-bottom space-top"></i><h3>Explosiveness</h3><small>Everyone has an x-factor.</small></div><div class="col-md-3 text-center"><i class="fa fa-crosshairs fa-5x space-bottom space-top"></i><h3>Precision</h3><small>Doing the most with the least.</small></div><div class="col-md-3 text-center"><i class="fa fa-heart fa-5x space-bottom space-top"></i><h3>Passion</h3><small>Love and determination conquer all.</small></div><div class="col-md-3 text-center"><i class="fa fa-flask fa-5x space-bottom space-top"></i><h3>Logic</h3><small>Shrewd, cold, mechanic calculus.</small></div></div><div class="row"><div class="col-md-12 text-center space-top"><a href="battles" class="btn btn-success btn-lg" role="button">Check out the battles!</a></div></div>',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '5f94c76c-e8f9-461a-b5cf-9ce9eb3576fd';
+    $display->content['new-5f94c76c-e8f9-461a-b5cf-9ce9eb3576fd'] = $pane;
+    $display->panels['row1'][0] = 'new-5f94c76c-e8f9-461a-b5cf-9ce9eb3576fd';
+    $pane = new stdClass();
+    $pane->pid = 'new-7677d2bf-6bbf-4e03-96fb-6e8b5ceee193';
+    $pane->panel = 'row2';
     $pane->type = 'views_panes';
     $pane->subtype = 'playbox_battles-playbox_battles_list_1';
     $pane->shown = TRUE;
@@ -133,7 +154,7 @@ function playbox_battles_default_page_manager_pages() {
     $pane->locks = array();
     $pane->uuid = '7677d2bf-6bbf-4e03-96fb-6e8b5ceee193';
     $display->content['new-7677d2bf-6bbf-4e03-96fb-6e8b5ceee193'] = $pane;
-    $display->panels['row1'][0] = 'new-7677d2bf-6bbf-4e03-96fb-6e8b5ceee193';
+    $display->panels['row2'][0] = 'new-7677d2bf-6bbf-4e03-96fb-6e8b5ceee193';
     $pane = new stdClass();
     $pane->pid = 'new-4ad5514f-089a-4fbf-8f63-39f63b38e1b7';
     $pane->panel = 'row2';
@@ -165,11 +186,11 @@ function playbox_battles_default_page_manager_pages() {
     $pane->style = array();
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
     $pane->locks = array();
     $pane->uuid = '4ad5514f-089a-4fbf-8f63-39f63b38e1b7';
     $display->content['new-4ad5514f-089a-4fbf-8f63-39f63b38e1b7'] = $pane;
-    $display->panels['row2'][0] = 'new-4ad5514f-089a-4fbf-8f63-39f63b38e1b7';
+    $display->panels['row2'][1] = 'new-4ad5514f-089a-4fbf-8f63-39f63b38e1b7';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
