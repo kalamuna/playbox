@@ -162,6 +162,29 @@ function playbox_presidents_panelizer_defaults() {
     $display->content['new-a4627050-956b-4b1d-8465-16c5fa202729'] = $pane;
     $display->panels['des'][1] = 'new-a4627050-956b-4b1d-8465-16c5fa202729';
     $pane = new stdClass();
+    $pane->pid = 'new-7864b8e6-1df6-47eb-9d58-b42688a401ef';
+    $pane->panel = 'footer';
+    $pane->type = 'playbox_static_footer';
+    $pane->subtype = 'playbox_static_footer';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'footer_html' => '&copy; 2014 Kalamuna LLC',
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '7864b8e6-1df6-47eb-9d58-b42688a401ef';
+    $display->content['new-7864b8e6-1df6-47eb-9d58-b42688a401ef'] = $pane;
+    $display->panels['footer'][0] = 'new-7864b8e6-1df6-47eb-9d58-b42688a401ef';
+    $pane = new stdClass();
     $pane->pid = 'new-d2e47caf-c796-4610-8703-16074f402983';
     $pane->panel = 'powers';
     $pane->type = 'entity_field';

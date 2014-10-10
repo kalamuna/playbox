@@ -1,0 +1,9 @@
+name = Playbox Static
+description = A collection of static content panes for the Playbox.
+core = 7.x
+package = Playbox
+version = 7.x-1.0
+project = playbox_static
+dependencies[] = ctools
+dependencies[] = panels
+features[features_api][] = api:2
