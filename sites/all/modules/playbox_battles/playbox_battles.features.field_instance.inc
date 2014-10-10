@@ -63,7 +63,11 @@ function playbox_battles_field_default_field_instances() {
   // Exported field_instance: 'node-playbox_battle-field_playbox_battle_completed'
   $field_instances['node-playbox_battle-field_playbox_battle_completed'] = array(
     'bundle' => 'playbox_battle',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
     'deleted' => 0,
     'description' => 'This is a form-hidden value that indicates the battle has been completed and a winner declared. ',
     'display' => array(
