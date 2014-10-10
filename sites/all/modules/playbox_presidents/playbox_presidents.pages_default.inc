@@ -151,7 +151,7 @@ function playbox_presidents_default_page_manager_pages() {
     $pane->pid = 'new-3366c8ec-9c01-4d0d-9708-e79b85257629';
     $pane->panel = 'row2';
     $pane->type = 'views_panes';
-    $pane->subtype = 'playbox_presidents-panel_pane_1';
+    $pane->subtype = 'playbox_presidents-playbox_president_featured_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(

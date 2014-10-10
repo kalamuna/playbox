@@ -133,7 +133,7 @@ function playbox_presidents_views_default_views() {
         </div>
         <div class="col-md-8 battler-rows-main-content">
           <h2>The Presidents</h2>
-          Andrew Jackson beat a would be assailant senseless to the ground on the White House Grounds. Teddy Roosevelt got shot during a speech and ... then finished the speech. Ronald Reagan broke Tecumseh\'s Curse. These guys mean serious business. 
+          Andrew Jackson beat a would be assailant senseless to the ground on the White House Grounds. Teddy Roosevelt got shot during a speech and ... then finished the speech. Ronald Reagan broke Tecumseh\'s Curse. These guys mean serious business.
         </div>
       </div>
     </div>
@@ -159,7 +159,7 @@ function playbox_presidents_views_default_views() {
   $handler->display->display_options['allow']['fields_override'] = 0;
 
   /* Display: Featured President */
-  $handler = $view->new_display('panel_pane', 'Featured President', 'panel_pane_1');
+  $handler = $view->new_display('panel_pane', 'Featured President', 'playbox_president_featured_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Featured President';
   $handler->display->display_options['display_description'] = 'Random feature of a playbox president';

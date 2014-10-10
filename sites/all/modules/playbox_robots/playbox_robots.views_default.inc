@@ -147,6 +147,70 @@ function playbox_robots_views_default_views() {
   $handler->display->display_options['pane_description'] = 'A nice little header for the robots';
   $handler->display->display_options['pane_category']['name'] = 'Robots';
   $handler->display->display_options['pane_category']['weight'] = '0';
+
+  /* Display: Featured Robot */
+  $handler = $view->new_display('panel_pane', 'Featured Robot', 'playbox_robot_featured_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Featured Robot';
+  $handler->display->display_options['display_description'] = 'A randomly selected robot';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Portrait */
+  $handler->display->display_options['fields']['field_playbox_portrait']['id'] = 'field_playbox_portrait';
+  $handler->display->display_options['fields']['field_playbox_portrait']['table'] = 'field_data_field_playbox_portrait';
+  $handler->display->display_options['fields']['field_playbox_portrait']['field'] = 'field_playbox_portrait';
+  $handler->display->display_options['fields']['field_playbox_portrait']['label'] = '';
+  $handler->display->display_options['fields']['field_playbox_portrait']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_playbox_portrait']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_playbox_portrait']['settings'] = array(
+    'image_style' => '',
+    'image_link' => 'content',
+  );
+  /* Field: Content: Nickname */
+  $handler->display->display_options['fields']['field_playbox_nickname']['id'] = 'field_playbox_nickname';
+  $handler->display->display_options['fields']['field_playbox_nickname']['table'] = 'field_data_field_playbox_nickname';
+  $handler->display->display_options['fields']['field_playbox_nickname']['field'] = 'field_playbox_nickname';
+  $handler->display->display_options['fields']['field_playbox_nickname']['label'] = '';
+  $handler->display->display_options['fields']['field_playbox_nickname']['element_label_colon'] = FALSE;
+  /* Field: Content: Bio */
+  $handler->display->display_options['fields']['field_playbox_bio']['id'] = 'field_playbox_bio';
+  $handler->display->display_options['fields']['field_playbox_bio']['table'] = 'field_data_field_playbox_bio';
+  $handler->display->display_options['fields']['field_playbox_bio']['field'] = 'field_playbox_bio';
+  $handler->display->display_options['fields']['field_playbox_bio']['label'] = '';
+  $handler->display->display_options['fields']['field_playbox_bio']['element_label_colon'] = FALSE;
+  /* Field: Content: Powers */
+  $handler->display->display_options['fields']['field_playbox_powers']['id'] = 'field_playbox_powers';
+  $handler->display->display_options['fields']['field_playbox_powers']['table'] = 'field_data_field_playbox_powers';
+  $handler->display->display_options['fields']['field_playbox_powers']['field'] = 'field_playbox_powers';
+  $handler->display->display_options['fields']['field_playbox_powers']['label'] = '';
+  $handler->display->display_options['fields']['field_playbox_powers']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_playbox_powers']['delta_offset'] = '0';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Global: Random */
+  $handler->display->display_options['sorts']['random']['id'] = 'random';
+  $handler->display->display_options['sorts']['random']['table'] = 'views';
+  $handler->display->display_options['sorts']['random']['field'] = 'random';
+  $handler->display->display_options['pane_title'] = 'Featured Robot';
+  $handler->display->display_options['pane_description'] = 'A randomly selected robot';
+  $handler->display->display_options['pane_category']['name'] = 'Robots';
+  $handler->display->display_options['pane_category']['weight'] = '0';
   $export['playbox_robots'] = $view;
 
   return $export;

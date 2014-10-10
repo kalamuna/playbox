@@ -146,6 +146,27 @@ function playbox_robots_default_page_manager_pages() {
     $display->content['new-d3293caf-4d29-4c6a-a6cf-cebe9149fac7'] = $pane;
     $display->panels['row1'][0] = 'new-d3293caf-4d29-4c6a-a6cf-cebe9149fac7';
     $pane = new stdClass();
+    $pane->pid = 'new-05ffa6e1-5f80-4443-9cfa-1ee2c9d87965';
+    $pane->panel = 'row2';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'playbox_robots-playbox_robot_featured_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'view_settings' => 'fields',
+      'header_type' => 'none',
+      'view_mode' => 'teaser',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '05ffa6e1-5f80-4443-9cfa-1ee2c9d87965';
+    $display->content['new-05ffa6e1-5f80-4443-9cfa-1ee2c9d87965'] = $pane;
+    $display->panels['row2'][0] = 'new-05ffa6e1-5f80-4443-9cfa-1ee2c9d87965';
+    $pane = new stdClass();
     $pane->pid = 'new-e94c7932-9bfc-4251-b64c-45f83137ce4c';
     $pane->panel = 'row3';
     $pane->type = 'playbox_static_instructions';

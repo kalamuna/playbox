@@ -126,7 +126,7 @@ function playbox_core_default_page_manager_pages() {
     $pane->pid = 'new-fe72d7fd-d7b8-439c-9620-5d1b75844abc';
     $pane->panel = 'row2';
     $pane->type = 'views_panes';
-    $pane->subtype = 'playbox_presidents-panel_pane_1';
+    $pane->subtype = 'playbox_presidents-playbox_president_featured_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -143,6 +143,27 @@ function playbox_core_default_page_manager_pages() {
     $pane->uuid = 'fe72d7fd-d7b8-439c-9620-5d1b75844abc';
     $display->content['new-fe72d7fd-d7b8-439c-9620-5d1b75844abc'] = $pane;
     $display->panels['row2'][0] = 'new-fe72d7fd-d7b8-439c-9620-5d1b75844abc';
+    $pane = new stdClass();
+    $pane->pid = 'new-09894512-e791-450e-85c5-2ad5b8ec3162';
+    $pane->panel = 'row3';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'playbox_robots-playbox_robot_featured_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'view_settings' => 'fields',
+      'header_type' => 'none',
+      'view_mode' => 'teaser',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '09894512-e791-450e-85c5-2ad5b8ec3162';
+    $display->content['new-09894512-e791-450e-85c5-2ad5b8ec3162'] = $pane;
+    $display->panels['row3'][0] = 'new-09894512-e791-450e-85c5-2ad5b8ec3162';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
