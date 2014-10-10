@@ -36,6 +36,14 @@ input#edit-title {
   font-size: 1em;
 }
 
+.space-top {
+  margin-top: 50px;
+}
+
+.space-bottom {
+  margin-bottom: 50px;
+}
+
 @media (min-width: 768px) {
   .navbar-nav {
     float: none;

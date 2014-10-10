@@ -80,6 +80,27 @@ function playbox_core_default_page_manager_pages() {
     $pane->uuid = 'bb2de5a1-19c2-434d-9c6b-00610ade8333';
     $display->content['new-bb2de5a1-19c2-434d-9c6b-00610ade8333'] = $pane;
     $display->panels['footer'][0] = 'new-bb2de5a1-19c2-434d-9c6b-00610ade8333';
+    $pane = new stdClass();
+    $pane->pid = 'new-bb3e543d-b61d-4580-8866-9353a49af3cf';
+    $pane->panel = 'row1';
+    $pane->type = 'playbox_static_instructions';
+    $pane->subtype = 'playbox_static_instructions';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'instructions_html' => ' <div class="container"><div class="row"><div class="col-md-12"><h2>So, how does this work?</h2><p>You need to vote on who would win in a fight: A president or a Megaman boss. The first player to the predetermined vote total is named the winner. You should consider the following factors:</p></div><div class="row"><div class="col-md-3 text-center"><i class="fa fa-bomb fa-5x space-bottom space-top"></i><h3>Explosiveness</h3><small>Everyone has an x-factor.</small></div><div class="col-md-3 text-center"><i class="fa fa-crosshairs fa-5x space-bottom space-top"></i><h3>Precision</h3><small>Doing the most with the least.</small></div><div class="col-md-3 text-center"><i class="fa fa-heart fa-5x space-bottom space-top"></i><h3>Passion</h3><small>Love and determination conquer all.</small></div><div class="col-md-3 text-center"><i class="fa fa-flask fa-5x space-bottom space-top"></i><h3>Logic</h3><small>Shrewd, cold, mechanic calculus.</small></div></div><div class="row"><div class="col-md-12 text-center space-top"><a href="battles" class="btn btn-success btn-lg" role="button">Check out the battles!</a></div></div>',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'bb3e543d-b61d-4580-8866-9353a49af3cf';
+    $display->content['new-bb3e543d-b61d-4580-8866-9353a49af3cf'] = $pane;
+    $display->panels['row1'][0] = 'new-bb3e543d-b61d-4580-8866-9353a49af3cf';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
