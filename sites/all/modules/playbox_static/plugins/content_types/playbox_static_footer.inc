@@ -55,7 +55,7 @@ function playbox_static_footer_edit_form_submit(&$form, &$form_state) {
 function playbox_static_footer_render($subtype, $conf, $args, $contexts) {
 
   // Update the strings to allow contexts.
-  $content = ($conf['footer_html'] != playbox_static_DEFAULT_SEARCH_FORM) ? $conf['footer_html'] : playbox_static_DEFAULT_SEARCH_FORM;
+  $content = ($conf['footer_html'] != PLAYBOX_STATIC_DEFAULT_FOOTER) ? $conf['footer_html'] : PLAYBOX_STATIC_DEFAULT_FOOTER;
 
   $block = new stdClass();
   $block->title = t('');
