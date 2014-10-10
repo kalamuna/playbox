@@ -122,6 +122,27 @@ function playbox_core_default_page_manager_pages() {
     $pane->uuid = 'bb3e543d-b61d-4580-8866-9353a49af3cf';
     $display->content['new-bb3e543d-b61d-4580-8866-9353a49af3cf'] = $pane;
     $display->panels['row1'][0] = 'new-bb3e543d-b61d-4580-8866-9353a49af3cf';
+    $pane = new stdClass();
+    $pane->pid = 'new-fe72d7fd-d7b8-439c-9620-5d1b75844abc';
+    $pane->panel = 'row2';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'playbox_presidents-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'view_settings' => 'fields',
+      'header_type' => 'none',
+      'view_mode' => 'teaser',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'fe72d7fd-d7b8-439c-9620-5d1b75844abc';
+    $display->content['new-fe72d7fd-d7b8-439c-9620-5d1b75844abc'] = $pane;
+    $display->panels['row2'][0] = 'new-fe72d7fd-d7b8-439c-9620-5d1b75844abc';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
