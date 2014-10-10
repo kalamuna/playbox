@@ -75,6 +75,29 @@ function playbox_battles_default_page_manager_pages() {
   $display->uuid = '43a25f58-f11b-4aad-bf0a-9685cf68762d';
   $display->content = array();
   $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-33f38f03-deec-495e-956f-84de7ba81ec8';
+    $pane->panel = 'footer';
+    $pane->type = 'playbox_static_footer';
+    $pane->subtype = 'playbox_static_footer';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'footer_html' => '&copy; 2014 Kalamuna LLC',
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '33f38f03-deec-495e-956f-84de7ba81ec8';
+    $display->content['new-33f38f03-deec-495e-956f-84de7ba81ec8'] = $pane;
+    $display->panels['footer'][0] = 'new-33f38f03-deec-495e-956f-84de7ba81ec8';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

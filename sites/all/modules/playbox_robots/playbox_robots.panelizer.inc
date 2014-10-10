@@ -172,6 +172,29 @@ function playbox_robots_panelizer_defaults() {
     $display->content['new-1eb716c3-93ef-462a-ba55-2c2382235980'] = $pane;
     $display->panels['des'][1] = 'new-1eb716c3-93ef-462a-ba55-2c2382235980';
     $pane = new stdClass();
+    $pane->pid = 'new-4cf1862f-7e91-4f0c-bf89-be61705bc819';
+    $pane->panel = 'footer';
+    $pane->type = 'playbox_static_footer';
+    $pane->subtype = 'playbox_static_footer';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'footer_html' => '&copy; 2014 Kalamuna LLC',
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '4cf1862f-7e91-4f0c-bf89-be61705bc819';
+    $display->content['new-4cf1862f-7e91-4f0c-bf89-be61705bc819'] = $pane;
+    $display->panels['footer'][0] = 'new-4cf1862f-7e91-4f0c-bf89-be61705bc819';
+    $pane = new stdClass();
     $pane->pid = 'new-c8403521-e661-4da4-93af-34d773c546eb';
     $pane->panel = 'powers';
     $pane->type = 'entity_field';

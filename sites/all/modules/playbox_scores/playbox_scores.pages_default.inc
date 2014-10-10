@@ -75,6 +75,27 @@ function playbox_scores_default_page_manager_pages() {
   $display->uuid = '6178e5a0-aa81-4de5-bca8-7df8f98f30f4';
   $display->content = array();
   $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-fc9f0af2-ec13-4006-bc79-e8095161397f';
+    $pane->panel = 'footer';
+    $pane->type = 'playbox_static_footer';
+    $pane->subtype = 'playbox_static_footer';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'footer_html' => '&copy; 2014 Kalamuna LLC',
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'fc9f0af2-ec13-4006-bc79-e8095161397f';
+    $display->content['new-fc9f0af2-ec13-4006-bc79-e8095161397f'] = $pane;
+    $display->panels['footer'][0] = 'new-fc9f0af2-ec13-4006-bc79-e8095161397f';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
