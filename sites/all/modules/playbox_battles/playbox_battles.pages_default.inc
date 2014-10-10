@@ -102,7 +102,7 @@ function playbox_battles_default_page_manager_pages() {
     $pane->pid = 'new-61e9f965-412d-423e-8f59-10dde796d811';
     $pane->panel = 'jumbotron';
     $pane->type = 'views_panes';
-    $pane->subtype = 'playbox_battles-panel_pane_1';
+    $pane->subtype = 'playbox_battles-playbox_battles_featured_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -180,7 +180,7 @@ function playbox_battles_default_page_manager_pages() {
     $pane->pid = 'new-4ad5514f-089a-4fbf-8f63-39f63b38e1b7';
     $pane->panel = 'row2';
     $pane->type = 'views_panes';
-    $pane->subtype = 'playbox_battles-panel_pane_1';
+    $pane->subtype = 'playbox_battles-playbox_battles_featured_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(

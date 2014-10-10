@@ -100,7 +100,7 @@ function playbox_robots_default_page_manager_pages() {
     $pane->pid = 'new-ab83792c-0bc3-4fae-be89-66487fe44fc0';
     $pane->panel = 'jumbotron';
     $pane->type = 'views_panes';
-    $pane->subtype = 'playbox_robots-panel_pane_1';
+    $pane->subtype = 'playbox_robots-playbox_robot_header_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -170,7 +170,7 @@ function playbox_robots_default_page_manager_pages() {
     $pane->pid = 'new-4ddb9261-85ad-4530-a52e-a9d6cc3b845b';
     $pane->panel = 'row4';
     $pane->type = 'views_panes';
-    $pane->subtype = 'playbox_battles-panel_pane_1';
+    $pane->subtype = 'playbox_battles-playbox_battles_featured_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(

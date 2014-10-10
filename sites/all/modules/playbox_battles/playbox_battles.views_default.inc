@@ -246,7 +246,7 @@ function playbox_battles_views_default_views() {
   $handler->display->display_options['allow']['fields_override'] = 'fields_override';
 
   /* Display: Featured Battle */
-  $handler = $view->new_display('panel_pane', 'Featured Battle', 'panel_pane_1');
+  $handler = $view->new_display('panel_pane', 'Featured Battle', 'playbox_battles_featured_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['display_description'] = 'Featured view of a random battle';
   $handler->display->display_options['defaults']['pager'] = FALSE;

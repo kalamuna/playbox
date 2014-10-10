@@ -84,7 +84,7 @@ function playbox_core_default_page_manager_pages() {
     $pane->pid = 'new-e8bbdb1d-279f-435c-bae2-cee6add42e14';
     $pane->panel = 'jumbotron';
     $pane->type = 'views_panes';
-    $pane->subtype = 'playbox_battles-panel_pane_1';
+    $pane->subtype = 'playbox_battles-playbox_battles_featured_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(

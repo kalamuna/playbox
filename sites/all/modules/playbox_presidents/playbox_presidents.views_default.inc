@@ -94,7 +94,7 @@ function playbox_presidents_views_default_views() {
   $handler->display->display_options['allow']['fields_override'] = 'fields_override';
 
   /* Display: President Header */
-  $handler = $view->new_display('panel_pane', 'President Header', 'panel_pane_1');
+  $handler = $view->new_display('panel_pane', 'President Header', 'playbox_president_header_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['display_description'] = 'This shows a nice header for the presidents page.';
   $handler->display->display_options['defaults']['pager'] = FALSE;

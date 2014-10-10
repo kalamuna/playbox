@@ -94,7 +94,7 @@ function playbox_robots_views_default_views() {
   $handler->display->display_options['allow']['fields_override'] = 'fields_override';
 
   /* Display: Robot Header */
-  $handler = $view->new_display('panel_pane', 'Robot Header', 'panel_pane_1');
+  $handler = $view->new_display('panel_pane', 'Robot Header', 'playbox_robot_header_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
