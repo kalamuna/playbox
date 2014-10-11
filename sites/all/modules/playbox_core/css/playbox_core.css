@@ -1,6 +1,6 @@
 /* Image Styles */
 
-.jumbotron .playbox-portrait-featured, #about .playbox-portrait-featured {
+.jumbotron .playbox-portrait-featured {
   margin-bottom: 40px;
   border: 15px solid transparent;
   box-shadow: 15px 13px 11px 21px rgba(255,255,255,.3);
@@ -8,6 +8,19 @@
   height: auto;
   max-width: 100%;
   border-radius: 50%;
+}
+
+#about .playbox-portrait-featured {
+  margin-bottom: 40px;
+  border: 5px solid;
+  display: block;
+  height: auto;
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+#about img.playbox-portrait-featured {
+  box-shadow: none;
 }
 
 #feat-project .playbox-portrait-featured {

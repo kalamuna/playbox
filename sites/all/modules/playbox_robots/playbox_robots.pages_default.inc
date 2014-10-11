@@ -147,7 +147,7 @@ function playbox_robots_default_page_manager_pages() {
     $display->panels['row1'][0] = 'new-d3293caf-4d29-4c6a-a6cf-cebe9149fac7';
     $pane = new stdClass();
     $pane->pid = 'new-05ffa6e1-5f80-4443-9cfa-1ee2c9d87965';
-    $pane->panel = 'row2';
+    $pane->panel = 'row3';
     $pane->type = 'views_panes';
     $pane->subtype = 'playbox_robots-playbox_robot_featured_1';
     $pane->shown = TRUE;
@@ -165,10 +165,10 @@ function playbox_robots_default_page_manager_pages() {
     $pane->locks = array();
     $pane->uuid = '05ffa6e1-5f80-4443-9cfa-1ee2c9d87965';
     $display->content['new-05ffa6e1-5f80-4443-9cfa-1ee2c9d87965'] = $pane;
-    $display->panels['row2'][0] = 'new-05ffa6e1-5f80-4443-9cfa-1ee2c9d87965';
+    $display->panels['row3'][0] = 'new-05ffa6e1-5f80-4443-9cfa-1ee2c9d87965';
     $pane = new stdClass();
     $pane->pid = 'new-e94c7932-9bfc-4251-b64c-45f83137ce4c';
-    $pane->panel = 'row3';
+    $pane->panel = 'row4';
     $pane->type = 'playbox_static_instructions';
     $pane->subtype = 'playbox_static_instructions';
     $pane->shown = TRUE;
@@ -186,10 +186,10 @@ function playbox_robots_default_page_manager_pages() {
     $pane->locks = array();
     $pane->uuid = 'e94c7932-9bfc-4251-b64c-45f83137ce4c';
     $display->content['new-e94c7932-9bfc-4251-b64c-45f83137ce4c'] = $pane;
-    $display->panels['row3'][0] = 'new-e94c7932-9bfc-4251-b64c-45f83137ce4c';
+    $display->panels['row4'][0] = 'new-e94c7932-9bfc-4251-b64c-45f83137ce4c';
     $pane = new stdClass();
     $pane->pid = 'new-4ddb9261-85ad-4530-a52e-a9d6cc3b845b';
-    $pane->panel = 'row4';
+    $pane->panel = 'row5';
     $pane->type = 'views_panes';
     $pane->subtype = 'playbox_battles-playbox_battles_featured_1';
     $pane->shown = TRUE;
@@ -207,7 +207,7 @@ function playbox_robots_default_page_manager_pages() {
     $pane->locks = array();
     $pane->uuid = '4ddb9261-85ad-4530-a52e-a9d6cc3b845b';
     $display->content['new-4ddb9261-85ad-4530-a52e-a9d6cc3b845b'] = $pane;
-    $display->panels['row4'][0] = 'new-4ddb9261-85ad-4530-a52e-a9d6cc3b845b';
+    $display->panels['row5'][0] = 'new-4ddb9261-85ad-4530-a52e-a9d6cc3b845b';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

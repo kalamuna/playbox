@@ -152,7 +152,7 @@ function playbox_presidents_default_page_manager_pages() {
     $display->panels['row1'][0] = 'new-d58a7343-9019-489d-86f6-bc9faefc5ab8';
     $pane = new stdClass();
     $pane->pid = 'new-3366c8ec-9c01-4d0d-9708-e79b85257629';
-    $pane->panel = 'row2';
+    $pane->panel = 'row3';
     $pane->type = 'views_panes';
     $pane->subtype = 'playbox_presidents-playbox_president_featured_1';
     $pane->shown = TRUE;
@@ -170,10 +170,10 @@ function playbox_presidents_default_page_manager_pages() {
     $pane->locks = array();
     $pane->uuid = '3366c8ec-9c01-4d0d-9708-e79b85257629';
     $display->content['new-3366c8ec-9c01-4d0d-9708-e79b85257629'] = $pane;
-    $display->panels['row2'][0] = 'new-3366c8ec-9c01-4d0d-9708-e79b85257629';
+    $display->panels['row3'][0] = 'new-3366c8ec-9c01-4d0d-9708-e79b85257629';
     $pane = new stdClass();
     $pane->pid = 'new-82051d6a-8212-4bfe-b3ac-bc79e9832e86';
-    $pane->panel = 'row3';
+    $pane->panel = 'row4';
     $pane->type = 'playbox_static_instructions';
     $pane->subtype = 'playbox_static_instructions';
     $pane->shown = TRUE;
@@ -191,10 +191,10 @@ function playbox_presidents_default_page_manager_pages() {
     $pane->locks = array();
     $pane->uuid = '82051d6a-8212-4bfe-b3ac-bc79e9832e86';
     $display->content['new-82051d6a-8212-4bfe-b3ac-bc79e9832e86'] = $pane;
-    $display->panels['row3'][0] = 'new-82051d6a-8212-4bfe-b3ac-bc79e9832e86';
+    $display->panels['row4'][0] = 'new-82051d6a-8212-4bfe-b3ac-bc79e9832e86';
     $pane = new stdClass();
     $pane->pid = 'new-5e781905-e5d8-4960-ac8e-52120ad22a4e';
-    $pane->panel = 'row4';
+    $pane->panel = 'row5';
     $pane->type = 'views_panes';
     $pane->subtype = 'playbox_battles-playbox_battles_featured_1';
     $pane->shown = TRUE;
@@ -212,7 +212,7 @@ function playbox_presidents_default_page_manager_pages() {
     $pane->locks = array();
     $pane->uuid = '5e781905-e5d8-4960-ac8e-52120ad22a4e';
     $display->content['new-5e781905-e5d8-4960-ac8e-52120ad22a4e'] = $pane;
-    $display->panels['row4'][0] = 'new-5e781905-e5d8-4960-ac8e-52120ad22a4e';
+    $display->panels['row5'][0] = 'new-5e781905-e5d8-4960-ac8e-52120ad22a4e';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

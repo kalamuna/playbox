@@ -5,39 +5,17 @@
 }
 
 .battler-nickname {
-
-}
-
-
-/* Panelizer styles */
-.pane-node-field-playbox-nickname .field-name-field-playbox-nickname .field-item {
-  text-align: center;
-  font-size: 1.2em;
-  text-transform: uppercase;
+  margin-top: -20px;
   font-weight: 500;
+  color: #F06096;
+  font-size: 1.2em;
 }
 
-.pane-node-field-playbox-nickname .field-name-field-playbox-nickname .field-item::after {
+.battler-nickname::after {
   content: "\"";
 }
 
-.pane-node-field-playbox-nickname .field-name-field-playbox-nickname .field-item::before {
+.battler-nickname::before {
   content: "\"";
 }
 
-.jumbotron .pane-node-title a {
-  color: #ffffff;
-}
-
-.jumbotron h4.pane-title {
-  opacity: .8;
-}
-
-.pane-node-field-playbox-bio .field-name-field-playbox-bio .field-item {
-  opacity: .8;
-}
-
-.pane-node-field-playbox-nickname {
-  position: relative;
-  top: -50px;
-}
