@@ -8,7 +8,6 @@
   var color = $('.jumbotron').css('backgroundColor');
 
   $('.skills').waypoint(function(){
-    console.log('sup');
     $('.chart').each(function(){
     $(this).easyPieChart({
         size:140,

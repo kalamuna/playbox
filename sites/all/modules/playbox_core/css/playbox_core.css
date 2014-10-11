@@ -1,0 +1,32 @@
+/* Image Styles */
+
+.jumbotron .playbox-portrait-featured, #about .playbox-portrait-featured {
+  margin-bottom: 40px;
+  border: 15px solid transparent;
+  box-shadow: 15px 13px 11px 21px rgba(255,255,255,.3);
+  display: block;
+  height: auto;
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+#feat-project .playbox-portrait-featured {
+  margin-bottom: 40px;
+  border: 15px solid transparent;
+  box-shadow: 15px 13px 11px 21px rgba(56,165,219,.3);
+  display: block;
+  height: auto;
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+#services .playbox-portrait-normal {
+  margin-bottom: 40px;
+  border: 15px solid transparent;
+  box-shadow: 10px 6px 0px 0px rgba(56,165,219,.3);
+  margin: 0 auto;
+  display: block;
+  height: auto;
+  max-width: 100%;
+  border-radius: 50%;
+}

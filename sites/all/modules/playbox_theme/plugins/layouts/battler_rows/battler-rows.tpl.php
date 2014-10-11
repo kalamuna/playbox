@@ -25,8 +25,12 @@
   </header>
 <?php endif; ?>
 
+<section id="dribbble">
+  <h1 class="dribbble-button"><a href="#" target="_blank">You Underestimate My Powers!!!</a></h1>
+</section>
+
 <?php if ($content['powers']): ?>
-  <section id="powers" class="white-bg padding-top-bottom">
+  <section id="powers" class="white-bg padding-bottom">
     <div class="container">
       <?php print $content['powers']; ?>
     </div>

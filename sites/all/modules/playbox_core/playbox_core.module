@@ -13,12 +13,6 @@ function playbox_core_init() {
   // Load CS and JS
   drupal_add_css(drupal_get_path('module', 'playbox_core') . '/css/playbox_core.css');
   drupal_add_js(drupal_get_path('module', 'playbox_core') . '/js/playbox_core.js', array('scope' => 'footer'));
-
-  // Allow custom CSS/JS to be added for specific themes
-  if (file_exists(drupal_get_path('module', 'playbox_core') . '/css/' . variable_get('theme_default', 'garland'). '.css')) {
-    drupal_add_css(drupal_get_path('module', 'playbox_core') . '/css/' . variable_get('theme_default', 'garland'). '.css');
-    drupal_add_js(drupal_get_path('module', 'playbox_core') . '/js/' . variable_get('theme_default', 'garland'). '.js');
-  }
 }
 
 /**

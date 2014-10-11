@@ -55,7 +55,7 @@ function playbox_presidents_panelizer_defaults() {
     ),
   );
   $display->cache = array();
-  $display->title = '%node:title';
+  $display->title = '';
   $display->uuid = '455527b9-a0f4-477b-8839-d8700c563c03';
   $display->content = array();
   $display->panels = array();
@@ -110,10 +110,29 @@ function playbox_presidents_panelizer_defaults() {
     );
     $pane->cache = array();
     $pane->style = array(
-      'settings' => array(),
+      'settings' => array(
+        'devices' => array(
+          'hidden-xs' => 0,
+          'hidden-sm' => 0,
+          'hidden-md' => 0,
+          'hidden-lg' => 0,
+        ),
+        'pane_style' => array(
+          'pull-left' => 0,
+          'pull-right' => 0,
+          'clearfix' => 0,
+          'jumbotron' => 0,
+          'well' => 0,
+          'battler-title' => 0,
+          'battler-nickname' => 0,
+        ),
+      ),
       'style' => 'kalacustomize',
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => '',
+    );
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
@@ -134,14 +153,33 @@ function playbox_presidents_panelizer_defaults() {
       'class' => '',
       'context' => 'panelizer',
       'override_title' => 1,
-      'override_title_text' => '%node:title',
+      'override_title_text' => 'President',
     );
     $pane->cache = array();
     $pane->style = array(
-      'settings' => array(),
+      'settings' => array(
+        'devices' => array(
+          'hidden-xs' => 0,
+          'hidden-sm' => 0,
+          'hidden-md' => 0,
+          'hidden-lg' => 0,
+        ),
+        'pane_style' => array(
+          'pull-left' => 0,
+          'pull-right' => 0,
+          'clearfix' => 0,
+          'jumbotron' => 0,
+          'well' => 0,
+          'battler-title' => 0,
+          'battler-nickname' => 0,
+        ),
+      ),
       'style' => 'kalacustomize',
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => '',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();

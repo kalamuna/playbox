@@ -69,7 +69,10 @@ function playbox_theme_strongarm() {
     'always_show_page_title' => 0,
     'responsive_toggle' => 1,
     'pane_styles_toggle' => 1,
-    'pane_classes' => array(),
+    'pane_classes' => array(
+      'battler-title' => 'Battler Title',
+      'battler-nickname' => 'Battler Nickname',
+    ),
   );
   $export['theme_playbox_theme_settings'] = $strongarm;
 
