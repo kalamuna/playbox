@@ -5,3 +5,53 @@
  */
 
 include_once 'playbox_core.features.inc';
+
+/**
+ * Implementation of hook_init()
+ */
+function playbox_core_init() {
+  // Load CS and JS
+  drupal_add_css(drupal_get_path('module', 'playbox_core') . '/css/playbox_core.css');
+  drupal_add_js(drupal_get_path('module', 'playbox_core') . '/js/playbox_core.js', array('scope' => 'footer'));
+
+  // Allow custom CSS/JS to be added for specific themes
+  if (file_exists(drupal_get_path('module', 'playbox_core') . '/css/' . variable_get('theme_default', 'garland'). '.css')) {
+    drupal_add_css(drupal_get_path('module', 'playbox_core') . '/css/' . variable_get('theme_default', 'garland'). '.css');
+    drupal_add_js(drupal_get_path('module', 'playbox_core') . '/js/' . variable_get('theme_default', 'garland'). '.js');
+  }
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function playbox_core_field_formatter_info() {
+  return array(
+    'playbox_core_feature_formatter' => array(
+      'label' => t('Power Percentage'),
+      'field types' => array('text')
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function playbox_core_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $settings = $display['settings'];
+
+
+  $output = '<div class="row skills">';
+  foreach ($items as $delta => $item) {
+    $parts = explode('/', $item['safe_value']);
+    $output .= '<div class="col-sm-6 col-md-3 text-center">
+                <span class="chart" data-percent="' . $parts[1] . '"><span class="percent">' . $parts[1] . '</span></span>
+                <h2 class="text-center">' . $parts[0] . '</h2></div>';
+  }
+  $output .= '</div>';
+
+  if(isset($output)) {
+    $element[0]['#markup'] = $output;
+  }
+  return $element;
+}

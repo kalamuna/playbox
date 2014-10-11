@@ -73,5 +73,12 @@ function playbox_theme_strongarm() {
   );
   $export['theme_playbox_theme_settings'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'waypoints_always_add_js';
+  $strongarm->value = 1;
+  $export['waypoints_always_add_js'] = $strongarm;
+
   return $export;
 }

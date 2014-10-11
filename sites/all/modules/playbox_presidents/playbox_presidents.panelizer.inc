@@ -211,7 +211,7 @@ function playbox_presidents_panelizer_defaults() {
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'hidden',
-      'formatter' => 'text_default',
+      'formatter' => 'playbox_core_feature_formatter',
       'delta_limit' => '0',
       'delta_offset' => '0',
       'delta_reversed' => 0,
