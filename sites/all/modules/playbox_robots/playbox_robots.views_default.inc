@@ -47,7 +47,7 @@ function playbox_robots_views_default_views() {
   $handler->display->display_options['fields']['field_playbox_portrait']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_playbox_portrait']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_playbox_portrait']['settings'] = array(
-    'image_style' => '',
+    'image_style' => 'playbox_portrait_normal',
     'image_link' => 'content',
   );
   /* Field: Content: Nickname */
@@ -116,7 +116,7 @@ function playbox_robots_views_default_views() {
   $handler->display->display_options['fields']['field_playbox_portrait']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_playbox_portrait']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_playbox_portrait']['settings'] = array(
-    'image_style' => '',
+    'image_style' => 'playbox_portrait_featured',
     'image_link' => 'content',
   );
   /* Field: Global: Custom text */
@@ -180,7 +180,7 @@ function playbox_robots_views_default_views() {
   $handler->display->display_options['fields']['field_playbox_portrait']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_playbox_portrait']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_playbox_portrait']['settings'] = array(
-    'image_style' => '',
+    'image_style' => 'playbox_portrait_featured',
     'image_link' => 'content',
   );
   /* Field: Content: Nickname */

@@ -69,7 +69,7 @@ function playbox_robots_panelizer_defaults() {
       'delta_reversed' => FALSE,
       'formatter_settings' => array(
         'image_link' => '',
-        'image_style' => '',
+        'image_style' => 'playbox_portrait_featured',
       ),
       'context' => 'panelizer',
       'override_title' => 0,

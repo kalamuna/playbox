@@ -34,11 +34,24 @@ function playbox_presidents_panelizer_defaults() {
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
-      'default' => NULL,
-      'core' => NULL,
-      'des' => NULL,
-      'powers' => NULL,
-      'footer' => NULL,
+      'default' => array(),
+      'core' => array(),
+      'des' => array(),
+      'powers' => array(),
+      'footer' => array(),
+    ),
+    'style' => 'kalacustomize',
+    'core' => array(
+      'style' => 'kalacustomize',
+    ),
+    'des' => array(
+      'style' => 'kalacustomize',
+    ),
+    'powers' => array(
+      'style' => 'kalacustomize',
+    ),
+    'footer' => array(
+      'style' => 'kalacustomize',
     ),
   );
   $display->cache = array();
@@ -61,7 +74,7 @@ function playbox_presidents_panelizer_defaults() {
       'delta_reversed' => FALSE,
       'formatter_settings' => array(
         'image_link' => '',
-        'image_style' => '',
+        'image_style' => 'playbox_portrait_featured',
       ),
       'context' => 'panelizer',
       'override_title' => 0,
@@ -69,7 +82,8 @@ function playbox_presidents_panelizer_defaults() {
     );
     $pane->cache = array();
     $pane->style = array(
-      'settings' => NULL,
+      'settings' => array(),
+      'style' => 'kalacustomize',
     );
     $pane->css = array();
     $pane->extras = array();
@@ -96,7 +110,8 @@ function playbox_presidents_panelizer_defaults() {
     );
     $pane->cache = array();
     $pane->style = array(
-      'settings' => NULL,
+      'settings' => array(),
+      'style' => 'kalacustomize',
     );
     $pane->css = array();
     $pane->extras = array();
@@ -123,7 +138,8 @@ function playbox_presidents_panelizer_defaults() {
     );
     $pane->cache = array();
     $pane->style = array(
-      'settings' => NULL,
+      'settings' => array(),
+      'style' => 'kalacustomize',
     );
     $pane->css = array();
     $pane->extras = array();
@@ -152,7 +168,8 @@ function playbox_presidents_panelizer_defaults() {
     );
     $pane->cache = array();
     $pane->style = array(
-      'settings' => NULL,
+      'settings' => array(),
+      'style' => 'kalacustomize',
     );
     $pane->css = array();
     $pane->extras = array();
@@ -175,7 +192,8 @@ function playbox_presidents_panelizer_defaults() {
     );
     $pane->cache = array();
     $pane->style = array(
-      'settings' => NULL,
+      'settings' => array(),
+      'style' => 'kalacustomize',
     );
     $pane->css = array();
     $pane->extras = array();
@@ -204,7 +222,8 @@ function playbox_presidents_panelizer_defaults() {
     );
     $pane->cache = array();
     $pane->style = array(
-      'settings' => NULL,
+      'settings' => array(),
+      'style' => 'kalacustomize',
     );
     $pane->css = array();
     $pane->extras = array();

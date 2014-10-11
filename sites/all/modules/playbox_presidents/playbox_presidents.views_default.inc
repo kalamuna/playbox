@@ -22,7 +22,6 @@ function playbox_presidents_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Presidents';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -47,7 +46,7 @@ function playbox_presidents_views_default_views() {
   $handler->display->display_options['fields']['field_playbox_portrait']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_playbox_portrait']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_playbox_portrait']['settings'] = array(
-    'image_style' => '',
+    'image_style' => 'playbox_portrait_normal',
     'image_link' => 'content',
   );
   /* Field: Content: Nickname */
@@ -117,7 +116,7 @@ function playbox_presidents_views_default_views() {
   $handler->display->display_options['fields']['field_playbox_portrait']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_playbox_portrait']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_playbox_portrait']['settings'] = array(
-    'image_style' => '',
+    'image_style' => 'playbox_portrait_featured',
     'image_link' => 'content',
   );
   /* Field: Global: Custom text */
@@ -133,7 +132,7 @@ function playbox_presidents_views_default_views() {
         </div>
         <div class="col-md-8 battler-rows-main-content">
           <h2>The Presidents</h2>
-          Andrew Jackson beat a would be assailant senseless to the ground on the White House Grounds. Teddy Roosevelt got shot during a speech and ... then finished the speech. Ronald Reagan broke Tecumseh\'s Curse. These guys mean serious business.
+          Andrew Jackson beat a would be assailant senseless to the ground on the White House Grounds. Teddy Roosevelt got shot during a speech and ... then finished the speech. Ronald Reagan broke Tecumseh\'s Curse. These guys mean serious business. 
         </div>
       </div>
     </div>
@@ -190,7 +189,7 @@ function playbox_presidents_views_default_views() {
   $handler->display->display_options['fields']['field_playbox_portrait']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_playbox_portrait']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_playbox_portrait']['settings'] = array(
-    'image_style' => '',
+    'image_style' => 'playbox_portrait_featured',
     'image_link' => 'content',
   );
   /* Field: Content: Nickname */
