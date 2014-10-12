@@ -23,6 +23,21 @@
   box-shadow: none;
 }
 
+#about .playbox-portrait-normal {
+  margin-bottom: 40px;
+  border: 5px solid;
+  display: inherit;
+  height: auto;
+  max-width: 100%;
+  border-radius: 50%;
+  text-align: center;
+}
+
+#about img.playbox-portrait-normal {
+  box-shadow: none;
+}
+
+
 #feat-project .playbox-portrait-featured {
   margin-bottom: 40px;
   border: 15px solid transparent;
@@ -38,7 +53,7 @@
   border: 15px solid transparent;
   box-shadow: 10px 6px 0px 0px rgba(56,165,219,.3);
   margin: 0 auto;
-  display: block;
+  display: inherit;
   height: auto;
   max-width: 100%;
   border-radius: 50%;
