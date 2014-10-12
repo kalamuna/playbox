@@ -268,6 +268,15 @@ function playbox_battles_views_default_views() {
   $handler->display->display_options['pane_description'] = 'This is a random featured battle';
   $handler->display->display_options['pane_category']['name'] = 'Battles';
   $handler->display->display_options['pane_category']['weight'] = '0';
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 0;
+  $handler->display->display_options['allow']['exposed_form'] = 'exposed_form';
+  $handler->display->display_options['allow']['fields_override'] = 'fields_override';
 
   /* Display: Grid of battlers */
   $handler = $view->new_display('panel_pane', 'Grid of battlers', 'playbox_battles_grid_1');

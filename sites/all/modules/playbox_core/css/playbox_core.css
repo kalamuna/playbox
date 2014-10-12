@@ -37,6 +37,11 @@
   box-shadow: none;
 }
 
+#about .grid-item {
+  border-radius: 25%;
+  padding: 10px;
+  border: 3px solid #333;
+}
 
 #feat-project .playbox-portrait-featured {
   margin-bottom: 40px;

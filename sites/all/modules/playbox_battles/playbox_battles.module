@@ -5,3 +5,62 @@
  */
 
 include_once 'playbox_battles.features.inc';
+
+/**
+ * Implementation of hook_theme().
+ */
+function playbox_battles_theme($existing, $type, $theme, $path) {
+  // Replace each dash with an underscore in the hook name.
+  $themes['views_view_fields__playbox_battles__playbox_battles_featured_1'] = array(
+    'template' => 'views-view-fields--playbox-battles--playbox-battles-featured-1',
+    'original hook' => 'views_view_fields',
+    'path' => drupal_get_path('module', 'playbox_battles') . '/templates',
+    'arguments' => array('view' => NULL, 'options' => NULL, 'row' => NULL),
+  );
+
+  return $themes;
+}
+
+/**
+ * Implements hook_views_pre_render()
+ */
+function playbox_battles_views_pre_render(&$view) {
+  $view = $view;
+  if ($view->name = 'playbox_battles' && $view->current_display = 'playbox_battles_featured_1') {
+    $pres_portrait = $view->result[0]->field_field_playbox_portrait;
+    $test == $test;
+  }
+}
+
+
+/**
+ * Allows us to add node--panopoly-news-article.tpl.php to the
+ * registry.
+ *
+ * http://www.metachunk.com/blog/adding-module-path-drupal-7-theme-registry
+ *
+ * Implements hook_theme_registry_alter()
+ **/
+function playbox_battles_theme_registry_alter(&$theme_registry) {
+  // add template file
+  $mod_path = drupal_get_path('module', 'playbox_battles') . '/templates';
+  $theme_registry_copy = $theme_registry;       // munge on a copy
+  _theme_process_registry($theme_registry_copy, 'phptemplate', 'theme_engine', 'pow', $mod_path);
+  $theme_registry += array_diff_key($theme_registry_copy, $theme_registry);
+  $hooks = array('node');
+  foreach ($hooks as $h) {
+    _playbox_battles_insert_after_first_element($theme_registry[$h]['theme paths'], $mod_path);
+  }
+}
+
+/**
+ * Helper function for re-ordering arrays (needed by theme_registry_alter)
+ *
+ * http://www.metachunk.com/blog/adding-module-path-drupal-7-theme-registry
+ */
+function _playbox_battles_insert_after_first_element(&$a, $element) {
+  if(is_array($a)) {
+    $first_element = array_shift($a);
+    array_unshift($a, $first_element, $element);
+  }
+}
