@@ -223,3 +223,5 @@
   </div> <!-- /#main-wrapper -->
 
 </div></div> <!-- /#page, /#page-wrapper -->
+
+<?php print render($page['footer']); ?>

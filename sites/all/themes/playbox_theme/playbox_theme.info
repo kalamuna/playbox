@@ -4,31 +4,18 @@ base theme = kalatheme
 core = 7.x
 
 regions[content] = Content
+regions[footer] = Footer
 
 stylesheets[all][] = css/main.css
 stylesheets[all][] = css/styles.css
 stylesheets[all][] = css/syntax.css
-
-;stylesheets[all][] = css/flexslider.css
 stylesheets[all][] = css/meflat-blue.css
 stylesheets[all][] = css/tweaks.css
 
-;scripts[] = js/contact.js
-;scripts[] = js/jquery.easing.1.3.js
-;scripts[] = js/jquery.easing.1.3.min.js
-;scripts[] = js/jquery.easypiechart.js
-;scripts[] = js/jquery.fittext.js
-;scripts[] = js/jquery.flexslider.js
-;scripts[] = js/jquery.flexslider.min.js
-;scripts[] = js/jquery.label_better.js
-;scripts[] = js/jquery.label_better.min.js
-;scripts[] = js/jquery.masonry.js
-;scripts[] = js/jquery.masonry.min.js
-;scripts[] = js/jquery.scrollto.js;
+scripts[] = js/jquery.easypiechart.js
 scripts[] = js/modernizr.min.js
-scripts[] = js/waypoints.min.js
 scripts[] = js/respond.min.js
-scripts[] = js/meflat.js
+scripts[] = js/custom.js
 
 features[] = logo
 features[] = node_user_picture

@@ -50,7 +50,7 @@ function playbox_robots_panelizer_defaults() {
     ),
   );
   $display->cache = array();
-  $display->title = '%node:title';
+  $display->title = '';
   $display->uuid = '05c36bc4-daed-4aaa-b5e4-07218af2b2ca';
   $display->content = array();
   $display->panels = array();
@@ -69,7 +69,7 @@ function playbox_robots_panelizer_defaults() {
       'delta_reversed' => FALSE,
       'formatter_settings' => array(
         'image_link' => '',
-        'image_style' => '',
+        'image_style' => 'playbox_portrait_featured',
       ),
       'context' => 'panelizer',
       'override_title' => 0,
@@ -129,7 +129,7 @@ function playbox_robots_panelizer_defaults() {
       'class' => '',
       'context' => 'panelizer',
       'override_title' => 1,
-      'override_title_text' => '%node:title',
+      'override_title_text' => 'Robot',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -203,7 +203,7 @@ function playbox_robots_panelizer_defaults() {
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'hidden',
-      'formatter' => 'text_default',
+      'formatter' => 'playbox_core_feature_formatter',
       'delta_limit' => '0',
       'delta_offset' => '0',
       'delta_reversed' => 0,

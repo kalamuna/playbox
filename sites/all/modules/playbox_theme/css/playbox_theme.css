@@ -1,0 +1,21 @@
+/* Kalacustomize Styles */
+
+.battler-title {
+
+}
+
+.battler-nickname {
+  margin-top: -20px;
+  font-weight: 500;
+  color: #F06096;
+  font-size: 1.2em;
+}
+
+.battler-nickname::after {
+  content: "\"";
+}
+
+.battler-nickname::before {
+  content: "\"";
+}
+

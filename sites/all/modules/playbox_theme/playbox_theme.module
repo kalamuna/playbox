@@ -7,6 +7,14 @@
 include_once 'playbox_theme.features.inc';
 
 /**
+ * Implementation of hook_init()
+ */
+function playbox_theme_init() {
+  // Load CS and JS
+  drupal_add_css(drupal_get_path('module', 'playbox_theme') . '/css/playbox_theme.css');
+}
+
+/**
  * Implementation of hook_ctools_plugin_directory()
  */
 function playbox_theme_ctools_plugin_directory($module, $plugin) {

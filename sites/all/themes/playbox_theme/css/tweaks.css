@@ -36,6 +36,10 @@ input#edit-title {
   font-size: 1em;
 }
 
+.gridcol {
+  padding-bottom: 60px;
+}
+
 .space-top {
   margin-top: 50px;
 }
@@ -43,6 +47,68 @@ input#edit-title {
 .space-bottom {
   margin-bottom: 50px;
 }
+
+.jumbotron {
+  overflow: visible;
+}
+
+.dribbble-button a{
+  background:#F06096;
+}
+
+.dribbble-button a:hover{
+  background:#18bc9c;
+}
+
+
+/* Panelizer and panels styles */
+.pane-node-field-playbox-nickname .field-name-field-playbox-nickname .field-item {
+  text-align: center;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.play-spot-bio {
+  margin: auto;
+  width: 50%;
+  margin-top: 40px;
+}
+
+.play-spot-portrait {
+  margin: auto;
+}
+
+#about .play-spot-portrait .playbox-portrait-featured {
+  display: inherit;
+}
+
+.pane-node-field-playbox-nickname .field-name-field-playbox-nickname .field-item::after {
+  content: "\"";
+}
+
+.pane-node-field-playbox-nickname .field-name-field-playbox-nickname .field-item::before {
+  content: "\"";
+}
+
+.jumbotron .pane-node-title a {
+  color: #ffffff;
+}
+
+.jumbotron h4.pane-title {
+  opacity: .8;
+}
+
+.pane-node-field-playbox-bio .field-name-field-playbox-bio .field-item {
+  opacity: .8;
+}
+
+.pane-node-field-playbox-nickname {
+  position: relative;
+  top: -50px;
+}
+
+/* Media Queries */
 
 @media (min-width: 768px) {
   .navbar-nav {

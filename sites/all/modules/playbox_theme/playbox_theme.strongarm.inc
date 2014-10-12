@@ -69,9 +69,19 @@ function playbox_theme_strongarm() {
     'always_show_page_title' => 0,
     'responsive_toggle' => 1,
     'pane_styles_toggle' => 1,
-    'pane_classes' => array(),
+    'pane_classes' => array(
+      'battler-title' => 'Battler Title',
+      'battler-nickname' => 'Battler Nickname',
+    ),
   );
   $export['theme_playbox_theme_settings'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'waypoints_always_add_js';
+  $strongarm->value = 1;
+  $export['waypoints_always_add_js'] = $strongarm;
 
   return $export;
 }
