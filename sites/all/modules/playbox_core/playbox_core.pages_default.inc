@@ -157,6 +157,27 @@ function playbox_core_default_page_manager_pages() {
     $pane->uuid = '823dd144-c6ed-43f5-ba58-ce21f6bf93bc';
     $display->content['new-823dd144-c6ed-43f5-ba58-ce21f6bf93bc'] = $pane;
     $display->panels['row3'][0] = 'new-823dd144-c6ed-43f5-ba58-ce21f6bf93bc';
+    $pane = new stdClass();
+    $pane->pid = 'new-30c94c0f-7726-48dc-b02e-9756b65df51a';
+    $pane->panel = 'row4';
+    $pane->type = 'playbox_static_kalamuna';
+    $pane->subtype = 'playbox_static_kalamuna';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'kalamuna_html' => '<div class="container"><div class="row"><div class="col-md-12"><h2>Seriously though... WTF is this?</h2></div><div class="row"><div class="col-md-4 text-center"><img src="http://identity.kalamuna.com/images/assets/logo_horizontal_tagline.png" alt="Kalamuna, Let\'s Play!"></div><div class="col-md-8"><p class="space-top">Playbox! is a sandbox-proving-ground for people interested in working with us here at Kalamuna. It\'s a magnificent and collaborative code-garden where would-be code artists, site builder and designers alike can play around and show what they\'ve got. Think you\'ve got what it takes?</p><a href="https://github.com/kalamuna/playbox" class="btn btn-success btn-lg" role="button">Then give it shot!</a></div></div>',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '30c94c0f-7726-48dc-b02e-9756b65df51a';
+    $display->content['new-30c94c0f-7726-48dc-b02e-9756b65df51a'] = $pane;
+    $display->panels['row4'][0] = 'new-30c94c0f-7726-48dc-b02e-9756b65df51a';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

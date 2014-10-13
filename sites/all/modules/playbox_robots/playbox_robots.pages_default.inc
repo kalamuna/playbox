@@ -167,8 +167,29 @@ function playbox_robots_default_page_manager_pages() {
     $display->content['new-05ffa6e1-5f80-4443-9cfa-1ee2c9d87965'] = $pane;
     $display->panels['row3'][0] = 'new-05ffa6e1-5f80-4443-9cfa-1ee2c9d87965';
     $pane = new stdClass();
-    $pane->pid = 'new-e94c7932-9bfc-4251-b64c-45f83137ce4c';
+    $pane->pid = 'new-31376910-10f1-48ff-afb3-f1c2b2fcbbc3';
     $pane->panel = 'row4';
+    $pane->type = 'playbox_static_kalamuna';
+    $pane->subtype = 'playbox_static_kalamuna';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'kalamuna_html' => '<div class="container"><div class="row"><div class="col-md-12"><h2>Seriously though... WTF is this?</h2></div></div><div class="row"><div class="col-md-4 text-center"><img src="http://identity.kalamuna.com/images/assets/logo_horizontal_tagline.png" alt="Kalamuna, Let\'s Play!"></div><div class="col-md-8"><p class="space-top">Playbox! is a sandbox-proving-ground for people interested in working with us here at Kalamuna. It\'s a magnificent and collaborative code-garden where would-be code artists, site builder and designers alike can play around and show what they\'ve got. Think you\'ve got what it takes?</p><a href="https://github.com/kalamuna/playbox" class="btn btn-success btn-lg" role="button">Then give it shot!</a></div></div>',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array();
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '31376910-10f1-48ff-afb3-f1c2b2fcbbc3';
+    $display->content['new-31376910-10f1-48ff-afb3-f1c2b2fcbbc3'] = $pane;
+    $display->panels['row4'][0] = 'new-31376910-10f1-48ff-afb3-f1c2b2fcbbc3';
+    $pane = new stdClass();
+    $pane->pid = 'new-e94c7932-9bfc-4251-b64c-45f83137ce4c';
+    $pane->panel = 'row5';
     $pane->type = 'playbox_static_instructions';
     $pane->subtype = 'playbox_static_instructions';
     $pane->shown = TRUE;
@@ -186,7 +207,7 @@ function playbox_robots_default_page_manager_pages() {
     $pane->locks = array();
     $pane->uuid = 'e94c7932-9bfc-4251-b64c-45f83137ce4c';
     $display->content['new-e94c7932-9bfc-4251-b64c-45f83137ce4c'] = $pane;
-    $display->panels['row4'][0] = 'new-e94c7932-9bfc-4251-b64c-45f83137ce4c';
+    $display->panels['row5'][0] = 'new-e94c7932-9bfc-4251-b64c-45f83137ce4c';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
