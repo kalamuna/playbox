@@ -7,6 +7,14 @@
 include_once 'playbox_battles.features.inc';
 
 /**
+ * Implementation of hook_init()
+ */
+function playbox_battles_init() {
+  // Load CS and JS
+  drupal_add_css(drupal_get_path('module', 'playbox_battles') . '/css/playbox_battles.css');
+}
+
+/**
  * Implementation of hook_theme().
  */
 function playbox_battles_theme($existing, $type, $theme, $path) {
@@ -15,6 +23,11 @@ function playbox_battles_theme($existing, $type, $theme, $path) {
     'template' => 'views-view-fields--playbox-battles--playbox-battles-featured-1',
     'original hook' => 'views_view_fields',
     'path' => drupal_get_path('module', 'playbox_battles') . '/templates',
+    'preprocess functions' => array(
+      'template_preprocess',
+      'template_preprocess_views_view_fields',
+      'playbox_battles_preprocess_views_view_fields__playbox_battles__playbox_battles_featured_1',
+    ),
     'arguments' => array('view' => NULL, 'options' => NULL, 'row' => NULL),
   );
 
@@ -22,13 +35,20 @@ function playbox_battles_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Implements hook_views_pre_render()
+ * Implements hook_preprocess_views_view_fields()
  */
-function playbox_battles_views_pre_render(&$view) {
-  $view = $view;
-  if ($view->name = 'playbox_battles' && $view->current_display = 'playbox_battles_featured_1') {
-    $pres_portrait = $view->result[0]->field_field_playbox_portrait;
-    $test == $test;
+function playbox_battles_preprocess_views_view_fields__playbox_battles__playbox_battles_featured_1(&$variables) {
+  $variables['options']['president_attributes']['class'][] = 'battler-box';
+  $variables['options']['robot_attributes']['class'][] = 'battler-box';
+  if ($variables['row']->field_field_playbox_battle_completed[0]['raw']['value'] == 1) {
+    if ($variables['row']->field_field_playbox_robot_votes[0]['raw']['value'] == $variables['row']->field_field_playbox_votes_to_win[0]['raw']['value']) {
+      $variables['options']['president_attributes']['class'][] = 'battler-battle-loser';
+      $variables['options']['robot_attributes']['class'][] = 'battler-battle-winner';
+    }
+    else {
+      $variables['options']['president_attributes']['class'][] = 'battler-battle-winner';
+      $variables['options']['robot_attributes']['class'][] = 'battler-battle-loser';
+    }
   }
 }
 

@@ -1,0 +1,54 @@
+.jumbotron .battler-battle .playbox-portrait-featured {
+  margin-bottom: 40px;
+  border: 15px solid #F06096;
+  display: inline;
+  height: auto;
+  max-width: 100%;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #F06096;
+  opacity: .8;
+}
+
+.jumbotron .battler-battle  img.playbox-portrait-featured {
+  box-shadow: none;
+}
+
+.battler-battle .battler-box {
+  position: relative;
+  width: 100%; /* for IE 6 */
+}
+
+.battler-box .battler-vote {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 200px;
+  font-weight: 800;
+  opacity: .8;
+}
+
+.battler-battle .battler-battle-name h2 {
+  text-transform: uppercase;
+  font-size: 96px;
+  font-weight: 600;
+}
+
+.battler-battle .battler-battle-bio {
+  opacity: .9;
+  font-size: 1.337em;
+}
+
+.battler-battle .battler-vs {
+  margin-top: 20px;
+}
+
+.battler-battle .battler-vs-label {
+  font-size: 128px;
+  font-weight: 500;
+}
+
+.battler-battle .battler-nickname {
+  color: #ffffff;
+}

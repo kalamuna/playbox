@@ -125,10 +125,11 @@ function playbox_battles_views_default_views() {
   $handler->display->display_options['fields']['field_playbox_votes_to_win']['table'] = 'field_data_field_playbox_votes_to_win';
   $handler->display->display_options['fields']['field_playbox_votes_to_win']['field'] = 'field_playbox_votes_to_win';
   $handler->display->display_options['fields']['field_playbox_votes_to_win']['label'] = '';
+  $handler->display->display_options['fields']['field_playbox_votes_to_win']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_playbox_votes_to_win']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_playbox_votes_to_win']['settings'] = array(
     'thousand_separator' => ' ',
-    'prefix_suffix' => 1,
+    'prefix_suffix' => 0,
   );
   /* Field: Robot Portrait */
   $handler->display->display_options['fields']['field_playbox_portrait_1']['id'] = 'field_playbox_portrait_1';
@@ -191,7 +192,7 @@ function playbox_battles_views_default_views() {
   /* Display: List of onging Playbox Battles */
   $handler = $view->new_display('panel_pane', 'List of onging Playbox Battles', 'playbox_battles_list_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Ongoing Battles';
+  $handler->display->display_options['title'] = 'Other Battles';
   $handler->display->display_options['display_description'] = 'A nice list of the ongoing playbox battles';
   $handler->display->display_options['pane_title'] = 'List of ongoing playbox battles';
   $handler->display->display_options['pane_description'] = 'A list of the ongoing playbox battles';
