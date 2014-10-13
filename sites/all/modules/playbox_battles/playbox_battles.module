@@ -35,9 +35,36 @@ function playbox_battles_theme($existing, $type, $theme, $path) {
 }
 
 /**
+ * Implementation of hook_menu().
+ */
+function playbox_battles_menu() {
+  $items['playbox-battles/vote/nojs/%/%'] = array(
+    'page callback' => 'playbox_battles_vote',
+    'page arguments' => array(3, 4, 5),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['playbox-battles/vote/ajax/%/%'] = array(
+    'delivery callback' => 'ajax_deliver',
+  ) + $items['playbox-battle/vote/nojs/%/%'];
+
+  return $items;
+}
+
+/**
  * Implements hook_preprocess_views_view_fields()
  */
 function playbox_battles_preprocess_views_view_fields__playbox_battles__playbox_battles_featured_1(&$variables) {
+  // We need that ajax magixxx
+  drupal_add_library('system', 'drupal.ajax');
+  $nid = $variables['row']->nid;
+
+  $query = array(
+    'tok' => drupal_get_token('playbox_battles_vote_' . $nid),
+  ) + drupal_get_destination();
+
+  $variables['options']['president_attributes'] = l(t('Delete'), 'admin/my-custom-log/delete/nojs/' . $flid, array('attributes' => array('class' => 'use-ajax'), 'query' => $query));
+
   $variables['options']['president_attributes']['class'][] = 'battler-box';
   $variables['options']['robot_attributes']['class'][] = 'battler-box';
   if ($variables['row']->field_field_playbox_battle_completed[0]['raw']['value'] == 1) {
@@ -51,7 +78,6 @@ function playbox_battles_preprocess_views_view_fields__playbox_battles__playbox_
     }
   }
 }
-
 
 /**
  * Allows us to add node--panopoly-news-article.tpl.php to the
@@ -70,6 +96,35 @@ function playbox_battles_theme_registry_alter(&$theme_registry) {
   $hooks = array('node');
   foreach ($hooks as $h) {
     _playbox_battles_insert_after_first_element($theme_registry[$h]['theme paths'], $mod_path);
+  }
+}
+
+/**
+ * Updates the vote total for a battler
+ */
+function playbox_battles_vote($ajax, $nid, $type) {
+
+  $is_ajax = $ajax === 'ajax';
+
+  // Secure the DB
+  if (empty($_GET['tok']) || !drupal_valid_token($_GET['tok'], 'playbox_battles_vote_' . $nid)) {
+    return MENU_ACCESS_DENIED;
+  }
+
+  // Do some fun stuff to update the user IRL
+  if ($is_ajax) {
+    $commands = array();
+
+    $commands[] = ajax_command_remove('.my-custom-log tr.flid-' . $flid);
+
+    return array(
+      '#type' => 'ajax',
+      '#commands' => $commands,
+    );
+  }
+  else {
+    drupal_set_message(t('SOMETHING'));
+    drupal_goto();
   }
 }
 

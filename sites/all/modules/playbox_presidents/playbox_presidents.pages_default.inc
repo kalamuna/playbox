@@ -192,27 +192,6 @@ function playbox_presidents_default_page_manager_pages() {
     $pane->uuid = '82051d6a-8212-4bfe-b3ac-bc79e9832e86';
     $display->content['new-82051d6a-8212-4bfe-b3ac-bc79e9832e86'] = $pane;
     $display->panels['row4'][0] = 'new-82051d6a-8212-4bfe-b3ac-bc79e9832e86';
-    $pane = new stdClass();
-    $pane->pid = 'new-5e781905-e5d8-4960-ac8e-52120ad22a4e';
-    $pane->panel = 'row5';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'playbox_battles-playbox_battles_featured_1';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'view_settings' => 'fields',
-      'header_type' => 'none',
-      'view_mode' => 'teaser',
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $pane->uuid = '5e781905-e5d8-4960-ac8e-52120ad22a4e';
-    $display->content['new-5e781905-e5d8-4960-ac8e-52120ad22a4e'] = $pane;
-    $display->panels['row5'][0] = 'new-5e781905-e5d8-4960-ac8e-52120ad22a4e';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
