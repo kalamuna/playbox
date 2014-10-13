@@ -71,11 +71,10 @@ function playbox_presidents_views_default_views() {
 [field_playbox_nickname] 
 </div>';
   $handler->display->display_options['fields']['field_playbox_nickname']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Global: Random */
+  $handler->display->display_options['sorts']['random']['id'] = 'random';
+  $handler->display->display_options['sorts']['random']['table'] = 'views';
+  $handler->display->display_options['sorts']['random']['field'] = 'random';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -94,6 +93,9 @@ function playbox_presidents_views_default_views() {
   /* Display: President Grid */
   $handler = $view->new_display('panel_pane', 'President Grid', 'playbox_president_grid_1');
   $handler->display->display_options['display_description'] = 'A responsive grid of presidents. ';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pane_title'] = 'Preident Grid';
   $handler->display->display_options['pane_description'] = 'A responsive grid of presidents.';
   $handler->display->display_options['pane_category']['name'] = 'Presidents';
