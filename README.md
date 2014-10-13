@@ -69,6 +69,8 @@ Next Steps
 3. Your code gets merged in by the project maintainer.
 4. The code runs through automated testing and then, if tests pass, it is deployed to http://dev-playbox.at.kalamuna.com/.
 
+**SUPER IMPORTANT: IN THIS MODEL YOU SHOULD NEVER EVER EVER EVER COMMIT CODE DIRECTLY TO THE MASTER BRANCH, LIKE EVER**
+
 ## Posting Issues
 
 Posting issues or feature requests is fairly straight forward. Simple go to https://github.com/kalamuna/playbox/issues/new. You may want to make use of the various tags there to better explain your issue.
