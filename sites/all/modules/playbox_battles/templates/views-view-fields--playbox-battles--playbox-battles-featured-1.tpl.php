@@ -12,17 +12,16 @@
  */
 
 // More semantic vars
-$fields == $fields;
 $battle_name = $row->node_title;
 $battle_bio = $row->field_field_playbox_battle_bio[0]['rendered'];
 
 $president_portrait = $row->field_field_playbox_portrait[0]['rendered'];
 $president_nickname = $row->field_field_playbox_nickname[0]['rendered'];
-$president_votes = $row->field_field_playbox_president_votes[0]['rendered'];
+$president_votes = $options['president_votes'];
 
 $robot_portrait = $row->field_field_playbox_portrait_1[0]['rendered'];
 $robot_nickname = $row->field_field_playbox_nickname_1[0]['rendered'];
-$robot_votes = $row->field_field_playbox_robot_votes[0]['rendered'];
+$robot_votes = $options['robot_votes'];
 ?>
 
 <div class="panel-display battler-battle clearfix <?php !empty($class) ? print $class : ''; ?>" <?php !empty($css_id) ? print "id=\"$css_id\"" : ''; ?>>
@@ -46,7 +45,7 @@ $robot_votes = $row->field_field_playbox_robot_votes[0]['rendered'];
         <div class="col-md-5 battler-column-content-region-1 text-center">
           <div <?php print drupal_attributes($options['president_attributes']); ?>>
             <?php print render($president_portrait); ?>
-            <span class="battler-vote"><?php print render($president_votes); ?></span>
+            <?php print render($president_votes); ?>
           </div>
           <div class="battler-nickname">
             <?php print render($president_nickname); ?>
@@ -58,7 +57,7 @@ $robot_votes = $row->field_field_playbox_robot_votes[0]['rendered'];
         <div class="col-md-5 battler-column-content-region-3 text-center">
           <div <?php print drupal_attributes($options['robot_attributes']); ?>>
             <?php print render($robot_portrait); ?>
-            <span class="battler-vote"><?php print render($robot_votes); ?></span>
+            <?php print render($robot_votes); ?>
           </div>
           <div class="battler-nickname">
             <?php print render($robot_nickname); ?>

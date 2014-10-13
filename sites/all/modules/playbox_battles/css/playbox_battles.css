@@ -19,7 +19,7 @@
   width: 100%; /* for IE 6 */
 }
 
-.battler-box .battler-vote {
+.battler-box .battler-vote-robot, .battler-box .battler-vote-president {
   position: absolute;
   top: 0;
   left: 0;
@@ -27,6 +27,18 @@
   font-size: 200px;
   font-weight: 800;
   opacity: .8;
+}
+
+.battler-box a {
+  color: #ffffff;
+}
+
+.battler-box a:hover {
+  color: #18bc9c;
+}
+
+.battler-box .ajax-progress-throbber {
+  display: none;
 }
 
 .battler-battle .battler-battle-name h2 {

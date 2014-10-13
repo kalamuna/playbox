@@ -40,13 +40,13 @@ function playbox_battles_theme($existing, $type, $theme, $path) {
 function playbox_battles_menu() {
   $items['playbox-battles/vote/nojs/%/%'] = array(
     'page callback' => 'playbox_battles_vote',
-    'page arguments' => array(3, 4, 5),
+    'page arguments' => array(2, 3, 4),
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
   $items['playbox-battles/vote/ajax/%/%'] = array(
     'delivery callback' => 'ajax_deliver',
-  ) + $items['playbox-battle/vote/nojs/%/%'];
+  ) + $items['playbox-battles/vote/nojs/%/%'];
 
   return $items;
 }
@@ -59,12 +59,30 @@ function playbox_battles_preprocess_views_view_fields__playbox_battles__playbox_
   drupal_add_library('system', 'drupal.ajax');
   $nid = $variables['row']->nid;
 
+  // Set up our ajax magix
   $query = array(
     'tok' => drupal_get_token('playbox_battles_vote_' . $nid),
   ) + drupal_get_destination();
+  $variables['options']['robot_votes'] = array(
+    '#type' => 'link',
+    '#theme' => 'link',
+    '#title' => '',
+    '#href' => '',
+    '#text' => '<span class="battler-vote-robot">' . render($variables['row']->field_field_playbox_robot_votes[0]['rendered']) . '</span>',
+    '#path' => "playbox-battles/vote/ajax/" . $nid . "/robot",
+    '#options' => array(
+      'attributes' => array(
+        'class' => 'use-ajax'
+      ),
+      'html' => TRUE,
+      'query' => $query,
+    ),
+  );
+  $variables['options']['president_votes'] = $variables['options']['robot_votes'];
+  $variables['options']['president_votes']['#text'] = '<span class="battler-vote-president">' . render($variables['row']->field_field_playbox_president_votes[0]['rendered']) . '</span>';
+  $variables['options']['president_votes']['#path'] = "playbox-battles/vote/ajax/" . $nid . "/president";
 
-  $variables['options']['president_attributes'] = l(t('Delete'), 'admin/my-custom-log/delete/nojs/' . $flid, array('attributes' => array('class' => 'use-ajax'), 'query' => $query));
-
+  // Set some other stuff that might be useful but then again might be not useful at all
   $variables['options']['president_attributes']['class'][] = 'battler-box';
   $variables['options']['robot_attributes']['class'][] = 'battler-box';
   if ($variables['row']->field_field_playbox_battle_completed[0]['raw']['value'] == 1) {
@@ -106,16 +124,44 @@ function playbox_battles_vote($ajax, $nid, $type) {
 
   $is_ajax = $ajax === 'ajax';
 
-  // Secure the DB
-  if (empty($_GET['tok']) || !drupal_valid_token($_GET['tok'], 'playbox_battles_vote_' . $nid)) {
+  // Check if the type is correct
+  if ($type != 'president' && $type != 'robot') {
     return MENU_ACCESS_DENIED;
   }
+
+  // Secure the DB
+  if (empty($_GET['tok']) || !drupal_valid_token($_GET['tok'], 'playbox_battles_vote_' . $nid, TRUE)) {
+    return MENU_ACCESS_DENIED;
+  }
+
+  // Do some DB stuff
+  $table = 'field_data_field_playbox_' . $type . '_votes';
+  $field = 'field_playbox_' . $type . '_votes_value';
+  $votes = db_select($table, 'f')
+  ->fields('f', array($field))
+  ->condition('entity_type', 'node')
+  ->condition('bundle', 'playbox_battle')
+  ->condition('entity_id', $nid)
+  ->execute()
+  ->fetchField();
+
+  if (is_int($votes)) {
+    return MENU_ACCESS_DENIED;
+  }
+
+  // Add a vote!
+  $votes = $votes + 1;
+  $node = node_load($nid);
+  $field = 'field_playbox_' . $type . '_votes';
+  $node->{$field}['und'][0]['value'] = $votes;
+  field_attach_update('node', $node);
 
   // Do some fun stuff to update the user IRL
   if ($is_ajax) {
     $commands = array();
 
-    $commands[] = ajax_command_remove('.my-custom-log tr.flid-' . $flid);
+    $selector = 'battler-vote-' . $type;
+    $commands[] = ajax_command_replace('.' . $selector, '<span class="' . $selector . '">' . $votes . '</span>', $settings = NULL);
 
     return array(
       '#type' => 'ajax',
