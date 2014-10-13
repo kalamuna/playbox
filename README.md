@@ -21,14 +21,27 @@ In order to get started you will want to do the following:
 1. Set up your own [github.com account](https://github.com/join) if you don't already have one.
 2. Set up a local development environment like [Kalabox](https://github.com/kalamuna/kalaboxv1) or [Kalastack](https://github.com/kalamuna/kalastack).
 3. [Create a fork of this](https://github.com/kalamuna/playbox/fork) project.
-3. [Import](https://github.com/kalamuna/kalastack/wiki/How-to-import-a-preexisting-Drupal-site-into-kalastack.) this fork into your local dev environment and set up its [files](http://files.kalamuna.com/playbox_files.tar.gz) and [database](http://files.kalamuna.com/playbox_database.sql.gz).
-4. Set up your git repo for github flow. See [below](#Contributing).
-5. Create a branch for the issue you are working on.
-6. Commit code and push it up!
+4. [Import](https://github.com/kalamuna/kalastack/wiki/How-to-import-a-preexisting-Drupal-site-into-kalastack.) this fork into your local dev environment and set up its [files](http://files.kalamuna.com/playbox_files.tar.gz) and [database](http://files.kalamuna.com/playbox_database.sql.gz).
+5. Set up your git repo for github flow. See [below](#Contributing).
+6. Create a branch for the issue you are working on.
+7. Commit code and push it up!
 
 **Please refer to the Resources section below to aid in the above**
 
 ## Contributing
+
+Before you get started you will want to clone your fork of this projet and set up the canonical upstream repo.
+
+`From inside your webroot (generally /var/www)`
+
+```bash
+git clone git@github.com:pirog/playbox.git playbox
+cd playbox
+git remote add upstream https://github.com/kalamuna/playbox.git
+git remote -v # this should list both an origin and upstream
+```
+
+You will want to replace git@github.com:pirog/playbox.git with your own fork. If you have already imported your site as in 4. above you can skip `git clone`.
 
 Here is an example of a contribution workflow. You will want to read more on [git basics](http://git-scm.com/book/en/Getting-Started-Git-Basics) and [github flow](http://scottchacon.com/2011/08/31/github-flow.html) first.
 
