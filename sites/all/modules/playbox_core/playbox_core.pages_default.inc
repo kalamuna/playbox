@@ -90,7 +90,21 @@ function playbox_core_default_page_manager_pages() {
     $pane->configuration = array(
       'view_settings' => 'fields',
       'header_type' => 'none',
-      'view_mode' => 'teaser',
+      'view_mode' => 'full',
+      'fields_override' => array(
+        'field_playbox_battle_completed' => 0,
+        'field_playbox_winner' => 0,
+        'field_playbox_loser' => 0,
+        'title' => 1,
+        'field_playbox_portrait' => 1,
+        'field_playbox_president_votes' => 1,
+        'field_playbox_nickname' => 1,
+        'field_playbox_battle_bio' => 1,
+        'field_playbox_votes_to_win' => 1,
+        'field_playbox_portrait_1' => 1,
+        'field_playbox_robot_votes' => 1,
+        'field_playbox_nickname_1' => 1,
+      ),
     );
     $pane->cache = array();
     $pane->style = array();

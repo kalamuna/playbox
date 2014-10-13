@@ -125,10 +125,11 @@ function playbox_battles_views_default_views() {
   $handler->display->display_options['fields']['field_playbox_votes_to_win']['table'] = 'field_data_field_playbox_votes_to_win';
   $handler->display->display_options['fields']['field_playbox_votes_to_win']['field'] = 'field_playbox_votes_to_win';
   $handler->display->display_options['fields']['field_playbox_votes_to_win']['label'] = '';
+  $handler->display->display_options['fields']['field_playbox_votes_to_win']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_playbox_votes_to_win']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_playbox_votes_to_win']['settings'] = array(
     'thousand_separator' => ' ',
-    'prefix_suffix' => 1,
+    'prefix_suffix' => 0,
   );
   /* Field: Robot Portrait */
   $handler->display->display_options['fields']['field_playbox_portrait_1']['id'] = 'field_playbox_portrait_1';
@@ -191,7 +192,7 @@ function playbox_battles_views_default_views() {
   /* Display: List of onging Playbox Battles */
   $handler = $view->new_display('panel_pane', 'List of onging Playbox Battles', 'playbox_battles_list_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Ongoing Battles';
+  $handler->display->display_options['title'] = 'Other Battles';
   $handler->display->display_options['display_description'] = 'A nice list of the ongoing playbox battles';
   $handler->display->display_options['pane_title'] = 'List of ongoing playbox battles';
   $handler->display->display_options['pane_description'] = 'A list of the ongoing playbox battles';
@@ -254,11 +255,9 @@ function playbox_battles_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['display_description'] = 'Featured view of a random battle';
   $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Global: Random */
   $handler->display->display_options['sorts']['random']['id'] = 'random';
@@ -268,6 +267,15 @@ function playbox_battles_views_default_views() {
   $handler->display->display_options['pane_description'] = 'This is a random featured battle';
   $handler->display->display_options['pane_category']['name'] = 'Battles';
   $handler->display->display_options['pane_category']['weight'] = '0';
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 0;
+  $handler->display->display_options['allow']['exposed_form'] = 'exposed_form';
+  $handler->display->display_options['allow']['fields_override'] = 'fields_override';
 
   /* Display: Grid of battlers */
   $handler = $view->new_display('panel_pane', 'Grid of battlers', 'playbox_battles_grid_1');
