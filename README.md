@@ -1,10 +1,12 @@
-## Playbox
+# Playbox
 
 Playbox! is a sandbox-proving-ground for people interested in working with us here at [Kalamuna](http://www.kalamuna.com). It's a magnificent and collaborative code-garden where would-be code artists, site builder and designers alike can play around and show what they've got. It's also a place where you can ask questions, collaborate and learn. In a lot of ways it is kind of like [this](https://www.youtube.com/watch?v=8tJoIaXZ0rw). Think you've got what it takes?
 
 ## Your Mission
 
-You've been handed a Drupal 7 project called [Megaman Robots vs US Presidents](http://playbox.kalamuna.com) which was built by another development team. It is a [Minimal Lovable Product (MLP)](http://www.slideshare.net/spookstudio/the-minimum-loveable-product-31984451). This means that it has all the core functionality it needs to deliver value but it lacks the full suite of features it needs to be face-meltingly awesome. Additionally, the budget was tight at the end of the MLP phase so the code did not go through a rigorous testing or QA process. This means that the code is rife with bugs, fast and easy code, and not tested for mobile/cross browser compatibility.
+You've been handed a Drupal 7 project called [Megaman Robots vs US Presidents](http://playbox.kalamuna.com) which was built by another development team. It is a [Minimal Lovable Product (MLP)](http://www.slideshare.net/spookstudio/the-minimum-loveable-product-31984451). This means that it has all the core functionality it needs to deliver value but it lacks the full suite of features it needs to be face-meltingly awesome.
+
+Additionally, the budget was tight at the end of the MLP phase so the code did not go through a rigorous testing or QA process. This means that the code is rife with bugs, fast and easy code, and not tested for mobile/cross browser compatibility.
 
 Your mission, if you choose to accept it is two fold:
 
@@ -79,11 +81,15 @@ Posting issues or feature requests is fairly straight forward. Simple go to http
 
 **But... I don't know how to write code?**
 
-That's OK! In Drupal you can do a lot of stuff just by using the user interface. In fact, almost all of this site was built this way. The problem with this is that in Drupal most of this configuration is stored directly in the database and as such is difficult to put into code. Enter the [features module](https://www.drupal.org/documentation/modules/features) which allows you to export what you build in the UI into code so that you can contribute using the workflows above. Almost all the code here was exported using features and you can scope it out at `sites/all/modules/playbox_*`.
+That's OK! In Drupal you can do a lot of stuff just by using the user interface. In fact, almost all of this site was built this way. The problem with this is that in Drupal most of this configuration is stored directly in the database and as such is difficult to put into code.
+
+Enter the [features module](https://www.drupal.org/documentation/modules/features) which allows you to export what you build in the UI into code so that you can contribute using the workflows above. Almost all the code here was exported using features and you can scope it out at `sites/all/modules/playbox_*`.
 
 **How do i log in?**
 
-To get into a Drupal site you usually navigate to the `/user` directory. The database posted above has an admin user. If you are using [drush](http://drush.ws/) (which comes with both Kalabox and Kalastack) this is really easy to do. SSH into the box from the dash on kalabox or run `vagrant ssh` from your kalabox directory. From there you can do the following:
+To get into a Drupal site you usually navigate to the `/user` directory. The database posted above has an admin user. If you are using [drush](http://drush.ws/) (which comes with both Kalabox and Kalastack) this is really easy to do.
+
+SSH into the box from the dash on kalabox or run `vagrant ssh` from your kalabox directory. From there you can do the following:
 
 ```bash
 cd /var/www/playbox
@@ -97,27 +103,33 @@ Copy this link into the browser for a one-time login as the admin user. **Now yo
 In Drupal your site is separated into three components:
 
 **CODE - ** This is all the PHP/CSS/JS/HTML that comprises your application. It is usually stored in version control like `git`.
+
 **DATABASE - ** This is a SQL file living in a MySQL database. This contains most of the configuration and content for your application.
+
 **FILES - ** These are static assets like images, compiled CSS, videos, PDFs, etc. These usually live inside your CODE at `sites/default/files`.
 
 ## Getting help and doing your best
 
-We recognize this may be a lot of information to learn and digest very quickly. That's OK! Feel free to ping any Kalamuna staff on any issues you may be having. For example if you @pirog on a given issue with a question i'll get an email and will respond as soon as i can. Beyond that... the most important thing you can do is just try to contribute in anyway that you can. There are no wrong or right answers to this and its not purely a test of techincal chops but effort, what you do when you don't know the answer and things like that... SO RELAX and just play around :)
+We recognize this may be a lot of information to learn and digest very quickly. That's OK! Feel free to ping any Kalamuna staff on any issues you may be having.
+
+For example if you @pirog on a given issue with a question i'll get an email and will respond as soon as i can. Beyond that... the most important thing you can do is just try to contribute in anyway that you can.
+
+There are no wrong or right answers to this and its not purely a test of techincal chops but effort, what you do when you don't know the answer and things like that... SO RELAX and just play around :)
 
 ## Resources
 
 While knowledge of the below is not required and we encourage you to contribute in any way you can it may be helpful to have some understanding of the following.
 
-*[Drupal basics](https://www.drupal.org/documentation/concepts)
-*[Local Development Environments](https://www.drupal.org/setting-up-development-environment)
-*[Site building and contributing code to a drupal project](https://www.drupal.org/documentation/modules/features)
-*[git basics](http://git-scm.com/book/en/Getting-Started-Git-Basics)
-*[Collaborating with others with github flow](http://scottchacon.com/2011/08/31/github-flow.html)
-*[kalamuna](http://www.kalamuna.com)
-*[kalastack](https://github.com/kalamuna/kalastack)
-*[kalabox](https://github.com/kalamuna/kalaboxv1)
-*[kalamuna wiki](https://kalamuna.atlassian.net/wiki/display/KALA/kalawiki)
-*[drush](http://drush.ws/)
+* [Drupal basics](https://www.drupal.org/documentation/concepts)
+* [Local Development Environments](https://www.drupal.org/setting-up-development-environment)
+* [Site building and contributing code to a drupal project](https://www.drupal.org/documentation/modules/features)
+* [git basics](http://git-scm.com/book/en/Getting-Started-Git-Basics)
+* [Collaborating with others with github flow](http://scottchacon.com/2011/08/31/github-flow.html)
+* [kalamuna](http://www.kalamuna.com)
+* [kalastack](https://github.com/kalamuna/kalastack)
+* [kalabox](https://github.com/kalamuna/kalaboxv1)
+* [kalamuna wiki](https://kalamuna.atlassian.net/wiki/display/KALA/kalawiki)
+* [drush](http://drush.ws/)
 
 ## Kalamuna
 
