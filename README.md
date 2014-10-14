@@ -91,6 +91,30 @@ That's OK! In Drupal you can do a lot of stuff just by using the user interface.
 Enter the [features module](https://www.drupal.org/documentation/modules/features) which allows you to export what you build in the UI into code so that you can contribute using the workflows above. Almost all the code here was exported using features and you can scope it out at `sites/all/modules/playbox_*`.
 
 
+**What if Cisco AnyConnect is hijacking my /etc/hots file **
+
+Apparently, Cisco AnyConnect alters your `/etc/hosts` in favor of another one `/etc/hosts.ac`. In this case you will want to make sure you have something like the below in `/etc/hosts.ac` otherwise your kalabox/kalastack will not function.
+
+For more info please read: http://ubuntuforums.org/showthread.php?t=1896148
+
+```
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1 localhost
+
+255.255.255.255 broadcasthost
+::1 localhost
+fe80::1%lo0 localhost
+
+1.3.3.7 start.kala php.kala aliases.kala kala grind.kala solr.kala info.kala images.kala
+1.3.3.7 playbox.kala
+```
+
+
 **How do i log in?**
 
 To get into a Drupal site you usually navigate to the `/user` directory. The database posted above has an admin user. If you are using [drush](http://drush.ws/) (which comes with both Kalabox and Kalastack) this is really easy to do.
@@ -109,11 +133,11 @@ Copy this link into the browser for a one-time login as the admin user. **Now yo
 
 In Drupal your site is separated into three components:
 
-**CODE - ** This is all the PHP/CSS/JS/HTML that comprises your application. It is usually stored in version control like `git`.
+**CODE:** This is all the PHP/CSS/JS/HTML that comprises your application. It is usually stored in version control like `git`.
 
-**DATABASE - ** This is a SQL file living in a MySQL database. This contains most of the configuration and content for your application.
+**DATABASE:** This is a SQL file living in a MySQL database. This contains most of the configuration and content for your application.
 
-**FILES - ** These are static assets like images, compiled CSS, videos, PDFs, etc. These usually live inside your CODE at `sites/default/files`.
+**FILES:** These are static assets like images, compiled CSS, videos, PDFs, etc. These usually live inside your CODE at `sites/default/files`.
 
 
 **So... where is the code i should be looking at?**
