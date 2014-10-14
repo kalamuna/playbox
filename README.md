@@ -2,6 +2,7 @@
 
 Playbox! is a sandbox-proving-ground for people interested in working with us here at [Kalamuna](http://www.kalamuna.com). It's a magnificent and collaborative code-garden where would-be code artists, site builder and designers alike can play around and show what they've got. It's also a place where you can ask questions, collaborate and learn. In a lot of ways it is kind of like [this](https://www.youtube.com/watch?v=8tJoIaXZ0rw). Think you've got what it takes?
 
+
 ## Your Mission
 
 You've been handed a Drupal 7 project called [Megaman Robots vs US Presidents](http://playbox.kalamuna.com) which was built by another development team. It is a [Minimal Lovable Product (MLP)](http://www.slideshare.net/spookstudio/the-minimum-loveable-product-31984451). This means that it has all the core functionality it needs to deliver value but it lacks the full suite of features it needs to be face-meltingly awesome.
@@ -16,6 +17,7 @@ Your mission, if you choose to accept it is two fold:
 
 You should timebox about an **hour or two** but obviously feel free to spend as much time as you want. **Focus on the things you want to focus on**.
 
+
 ## Getting started
 
 In order to get started you will want to do the following:
@@ -29,6 +31,7 @@ In order to get started you will want to do the following:
 7. Commit code and push it up!
 
 **Please refer to the Resources section below to aid in the above**
+
 
 ## Contributing
 
@@ -73,9 +76,11 @@ Next Steps
 
 **SUPER IMPORTANT: IN THIS MODEL YOU SHOULD NEVER EVER EVER EVER COMMIT CODE DIRECTLY TO THE MASTER BRANCH, LIKE EVER**
 
+
 ## Posting Issues
 
 Posting issues or feature requests is fairly straight forward. Simple go to https://github.com/kalamuna/playbox/issues/new. You may want to make use of the various tags there to better explain your issue.
+
 
 ## FAQ
 
@@ -84,6 +89,7 @@ Posting issues or feature requests is fairly straight forward. Simple go to http
 That's OK! In Drupal you can do a lot of stuff just by using the user interface. In fact, almost all of this site was built this way. The problem with this is that in Drupal most of this configuration is stored directly in the database and as such is difficult to put into code.
 
 Enter the [features module](https://www.drupal.org/documentation/modules/features) which allows you to export what you build in the UI into code so that you can contribute using the workflows above. Almost all the code here was exported using features and you can scope it out at `sites/all/modules/playbox_*`.
+
 
 **How do i log in?**
 
@@ -98,6 +104,7 @@ drush @kalastack.playbox.kala uli
 
 Copy this link into the browser for a one-time login as the admin user. **Now you have all the powers!**
 
+
 **I hear a lot of talk about code, files and database.. what are each?**
 
 In Drupal your site is separated into three components:
@@ -108,6 +115,29 @@ In Drupal your site is separated into three components:
 
 **FILES - ** These are static assets like images, compiled CSS, videos, PDFs, etc. These usually live inside your CODE at `sites/default/files`.
 
+
+**So... where is the code i should be looking at?**
+
+A typical drupal site is usually arranged in this [way](http://drupal.stackexchange.com/questions/11410/is-there-anywhere-a-good-writeup-on-drupal-directory-structure). Almost all the relevant code here will be in folders prefaced with `playbox_`. For example here is a good breakdown:
+
+```bash
+sites/all/modules
+  playbox_battles # This contains all the code that power the battle functionality.
+  playbox_core # This contains stuff that all the other playbox_modules share
+  playbox_presidents # Data model and theme stuff for Presidents
+  playbox_robots # Same as above byt for robots
+  playbox_scores # Contains all the scoring code
+  playbox_static # Contains static HTML code blocks to be used
+  playbox_theme # A helper module for the drupal theme.
+sites/all/themes
+  playbox_theme # This is a [Kalatheme](https://www.drupal.org/project/kalatheme) subtheme powered by [Bootstrap](http://getbootstrap.com/).
+```
+
+**Anything else that could be helpful?**
+
+Why yes and i'm glad you asked! Playbox is built on the popular [panels](https://www.drupal.org/node/496278) based distribution called [panopoly](https://www.drupal.org/node/1651048) and a popular theme for that distribution called [kalatheme](https://github.com/drupalprojects/kalatheme/wiki). Read the documentation for those projects could definitely help.
+
+
 ## Getting help and doing your best
 
 We recognize this may be a lot of information to learn and digest very quickly. That's OK! Feel free to ping any Kalamuna staff on any issues you may be having.
@@ -115,6 +145,7 @@ We recognize this may be a lot of information to learn and digest very quickly. 
 For example if you @pirog on a given issue with a question i'll get an email and will respond as soon as i can. Beyond that... the most important thing you can do is just try to contribute in anyway that you can.
 
 There are no wrong or right answers to this and its not purely a test of techincal chops but effort, what you do when you don't know the answer and things like that... SO RELAX and just play around :)
+
 
 ## Resources
 
@@ -125,11 +156,15 @@ While knowledge of the below is not required and we encourage you to contribute 
 * [Site building and contributing code to a drupal project](https://www.drupal.org/documentation/modules/features)
 * [git basics](http://git-scm.com/book/en/Getting-Started-Git-Basics)
 * [Collaborating with others with github flow](http://scottchacon.com/2011/08/31/github-flow.html)
-* [kalamuna](http://www.kalamuna.com)
-* [kalastack](https://github.com/kalamuna/kalastack)
-* [kalabox](https://github.com/kalamuna/kalaboxv1)
-* [kalamuna wiki](https://kalamuna.atlassian.net/wiki/display/KALA/kalawiki)
+* [Kalamuna](http://www.kalamuna.com)
+* [Kalastack](https://github.com/kalamuna/kalastack)
+* [Kalabox](https://github.com/kalamuna/kalaboxv1)
+* [Kalamuna wiki](https://kalamuna.atlassian.net/wiki/display/KALA/kalawiki)
 * [drush](http://drush.ws/)
+* [Kalatheme](https://www.drupal.org/project/kalatheme)
+* [Bootstrap](http://getbootstrap.com/)
+* [Panels](https://www.drupal.org/node/496278)
+* [Panopoly](https://www.drupal.org/node/1651048)
 
 ## Kalamuna
 
