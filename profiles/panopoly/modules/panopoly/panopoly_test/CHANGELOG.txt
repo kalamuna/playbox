@@ -1,3 +1,19 @@
+Panopoly Test 7.x-1.12, 2014-10-15
+---------------------------
+- Fixed Remove field_featured_categories and field_featured_status from panopoly_test.
+- Added Upgrade linkit module 3.1+.
+- Fixed Disabling "Advanced Panel Plugins" breaks some Panes (ex. Panels Everywhere).
+- Fixed Old content aliases should be preserved by default.
+- Fixed One-time login link test does not delete its user.
+- Fixed panopoly_test should not depend on panopoly_pages.
+- Added Panopoly Magic should respect a view's configured view mode. (take 2).
+- Added Behat feature for Panopoly Magic and view pane configuration.
+- Check that Spotlight 'Slide Duration' field is present and settable in Behat tests.
+- Fixed Path alias isn't preserved if the user doesn't have "create url alias" permission.
+- Investigate why tests now take twice as long to run.
+- Fixed Video widget test looks for "youtube" text both times.
+- Fixed WYSIWYG image insert test fails if private file path not set.
+
 Panopoly Test 7.x-1.11, 2014-08-14
 ---------------------------
 - Fixed Tabs region is defined twice in behat.yml which is causing tests to fail in child distributions.

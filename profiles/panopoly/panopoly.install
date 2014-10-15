@@ -1,0 +1,73 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall hooks.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function panopoly_install() {
+  _panopoly_install_help_block();
+}
+
+/**
+ * Enable the Distribution Update Status Manager (distro_update) module.
+ */
+function panopoly_update_7101() {
+  module_enable(array('distro_update'));
+}
+
+/**
+ * Enable the core Block module and place the Help block.
+ */
+function panopoly_update_7102() {
+  if (!module_exists('block')) {
+    module_enable(array('block'));
+  }
+  _panopoly_install_help_block();
+}
+
+/**
+ * Helper function: add Help block to default/admin theme Help region.
+ */
+function _panopoly_install_help_block() {
+  $default_theme = variable_get('theme_default', 'responsive_bartik');
+  $admin_theme = variable_get('admin_theme', $default_theme);
+
+  // Add the help block to the main theme help region.
+  $blocks = array(
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'help',
+      'pages' => '',
+      'cache' => -1,
+    ),
+  );
+  // If the admin theme is different than default theme, add the help
+  // block to the admin them help region.
+  if ($admin_theme != $default_theme) {
+    $blocks[] = array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'help',
+      'pages' => '',
+      'cache' => -1,
+    );
+  }
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+  foreach ($blocks as $block) {
+    $query->values($block);
+  }
+  $query->execute();
+
+  // Update the menu router information.
+  menu_rebuild();
+}

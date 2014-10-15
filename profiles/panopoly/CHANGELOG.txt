@@ -1,3 +1,60 @@
+Panopoly 7.x-1.12, 2014-10-15
+----------------------
+- Update to Drupal 7.32 for SA-CORE-2014-005.
+- Update Panopoly Test for #2354303 by dsnopek: Fixed Remove field_featured_categories and field_featured_status from panopoly_test.
+- Update Panopoly Core for #2354297 by dsnopek: Fixed Include CTools patch to prevent error in IPE when field doesn't exist.
+- Update Panopoly WYSIWYG and Test for #2186541 by caschbre, dsnopek: Added Upgrade linkit module 3.1+.
+- Update Panopoly Core for #2353385 by dsnopek: Update 'panels_breadcrumbs' to version 2.2.
+- Update Panopoly Core for #2353381 by dsnopek: Update 'uuid' to version 1.0-alpha6.
+- Update Panopoly Admin and Test for #2212695 by dsnopek | lsolesen: Fixed Disabling "Advanced Panel Plugins" breaks some Panes (ex. Panels Everywhere).
+- Update Panopoly Core and Test for #2283223 by caschbre, dsnopek | carsonblack: Fixed Old content aliases should be preserved by default.
+- Update Panopoly Core for #2303783 by hefox | cboyden: Update Apps to latest beta.
+- Update Panopoly Core for #2063541 by lsolesen | populist: Remove Open Sans?.
+- Update Panopoly Magic for #2307831 by mglaman | Iceabenezer: Fixed Using deprecated clicked_button, not triggering_element.
+- Update Panopoly Core for #2335809 by humansky: Fixed On Views "Content Panes", exclude hidden fields (on "Field Settings") by default.
+- Update Panopoly Test for #2306771 by trevjs | cboyden: Fixed One-time login link test does not delete its user.
+- Update Panopoly Widgets for #2337593 by caschbre | lsolesen: Added only show number and play on spotlight if pics no >= 2.
+- Fixed Tests on Travis-CI randomly fail with: "Could not open connection" (take 3).
+- Update Panopoly Test for #2316067 by dsnopek, mglaman, cboyden: Fixed panopoly_test should not depend on panopoly_pages.
+- Update Panopoly Users for #2209661 by scottalan: Fixed Panopoly Users - Default body classes not added to feature.
+- Update Panopoly WYSIWYG for #2058917 by kmonty: Fixed Kitchen Sink WYSIWYG plug-in breaks non-panopoly_wysiwyg input format editors.
+- Fixed Tests on Travis-CI randomly fail with: "Could not open connection". (take 2).
+- Update Panopoly Theme for #2330841 by dsnopek: Update respondjs to version 1.4.
+- Update Panopoly Admin for #2319075 by dsnopek: Update Breakpoints to version 1.3.
+- Update Panopoly Magic and Test for #2160731 by mglaman, dsnopek, whastings: Added Panopoly Magic should respect a view's configured view mode. (take 2).
+- Update Panopoly Core for #2280589 by trevjs, mglaman | ergophobe: Patch Panelizer to avoid fatal error in Features.
+- Update Panopoly Test for #2334141 by mglaman: Added Behat feature for Panopoly Magic and view pane configuration.
+- Update Panopoly Magic for #2160731 by mglaman, dsnopek, whastings: Added Panopoly Magic should respect a view's configured view mode.
+- Fixed Tests on Travis-CI randomly fail with: "Could not open connection".
+- Update Panopoly Admin for #2295079 by cornifex | dsnopek: Fixed panopoly_admin should use #field_prefix for path customizations.
+- Update Panopoly Magic for #2334157 by mglaman: Fixed View panes in CTools add modal are missing a[title] values.
+- Update Panopoly WYSIWYG for #2078839 by trevjs, Sheldon Rampton: Fixed Error notice after overriding WYSIWYG feature.
+- Update Panopoly for #2334043 by mglaman | dsnopek: Check that Spotlight 'Slide Duration' field is present and settable in Behat tests.
+- Update Panopoly Users for #2050909 by cornifex, trevjs, mglaman | christowm: Fixed The user profile page shows an uploaded image twice in very large formats.
+- Update Panopoly Admin and Test for #2283531 by caschbre | dsnopek: Fixed Path alias isn't preserved if the user doesn't have "create url alias" permission.
+- Update Panopoly Core for #2208783 by dsnopek, mrfelton | lsolesen: Added features override.
+- Help Region?.
+- Update Panopoly Core for #2208783 by mrfelton | lsolesen: Added features override.
+- Added Spotlight image should link to URL.
+- Update Panopoly Widgets for #2330667 by mcrittenden: Added per-spotlight setting for slide rotation duration.
+- Update Panopoly Test for #2293745 by mglaman | dsnopek: Investigate why tests now take twice as long to run.
+- Update Panopoly Widgets for #2329143 by dsnopek: Fixed Default permissions only allow 'administrator' to add media.
+- Update Panopoly Widgets for #2328751 by dsnopek: Fixed panopoly_widgets_update_7003() fails to properly update 'Video' widgets.
+- Update Panopoly Search for #2063715 by populist, dsnopek: Panopoly Search update breaks from older versions (for example, 1.0-rc3, 1.0-rc4).
+- Update Panopoly Users for #2328023 by dsnopek: Fixed Table 'field_data_field_user_picture' not found in panopoly_users_update_7001() when updating from very old Panopoly.
+- Update Panopoly Core for #2128959 by caschbre, dsnopek: Replace default "update" module behavior with something that makes sense for distributions.
+- Update Panopoly Core for #2201507 by mrfelton | stevector: Fixed Undefined index error when creating a node with no allowed menus.
+- Update Panopoly WYSIWYG for #2122797 by mrfelton | kmonty: Add WYSIWYG Patch #934976 to Panopoly (Allows for hiding input format fields).
+- Update Panopoly Core for #2307337 by mrfelton | mrfelton: Double-encoding of ampersands in page title on node add form.
+- Update Panopoly Widgets for #2229297 by mrfelton | dsnopek: Update 'media_vimeo' to version 2.0.
+- Update Panopoly Test for #2324879 by mrfelton | cboyden: Fixed Video widget test looks for "youtube" text both times.
+- Update Panopoly Widgets for #2257727 by dsnopek | rodrigoaguilera: Fixed update 7007 fails if field exists.
+- Update Panopoly Core for #2316513 by mrfelton: Update Features to 2.2.
+- Update Panopoly Admin for #2051621 by mglaman | Andrew_Mallis: Added decouple navbar styling from panopoly-admin.css.
+- Starting testing upgrades from the 1.11 release.
+- Update Panopoly Test for #2268641 by dsnopek | cboyden: Fixed WYSIWYG image insert test fails if private file path not set.
+- Restored drupal-org.make after the 1.11 release.
+
 Panopoly 7.x-1.11, 2014-08-14
 ----------------------
 - Update Panopoly Test for #2320997 by mrfelton: Fixed Tabs region is defined twice in behat.yml which is causing tests to fail in child distributions.

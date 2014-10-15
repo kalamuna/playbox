@@ -11,6 +11,14 @@ use Drupal\Component\Utility\Random;
 use Behat\Behat\Event\StepEvent;
 
 class TestSubContext extends BehatContext implements DrupalSubContextInterface {
+
+  /**
+   * Holds a list of temporary users created by our steps.
+   *
+   * @var array
+   */
+  protected $users = array();
+
   /**
    * Initializes context.
    */
@@ -21,8 +29,9 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
     return 'test';
   }
 
-  protected $bootstrapped = FALSE;
+  protected $menu_rebuilt = FALSE;
   protected $landing_pages = array();
+  protected $private_path_overridden = FALSE;
 
   /**
    * Get the session from the parent context.
@@ -251,24 +260,71 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
    *
    * Bootstrap Drupal so that all Drupal API functions work.
    */
-  public function bootstrapDrupal($event) {
-    if (!$this->bootstrapped) {
+  public function drupalMenuRebuild($event) {
+    if (!$this->menu_rebuilt) {
       $drupal = $this->getMainContext()->getDriver('drupal');
 
-      // We are experiencing a weird issue where the CTools plugin cache gets
-      // corrupted and none of our Panels pages work because their layout
-      // plugins can't be found. It appears that clearing the cache, and then
-      // bootstrapping Drupal again will fix it! I suspect the CTools plugin
-      // cache is being built too early, ie. before we change to the Drupal
-      // directory - but I haven't been able to confirm that.
-      $drupal->clearCache();
-      $drupal->bootstrap();
+      // Drupal is having a cache or registry issue that is causing tests to
+      // fail (certain CTools plugin functions won't exist.) Menu rebuild does
+      // the trick and fixes any fatal errors due to missing functions!
+      $current_path = getcwd();
+      chdir(DRUPAL_ROOT);
+      menu_rebuild();
+      chdir($current_path);
 
       // We occasionally get errors about not finding the ctools_get_export_ui()
       // function, so we force it to be loaded. No idea what's causing this.
       ctools_include('export-ui');
 
-      $this->bootstrapped = TRUE;
+      $this->menu_rebuilt = TRUE;
+    }
+  }
+
+  /**
+   * @BeforeScenario @api&&@drupal_private_files
+   *
+   * Configure a private files path if one isn't already configured.
+   */
+  public function configurePrivateFiles($event) {
+    $file_private_path = variable_get('file_private_path', '');
+    if (empty($file_private_path)) {
+      $file_public_path = variable_get('file_public_path', conf_path() . '/files');
+      if (empty($file_public_path)) {
+        throw new \Exception('Files must be configured for @drupal_private_files tests to work!');
+      }
+
+      // Set flag for later cleanup.
+      $this->private_path_overridden = TRUE;
+
+      // Create and setup the private path.
+      $file_private_path = $file_public_path . '/' . 'private';
+      variable_set('file_private_path', $file_private_path);
+    }
+  }
+
+  /**
+   * @AfterScenario @api&&@drupal_private_files
+   *
+   * Clean up our temporary private files path.
+   */
+  public function cleanupPrivateFiles($event) {
+    if ($this->private_path_overridden) {
+      variable_del('file_private_path');
+    }
+  }
+
+  /**
+   * @AfterScenario
+   *
+   * Clean up users that were created during testing
+   */
+  public function removeUsers() {
+    if(!empty($this->users)){
+      foreach ($this->users as $user) {
+        $account = user_load_by_name($user->name);
+        user_delete($account->uid);
+      }
+      $this->users = array();
     }
   }
 
@@ -312,6 +368,24 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
   public function enableManualPanopolyMagicLivePreview() {
     //$this->getDriver('drush')->vset('panopoly_magic_live_preview 2 --yes');
     variable_set('panopoly_magic_live_preview', 2);
+  }
+
+  /**
+   * @Given /^Panopoly admin "Use Advanced Panel Plugins" is disabled$/
+   *
+   * Disable the "Use Advanced Panel Panes" option.
+   */
+  public function disablePanopolyAdminAdvanacedPanelPlugins() {
+    variable_set('panopoly_admin_advanced_plugins', FALSE);
+  }
+
+  /**
+   * @Given /^Panopoly admin "Use Advanced Panel Plugins" is enabled$/
+   *
+   * Enable the "Use Advanced Panel Panes" option.
+   */
+  public function enablePanopolyAdminAdvanacedPanelPlugins() {
+    variable_set('panopoly_admin_advanced_plugins', TRUE);
   }
 
   /**
@@ -438,5 +512,30 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
     $this->createPage($name, $path, 'Testing Landing Page');
 
     $this->getSession()->visit($this->getMainContext()->locatePath($path));
+  }
+
+  /**
+   * @Then /^the "([^"]*)" radio button should be set to "([^"]*)"$/
+   *
+   * @link: https://www.drupal.org/node/1891584 @endlink
+   */
+  public function theRadioButtonShouldBeSetTo($identifier, $option) {
+    $page = $this->getSession()->getPage();
+    $div = $page->find('xpath', "//div[contains(., '$identifier') and @class[contains(.,'form-type-radio')]]");
+    if ($div) {
+      $radios = $div->find('xpath', "//input[@type='radio']");
+      if ($radios) {
+        $checkedRadio = $div->find('xpath', "//input[@type='radio' and @checked='checked']/following-sibling::label[contains(text(), '$option')] ");
+        if (!$checkedRadio) {
+          throw new \Exception(sprintf('We found the radio buttons for "%s", but "%s" was not selected.', $identifier, $option));
+        }
+      } elseif (!$radios) {
+        throw new \Exception(sprintf('We found "%s", but it did not contain any radio buttons".', $identifier));
+      }
+    } elseif (!$div) {
+      throw new \Exception(sprintf('We couldn\'nt find "%s" on the page', $identifier));
+    } else {
+      throw new \Exception('General exception from '.__FUNCTION__);
+    }
   }
 }

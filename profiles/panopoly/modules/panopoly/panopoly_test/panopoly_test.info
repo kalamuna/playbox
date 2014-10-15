@@ -4,23 +4,23 @@ core = 7.x
 package = Panopoly
 project = panopoly_test
 dependencies[] = ctools
+dependencies[] = entity
 dependencies[] = features
 dependencies[] = image
 dependencies[] = list
-dependencies[] = node
 dependencies[] = options
 dependencies[] = panopoly_core
-dependencies[] = panopoly_pages
 dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = text
+dependencies[] = views
+dependencies[] = views_content
 features[ctools][] = panelizer:panelizer:1
 features[ctools][] = strongarm:strongarm:1
+features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[field_instance][] = node-panopoly_test_page-body
-features[field_instance][] = node-panopoly_test_page-field_featured_categories
 features[field_instance][] = node-panopoly_test_page-field_featured_image
-features[field_instance][] = node-panopoly_test_page-field_featured_status
 features[node][] = panopoly_test_page
 features[panelizer_defaults][] = node:panopoly_test_page:default
 features[variable][] = field_bundle_settings_node__panopoly_test_page
@@ -30,11 +30,14 @@ features[variable][] = node_options_panopoly_test_page
 features[variable][] = node_preview_panopoly_test_page
 features[variable][] = node_submitted_panopoly_test_page
 features[variable][] = panelizer_defaults_node_panopoly_test_page
+features[views_view][] = panopoly_test_magic_view_modes
+features_exclude[dependencies][panelizer] = panelizer
+features_exclude[dependencies][panopoly_pages] = panopoly_pages
 hidden = 1
 
-; Information added by Drupal.org packaging script on 2014-08-14
-version = "7.x-1.11"
+; Information added by Drupal.org packaging script on 2014-10-15
+version = "7.x-1.12"
 core = "7.x"
 project = "panopoly_test"
-datestamp = "1408016950"
+datestamp = "1413390548"
 

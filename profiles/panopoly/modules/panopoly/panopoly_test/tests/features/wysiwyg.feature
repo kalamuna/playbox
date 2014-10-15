@@ -63,7 +63,7 @@ Feature: Use rich text editor
 
   # TODO: About 10% of the time this test will hang with Firefox, so for now,
   # we will run in Chrome only on Travis-CI to get consistent builds.
-  @api @javascript @chrome @panopoly_wysiwyg @panopoly_wysiwyg_image @panopoly_images
+  @api @javascript @chrome @panopoly_wysiwyg @panopoly_wysiwyg_image @panopoly_images @drupal_private_files
   Scenario: Add an image with format and alt text
     When I type "Testing body" in the "edit-body-und-0-value" WYSIWYG editor
     # Upload the file.
@@ -99,7 +99,7 @@ Feature: Use rich text editor
 
   # TODO: About 10% of the time this test will hang with Firefox, so for now,
   # we will run in Chrome only on Travis-CI to get consistent builds.
-  @api @javascript @chrome @panopoly_wysiwyg @panopoly_wysiwyg_image @panopoly_images
+  @api @javascript @chrome @panopoly_wysiwyg @panopoly_wysiwyg_image @panopoly_images @drupal_private_files
   Scenario: The second alt/title text sticks
     When I type "Testing body" in the "edit-body-und-0-value" WYSIWYG editor
     When I click the "Add media" button in the "edit-body-und-0-value" WYSIWYG editor
@@ -142,7 +142,7 @@ Feature: Use rich text editor
 
   # TODO: About 10% of the time this test will hang with Firefox, so for now,
   # we will run in Chrome only on Travis-CI to get consistent builds.
-  @api @javascript @chrome @panopoly_wysiwyg @panopoly_wysiwyg_image @panopoly_images
+  @api @javascript @chrome @panopoly_wysiwyg @panopoly_wysiwyg_image @panopoly_images @drupal_private_files
   Scenario: HTML entities in alt/title text get decoded/encoded correctly
     When I type "Testing body" in the "edit-body-und-0-value" WYSIWYG editor
     When I click the "Add media" button in the "edit-body-und-0-value" WYSIWYG editor

@@ -41,7 +41,7 @@ Feature: Add video widget
     When I click "Browse"
       And I switch to the frame "mediaBrowser"
     Then I should see "Supported internet media providers"
-      And I should see "YouTube"
+      And I should see "Vimeo"
     When I fill in "File URL or media resource" with "http://vimeo.com/59482983"
       And I press "Next"
       And I wait 2 seconds

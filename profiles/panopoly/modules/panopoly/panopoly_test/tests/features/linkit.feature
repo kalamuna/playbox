@@ -13,12 +13,12 @@ Feature: Link to page on the site
 
   @api @javascript @panopoly_wysiwyg
   Scenario: Add a link to an internal page
-    When I click the "Linkit" button in the "edit-body-und-0-value" WYSIWYG editor
+    When I click the "Link to content" button in the "edit-body-und-0-value" WYSIWYG editor
       And I fill in "edit-linkit-search" with "target"
       And I wait 1 seconds
       And I press the "Tab" key in the "edit-linkit-search" field
     Then the "edit-linkit-path" field should contain "/node/"
-    When I click "Attributes" in the "Linkit modal" region
+    When I click "Options" in the "Linkit modal" region
       And I fill in "edit-linkit-title" with "Testing title"
       And I press "Insert link"
       # Normally, here we'd press "Publish", however some child distribtions
@@ -31,9 +31,9 @@ Feature: Link to page on the site
 
   @api @javascript @panopoly_wysiwyg
   Scenario: Add a link to an external page
-    When I click the "Linkit" button in the "edit-body-und-0-value" WYSIWYG editor
+    When I click the "Link to content" button in the "edit-body-und-0-value" WYSIWYG editor
       And I fill in "edit-linkit-path" with "https://drupal.org/project/panopoly"
-      And I click "Attributes" in the "Linkit modal" region
+      And I click "Options" in the "Linkit modal" region
       And I fill in "edit-linkit-title" with "Testing title"
       And I press "Insert link"
       # Normally, here we'd press "Publish", however some child distribtions
