@@ -141,7 +141,7 @@ before_tests() {
   header Starting webserver
   drush runserver --server=builtin 8888 > /dev/null 2>&1 &
   echo $! > /tmp/web-server-pid
-  sleep 3
+  wait_for_port 8888
 
   cd ..
 
@@ -149,7 +149,7 @@ before_tests() {
   header Starting selenium
   java -jar selenium-server-standalone-2.41.0.jar -Dwebdriver.chrome.driver=`pwd`/chromedriver > /dev/null 2>&1 &
   echo $! > /tmp/selenium-server-pid
-  sleep 5
+  wait_for_port 4444
 }
 
 # before_tests
@@ -221,6 +221,15 @@ run_command() {
   set -xv
   $@
   set +xv
+}
+
+# Wait for a specific port to respond to connections.
+wait_for_port() {
+  local port=$1
+  while echo | telnet localhost $port 2>&1 | grep -qe 'Connection refused'; do
+    echo "Connection refused on port $port. Waiting 5 seconds..."
+    sleep 5
+  done
 }
 
 ##

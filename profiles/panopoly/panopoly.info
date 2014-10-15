@@ -5,6 +5,7 @@ core = 7.x
 exclusive = 1
 
 ; Drupal Core
+dependencies[] = block
 dependencies[] = menu
 dependencies[] = image
 dependencies[] = list
@@ -46,12 +47,13 @@ dependencies[] = views_ui
 
 ; Panopoly Recommended - Other
 dependencies[] = devel
+dependencies[] = distro_update
 dependencies[] = uuid
 dependencies[] = apps
 
-; Information added by Drupal.org packaging script on 2014-08-14
-version = "7.x-1.11"
+; Information added by Drupal.org packaging script on 2014-10-15
+version = "7.x-1.12"
 core = "7.x"
 project = "panopoly"
-datestamp = "1408058030"
+datestamp = "1413391185"
 

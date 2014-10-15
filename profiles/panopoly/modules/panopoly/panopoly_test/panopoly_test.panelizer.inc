@@ -138,35 +138,6 @@ function panopoly_test_panelizer_defaults() {
     $display->content['new-f3bf9c22-9b22-41d2-a57e-110951093871'] = $pane;
     $display->panels['contentmain'][2] = 'new-f3bf9c22-9b22-41d2-a57e-110951093871';
     $pane = new stdClass();
-    $pane->pid = 'new-0a2c7b96-5f45-4e85-8e00-88fee50f4f71';
-    $pane->panel = 'contentmain';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_featured_categories';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => 'inline',
-      'formatter' => 'taxonomy_term_reference_link',
-      'delta_limit' => 0,
-      'delta_offset' => '0',
-      'delta_reversed' => FALSE,
-      'formatter_settings' => array(),
-      'context' => 'panelizer',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 3;
-    $pane->locks = array();
-    $pane->uuid = '0a2c7b96-5f45-4e85-8e00-88fee50f4f71';
-    $display->content['new-0a2c7b96-5f45-4e85-8e00-88fee50f4f71'] = $pane;
-    $display->panels['contentmain'][3] = 'new-0a2c7b96-5f45-4e85-8e00-88fee50f4f71';
-    $pane = new stdClass();
     $pane->pid = 'new-c755a7a9-2c4c-4f7e-a0f7-fc3a3c87ddd1';
     $pane->panel = 'sidebar';
     $pane->type = 'menu_tree';

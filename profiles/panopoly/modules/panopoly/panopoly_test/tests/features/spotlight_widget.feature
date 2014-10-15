@@ -15,6 +15,7 @@ Feature: Add spotlight widget
   @api @javascript @panopoly_widgets
   Scenario: Add a spotlight
     When I fill in the following:
+      | Slide Duration                             | 3                   |
       | field_basic_spotlight_items[und][0][title] | Testing item title  |
       | Link                                       | http://drupal.org   |
       | Description                                | Testing description |
@@ -32,6 +33,7 @@ Feature: Add spotlight widget
   @api @javascript @panopoly_widgets
   Scenario: Image is required per issue #2075903
     When I fill in the following:
+      | Slide Duration                             | 3                   |
       | field_basic_spotlight_items[und][0][title] | Testing item title  |
       | Link                                       | http://drupal.org   |
       | Description                                | Testing description |
