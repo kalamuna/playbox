@@ -54,6 +54,7 @@ You've selected issue a issue to work. The issue deals with responsive bootstrap
 ```bash
 git checkout master
 git pull upstream master # Grab the latest code from the canonical repo
+git push origin master # Push the new code up to your fork
 git checkout -b ie6-magix # Create a branch for your feature
 ```
 
@@ -63,7 +64,7 @@ git checkout -b ie6-magix # Create a branch for your feature
 git status # List the files that have changed
 git add -A # Add all files you've changed to commit
 git commit -m "These are really awesome fixes that i made"
-git push upstream ie6-magix # This will push your code up to `github.com/kalamuna/playbox`
+git push origin ie6-magix # This will push your code up to `github.com/kalamuna/playbox`
 ```
 
 Next Steps
