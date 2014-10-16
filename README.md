@@ -167,7 +167,7 @@ We recognize this may be a lot of information to learn and digest very quickly. 
 
 For example if you @pirog on a given issue with a question i'll get an email and will respond as soon as i can. Beyond that... the most important thing you can do is just try to contribute in anyway that you can.
 
-There are no wrong or right answers to this and its not purely a test of techincal chops but effort, what you do when you don't know the answer and things like that... SO RELAX and just play around :)
+There are no wrong or right answers to this and its not purely a test of technical chops but effort, what you do when you don't know the answer and things like that... SO RELAX and just play around :)
 
 
 ## Resources
