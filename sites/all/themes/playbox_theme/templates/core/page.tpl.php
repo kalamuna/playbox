@@ -159,7 +159,8 @@
             <?php if ($logo): ?>
               <div class='brand'>
                 <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo" class="navbar-brand scrollto hidden-xs">
-                  <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+                  <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" id="logo-dark" class="hidden" />
+                  <img src="<?php print $logo_white; ?>" alt="<?php print t('Home'); ?>" id="logo-white" />
                 </a>
               </div>
             <?php endif; ?>

@@ -108,6 +108,11 @@ input#edit-title {
   top: -50px;
 }
 
+#logo-dark {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 /* Media Queries */
 
 @media (min-width: 768px) {
