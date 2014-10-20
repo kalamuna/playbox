@@ -13,15 +13,25 @@
 	$(window).scroll(function(){
 		if ($(window).scrollTop()===0){
 			$('#main-nav').removeClass('scrolled');
+			toggleLogo(true);
 		}
 		else{
 			$('#main-nav').addClass('scrolled');
+			toggleLogo(false);
 		}
 	});
 
 	$('#site-nav').width('100px');
 
-
+  /**
+   * Toggle the hidden class on both logos so we show one and hide the other.
+   */
+  function toggleLogo(remove){
+    var hidden = 'hidden';
+    $('#logo-dark').toggleClass(hidden, remove);
+		$('#logo-white').toggleClass(hidden, !remove);
+  }
+  
 	/*============================================
 	ScrollTo Links
 	==============================================*/
@@ -88,5 +98,10 @@
 			$.waypoints('refresh');
 		},1000);
 	}
+
+	/*============================================
+	Handle logo swapping for large screens
+	==============================================*/
+  
 
 }(jQuery));

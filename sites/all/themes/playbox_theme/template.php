@@ -94,4 +94,8 @@ function playbox_theme_process_page(&$variables) {
 
   // Check if we're to always print the page title, even on panelized pages.
   $variables['always_show_page_title'] = theme_get_setting('always_show_page_title') ? TRUE : FALSE;
+  
+  // Add in the path for the white logo that we will need on larger screens.
+  $path = url(path_to_theme() . '/logo-white.svg');
+  $variables['logo_white'] = $path;
 }
