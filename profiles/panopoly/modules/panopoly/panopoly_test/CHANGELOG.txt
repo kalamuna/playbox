@@ -1,3 +1,7 @@
+Panopoly Test 7.x-1.13, 2014-10-17
+---------------------------
+- No changes since last release.
+
 Panopoly Test 7.x-1.12, 2014-10-15
 ---------------------------
 - Fixed Remove field_featured_categories and field_featured_status from panopoly_test.

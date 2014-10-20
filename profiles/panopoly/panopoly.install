@@ -62,11 +62,27 @@ function _panopoly_install_help_block() {
       'cache' => -1,
     );
   }
-  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+
+  // Add the blocks if they aren't already placed.
   foreach ($blocks as $block) {
-    $query->values($block);
+    $region = db_select('block', 'b')
+      ->fields('b', array('region'))
+      ->condition('theme', $block['theme'])
+      ->condition('module', $block['module'])
+      ->condition('delta', $block['delta'])
+      ->execute()
+      ->fetchField();
+    if (empty($region) || $region == -1) {
+      db_merge('block')
+        ->key(array(
+          'theme' => $block['theme'],
+          'module' => $block['module'],
+          'delta' => $block['delta'],
+        ))
+        ->fields($block)
+        ->execute();
+    }
   }
-  $query->execute();
 
   // Update the menu router information.
   menu_rebuild();

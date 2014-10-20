@@ -1,3 +1,10 @@
+Panopoly 7.x-1.13, 2014-10-17
+----------------------
+- Fixed panopoly_update_7102() breaks if 'help' block is already placed in a region.
+- Update Panopoly Widgets for #2357405 by hefox: Fixed Patch for tablefield not needed.
+- Starting testing upgrades from the 1.12 release.
+- Restored drupal-org.make after the 1.12 release.
+
 Panopoly 7.x-1.12, 2014-10-15
 ----------------------
 - Update to Drupal 7.32 for SA-CORE-2014-005.
