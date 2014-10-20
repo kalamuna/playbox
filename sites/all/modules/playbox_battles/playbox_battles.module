@@ -153,9 +153,37 @@ function playbox_battles_vote($ajax, $nid, $type) {
   $votes = $votes + 1;
   $node = node_load($nid);
   $field = 'field_playbox_' . $type . '_votes';
-  $node->{$field}['und'][0]['value'] = $votes;
-  field_attach_update('node', $node);
-
+  $wrapper = entity_metadata_wrapper('node', $node);
+  $wrapper->{$field}->set($votes);
+  
+  $votes_to_win = $wrapper->field_playbox_votes_to_win->value();
+  
+  if ($votes == $votes_to_win) {
+    // Someone won, somone lost. Store this on the node.
+    $wrapper->field_playbox_battle_completed->set(1);
+    $president = $wrapper->field_playbox_president->value();
+    $robot = $wrapper->field_playbox_robot->value();
+    
+    if ($type == 'president') {
+      // President won.
+      $winner_nid = $president->nid;
+      $loser_nid = $robot->nid;
+    }
+    else {
+      // Robot won.
+      $winner_nid = $robot->nid;
+      $loser_nid = $president->nid;
+    }
+  
+    // Set the battle to complete and set a winner and loser.
+    $wrapper->field_playbox_battle_completed->set(1);
+    $wrapper->field_playbox_winner->set($winner_nid);
+    $wrapper->field_playbox_loser->set($loser_nid);
+  }
+  
+  // Save the battle node with all the changes we made.
+  $wrapper->save();
+  
   // Do some fun stuff to update the user IRL
   if ($is_ajax) {
     $commands = array();
