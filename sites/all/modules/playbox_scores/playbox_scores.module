@@ -30,7 +30,7 @@ function playbox_scores_scores_page(){
   // Get the scores for both Presidents and Robots.
   $president_score = playbox_scores_get_score('playbox_president');
   $robot_score = playbox_scores_get_score('playbox_robot');
-  
+
   // Build a render array.
   $output = array(
     'overall_score' => array(
@@ -62,7 +62,7 @@ function playbox_scores_scores_page(){
       'table' => playbox_scores_stats_table(),
     ),
   );
-  
+
   return $output;
 }
 
@@ -71,20 +71,20 @@ function playbox_scores_scores_page(){
  * winner.
  */
 function playbox_scores_get_score($bundle = NULL){
-  // Get all the playbox_battle nodes. To future proof this from performance 
+  // Get all the playbox_battle nodes. To future proof this from performance
   // issues when there are lots of playbox_battle nodes I would suggest adding
-  // an extra--albeit redundant--field that stores the content type of the 
+  // an extra--albeit redundant--field that stores the content type of the
   // winner. This way we could use EFQ more effectively without having to load
   // all the battle nodes.
   $type = 'node';
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', $type)
     ->entityCondition('bundle', 'playbox_battle');
-  
+
   $result = $query->execute();
-  
+
   if (isset($result[$type])) {
-    // There are playbox_battle nodes, let's continue by loading all the nodes.
+    // There are playbox_battle nodes--load them.
     $nodes = node_load_multiple(array_keys($result[$type]));
     $scores = array(
       'playbox_president' => 0,
@@ -98,7 +98,7 @@ function playbox_scores_get_score($bundle = NULL){
         $scores[$winner_node->type]++;
       }
     }
-    
+
     // If $type was passed then return the score for that type, otherwise return
     // the array containing both which can be used with list().
     return $bundle ? $scores[$bundle] : $scores;
@@ -109,58 +109,82 @@ function playbox_scores_get_score($bundle = NULL){
  * Return a render array for the stats table.
  */
 function playbox_scores_stats_table(){
+  // Get all the battle nodes.
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'playbox_battle');
-  
+
   $result = $query->execute();
-  
+
   if (isset($result['node'])) {
+    // Load the battle nodes.
     $nodes = node_load_multiple(array_keys($result['node']));
     $votes = array();
     foreach ($nodes as $nid => $node) {
       $wrapper = entity_metadata_wrapper('node', $node);
+
+      // Grab the node id of the president and robot involved in this battle.
       $president = $wrapper->field_playbox_president->value();
       $p_nid = $president->nid;
       $robot = $wrapper->field_playbox_robot->value();
       $r_nid = $robot->nid;
-      
+
+      // Get the vote count of each particiapnt and set it in the votes array if
+      // it doesn't already exist or add it to the existing count if it does
+      // exist.
       $president_votes = $wrapper->field_playbox_president_votes->value();
       $robot_votes = $wrapper->field_playbox_robot_votes->value();
       $votes[$p_nid] = isset($votes[$p_nid]) ? $votes[$p_nid] + $president_votes : $president_votes;
       $votes[$r_nid] = isset($votes[$r_nid]) ? $votes[$r_nid] + $robot_votes : $robot_votes;
     }
   }
-  
+
   // Order descending.
   arsort($votes);
-  
+
+  // Go through all of the vote counts so we can generate rows for the table.
   $rows = array();
   foreach ($votes as $nid => $votes) {
-    $node = node_load($nid);
-    $wrapper = entity_metadata_wrapper('node', $node);
-    
+    $participant_node = node_load($nid);
+    $wrapper = entity_metadata_wrapper('node', $participant_node);
+    $victories = playbox_scores_get_victories($participant_node);
+
+    // Each item of the rows array will be a cell in the table.
     $rows[] = array(
-      $node->title,
+      $participant_node->title,
       $wrapper->field_playbox_nickname->value(),
+      $victories,
       $votes,
     );
   }
-  
+
   $output = array(
     '#theme' => 'table',
     '#header' => array(
       t('Condtender'),
-/*
       t('Known as'),
-      t('Battles'),
-      t('Victories'), 
-*/
+      t('Victories'),
       t('Votes'),
     ),
     '#rows' => $rows,
-    
+
   );
-  
+
   return $output;
+}
+
+/**
+ * Return a count of victories of the given participant.
+ */
+function playbox_scores_get_victories($node){
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'playbox_battle')
+    ->fieldCondition('field_playbox_winner', 'target_id', $node->nid);
+
+  $result = $query->execute();
+
+  if (isset($result['node'])) {
+    return count($result['node']);
+  }
 }
