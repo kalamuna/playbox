@@ -4,8 +4,12 @@
  * Code for the Playbox Scores feature.
  */
 
+// ! Includes
 include_once 'playbox_scores.features.inc';
 
+
+
+// ! Drupal hooks
 
 /**
  * Implementation of hook_menu().
@@ -24,9 +28,54 @@ function playbox_scores_menu() {
 }
 
 /**
- * Menu callbackfor /scores page.
+ * Implementation of hook_block_info.
  */
-function playbox_scores_scores_page(){
+function playbox_scores_block_info() {
+  // This example comes from node.module.
+  $blocks['overall_score'] = array(
+    'info' => t('Overall score'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['stats_table'] = array(
+    'info' => t('Stats table'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implementation of hook_block_view.
+ */
+function playbox_scores_block_view($delta = '') {
+  // This example is adapted from node.module.
+  $block = array();
+
+  switch ($delta) {
+    case 'overall_score':
+      $block['subject'] = '';
+      $block['content'] = playbox_scores_overall_score();
+      break;
+
+    case 'stats_table':
+      $block['subject'] = '';
+      $block['content'] = playbox_scores_stats_table();
+      break;
+  }
+  
+  return $block;
+}
+
+
+
+// ! Block contents
+
+/**
+ * Generate block content for /scores page.
+ */
+function playbox_scores_overall_score(){
+  $path = drupal_get_path('module', 'playbox_scores');
+  
   // Get the scores for both Presidents and Robots.
   $president_score = playbox_scores_get_score('playbox_president');
   $robot_score = playbox_scores_get_score('playbox_robot');
@@ -34,75 +83,35 @@ function playbox_scores_scores_page(){
   // Build a render array.
   $output = array(
     'overall_score' => array(
-      '#type' => 'containter',
+      '#type' => 'container',
       '#attributes' => array(
         'id' => 'overall-score',
         'class' => array('row')
       ),
+      '#attached' => array(
+        'css' => array(
+          $path . '/css/playbox-scores.css',
+        ),
+      ),
       'presidents' => array(
-        '#prefix' => '<div class="col-md-5">',
+        '#prefix' => '<div class="col-sm-5">',
         '#suffix' => '</div>',
         '#markup' => '<h2>' . t('Presidents') . '</h2><div class="score">' . $president_score . '</div>',
       ),
       'vs' => array(
-        '#prefix' => '<div class="col-md-2">',
+        '#prefix' => '<div class="col-sm-2 vs">',
         '#suffix' => '</div>',
         '#markup' => t('vs'),
       ),
       'robots' => array(
-        '#prefix' => '<div class="col-md-5">',
+        '#prefix' => '<div class="col-sm-5">',
         '#suffix' => '</div>',
         '#markup' => '<h2>' . t('Robots') . '</h2><div class="score">' . $robot_score . '</div>',
       ),
     ),
-    'stats' => array(
-      'heading' => array(
-        '#markup' => '<h2>' . t('The Stats') . '</h2>',
-      ),
-      'table' => playbox_scores_stats_table(),
-    ),
   );
 
   return $output;
-}
-
-/**
- * Return a count of playbox_battle nodes where the given type is listed as the
- * winner.
- */
-function playbox_scores_get_score($bundle = NULL){
-  // Get all the playbox_battle nodes. To future proof this from performance
-  // issues when there are lots of playbox_battle nodes I would suggest adding
-  // an extra--albeit redundant--field that stores the content type of the
-  // winner. This way we could use EFQ more effectively without having to load
-  // all the battle nodes.
-  $type = 'node';
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', $type)
-    ->entityCondition('bundle', 'playbox_battle');
-
-  $result = $query->execute();
-
-  if (isset($result[$type])) {
-    // There are playbox_battle nodes--load them.
-    $nodes = node_load_multiple(array_keys($result[$type]));
-    $scores = array(
-      'playbox_president' => 0,
-      'playbox_robot' => 0,
-    );
-    foreach ($nodes as $nid => $node) {
-      // Grab the referenced winner node and increment a counter for that type.
-      $wrapper = entity_metadata_wrapper('node', $node);
-      $winner_node = $wrapper->field_playbox_winner->value();
-      if ($winner_node) {
-        $scores[$winner_node->type]++;
-      }
-    }
-
-    // If $type was passed then return the score for that type, otherwise return
-    // the array containing both which can be used with list().
-    return $bundle ? $scores[$bundle] : $scores;
-  }
 }
 
 /**
@@ -147,30 +156,108 @@ function playbox_scores_stats_table(){
   foreach ($votes as $nid => $votes) {
     $participant_node = node_load($nid);
     $wrapper = entity_metadata_wrapper('node', $participant_node);
-    $victories = playbox_scores_get_victories($participant_node);
+    
+    // Get the portrait image off the node and set up vars to pass to 
+    // theme_image_style().
+    $image_file = $wrapper->field_playbox_portrait->value();
+    $portrait_vars = array(
+      'style_name' => 'stats_portrait',
+      'path' => $image_file['uri'],
+      'width' => $image_file['width'],
+      'height' => $image_file['height'],
+      'width' => $image_file['width'],
+      'title' => $image_file['title'],
+      'alt' => $image_file['alt'],
+    );
 
     // Each item of the rows array will be a cell in the table.
     $rows[] = array(
-      $participant_node->title,
-      $wrapper->field_playbox_nickname->value(),
-      $victories,
+      array(
+        'data' => theme('image_style', $portrait_vars),
+        'class' => 'portrait',
+      ),
+      array(
+        'data' => $participant_node->title,
+        'class' => 'contender',
+      ),
+      array(
+        'data' => $wrapper->field_playbox_nickname->value(),
+        'class' => 'known-as',
+      ),
       $votes,
+      playbox_scores_get_victories($participant_node),
     );
   }
 
+  $path = drupal_get_path('module', 'playbox_scores');
   $output = array(
     '#theme' => 'table',
+    '#caption' => '<h2>' . t('The Stats') . '</h2>',
     '#header' => array(
+      array(
+        'data' => '', // No header for the picture.
+        'class' => 'portrait',
+      ),
       t('Condtender'),
       t('Known as'),
-      t('Victories'),
       t('Votes'),
+      t('Victories'),
     ),
     '#rows' => $rows,
-
+    '#attributes' => array(
+      'id' => 'stats-table',
+    ),
+    '#attached' => array(
+      'css' => array(
+        $path . '/css/playbox-scores.css',
+      ),
+    ),
   );
 
   return $output;
+}
+
+
+
+// ! API
+
+/**
+ * Return a count of playbox_battle nodes where the given type is listed as the
+ * winner.
+ */
+function playbox_scores_get_score($bundle = NULL){
+  // Get all the playbox_battle nodes. To future proof this from performance
+  // issues when there are lots of playbox_battle nodes I would suggest adding
+  // an extra--albeit redundant--field that stores the content type of the
+  // winner. This way we could use EFQ more effectively without having to load
+  // all the battle nodes.
+  $type = 'node';
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', $type)
+    ->entityCondition('bundle', 'playbox_battle');
+
+  $result = $query->execute();
+
+  if (isset($result[$type])) {
+    // There are playbox_battle nodes--load them.
+    $nodes = node_load_multiple(array_keys($result[$type]));
+    $scores = array(
+      'playbox_president' => 0,
+      'playbox_robot' => 0,
+    );
+    foreach ($nodes as $nid => $node) {
+      // Grab the referenced winner node and increment a counter for that type.
+      $wrapper = entity_metadata_wrapper('node', $node);
+      $winner_node = $wrapper->field_playbox_winner->value();
+      if ($winner_node) {
+        $scores[$winner_node->type]++;
+      }
+    }
+
+    // If $type was passed then return the score for that type, otherwise return
+    // the array containing both which can be used with list().
+    return $bundle ? $scores[$bundle] : $scores;
+  }
 }
 
 /**

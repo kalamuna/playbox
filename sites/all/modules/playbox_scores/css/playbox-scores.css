@@ -1,0 +1,87 @@
+#overall-score h2 {
+  font-size: 72px;
+  text-align: center;
+  font-weight: 700;
+}
+#overall-score .score {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  width: 80%;
+  height: 0;
+  padding: 40% 0;
+  margin-left: 10%;
+  text-align: center;
+  background-color: #fff;
+  color: #353643;
+  font-size: 140px;
+  line-height: 0;
+  font-family: 'Roboto Slab', serif;
+}
+#overall-score .score:after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  border: 20px solid rgba(255, 255, 255, 0.5);
+}
+#overall-score .vs {
+  text-align: center;
+  padding: 22% 0;
+  font-family: 'Roboto Slab', serif;
+  font-size: 72px;
+  line-height: 0;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.5);
+}
+#stats-table {
+  border: none;
+}
+#stats-table h2 {
+  font-size: 72px;
+  text-align: center;
+  font-weight: 700;
+  text-align: left;
+}
+#stats-table caption {
+  padding-bottom: 30px;
+}
+#stats-table tr,
+#stats-table td,
+#stats-table th,
+#stats-table tbody {
+  border: none;
+}
+#stats-table thead th {
+  border-bottom: 1px solid #ccc;
+  font-weight: 300;
+}
+#stats-table thead th.portrait {
+  border: none;
+}
+#stats-table tbody tr td {
+  padding-top: 0;
+  padding-bottom: 0 !important;
+  line-height: 45px;
+  vertical-align: middle;
+}
+#stats-table td.portrait {
+  background-color: transparent;
+  width: 33px;
+  padding: 5px;
+}
+#stats-table td.portrait img {
+  border-radius: 50%;
+  vertical-align: middle;
+}
+#stats-table td.contender {
+  font-weight: 700;
+}
+#stats-table td.known-as {
+  font-style: italic;
+  color: #38a5db;
+}
+/*# sourceMappingURL=playbox-scores.css.map */
