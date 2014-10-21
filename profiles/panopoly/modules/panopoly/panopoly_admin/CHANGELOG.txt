@@ -1,3 +1,7 @@
+Panopoly Admin 7.x-1.13, 2014-10-17
+----------------------------
+- No changes since last release.
+
 Panopoly Admin 7.x-1.12, 2014-10-15
 ----------------------------
 - Fixed Disabling "Advanced Panel Plugins" breaks some Panes (ex. Panels Everywhere).

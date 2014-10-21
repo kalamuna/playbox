@@ -1,3 +1,7 @@
+Panopoly Magic 7.x-1.13, 2014-10-17
+----------------------------
+- No changes since last release.
+
 Panopoly Magic 7.x-1.12, 2014-10-15
 ----------------------------
 - Fixed Using deprecated clicked_button, not triggering_element.

@@ -1,3 +1,7 @@
+Panopoly Widgets 7.x-1.13, 2014-10-17
+------------------------------
+- Fixed Patch for tablefield not needed.
+
 Panopoly Widgets 7.x-1.12, 2014-10-15
 ------------------------------
 - Added only show number and play on spotlight if pics no >= 2.

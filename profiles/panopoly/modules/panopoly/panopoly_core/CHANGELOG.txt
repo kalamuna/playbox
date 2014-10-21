@@ -1,3 +1,7 @@
+Panopoly Core 7.x-1.13, 2014-10-17
+---------------------------
+- No changes since last release.
+
 Panopoly Core 7.x-1.12, 2014-10-15
 ---------------------------
 - Fixed Include CTools patch to prevent error in IPE when field doesn't exist.
