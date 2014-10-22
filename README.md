@@ -159,7 +159,7 @@ sites/all/themes
 
 **Anything else that could be helpful?**
 
-Why yes and i'm glad you asked! Playbox is built on the popular [panels](https://www.drupal.org/node/496278) based distribution called [panopoly](https://www.drupal.org/node/1651048) and a popular theme for that distribution called [kalatheme](https://github.com/drupalprojects/kalatheme/wiki). Read the documentation for those projects could definitely help.
+Why yes and i'm glad you asked! Playbox is built on the popular [panels](https://www.drupal.org/node/496278) based distribution called [panopoly](https://www.drupal.org/node/1651048) and a popular theme for that distribution called [kalatheme](https://github.com/drupalprojects/kalatheme/wiki). Reading the documentation for those projects could definitely help.
 
 
 ## Getting help and doing your best
