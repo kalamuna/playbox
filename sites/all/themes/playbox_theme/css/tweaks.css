@@ -131,7 +131,7 @@ input#edit-title {
 }
 
 
-/* Adjust Font size for mobile devices < 375px */
+/* Mobile devices < 375px */
 @media screen and ( max-width: 375px ){
   
   .battler-battle .battler-battle-name h2{
