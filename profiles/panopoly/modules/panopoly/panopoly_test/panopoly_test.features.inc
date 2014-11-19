@@ -34,7 +34,7 @@ function panopoly_test_node_info() {
       'description' => t('Used for the automated tests.'),
       'has_title' => '1',
       'title_label' => t('Title'),
-      'help' => '',
+      'help' => 'This message appears in the system help region when you create a node.',
     ),
   );
   drupal_alter('node_info', $items);
