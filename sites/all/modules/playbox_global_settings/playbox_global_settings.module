@@ -1,0 +1,51 @@
+<?php
+/**
+ * @file
+ * Code for the Playbox Global Settings module.
+ */
+
+function playbox_global_settings_menu()	 {
+	$items ['admin/playbox-global-settings'] = array(
+		'title' => 'Global Settings',
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('playbox_global_settings_form'),
+		'access callback' => TRUE,
+	);
+	return $items;
+}
+
+function playbox_global_settings_form($form, &$form_state) {
+	$form['playbox_global_settings_president'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Who is your favorite president?'),
+	);
+
+	$form['playbox_global_settings_boss'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Who is your favorite boss?'),
+	);
+
+	$form['playbox_global_settings_color'] = array(
+		'#type' => 'select',
+		'#title' => t('What is your favorite color?'),
+		'#options' => array('chartreuse', 'magenta', 'cornflower', 'lavender', 'black', 'eggshell'),
+		'#empty_option' => 'Select a color',
+	);
+
+	$form['playbox_global_settings_disco'] = array(
+		'#type' => 'checkbox',
+		'#title' => t('Put site into Disco Mode?'),
+	);
+
+	$form['actions']['submit'] = array(
+		'#type' => 'submit',
+		'#value' => t('Submit'),
+	);
+	return system_settings_form($form);
+}
+
+function playbox_global_settings_form_submit($form, &$form_state) {
+	$playbox_global_settings_president = variable_set('playbox_global_settings_president', ($form_state['value'])
+	);
+	return $playbox_global_settings_president;
+}

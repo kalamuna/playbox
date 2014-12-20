@@ -1,0 +1,4 @@
+name = Playbox Global Settings
+description = Provides a form form admin to fill out.
+core = 7.x
+package = Playbox
