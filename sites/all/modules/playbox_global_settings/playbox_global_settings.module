@@ -5,7 +5,7 @@
  */
 
 function playbox_global_settings_menu()	 {
-	$items ['admin/playbox-global-settings'] = array(
+	$items ['admin/config/playbox-global-settings'] = array(
 		'title' => 'Global Settings',
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array('playbox_global_settings_form'),
@@ -18,23 +18,27 @@ function playbox_global_settings_form($form, &$form_state) {
 	$form['playbox_global_settings_president'] = array(
 		'#type' => 'textfield',
 		'#title' => t('Who is your favorite president?'),
+		'#default_value' => variable_get('playbox_global_settings_president'),
 	);
 
 	$form['playbox_global_settings_boss'] = array(
 		'#type' => 'textfield',
 		'#title' => t('Who is your favorite boss?'),
+		'#default_value' => variable_get('playbox_global_settings_boss'),
 	);
 
 	$form['playbox_global_settings_color'] = array(
 		'#type' => 'select',
 		'#title' => t('What is your favorite color?'),
-		'#options' => array('chartreuse', 'magenta', 'cornflower', 'lavender', 'black', 'eggshell'),
+		'#options' => array('magenta', 'tangerine', 'ochre', 'chartreuse', 'cornflower', 'lavender', 'onyx', 'eggshell'),
 		'#empty_option' => 'Select a color',
+		'#default_value' => variable_get('playbox_global_settings_color'),
 	);
 
 	$form['playbox_global_settings_disco'] = array(
 		'#type' => 'checkbox',
 		'#title' => t('Put site into Disco Mode?'),
+		'#default_value' => variable_get('playbox_global_settings_disco'),
 	);
 
 	$form['actions']['submit'] = array(
@@ -42,4 +46,13 @@ function playbox_global_settings_form($form, &$form_state) {
 		'#value' => t('Submit'),
 	);
 	return system_settings_form($form);
+}
+
+function playbox_global_settings_permission() {
+	return array(
+    'administer my module' => array(
+      'title' => t('Administer Playbox Global Settings'),
+      'description' => t('Perform administration tasks for Playbox Global Settings'),
+    ),
+  );
 }
