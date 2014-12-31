@@ -56,3 +56,7 @@ function playbox_global_settings_permission() {
     ),
   );
 }
+
+function playbox_global_settings_form_alter(&$form, &$form_state, $form_id) {
+	$form['playbox_global_settings_color']['#empty_option'] = t('Choose a color');
+}
