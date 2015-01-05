@@ -26,6 +26,19 @@ function playbox_global_settings_menu()	 {
 	return $items;
 }
 
+function _playbox_global_settings() {
+	return array (
+		'magenta', 
+		'tangerine', 
+		'ochre',
+		'chartreuse', 
+		'cerulean', 
+		'lavender', 
+		'onyx', 
+		'eggshell',
+		);
+}
+
 function playbox_global_settings_form($form, &$form_state) {
 	$form['playbox_global_settings_president'] = array(
 		'#type' => 'textfield',
@@ -42,7 +55,7 @@ function playbox_global_settings_form($form, &$form_state) {
 	$form['playbox_global_settings_color'] = array(
 		'#type' => 'select',
 		'#title' => t('What is your favorite color?'),
-		'#options' => array('magenta', 'tangerine', 'ochre', 'chartreuse', 'cornflower', 'lavender', 'onyx', 'eggshell'),
+		'#options' => _playbox_global_settings(),
 		'#empty_option' => 'Select a color',
 		'#default_value' => variable_get('playbox_global_settings_color'),
 	);
