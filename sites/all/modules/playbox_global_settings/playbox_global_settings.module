@@ -5,12 +5,24 @@
  */
 
 function playbox_global_settings_menu()	 {
-	$items ['admin/config/playbox-global-settings'] = array(
+	$items['admin/config/playbox'] = array(
+    'title' => 'Playbox',
+    'position' => 'left',
+    'weight' => 200,
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('administer site configuration'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  	);
+
+	$items ['admin/config/playbox/global-settings'] = array(
 		'title' => 'Global Settings',
+		'description' => t('Configure global settings for Playbox'),
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array('playbox_global_settings_form'),
 		'access callback' => TRUE,
 	);
+
 	return $items;
 }
 
@@ -39,6 +51,10 @@ function playbox_global_settings_form($form, &$form_state) {
 		'#type' => 'checkbox',
 		'#title' => t('Put site into Disco Mode?'),
 		'#default_value' => variable_get('playbox_global_settings_disco'),
+	);
+
+	$form['playbox_global_settings_description'] = array(
+		'#value' => t('Playbox! is a sandbox-proving-ground for people interested in working with us here at Kalamuna. Its a magnificent and collaborative code-garden where would-be code artists, site builder and designers alike can play around and show what theyve got.'),
 	);
 
 	$form['actions']['submit'] = array(
