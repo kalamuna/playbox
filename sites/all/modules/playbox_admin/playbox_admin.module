@@ -86,12 +86,12 @@ function playbox_admin_permission() {
   );
 }
 
-function playbox_admin_form_alter(&$form, &$form_state, $form_id) {
+function playbox_admin_form_playbox_admin_form_alter(&$form, &$form_state, $form_id) {
 	$form['playbox_admin_color']['#empty_option'] = t('Choose a color');
 }
 
 function playbox_admin_init() {
-  // Load CS and JS
+  // Load CSS
   drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/colors.css');
 }
 
