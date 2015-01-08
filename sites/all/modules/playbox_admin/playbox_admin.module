@@ -41,14 +41,26 @@ function _playbox_admin() {
 
 function playbox_admin_form($form, &$form_state) {
 	$form['playbox_admin_president'] = array(
-		'#type' => 'textfield',
+		'#type' => 'entityreference',
 		'#title' => t('Who is your favorite president?'),
-		'#default_value' => variable_get('playbox_admin_president'),
+		'#era_entity_type' => 'node',
+		'#era_bundles' => array('playbox_president'),
+		'#era_cardinality' => 1,
+		'#era_query_settings' => array(
+          	'limit' => 15,
+          ),
+		'#default_value' => variable_get('playbox_admin_president')
 	);
 
 	$form['playbox_admin_boss'] = array(
-		'#type' => 'textfield',
+		'#type' => 'entityreference',
 		'#title' => t('Who is your favorite boss?'),
+		'#era_entity_type' => 'node',
+		'#era_bundles' => array('playbox_robot'),
+		'#era_cardinality' => 1,
+		'#era_query_settings' => array(
+          	'limit' => 15,
+          ),
 		'#default_value' => variable_get('playbox_admin_boss'),
 	);
 
@@ -64,10 +76,6 @@ function playbox_admin_form($form, &$form_state) {
 		'#type' => 'checkbox',
 		'#title' => t('Put site into Disco Mode?'),
 		'#default_value' => variable_get('playbox_admin_disco'),
-	);
-
-	$form['playbox_admin_description'] = array(
-		'#value' => t('Playbox! is a sandbox-proving-ground for people interested in working with us here at Kalamuna. Its a magnificent and collaborative code-garden where would-be code artists, site builder and designers alike can play around and show what theyve got.'),
 	);
 
 	$form['actions']['submit'] = array(
