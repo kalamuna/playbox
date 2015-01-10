@@ -6,13 +6,13 @@
 
 function playbox_admin_menu()	 {
 	$items['admin/config/playbox'] = array(
-    'title' => 'Playbox',
-    'position' => 'left',
-    'weight' => 200,
-    'page callback' => 'system_admin_menu_block_page',
-    'access arguments' => array('administer site configuration'),
-    'file' => 'system.admin.inc',
-    'file path' => drupal_get_path('module', 'system'),
+		'title' => 'Playbox',
+		'position' => 'left',
+		'weight' => 200,
+		'page callback' => 'system_admin_menu_block_page',
+		'access arguments' => array('administer site configuration'),
+		'file' => 'system.admin.inc',
+		'file path' => drupal_get_path('module', 'system'),
   	);
 
 	$items ['admin/config/playbox/global-settings'] = array(
@@ -28,13 +28,13 @@ function playbox_admin_menu()	 {
 
 function _playbox_admin() {
 	return array (
-		'#cc0000' => 'crimson', 
-		'#ee8000' => 'tangerine', 
+		'#cc0000' => 'crimson',
+		'#ee8000' => 'tangerine',
 		'#ffb90f' => 'ochre',
-		'#b8ff5c' => 'chartreuse', 
-		'#38a5db' => 'cerulean', 
-		'#d0aaf3' => 'lavender', 
-		'#000000' => 'onyx', 
+		'#b8ff5c' => 'chartreuse',
+		'#38a5db' => 'cerulean',
+		'#d0aaf3' => 'lavender',
+		'#000000' => 'onyx',
 		'#ffffff' => 'eggshell',
 		);
 }
@@ -47,8 +47,8 @@ function playbox_admin_form($form, &$form_state) {
 		'#era_bundles' => array('playbox_president'),
 		'#era_cardinality' => 1,
 		'#era_query_settings' => array(
-          	'limit' => 15,
-          ),
+      'limit' => 15,
+      ),
 		'#default_value' => variable_get('playbox_admin_president')
 	);
 
@@ -59,8 +59,8 @@ function playbox_admin_form($form, &$form_state) {
 		'#era_bundles' => array('playbox_robot'),
 		'#era_cardinality' => 1,
 		'#era_query_settings' => array(
-          	'limit' => 15,
-          ),
+      'limit' => 15,
+      ),
 		'#default_value' => variable_get('playbox_admin_boss'),
 	);
 
