@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Install stuff for playbox_admin
+ */
+
+/*
+ * Implements hook_install()
+ */
+function playbox_admin_install() {
+  // @todo: fun stuff
+}
+
+/*
+ * Implements hook_uninstall()
+ */
+function playbox_admin_uninstall() {
+  variable_del('playbox_admin_president');
+  variable_del('playbox_admin_boss');
+  variable_del('playbox_admin_color');
+  variable_del('playbox_admin_disco');
+}
