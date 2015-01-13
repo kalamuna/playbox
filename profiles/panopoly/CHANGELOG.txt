@@ -1,3 +1,11 @@
+Panopoly 7.x-1.15, 2015-01-12
+----------------------
+- Update to CTools 1.5
+- Use structured markup for search results
+- Spotlight: Allow hiding of pager, replace with previous/next controls
+- Spotlight should allow an empty title field
+- Updated LinkIt module to 3.3 version
+
 Panopoly 7.x-1.14, 2014-11-19
 ----------------------
 - Update Panopoly Core for Issue #2374727 by hefox: update to apps beta20.
