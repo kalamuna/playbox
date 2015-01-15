@@ -34,6 +34,8 @@ function playbox_admin_init() {
   }
   if(isset($playbox_admin_color) && $playbox_admin_color == 7) {
     drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/eggshell.css');
+  } else {
+    drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/cerulean.css');
   }
 }
 
