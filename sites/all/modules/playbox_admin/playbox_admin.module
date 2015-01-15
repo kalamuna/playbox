@@ -11,28 +11,21 @@
 function playbox_admin_init() {
   // Load CSS
   $playbox_admin_color = variable_get('playbox_admin_color');
-  if(isset($playbox_admin_color) && $playbox_admin_color == 0) {
+  if(isset($playbox_admin_color) && $playbox_admin_color === 0) {
     drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/crimson.css');
-  }
-  if(isset($playbox_admin_color) && $playbox_admin_color == 1) {
+  } elseif(isset($playbox_admin_color) && $playbox_admin_color == 1) {
     drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/tangerine.css');
-  }
-  if(isset($playbox_admin_color) && $playbox_admin_color == 2) {
+  } elseif(isset($playbox_admin_color) && $playbox_admin_color == 2) {
     drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/ochre.css');
-  }
-  if(isset($playbox_admin_color) && $playbox_admin_color == 3) {
+  } elseif(isset($playbox_admin_color) && $playbox_admin_color == 3) {
     drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/chartreuse.css');
-  }
-  if(isset($playbox_admin_color) && $playbox_admin_color == 4) {
+  } elseif(isset($playbox_admin_color) && $playbox_admin_color == 4) {
     drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/cerulean.css');
-  }
-  if(isset($playbox_admin_color) && $playbox_admin_color == 5) {
+  } elseif(isset($playbox_admin_color) && $playbox_admin_color == 5) {
     drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/lavender.css');
-  }
-  if(isset($playbox_admin_color) && $playbox_admin_color == 6) {
+  } elseif(isset($playbox_admin_color) && $playbox_admin_color == 6) {
     drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/onyx.css');
-  }
-  if(isset($playbox_admin_color) && $playbox_admin_color == 7) {
+  } elseif(isset($playbox_admin_color) && $playbox_admin_color == 7) {
     drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/eggshell.css');
   } else {
     drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/cerulean.css');
