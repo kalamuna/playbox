@@ -2,6 +2,6 @@
  * css
  */
 
-.jumbotron {
+.jumbotron, #main-nav {
   background-color: #F0EAD6 !important;
 }
