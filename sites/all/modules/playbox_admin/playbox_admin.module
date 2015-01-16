@@ -77,7 +77,12 @@ function _playbox_admin_get_colors() {
  * Playbox admin form definition
  */
 function playbox_admin_form($form, &$form_state) {
-  $form['playbox_admin_president'] = array(
+  $form['playbox_global_settings'] = array (
+    '#type' => 'fieldset',
+    '#title' => 'Change Playbox Settings',
+    );
+
+  $form['playbox_global_settings']['playbox_admin_president'] = array(
     '#type' => 'entityreference',
     '#title' => t('Who is your favorite president?'),
     '#era_entity_type' => 'node',
@@ -89,7 +94,7 @@ function playbox_admin_form($form, &$form_state) {
     '#default_value' => variable_get('playbox_admin_president')
   );
 
-  $form['playbox_admin_boss'] = array(
+  $form['playbox_global_settings']['playbox_admin_boss'] = array(
     '#type' => 'entityreference',
     '#title' => t('Who is your favorite boss?'),
     '#era_entity_type' => 'node',
@@ -101,7 +106,7 @@ function playbox_admin_form($form, &$form_state) {
     '#default_value' => variable_get('playbox_admin_boss'),
   );
 
-  $form['playbox_admin_color'] = array(
+  $form['playbox_global_settings']['playbox_admin_color'] = array(
     '#type' => 'select',
     '#title' => t('What is your favorite color?'),
     '#options' => _playbox_admin_get_colors(),
@@ -109,7 +114,7 @@ function playbox_admin_form($form, &$form_state) {
     '#default_value' => variable_get('playbox_admin_color'),
   );
 
-  $form['playbox_admin_disco'] = array(
+  $form['playbox_global_settings']['playbox_admin_disco'] = array(
     '#type' => 'checkbox',
     '#title' => t('Put site into Disco Mode?'),
     '#default_value' => variable_get('playbox_admin_disco'),
