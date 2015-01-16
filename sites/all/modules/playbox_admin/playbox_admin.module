@@ -27,7 +27,7 @@ function playbox_admin_menu() {
     'file path' => drupal_get_path('module', 'system'),
   );
 
-  $items ['admin/config/playbox/global-settings'] = array(
+  $items['admin/config/playbox/global-settings'] = array(
     'title' => 'Global Settings',
     'description' => t('Configure global settings for Playbox'),
     'page callback' => 'drupal_get_form',
@@ -36,6 +36,13 @@ function playbox_admin_menu() {
   );
 
   return $items;
+}
+
+/*
+ * Implements hook_views_default_views_alter()
+ */
+function playbox_admin_views_default_views_alter(&$views) {
+  $handler =& $views['playbox_presidents']->display['playbox_president_header_1']->handler;
 }
 
 /*
