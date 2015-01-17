@@ -54,7 +54,8 @@ function playbox_admin_permission() {
  * Implements hook_form_FORM_ID_alter()
  */
 function playbox_admin_form_playbox_admin_form_alter(&$form, &$form_state, $form_id) {
-  $form['playbox_admin_color']['#empty_option'] = t('Choose a color');
+  $form['playbox_global_settings']['playbox_admin_president']['#attributes']['class'][] = 'form-control';
+  $form['playbox_global_settings']['playbox_admin_boss']['#attributes']['class'][] = 'form-control';
 }
 
 /*
