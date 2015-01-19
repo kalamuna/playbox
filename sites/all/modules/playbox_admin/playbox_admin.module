@@ -119,6 +119,12 @@ function playbox_admin_form($form, &$form_state) {
     '#options' => _playbox_admin_get_colors(),
     '#empty_option' => 'Select a color',
     '#default_value' => variable_get('playbox_admin_color'),
+    '#states' => array(
+      // Hide the color select when disco mode is checked.
+      'disabled' => array(
+        ':input[name="playbox_admin_disco"]' => array('checked' => TRUE),
+        ),
+      ),
   );
 
   $form['playbox_admin_disco'] = array(
