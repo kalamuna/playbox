@@ -11,24 +11,8 @@
 function playbox_admin_init() {
   // Load CSS
   $playbox_admin_color = variable_get('playbox_admin_color');
-  if(isset($playbox_admin_color) && $playbox_admin_color === 0) {
-    drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/crimson.css');
-  } elseif(isset($playbox_admin_color) && $playbox_admin_color == 1) {
-    drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/tangerine.css');
-  } elseif(isset($playbox_admin_color) && $playbox_admin_color == 2) {
-    drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/ochre.css');
-  } elseif(isset($playbox_admin_color) && $playbox_admin_color == 3) {
-    drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/chartreuse.css');
-  } elseif(isset($playbox_admin_color) && $playbox_admin_color == 4) {
-    drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/cerulean.css');
-  } elseif(isset($playbox_admin_color) && $playbox_admin_color == 5) {
-    drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/lavender.css');
-  } elseif(isset($playbox_admin_color) && $playbox_admin_color == 6) {
-    drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/onyx.css');
-  } elseif(isset($playbox_admin_color) && $playbox_admin_color == 7) {
-    drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/eggshell.css');
-  } else {
-    drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/cerulean.css');
+  if (isset($playbox_admin_color)) {
+    drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/' . $playbox_admin_color . '.css');
   }
 }
 
@@ -81,14 +65,14 @@ function playbox_admin_form_playbox_admin_form_alter(&$form, &$form_state, $form
  */
 function _playbox_admin_get_colors() {
   return array (
-    'crimson',
-    'tangerine',
-    'ochre',
-    'chartreuse',
-    'cerulean',
-    'lavender',
-    'onyx',
-    'eggshell',
+    'crimson' => 'crimson',
+    'tangerine' => 'tangerine',
+    'ochre' => 'ochre',
+    'chartreuse' => 'chartreuse',
+    'cerulean' => 'cerulean',
+    'lavender' => 'lavender',
+    'onyx' => 'onyx',
+    'eggshell' => 'eggshell',
   );
 }
 
