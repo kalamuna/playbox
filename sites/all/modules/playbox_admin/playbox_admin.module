@@ -11,9 +11,18 @@
 function playbox_admin_init() {
   // Load CSS
   $playbox_admin_color = variable_get('playbox_admin_color');
+  // ternary operator syntax
+  $css_file = (isset($playbox_admin_color)) ? $playbox_admin_color : 'cerulean';
+  // in regular ole if/then/else
+  /*
   if (isset($playbox_admin_color)) {
-    drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/' . $playbox_admin_color . '.css');
+    $css_file = $playbox_admin_color;
   }
+  else {
+    $css_file = 'cerulean';
+  }
+  */
+  drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/' . $css_file . '.css');
 }
 
 /*
