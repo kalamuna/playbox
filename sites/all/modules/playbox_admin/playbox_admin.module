@@ -11,6 +11,7 @@
 function playbox_admin_init() {
   // Load CSS
   $playbox_admin_color = variable_get('playbox_admin_color');
+  $disco_mode_color = array();
   // ternary operator syntax
   $css_file = (isset($playbox_admin_color)) ? $playbox_admin_color : 'cerulean';
   // in regular ole if/then/else
@@ -22,6 +23,13 @@ function playbox_admin_init() {
     $css_file = 'cerulean';
   }
   */
+  if(isset($playbox_admin_disco)) {
+    foreach ($playbox_admin_color as $key=>$value) {
+      $key = $value;
+    }
+    $disco_mode_color[] = $key;
+    $css_file = array_rand($disco_mode_color, 7);
+  }
   drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/' . $css_file . '.css');
 }
 
@@ -123,8 +131,8 @@ function playbox_admin_form($form, &$form_state) {
       // Hide the color select when disco mode is checked.
       'disabled' => array(
         ':input[name="playbox_admin_disco"]' => array('checked' => TRUE),
-        ),
       ),
+    ),
   );
 
   $form['playbox_admin_disco'] = array(
