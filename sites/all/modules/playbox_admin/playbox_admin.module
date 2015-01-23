@@ -11,7 +11,8 @@
 function playbox_admin_init() {
   // Load CSS
   $playbox_admin_color = variable_get('playbox_admin_color');
-  $disco_mode_color = array();
+  $playbox_admin_disco = variable_get('playbox_admin_disco');
+  $colors = _playbox_admin_get_colors();
   // ternary operator syntax
   $css_file = (isset($playbox_admin_color)) ? $playbox_admin_color : 'cerulean';
   // in regular ole if/then/else
@@ -23,12 +24,8 @@ function playbox_admin_init() {
     $css_file = 'cerulean';
   }
   */
-  if(isset($playbox_admin_disco)) {
-    foreach ($playbox_admin_color as $key=>$value) {
-      $key = $value;
-    }
-    $disco_mode_color[] = $key;
-    $css_file = array_rand($disco_mode_color, 7);
+  if($playbox_admin_disco == 1){
+    $css_file = array_rand($colors);
   }
   drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/' . $css_file . '.css');
 }
@@ -81,7 +78,7 @@ function playbox_admin_form_playbox_admin_form_alter(&$form, &$form_state, $form
  * Helper function to return our colorz
  */
 function _playbox_admin_get_colors() {
-  return array (
+  $colors = array (
     'crimson' => 'crimson',
     'tangerine' => 'tangerine',
     'ochre' => 'ochre',
@@ -91,6 +88,7 @@ function _playbox_admin_get_colors() {
     'onyx' => 'onyx',
     'eggshell' => 'eggshell',
   );
+  return $colors;
 }
 
 /*
