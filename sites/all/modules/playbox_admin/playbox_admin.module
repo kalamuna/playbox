@@ -129,7 +129,13 @@ function playbox_admin_form($form, &$form_state) {
 
   $form['actions']['submit'] = array(
     '#type' => 'submit',
-    '#value' => t('Submit'),
+    '#value' => t('Save'),
+    '#submit' => array('playbox_admin_submit'),
   );
-  return system_settings_form($form);
+  $form = system_settings_form($form);
+  return $form;
+}
+
+function playbox_admin_submit($form, &$form_state) {
+  cache_clear_all();
 }
