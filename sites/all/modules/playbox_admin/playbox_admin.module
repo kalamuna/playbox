@@ -41,8 +41,13 @@ function playbox_admin_menu() {
 /*
  * Implements hook_views_default_views_alter()
  */
-function playbox_admin_views_default_views_alter(&$views) {
-  $handler =& $views['playbox_presidents']->display['playbox_president_header_1']->handler;
+function playbox_admin_views_pre_view(&$view) {
+  $playbox_fav_president = variable_get('playbox_admin_president');
+  $playbox_admin_president_nid = $playbox_fav_president['entity_id'];
+  if ($view->name == 'playbox_presidents') {
+    /* Filter criterion: Content: Nid */
+    $view->display['playbox_president_header_1']->handler->options['filters']['nid']['value']['value'] = $playbox_admin_president_nid;
+  }
 }
 
 /*
