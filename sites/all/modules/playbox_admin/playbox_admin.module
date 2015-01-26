@@ -82,7 +82,7 @@ function _playbox_admin_get_colors() {
     'crimson' => 'crimson',
     'tangerine' => 'tangerine',
     'ochre' => 'ochre',
-    'chartreuse' => 'chartreuse',
+    'jade' => 'jade',
     'cerulean' => 'cerulean',
     'lavender' => 'lavender',
     'onyx' => 'onyx',
