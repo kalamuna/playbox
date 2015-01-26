@@ -44,9 +44,15 @@ function playbox_admin_menu() {
 function playbox_admin_views_pre_view(&$view) {
   $playbox_fav_president = variable_get('playbox_admin_president');
   $playbox_admin_president_nid = $playbox_fav_president['entity_id'];
+  $playbox_fav_robot = variable_get('playbox_admin_boss');
+  $playbox_admin_boss_nid = $playbox_fav_robot['entity_id'];
   if ($view->name == 'playbox_presidents') {
     /* Filter criterion: Content: Nid */
     $view->display['playbox_president_header_1']->handler->options['filters']['nid']['value']['value'] = $playbox_admin_president_nid;
+  }
+    if ($view->name == 'playbox_robots') {
+    /* Filter criterion: Content: Nid */
+    $view->display['playbox_robot_header_1']->handler->options['filters']['nid']['value']['value'] = $playbox_admin_boss_nid;
   }
 }
 
