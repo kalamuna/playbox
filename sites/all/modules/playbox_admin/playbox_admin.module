@@ -10,7 +10,19 @@
  */
 function playbox_admin_init() {
   // Load CSS
-  drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/colors.css');
+  $playbox_admin_color = variable_get('playbox_admin_color');
+  // ternary operator syntax
+  $css_file = (isset($playbox_admin_color)) ? $playbox_admin_color : 'cerulean';
+  // in regular ole if/then/else
+  /*
+  if (isset($playbox_admin_color)) {
+    $css_file = $playbox_admin_color;
+  }
+  else {
+    $css_file = 'cerulean';
+  }
+  */
+  drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/' . $css_file . '.css');
 }
 
 /*
@@ -80,14 +92,14 @@ function playbox_admin_form_playbox_admin_form_alter(&$form, &$form_state, $form
  */
 function _playbox_admin_get_colors() {
   return array (
-    '#cc0000' => 'crimson',
-    '#ee8000' => 'tangerine',
-    '#ffb90f' => 'ochre',
-    '#b8ff5c' => 'chartreuse',
-    '#38a5db' => 'cerulean',
-    '#d0aaf3' => 'lavender',
-    '#000000' => 'onyx',
-    '#ffffff' => 'eggshell',
+    'crimson' => 'crimson',
+    'tangerine' => 'tangerine',
+    'ochre' => 'ochre',
+    'chartreuse' => 'chartreuse',
+    'cerulean' => 'cerulean',
+    'lavender' => 'lavender',
+    'onyx' => 'onyx',
+    'eggshell' => 'eggshell',
   );
 }
 
