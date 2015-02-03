@@ -67,6 +67,7 @@ function playbox_admin_permission() {
  */
 function playbox_admin_form_playbox_admin_form_alter(&$form, &$form_state, $form_id) {
   $form['playbox_admin_color']['#empty_option'] = t('Choose a color');
+  $form['#submit'][] = 'playbox_admin_submit';
 }
 
 /*
@@ -127,15 +128,12 @@ function playbox_admin_form($form, &$form_state) {
     '#default_value' => variable_get('playbox_admin_disco'),
   );
 
-  $form['actions']['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Save'),
-    '#submit' => array('playbox_admin_submit'),
-  );
   $form = system_settings_form($form);
   return $form;
 }
 
 function playbox_admin_submit($form, &$form_state) {
-  cache_clear_all();
+  if (variable_get('cache', 0)) {
+    drupal_flush_all_caches();
+  }
 }
