@@ -71,6 +71,8 @@ function playbox_admin_permission() {
  * Implements hook_form_FORM_ID_alter()
  */
 function playbox_admin_form_playbox_admin_form_alter(&$form, &$form_state, $form_id) {
+  $form['playbox_admin_color']['#empty_option'] = t('Choose a color');
+  $form['#submit'][] = 'playbox_admin_submit';
   $form['playbox_global_settings']['playbox_admin_president']['#attributes']['class'][] = 'form-control';
   $form['playbox_global_settings']['playbox_admin_boss']['#attributes']['class'][] = 'form-control';
 }
@@ -145,9 +147,12 @@ function playbox_admin_form($form, &$form_state) {
     '#default_value' => variable_get('playbox_admin_disco'),
   );
 
-  $form['actions']['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Submit'),
-  );
-  return system_settings_form($form);
+  $form = system_settings_form($form);
+  return $form;
+}
+
+function playbox_admin_submit($form, &$form_state) {
+  if (variable_get('cache', 0)) {
+    drupal_theme_rebuild();
+  }
 }
