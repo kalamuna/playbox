@@ -11,6 +11,8 @@
 function playbox_admin_init() {
   // Load CSS
   $playbox_admin_color = variable_get('playbox_admin_color');
+  $playbox_admin_disco = variable_get('playbox_admin_disco');
+  $colors = _playbox_admin_get_colors();
   // ternary operator syntax
   $css_file = (isset($playbox_admin_color)) ? $playbox_admin_color : 'cerulean';
   // in regular ole if/then/else
@@ -22,6 +24,9 @@ function playbox_admin_init() {
     $css_file = 'cerulean';
   }
   */
+  if($playbox_admin_disco == 1){
+    $css_file = array_rand($colors);
+  }
   drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/' . $css_file . '.css');
 }
 
@@ -68,29 +73,37 @@ function playbox_admin_permission() {
 function playbox_admin_form_playbox_admin_form_alter(&$form, &$form_state, $form_id) {
   $form['playbox_admin_color']['#empty_option'] = t('Choose a color');
   $form['#submit'][] = 'playbox_admin_submit';
+  $form['playbox_global_settings']['playbox_admin_president']['#attributes']['class'][] = 'form-control';
+  $form['playbox_global_settings']['playbox_admin_boss']['#attributes']['class'][] = 'form-control';
 }
 
 /*
  * Helper function to return our colorz
  */
 function _playbox_admin_get_colors() {
-  return array (
+  $colors = array (
     'crimson' => 'crimson',
     'tangerine' => 'tangerine',
     'ochre' => 'ochre',
-    'chartreuse' => 'chartreuse',
+    'jade' => 'jade',
     'cerulean' => 'cerulean',
     'lavender' => 'lavender',
     'onyx' => 'onyx',
     'eggshell' => 'eggshell',
   );
+  return $colors;
 }
 
 /*
  * Playbox admin form definition
  */
 function playbox_admin_form($form, &$form_state) {
-  $form['playbox_admin_president'] = array(
+  $form['playbox_global_settings'] = array (
+    '#type' => 'fieldset',
+    '#title' => 'Change Playbox Settings',
+    );
+
+  $form['playbox_global_settings']['playbox_admin_president'] = array(
     '#type' => 'entityreference',
     '#title' => t('Who is your favorite president?'),
     '#era_entity_type' => 'node',
@@ -102,7 +115,7 @@ function playbox_admin_form($form, &$form_state) {
     '#default_value' => variable_get('playbox_admin_president')
   );
 
-  $form['playbox_admin_boss'] = array(
+  $form['playbox_global_settings']['playbox_admin_boss'] = array(
     '#type' => 'entityreference',
     '#title' => t('Who is your favorite boss?'),
     '#era_entity_type' => 'node',
@@ -114,15 +127,21 @@ function playbox_admin_form($form, &$form_state) {
     '#default_value' => variable_get('playbox_admin_boss'),
   );
 
-  $form['playbox_admin_color'] = array(
+  $form['playbox_global_settings']['playbox_admin_color'] = array(
     '#type' => 'select',
     '#title' => t('What is your favorite color?'),
     '#options' => _playbox_admin_get_colors(),
     '#empty_option' => 'Select a color',
     '#default_value' => variable_get('playbox_admin_color'),
+    '#states' => array(
+      // Hide the color select when disco mode is checked.
+      'disabled' => array(
+        ':input[name="playbox_admin_disco"]' => array('checked' => TRUE),
+      ),
+    ),
   );
 
-  $form['playbox_admin_disco'] = array(
+  $form['playbox_global_settings']['playbox_admin_disco'] = array(
     '#type' => 'checkbox',
     '#title' => t('Put site into Disco Mode?'),
     '#default_value' => variable_get('playbox_admin_disco'),
