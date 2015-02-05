@@ -6815,3 +6815,7 @@ input[type="color"]:focus,
 .affix {
   position: fixed;
 }
+
+form#user-login {
+  padding-top: 150px;
+}
