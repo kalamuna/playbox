@@ -23,6 +23,10 @@ features[field_instance][] = node-panopoly_test_page-body
 features[field_instance][] = node-panopoly_test_page-field_featured_image
 features[node][] = panopoly_test_page
 features[panelizer_defaults][] = node:panopoly_test_page:default
+features[user_permission][] = create panopoly_test_page content
+features[user_permission][] = delete any panopoly_test_page content
+features[user_permission][] = delete own panopoly_test_page content
+features[user_permission][] = edit any panopoly_test_page content
 features[variable][] = field_bundle_settings_node__panopoly_test_page
 features[variable][] = menu_options_panopoly_test_page
 features[variable][] = menu_parent_panopoly_test_page
@@ -35,9 +39,10 @@ features_exclude[dependencies][panelizer] = panelizer
 features_exclude[dependencies][panopoly_pages] = panopoly_pages
 hidden = 1
 
-; Information added by Drupal.org packaging script on 2014-10-17
-version = "7.x-1.13"
+
+; Information added by drush on 2015-01-13
+version = "7.x-1.14+2-dev"
 core = "7.x"
 project = "panopoly_test"
-datestamp = "1413563620"
+datestamp = "1421107385"
 
