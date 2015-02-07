@@ -1,3 +1,15 @@
+Panopoly Test 7.x-1.14, 2014-11-19
+---------------------------
+- Write Behat tests to ensure search works after install and provides facets.
+- Write Behat tests to verify that submission guidelines appear on node edit form.
+- Panopoly_test shouldn't put "use text format panopoly_(html|wysiwyg)_text" in user_permission.
+- Have Panopoly Theme depend on Radix Layouts (rather than providing it's own).
+- Write Behat tests for pathauto for 'editor' role.
+- Revert "Issue #2334055 by jessehs | dsnopek: Write Behat tests to verify that submission guidelines appear on node edit form.".
+- Write Behat tests to ensure search works after install and provides facets.
+- Write Behat tests to verify that submission guidelines appear on node edit form.
+- Use 'imports' in behat.yml files to share common configuration.
+
 Panopoly Test 7.x-1.13, 2014-10-17
 ---------------------------
 - No changes since last release.

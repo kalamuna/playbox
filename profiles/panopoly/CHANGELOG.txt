@@ -1,3 +1,43 @@
+Panopoly 7.x-1.15, 2015-01-12
+----------------------
+- Update to CTools 1.5
+- Use structured markup for search results
+- Spotlight: Allow hiding of pager, replace with previous/next controls
+- Spotlight should allow an empty title field
+- Updated LinkIt module to 3.3 version
+
+Panopoly 7.x-1.14, 2014-11-19
+----------------------
+- Update Panopoly Core for Issue #2374727 by hefox: update to apps beta20.
+- Update to Drupal 7.34 for SA-CORE-2014-006.
+- Update Panopoly Theme for Issue #2378487 by dsnopek: Update all Panels in the database to use Radix Layouts.
+- Update Panopoly Search for #2144779 by dsnopek: Update automatic configuration of SOLR on Pantheon.
+- Update Panopoly Test for Issue #2329387 by cboyden, jessehs: Write Behat tests to ensure search works after install and provides facets.
+- Update Panopoly Test for #2334055 by jessehs: Write Behat tests to verify that submission guidelines appear on node edit form.
+- Update Panopoly Test for #2377713 by dsnopek: panopoly_test shouldn't put "use text format panopoly_(html|wysiwyg)_text" in user_permission.
+- Update Panopoly Core, Theme, Magic, Admin, Users, Pages, Search, Test for #2191069 by dsnopek, arshadcn, caschbre, klu: Have Panopoly Theme depend on Radix Layouts (rather than providing it's own).
+- Update Panopoly Widgets for #2374715 by dsnopek: Fixed "Content Type" filter on the "Add content item" widget is broken.
+- Update Panopoly Core for #2374697 by dsnopek: Fixed views_autocomplete_filters 'dependent' feature doesn't work in Pane settings.
+- Update Panopoly Core for #2374121 by mpotter: Fixed Patch needed to Views Bulk Operations (VBO).
+- Update to Drupal 7.33.
+- Update Panopoly Widgets for #2369627 by dsnopek: Update 'link' module to version 1.3 (fix overridden Features).
+- Update Panopoly Core for #2369629 by dsnopek: Update distro_update to version 1.0-beta4.
+- Update Panopoly Core for #2369627 by dsnopek: Update 'link' module to version 1.3.
+- Update Panopoly Theme for #2369609 by dsnopek: Update responsive_bartik to version 1.0.
+- Update Panopoly Widgets for #2163985 by lsolesen: Added Too narrow Spotlight headline area.
+- Update Panopoly Test for #2334143 by jessehs | dsnopek: Write Behat tests for pathauto for 'editor' role.
+- Update Panopoly Search for #2150047 by jessehs, lsolesen: Fixed Empty search should yield message "Enter your keywords".
+- Update Panopoly Test for #2334055 by jessehs | dsnopek: Write Behat tests to verify that submission guidelines appear on node edit form.
+- Start testing upgrades from the 1.13 release.
+- Update Panopoly Theme for #2370539 by arshadcn: Fixed Hide hidden themes from Panopoly theme selection.
+- Update Panopoly Magic for #2171809 by mpotter | ergophobe: Added Can't turn off previews on Panels Add Content modal.
+- Update Panopoly Core for #2369967 by mpotter | dsnopek: Consider CTools modal resize patch (#2055785) for inclusion in Panopoly?.
+- Update Panopoly Test for #2370527 by cboyden: Use 'imports' in behat.yml files to share common configuration.
+- Update Panopoly Core for #2361927 by hefox | lsolesen: Fixed Strict warning: Only variables should be passed by reference in apps_retrieve_app_image().
+- Update Panopoly Admin for #2317411 by mglaman: Added Restore automatic menu title generation from menu.js.
+- Update Panopoly WYSIWYG for #2058917 by dsnopek, scottalan | kmonty: Fixed Kitchen Sink WYSIWYG plug-in breaks non-panopoly_wysiwyg input format editors (using CKEditor).
+- Restored drupal-org.make after the 1.13 release.
+
 Panopoly 7.x-1.13, 2014-10-17
 ----------------------
 - Fixed panopoly_update_7102() breaks if 'help' block is already placed in a region.
