@@ -34,7 +34,15 @@ function panopoly_test_node_info() {
       'description' => t('Used for the automated tests.'),
       'has_title' => '1',
       'title_label' => t('Title'),
-      'help' => 'This message appears in the system help region when you create a node.',
+      'help' => t('This message appears in the system help region when you create a node.'),
+    ),
+    'panopoly_test_page_simple' => array(
+      'name' => t('Test Page (without Panelizer)'),
+      'base' => 'node_content',
+      'description' => t('Used for the automated tests. Unlike "Test Page", this content type doesn\'t use Panelizer.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
     ),
   );
   drupal_alter('node_info', $items);

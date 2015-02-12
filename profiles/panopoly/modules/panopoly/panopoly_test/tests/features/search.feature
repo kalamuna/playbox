@@ -3,17 +3,16 @@ Feature: Search
   As an anonymous user
   I should be able to find content using the site search
 
-  Background:
-    Given I am on the homepage
-
   @panopoly_search
   Scenario: Trying an empty search should yield a message
+    Given I am on the homepage
     When I press "Search" in the "Search" region
     Then I should see "Search Results"
       And I should see "Enter your keywords"
 
   @panopoly_search
   Scenario: Trying a search with no results
+    Given I am on the homepage
     When I fill in "TkyXNk9NG2U7FjqtMvNvHXpv2xnfVv7Q" for "Enter your keywords" in the "Search" region
       And I press "Search" in the "Search" region
     Then I should see "Search Results"
@@ -22,7 +21,8 @@ Feature: Search
 
   @api @panopoly_search
   Scenario: Performing a search with results
-    Given "panopoly_test_page" nodes:
+    Given I am on the homepage
+    And "panopoly_test_page" nodes:
       | title           | body        | created            | status |
       | fxabR86L Page 1 | Test page 1 | 01/01/2001 11:00am |      1 |
       | fxabR86L Page 2 | Test page 2 | 01/02/2001 11:00am |      1 |
@@ -34,3 +34,28 @@ Feature: Search
       And I should see "2 items matched fxabR86L"
       And I should see "Filter by Type"
       And I should not see "X9A1YXwc"
+
+  @api @javascript @panopoly_search
+  Scenario: Search for content in widgets (not in the body)
+    Given I am logged in as a user with the "administrator" role
+      And Panopoly magic live previews are disabled
+      And I am viewing a "panopoly_test_page" node with the title "Abracadabra"
+    # Put a text widget on our test node.
+    When I customize this page with the Panels IPE
+      And I click "Add new pane"
+      And I click "Add text" in the "CTools modal" region
+      And I fill in the following:
+        | Title   | Text widget title |
+        | Editor  | plain_text        |
+        | Text    | Undominable       |
+      And I press "Save" in the "CTools modal" region
+      And I press "Save as custom"
+      And I wait for the Panels IPE to deactivate
+    # Now, return to the home page and search for it.
+    Given I am an anonymous user
+      And I am on the homepage
+    When I fill in "undominable" for "Enter your keywords" in the "Search" region
+      And I press "Search" in the "Search" region
+    Then I should see "Search Results"
+      And I should see "1 item matched undominable"
+      And I should see "Abracadabra"

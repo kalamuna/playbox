@@ -13,8 +13,8 @@ Feature: Add a file to a page
     Then I should see "Configure new Add file"
 
   @api @javascript @panopoly_widgets
-  Scenario: Add a spotlight
-    Then I should see "Allowed file types: pdf txt."
+  Scenario: Add a file
+    Then I should see "Allowed file types: txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp."
     When I fill in the following:
       | Title | Testing file title |
       | Editor              | plain_text    |

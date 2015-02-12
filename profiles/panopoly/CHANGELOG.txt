@@ -1,3 +1,39 @@
+Panopoly 7.x-1.16, 2015-02-12
+----------------------
+- Updated Panopoly Core for Issue #2424627: Update Views to version 3.10 for SA-CONTRIB-2015-039.
+- Update Panopoly Theme for Issue #2418885 by lsolesen: Makefile downloads master of respondjs library instead of tag/hash.
+- Update Panopoly Widgets and Test for Issue #2424327 by dsnopek: Overriding title in "Content Item" widget doesn't work for "Featured" view mode of Content Pages.
+- Updated Panopoly Widgets and Test for Issue #2334439 by dsnopek: Switch "Content Item" widget to use some kind of entity reference field rather than title with autocomplete filter.
+- Update Panopoly Pages for Issue #2191069 by dsnopek, arshadcn, caschbre, klu: Have Panopoly Theme depend on Radix Layouts - forget some layout changes.
+- Update Panopoly Core, Search, Test for Issue #2416525 by dsnopek: Allow users to search for content added to a node via Panelizer.
+- Updated Panopoly Widgets and Test for Issue #2421569 by dsnopek: Allow the title of "Content item" widgets to be overridden.
+- Updated Panopoly Widgets for Issue #2421593 by dsnopek: Remove empty ("no results") message from "Content list" and "Content item" widgets.
+- Update Panopoly Widgets for Issue #2395719 by cboyden, dsnopek: Add option to support sorting by updated date to Content List.
+- Update Panopoly Core for Issue #2418769: Notice: Undefined variable: id in ctools_argument_entity_id_context() (line 73 of /prj/ctools/plugins/arguments/entity_id.inc).
+- Update Panopoly Core for Issue #2416775 by ivanjaros: Warning: Illegal offset type in views_add_contextual_links() (line 816 of ~/prj/panopoly/panopoly/modules/contrib/views/views.module).
+- Update Panopoly Widgets for Issue #2417293: Submenu widget broken - Fatal error:  Call to undefined function menu_block_configure_form_follow_validate() - take 2!.
+- Update Panopoly Test for Issue #2149171 by dsnopek, lsolesen: Write Behat tests for Panopoly "submenu" widget.
+- Update Panopoly Widgets for Issue #2417293: Submenu widget broken - Fatal error:  Call to undefined function menu_block_configure_form_follow_validate().
+- Update Panopoly Magic for Issue #2416781 by dsnopek, ivanjaros: Stray select box when configuring Views widgets.
+- Update Panopoly WYSIWYG for Issue #2403539 by fastangel: Makefile downloads master of markitup library instead of tag/hash.
+- Update Panopoly Search for Issue #2080893 by dsnopek: Update Search API modules.
+- Update Panopoly Core for Issue #2416035 by ivanjaros: Update to Panels 3.5 and Ctools 1.6.
+- Include Drupal core patch to fix issues with ImageCache Actions.
+- Update Panopoly Test for Issue #2373495 by cboyden: Write Behat test for Media Web tab; move to new feature.
+- Update Panopoly Test for Issue #2268647 by cboyden, dsnopek: File upload tests do not clean up after themselves.
+- Update Panopoly Core for Issue #2312827: Widget 'title' isn't shown admin pages for Fieldable Panel Panes.
+- Revert "Update Panopoly Test for Issue #2268647 by cboyden, dsnopek: File upload tests do not clean up after themselves".
+- Update Panopoly Test for Issue #2276089 by dsnopek, maustyle: Allow configuring file types for "File" widget without overriding the Feature.
+- Update Panopoly WYSIWYG for Issue #2411920: @ rule for wysiwyg_filter needs to come first, rather than last.
+- Update Panopoly Widgets for Issue #2411755 by mcrittenden: Spotlight Pause/Pause/Prev/Next buttons stop working after opening or saving Panels IPE.
+- Updated Panopoly Widgets for Issue #2276089 by dsnopek, maustyle: Allow configuring file types for "File" widget without overriding the Feature.
+- Revert "Update Panopoly Core for Issue #2312827 by dsnopek: Widget 'title' isn't shown admin pages for Fieldable Panel Panes".
+- Update Panopoly Core for Issue #2312827 by dsnopek: Widget 'title' isn't shown admin pages for Fieldable Panel Panes.
+- Update Panopoly Magic for Issue #2410921 by Chewie, dsnopek: Avoid overwriting title of IPE buton.
+- Restored drupal-org.make after the 1.15 release.
+- Update Panopoly Widgets for Issue #2398801 by cornifex: Map widget pane-content should hide overflow as opposed to entire pane.
+- Update Panopoly Core for Issue #2402199 by hefox: Update to features 2.3.
+
 Panopoly 7.x-1.15, 2015-01-12
 ----------------------
 - Update to CTools 1.5

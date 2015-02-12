@@ -116,10 +116,9 @@ features[file_display][] = video__teaser__media_youtube_image
 features[file_display][] = video__teaser__media_youtube_video
 features[views_view][] = panopoly_widgets_general_content
 
-
-; Information added by drush on 2015-01-13
-version = "7.x-1.14+4-dev"
+; Information added by Drupal.org packaging script on 2015-02-12
+version = "7.x-1.16"
 core = "7.x"
 project = "panopoly_widgets"
-datestamp = "1421107396"
+datestamp = "1423752193"
 

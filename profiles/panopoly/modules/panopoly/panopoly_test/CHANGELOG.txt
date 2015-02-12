@@ -1,3 +1,19 @@
+Panopoly Test 7.x-1.16, 2015-02-12
+---------------------------
+- Overriding title in "Content Item" widget doesn't work for "Featured" view mode of Content Pages.
+- Switch "Content Item" widget to use some kind of entity reference field rather than title with autocomplete filter.
+- Allow users to search for content added to a node via Panelizer.
+- Allow the title of "Content item" widgets to be overridden.
+- Write Behat tests for Panopoly "submenu" widget.
+- Write Behat test for Media Web tab; move to new feature.
+- File upload tests do not clean up after themselves.
+- Revert "Issue #2268647 by cboyden, dsnopek: File upload tests do not clean up after themselves".
+- Allow configuring file types for "File" widget without overriding the Feature.
+
+Panopoly Test 7.x-1.15, 2015-01-12
+---------------------------
+- No changes since last release.
+
 Panopoly Test 7.x-1.14, 2014-11-19
 ---------------------------
 - Write Behat tests to ensure search works after install and provides facets.
