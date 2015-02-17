@@ -1,0 +1,17 @@
+<?php
+/**
+ * @file
+ * Drupal needs this blank file.
+ */
+
+function playbox_users_get_team() {
+  $account = user_load($GLOBALS['user']->uid);
+    // Get team from user entity
+  if ($items = field_get_items('user', $account, 'field_playbox_user_team')) {
+    $playbox_user_team = $items[0];
+  }
+}
+
+function playbox_users_form_user_profile_form_alter(&$form, &$form_state, $form_id){
+  dsm($form);
+}
