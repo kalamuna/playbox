@@ -11,7 +11,3 @@ function playbox_users_get_team() {
     $playbox_user_team = $items[0];
   }
 }
-
-function playbox_users_form_user_profile_form_alter(&$form, &$form_state, $form_id){
-  dsm($form);
-}

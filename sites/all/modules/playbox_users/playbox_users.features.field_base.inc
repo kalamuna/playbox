@@ -38,7 +38,3 @@ function playbox_users_field_default_field_bases() {
 
   return $field_bases;
 }
-
-function playbox_form_user_profile_form_alter(&$form, &$form_id, $form_state){
-  dsm($form);
-}
