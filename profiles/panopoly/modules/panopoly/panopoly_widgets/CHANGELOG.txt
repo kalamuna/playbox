@@ -1,3 +1,8 @@
+Panopoly Widgets 7.x-1.17, 2015-02-18
+------------------------------
+- Revert "Issue #2424709 by joegraduate: Update 'menu_block' module to 2.5".
+- Update 'menu_block' module to 2.5.
+
 Panopoly Widgets 7.x-1.16, 2015-02-12
 ------------------------------
 - Overriding title in "Content Item" widget doesn't work for "Featured" view mode of Content Pages.

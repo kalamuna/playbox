@@ -1,3 +1,7 @@
+Panopoly Search 7.x-1.17, 2015-02-18
+-----------------------------
+- Search API exceptions during install.
+
 Panopoly Search 7.x-1.16, 2015-02-12
 -----------------------------
 - Allow users to search for content added to a node via Panelizer.

@@ -1,3 +1,7 @@
+Panopoly Theme 7.x-1.17, 2015-02-18
+----------------------------
+- No changes since last release.
+
 Panopoly Theme 7.x-1.16, 2015-02-12
 ----------------------------
 - Makefile downloads master of respondjs library instead of tag/hash.

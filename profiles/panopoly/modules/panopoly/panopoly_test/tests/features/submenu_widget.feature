@@ -12,7 +12,6 @@ Feature: Add submenu widget
         | Title               | Parent page    |
         | Editor              | plain_text     |
         | body[und][0][value] | Testing body   |
-        | path[alias]         | submenu-parent |
       And I check the box "menu[enabled]"
       And I fill in "Rodzic" for "menu[link_title]"
       And I select "<Main menu>" from "menu[parent]"
@@ -25,7 +24,6 @@ Feature: Add submenu widget
         | Title               | Child page    |
         | Editor              | plain_text    |
         | body[und][0][value] | Testing body  |
-        | path[alias]         | submenu-child |
       And I check the box "menu[enabled]"
       And I fill in "Dziecko" for "menu[link_title]"
       And I select "-- Rodzic" from "menu[parent]"

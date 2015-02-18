@@ -332,7 +332,7 @@ function panopoly_search_default_search_api_server() {
           "search_api_panelizer_title" : {
             "table" : "search_api_db_database_node_index_text",
             "type" : "text",
-            "boost" : "1.0"
+            "boost" : "8.0"
           }
         }
       }
