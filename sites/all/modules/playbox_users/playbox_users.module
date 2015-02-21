@@ -4,10 +4,11 @@
  * Drupal needs this blank file.
  */
 
-function playbox_users_get_team() {
-  $account = user_load($GLOBALS['user']->uid);
-    // Get team from user entity
-  if ($items = field_get_items('user', $account, 'field_playbox_user_team')) {
-    $playbox_user_team = $items[0];
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function playbox_users_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools' && $plugin_type == 'content_types') {
+    return 'plugins/' . $plugin_type;
   }
 }
