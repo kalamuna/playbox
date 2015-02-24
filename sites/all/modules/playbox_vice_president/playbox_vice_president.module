@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Playbox Vice President feature.
+ */
+
+include_once 'playbox_vice_president.features.inc';
