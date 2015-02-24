@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * NTAS Supported Alert levels: http://www.dhs.gov/ntas-api-documentation
+ * @see "The new NTAS system supports only two states"
+ */
+function playbox_ntas_threat_level_is_elevated() {
+  $threat_cid = 'playbox_ntas_threat_level';
+  $cache = cache_get($threat_cid);
+  if (empty($cache->data->level)) {
+    $uri = 'http://www.dhs.gov/ntas/1.0/alerts.xml';
+    //$uri = 'http://www.dhs.gov/ntas/1.0/sample-feed.xml';
+    $response = drupal_http_request($uri);
+    if (empty($response->error)) {
+      $xml = new SimpleXMLElement($response->data);
+      $alert = $xml->xpath('//alert');
+      // As per NTAS documentation alert is either "high/critical" or none.
+      // Thus we don't care what the actual alert is, as long as there's any at all.
+      $status = (object) array(
+        'level' => 'none',
+      );
+
+      if (count($alert)) {
+        $alert->level = 'high';
+      }
+
+      // Lets be nice and avoid hitting NTAS api frequently.
+      $ntas_cache_lifespan = (int) variable_get('ntas_cache_lifespan', 60*60);
+      cache_set($threat_cid, $status, "cache", $ntas_cache_lifespan);
+      $cache = cache_get($threat_cid);
+    }
+  }
+
+  return !empty($cache->data->level) && $cache->data->level == 'high';
+}
