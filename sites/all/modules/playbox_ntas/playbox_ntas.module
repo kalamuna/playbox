@@ -33,3 +33,40 @@ function playbox_ntas_threat_level_is_elevated() {
 
   return !empty($cache->data->level) && $cache->data->level == 'high';
 }
+
+function playbox_ntas_views_post_execute(&$view) {
+  if ('playbox_battles' == $view->name && 'playbox_battles_featured_1' == $view->current_display) {
+    $threat_level_is_elevated = playbox_ntas_threat_level_is_elevated() || true;
+    if ($threat_level_is_elevated) {
+      // Find values to copy from VP to president when threat is high.
+      // i.e. "swap pres for VP"
+      $copy_map = array();
+      foreach ($view->field as $key => $field) {
+        if (in_array($field->relationship, array('node_field_data_field_playbox_president'))) {
+          $copy_map['president'][$field->field_info['field_name']] = $field->options['id'];
+        }
+        elseif (in_array($field->relationship, array('node_field_data_field_second_in_command'))) {
+          $copy_map['vp'][$field->field_info['field_name']] = $field->options['id'];
+        }
+      }
+
+      // Swap VP for pres.
+      if (!empty($copy_map['vp'])) {
+        foreach ($copy_map['vp'] as $key => $field_alias) {
+          // Only attempt override when both president and VP have the same field.
+          if (!empty($copy_map['president'][$key])) {
+            $pres_key = 'field_' . $copy_map['president'][$key];
+            $vp_key = 'field_' . $field_alias;
+            foreach (array_keys($view->result) as $index) {
+              if (!empty($view->result[$index]->{$vp_key})) {
+              $view->result[$index]->{$pres_key} = $view->result[$index]->{$vp_key};
+              }
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+}
