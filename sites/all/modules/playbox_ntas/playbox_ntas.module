@@ -36,7 +36,7 @@ function playbox_ntas_threat_level_is_elevated() {
 
 function playbox_ntas_views_post_execute(&$view) {
   if ('playbox_battles' == $view->name && 'playbox_battles_featured_1' == $view->current_display) {
-    $threat_level_is_elevated = playbox_ntas_threat_level_is_elevated() || true;
+    $threat_level_is_elevated = playbox_ntas_threat_level_is_elevated();
     if ($threat_level_is_elevated) {
       // Find values to copy from VP to president when threat is high.
       // i.e. "swap pres for VP"
