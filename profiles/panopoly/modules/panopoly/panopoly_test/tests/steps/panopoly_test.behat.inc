@@ -538,4 +538,36 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
       throw new \Exception('General exception from '.__FUNCTION__);
     }
   }
+
+  /**
+   * @Then /^I should see the radio button "(?P<label>[^"]*)" with the id "(?P<id>[^"]*)"$/
+   * @Then /^I should see the radio button "(?P<label>[^"]*)"$/
+   */
+  public function assertSeeRadioById($label, $id = FALSE) {
+    $element = $this->getSession()->getPage();
+    $radiobutton = $id ? $element->findById($id) : $element->find('named', array('radio', $this->getSession()->getSelectorsHandler()->xpathLiteral($label)));
+    if ($radiobutton === NULL) {
+      throw new \Exception(sprintf('The radio button with "%s" was not found on the page %s', $id ? $id : $label, $this->getSession()->getCurrentUrl()));
+    }
+    if ($id) {
+      $value = $radiobutton->getAttribute('value');
+      $labelonpage = $radiobutton->getParent()->getText();
+      if ($label != $labelonpage) {
+        throw new \Exception(sprintf("Button with id '%s' has label '%s' instead of '%s' on the page %s", $id, $labelonpage, $label, $this->getSession()->getCurrentUrl()));
+      }
+    }
+  }
+
+  /**
+   * @Then /^I should not see the radio button "(?P<label>[^"]*)" with the id "(?P<id>[^"]*)"$/
+   * @Then /^I should not see the radio button "(?P<label>[^"]*)"$/
+   */
+  public function assertNotSeeRadioById($label, $id = FALSE) {
+    $element = $this->getSession()->getPage();
+    $radiobutton = $id ? $element->findById($id) : $element->find('named', array('radio', $this->getSession()->getSelectorsHandler()->xpathLiteral($label)));
+    if ($radiobutton !== NULL) {
+      throw new \Exception(sprintf('The radio button with "%s" was found on the page %s', $id ? $id : $label, $this->getSession()->getCurrentUrl()));
+    }
+  }
+
 }

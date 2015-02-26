@@ -1,3 +1,22 @@
+Panopoly 7.x-1.18, 2015-02-26
+----------------------
+- Update Panopoly Search for Issue #2436351 by hefox: Patch search_api_db to be a bit less brittle.
+- Update Panopoly Search for Issue #2164187 by dsnopek: Upgrade from 1.0-rc4 fails: Table 'cache_search_api_solr' doesn't exist.
+- Update Panopoly Core for Issue #2438281 by dsnopek: Update to Entity API 1.6 for SA-CONTRIB-2015-053.
+- Write a script to submit issue patches to Travis-CI.
+- Enable APC on Travis-CI.
+- Travis-CI not failing on 'drush updb' errors!.
+- Update Panopoly Magic for Issue #2426241 by adamsro: Upgrade causes fieldable panels panes Titles to appear twice.
+- Update Panopoly Magic and Test for Issue #2430889 by dsnopek: Hide 'preview' and 'diff_standard' view modes when adding FPPs.
+- Update Panopoly Magic and Test for Issue #2170695 by dsnopek, whastings, mglaman: Make view modes removed from pane configuration a setting.
+- Test allowing Apps to pull in the panopoly_demo module when running via Drush.
+- Update Panopoly Core for Issue #2430921: Failing to download 'panopoly_demo' when installing via 'drush si': "Downloading updates failed:Failed to download from ".
+- Update Panopoly Search for Issue #2425577 by adamsro: WD search_api: SearchApiException: Unknown or invalid item type node on update.
+- Update Panopoly Core for Issue #2412317 by artem.kolotilkin: Update to Migrate 2.7.
+- Update Panopoly Image for Issue #2422163 by ergophobe: Panopoly CSS causes issues with WYSIWYG image because of image style class names.
+- Start testing upgrades from the 1.17 release.
+- Restored drupal-org.make after the 1.17 release.
+
 Panopoly 7.x-1.17, 2015-02-18
 ----------------------
 - Update Panopoly Images for Issue #2181263 by ivanjaros: HP Fatal error:  [] operator not supported for strings in panopoly_images/panopoly_images.module on line 90.
