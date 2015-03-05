@@ -193,5 +193,3 @@ While knowledge of the below is not required and we encourage you to contribute 
 ## Kalamuna
 
 This project was sponsored by Kalamuna.com as a way to teach, train and assess aptitude in all the things.
-
-!!!
