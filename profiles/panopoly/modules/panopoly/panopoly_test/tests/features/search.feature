@@ -59,3 +59,14 @@ Feature: Search
     Then I should see "Search Results"
       And I should see "1 item matched undominable"
       And I should see "Abracadabra"
+
+  @api @panopoly_search @dblog
+  Scenario: Search queries are logged in the 'Top search phrases' report
+    Given I am logged in as a user with the "administrator" role
+      And I am on the homepage
+      And the dblog is empty
+    When I fill in "wzbb5bDcKu" for "Enter your keywords" in the "Search" region
+      And I press "Search" in the "Search" region
+    When I visit "/admin/reports/search"
+    Then I should see "Top search phrases"
+      And I should see "Searched Content for wzbb5bDcKu"

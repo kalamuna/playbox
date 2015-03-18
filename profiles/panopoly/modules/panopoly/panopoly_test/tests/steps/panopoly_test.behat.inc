@@ -30,7 +30,6 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
   }
 
   protected $menu_rebuilt = FALSE;
-  protected $landing_pages = array();
   protected $private_path_overridden = FALSE;
 
   /**
@@ -41,14 +40,14 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
   }
 
   /**
-   * @Given /^I switch to the frame "([^"]*)"$/
+   * @When /^I switch to the frame "([^"]*)"$/
    */
   public function iSwitchToTheFrame($frame) {
     $this->getSession()->switchToIFrame($frame);
   }
 
   /**
-   * @Given /^I switch out of all frames$/
+   * @When /^I switch out of all frames$/
    */
   public function iSwitchOutOfAllFrames() {
     $this->getSession()->switchToIFrame();
@@ -240,6 +239,52 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
   }
 
   /**
+   * @Then /^I should see an image in the "([^"]*)" region$/
+   *
+   * Attempts to determine if the image is broken or not.
+   */
+  public function assertValidImageRegion($region) {
+    $regionObj = $this->getMainContext()->getRegion($region);
+    $elements = $regionObj->findAll('css', 'img');
+    if (empty($elements)) {
+      throw new \Exception(sprintf('No image was not found in the "%s" region on the page %s', $region, $this->getSession()->getCurrentUrl()));
+    }
+
+    if ($src = $elements[0]->getAttribute('src')) {
+      $params = array('http' => array('method' => 'HEAD'));
+      $context = stream_context_create($params);
+      $fp = @fopen($src, 'rb', FALSE, $context);
+      if (!$fp) {
+        throw new \Exception(sprintf('Unable to download <img src="%s"> in the "%s" region on the page %s', $src, $region, $this->getSession()->getCurrentUrl()));
+      }
+
+      $meta = stream_get_meta_data($fp);
+      fclose($fp);
+      if ($meta === FALSE) {
+        throw new \Exception(sprintf('Error reading from <img src="%s"> in the "%s" region on the page %s', $src, $region, $this->getSession()->getCurrentUrl()));
+      }
+
+      $wrapper_data = $meta['wrapper_data'];
+      $found = FALSE;
+      if (is_array($wrapper_data)) {
+        foreach ($wrapper_data as $header) {
+          if (substr(strtolower($header), 0, 19) == 'content-type: image') {
+            $found = TRUE;
+          }
+        }
+      }
+
+      if (!$found) {
+        throw new \Exception(sprintf('Not a valid image <img src="%s"> in the "%s" region on the page %s', $src, $region, $this->getSession()->getCurrentUrl()));
+      }
+    }
+    else {
+      throw new \Exception(sprintf('No image had no src="..." attribute in the "%s" region on the page %s', $region, $this->getSession()->getCurrentUrl()));
+    }
+  }
+
+
+  /**
    * @Then /^I should see the image alt "(?P<alt>(?:[^"]|\\")*)" in the "(?P<region>[^"]*)"(?:| region)$/
    */
   public function assertAltRegion($alt, $region) {
@@ -252,31 +297,6 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
     }
     if (empty($result)) {
       throw new \Exception(sprintf('No alt text matching "%s" in the "%s" region on the page %s', $alt, $region, $this->getSession()->getCurrentUrl()));
-    }
-  }
-
-  /**
-   * @BeforeScenario @api
-   *
-   * Bootstrap Drupal so that all Drupal API functions work.
-   */
-  public function drupalMenuRebuild($event) {
-    if (!$this->menu_rebuilt) {
-      $drupal = $this->getMainContext()->getDriver('drupal');
-
-      // Drupal is having a cache or registry issue that is causing tests to
-      // fail (certain CTools plugin functions won't exist.) Menu rebuild does
-      // the trick and fixes any fatal errors due to missing functions!
-      $current_path = getcwd();
-      chdir(DRUPAL_ROOT);
-      menu_rebuild();
-      chdir($current_path);
-
-      // We occasionally get errors about not finding the ctools_get_export_ui()
-      // function, so we force it to be loaded. No idea what's causing this.
-      ctools_include('export-ui');
-
-      $this->menu_rebuilt = TRUE;
     }
   }
 
@@ -335,7 +355,9 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
    * loading to finish.
    */
   public function afterStep(StepEvent $event) {
-    if ($event->getResult() === 0) {
+    $type = $event->getDefinition()->getType();
+    $text = $event->getStep()->getText();
+    if (($type === 'When' || preg_match('/viewing|visit|reload/', $text)) && $event->getResult() === 0) {
       $this->iWaitForAJAX();
     }
   }
@@ -389,7 +411,7 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
   }
 
   /**
-   * @Given /^(?:|I )wait(?:| for) (\d+) seconds?$/
+   * @When /^(?:|I )wait(?:| for) (\d+) seconds?$/
    *
    * Wait for the given number of seconds. ONLY USE FOR DEBUGGING!
    */
@@ -398,12 +420,21 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
   }
 
   /**
-   * @Given /^(?:|I )wait for AJAX loading to finish$/
+   * @When /^(?:|I )wait for AJAX loading to finish$/
    *
    * Wait for the jQuery AJAX loading to finish. ONLY USE FOR DEBUGGING!
    */
   public function iWaitForAJAX() {
     $this->getSession()->wait(5000, 'typeof jQuery !== "undefined" && jQuery.active === 0');
+  }
+
+ /**
+   * @When /^(?:|I )wait for live preview to finish$/
+   *
+   * Wait until the live preview to finish.
+   */
+  public function waitForLivePreview() {
+    $this->getSession()->wait(5000, 'typeof jQuery !== "undefined" && jQuery.active === 0 && jQuery("#panopoly-form-widget-preview").length > 0 && !jQuery("#panopoly-form-widget-preview").hasClass("panopoly-magic-loading")');
   }
 
   /**
@@ -443,75 +474,12 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
   }
 
   /**
-   * Create a new Landing Page.
-   *
-   * @param string $name
-   *   The internal machine name for the new Page.
-   * @param string $path
-   *   The path for the new Page.
-   * @param string $title
-   *   The title for the new Page.
-   */
-  protected function createPage($name, $path, $title) {
-    $page_task = page_manager_get_task('page');
-
-    $subtask = page_manager_page_new();
-    $subtask->name = $name;
-    $subtask->path = $path;
-    $subtask->admin_title = $title;
-    $subtask->admin_description = '';
-    $subtask->menu = array(
-      'type' => 'none',
-    );
-
-    $display = new stdClass();
-    $display->layout = 'boxton';
-    $display->title = $title;
-    $display->panels = array();
-    $display->content = array();
-
-    $plugin = page_manager_get_task_handler('panel_context');
-    $handler = page_manager_new_task_handler($plugin);
-    $handler->conf['title'] = t('Landing page');
-    $handler->conf['display'] = $display;
-    $handler->conf['pipeline'] = 'ipe';
-
-    // Assemble a new $page cache and assign it to our page subtask and task
-    // handler.
-    $page = new stdClass();
-    page_manager_page_new_page_cache($subtask, $page);
-    page_manager_handler_add_to_page($page, $handler);
-    page_manager_save_page_cache($page);
-
-    // Mark this page for deletion at the end of the scenario.
-    $this->landing_pages[] = $name;
-  }
-
-  /**
-   * @AfterScenario @api
-   *
-   * Delete landing pages after a Scenario has finished.
-   */
-  public function cleanupPages() {
-    foreach ($this->landing_pages as $name) {
-      if ($page = page_manager_page_load($name)) {
-        page_manager_page_delete($page);
-      }
-    }
-    $this->landing_pages = array();
-  }
-
-  /**
    * @Given /^I am viewing a landing page$/
    */
   public function iAmViewingALandingPage() {
     $random = new Random();
     $name = $random->name(8);
-    $path = $random->name(8);
-
-    $this->createPage($name, $path, 'Testing Landing Page');
-
-    $this->getSession()->visit($this->getMainContext()->locatePath($path));
+    $this->getMainContext()->createNode('panopoly_test_landing_page', $name);
   }
 
   /**
@@ -568,6 +536,38 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
     if ($radiobutton !== NULL) {
       throw new \Exception(sprintf('The radio button with "%s" was found on the page %s', $id ? $id : $label, $this->getSession()->getCurrentUrl()));
     }
+  }
+
+  /**
+   * @Then /^the "([^"]*)" select should be set to "([^"]*)"$/
+   */
+  public function theSelectShouldBeSetTo($identifier, $value) {
+    $select = $this->getSession()->getPage()->findField($identifier);
+    if (empty($select)) {
+      throw new \Exception(sprintf('We couldn\'nt find "%s" on the page', $identifier));
+    }
+    $options = $select->findAll('xpath', '//option[@selected="selected"]');
+    if (empty($select)) {
+      throw new \Exception(sprintf('The select "%s" doesn\'t have any options selected', $identifier));
+    }
+
+    $found = FALSE;
+    foreach ($options as $option) {
+      if ($option->getText() === $value) {
+        $found = TRUE;
+        break;
+      }
+    }
+    if (!$found) {
+      throw new \Exception(sprintf('The select "%s" doesn\'t have the option "%s" selected', $identifier, $value));
+    }
+  }
+
+  /**
+   * @Given /^the dblog is empty$/
+   */
+  public function clearDblog() {
+    db_delete('watchdog')->execute();
   }
 
 }

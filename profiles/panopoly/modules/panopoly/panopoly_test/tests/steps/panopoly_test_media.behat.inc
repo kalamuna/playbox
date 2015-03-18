@@ -28,7 +28,7 @@ class MediaSubContext extends BehatContext implements DrupalSubContextInterface 
   }
 
   /**
-   * @Given /^I click the fake "([^"]*)" button$/
+   * @When /^I click the fake "([^"]*)" button$/
    */
   public function iClickTheFakeButton($text) {
     // Media style selector "buttons" are A tags with no href, so not findable

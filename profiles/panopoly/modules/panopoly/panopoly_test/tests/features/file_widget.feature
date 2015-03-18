@@ -12,7 +12,7 @@ Feature: Add a file to a page
       And I click "Add file" in the "CTools modal" region
     Then I should see "Configure new Add file"
 
-  @api @javascript @panopoly_widgets
+  @api @javascript @panopoly_widgets @local_files
   Scenario: Add a file
     Then I should see "Allowed file types: txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp."
     When I fill in the following:

@@ -102,6 +102,14 @@ system_install() {
   # Enable APC
   echo "extension=apc.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   echo "apc.shm_size=256M" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
+  # Increase the MySQL connection timeout on the PHP end.
+  echo "mysql.connect_timeout=3000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  echo "default_socket_timeout=3000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
+  # Increase the MySQL server timetout and packet size.
+  mysql -e "SET GLOBAL wait_timeout = 36000;"
+  mysql -e "SET GLOBAL max_allowed_packet = 33554432;"
 }
 
 # before_tests
@@ -128,7 +136,6 @@ before_tests() {
     fi
   fi
   drush si panopoly --db-url=mysql://root:@127.0.0.1/drupal --account-name=admin --account-pass=admin --site-mail=admin@example.com --site-name="Panopoly" --yes
-  drush dis -y dblog
   drush vset -y file_private_path "sites/default/private/files"
   drush vset -y file_temporary_path "sites/default/private/temp"
 

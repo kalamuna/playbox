@@ -178,11 +178,11 @@ Feature: Add media using the rich text editor
     When I click the "Add media" button in the "edit-body-und-0-value" WYSIWYG editor
       And I switch to the frame "mediaBrowser"
       And I click "Web"
-      And I fill in "File URL or media resource" with "https://www.youtube.com/watch?v=1TV0q4Sdxlc"
+      And I fill in "File URL or media resource" with "https://www.youtube.com/watch?v=W_-vFa-IyB8"
       And I press "Next" in the "Media web tab" region
       And I wait 2 seconds
     When I switch to the frame "mediaStyleSelector"
-    Then I should see "DrupalCon Portland 2013"
+    Then I should see "Minecraft: Development history"
     When I select "Default" from "format"
       And I click the fake "Submit" button
       And I switch out of all frames

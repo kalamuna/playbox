@@ -66,10 +66,19 @@ class WysiwygSubContext extends BehatContext implements DrupalSubContextInterfac
   protected function getWysiwygToolbar($instanceId, $editorType) {
     $driver = $this->getSession()->getDriver();
 
-    // TODO: This is tinyMCE specific. We should probably do a switch statement
-    // based on $editorType.
-    $toolbarElement = $driver->find("//div[@id='{$instanceId}_toolbargroup']");
-    $toolbarElement = !empty($toolbarElement) ? $toolbarElement[0] : NULL;
+    switch ($editorType) {
+      case 'tinymce':
+        $toolbarElement = $driver->find("//div[@id='{$instanceId}_toolbargroup']");
+        $toolbarElement = !empty($toolbarElement) ? $toolbarElement[0] : NULL;
+        break;
+
+      case 'markitup':
+        $elementId = 'markItUp' . ucfirst($instanceId);
+        $toolbarElement = $driver->find("//div[@id='{$elementId}']//div[@class='markItUpHeader']");
+        $toolbarElement = !empty($toolbarElement) ? $toolbarElement[0] : NULL;
+        break;
+    }
+
     if (!$toolbarElement) {
       throw new \Exception(sprintf('Toolbar for editor "%s" was not found on the page %s', $instanceId, $this->getSession()->getCurrentUrl()));
     }
@@ -82,6 +91,9 @@ class WysiwygSubContext extends BehatContext implements DrupalSubContextInterfac
    */
   public function iTypeInTheWysiwygEditor($text, $instanceId) {
     $instance = $this->getWysiwygInstance($instanceId);
+    // Necessary for some WYSIWYG editors (namely, markitup) to be focussed
+    // before instance.insert() will do anything.
+    $this->getSession()->executeScript("jQuery('#$instanceId').focus();");
     $this->getSession()->executeScript("$instance.insert(\"$text\");");
   }
 
