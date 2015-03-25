@@ -10,6 +10,7 @@ mysql:
 
 env:
   - UPGRADE=none     INSTALL_PANOPOLY_DEMO_FROM_APPS=1
+  - UPGRADE=7.x-1.19
   - UPGRADE=7.x-1.18
   - UPGRADE=7.x-1.17
   - UPGRADE=7.x-1.16

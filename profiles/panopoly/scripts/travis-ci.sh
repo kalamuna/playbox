@@ -78,7 +78,7 @@ system_install() {
 
   # Get Chrome and ChromeDriver
   header Installing Google Chrome
-  sudo apt-get install google-chrome-stable
+  sudo apt-get install -y --force-yes google-chrome-stable
   wget http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip
   unzip -a chromedriver_linux64.zip
 

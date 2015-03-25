@@ -1,10 +1,21 @@
-Panopoly Test 7.x-1.19, 2015-03-18 --------------------------- - User profile:
-  Unable to chage image field style formatter options because they don't get
-  saved. - Authenticated users should have full permission to all test content
-  types. - "Top search phrases" report not showing any data. - Make "Landing
-  Page" into node + Panelizer (rather than a Page Manager page)?. - Panopoly
-  Magic abuses FPP revisions. - Audit Behat code for slowness and optimize. -
-  YouTube test fails on Chrome 41. - Allow live preview to work with WYSIWYG.Panopoly Test 7.x-1.18, 2015-02-26
+Panopoly Test 7.x-1.20, 2015-03-25
+---------------------------
+- CHANGELOG.txt updates for 1.19 went wrong.
+
+Panopoly Test 7.x-1.19, 2015-03-19
+----------------------------
+- Updated CHANGELOG.txt for 7.x-1.19 release.
+- User profile: Unable to chage image field style formatter options because they
+  don't get saved.
+- Authenticated users should have full permission to all test content types.
+- "Top search phrases" report not showing any data.
+- Make "Landing Page" into node + Panelizer (rather than a Page Manager page)?.
+- Panopoly Magic abuses FPP revisions.
+- Audit Behat code for slowness and optimize.
+- YouTube test fails on Chrome 41.
+- Allow live preview to work with WYSIWYG.
+
+Panopoly Test 7.x-1.18, 2015-02-26
 ---------------------------
 - Hide 'preview' and 'diff_standard' view modes when adding FPPs.
 - Make view modes removed from pane configuration a setting.
