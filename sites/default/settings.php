@@ -591,3 +591,11 @@ if (isset($_SERVER['KALABOX']) &&  $_SERVER['KALABOX'] === 'on') {
   $conf['css_gzip_compression'] = FALSE;  
   $conf['js_gzip_compression'] = FALSE;  
 }
+
+/**
+ * Include a local settings file if it exists.
+ */
+$local_settings = dirname(__FILE__) . '/settings.local.php';
+if (file_exists($local_settings)) {
+  include $local_settings;
+}
