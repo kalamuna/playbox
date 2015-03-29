@@ -24,7 +24,7 @@ In order to get started you will want to do the following:
 1. Set up your own [github.com account](https://github.com/join) if you don't already have one.
 2. Set up a local development environment like [Kalabox](https://github.com/kalamuna/kalaboxv1) or [Kalastack](https://github.com/kalamuna/kalastack).
 3. [Create a fork of this](https://github.com/kalamuna/playbox/fork) project.
-4. [Import](https://github.com/kalamuna/kalastack/wiki/How-to-import-a-preexisting-Drupal-site-into-kalastack.) this fork into your local dev environment and set up its [files](http://files.kalamuna.com/playbox_files.tar.gz) and [database](http://files.kalamuna.com/playbox_database.sql.gz).
+4. [Import](https://github.com/kalamuna/kalastack/wiki/How-to-import-a-preexisting-Drupal-site-into-kalastack.) this fork into your local dev environment and set up its [files](http://files.kalamuna.com/playbox_dev_2015-03-29T01-44-54_UTC_files.tar.gz) and [database](http://files.kalamuna.com/playbox_dev_2015-03-29T01-44-54_UTC_database.sql.gz).
 5. Set up your git repo for github flow. See [below](#Contributing).
 6. Create a branch for the issue you are working on.
 7. Commit code and push it up!
