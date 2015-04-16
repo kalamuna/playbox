@@ -595,7 +595,7 @@ if (isset($_SERVER['KALABOX']) &&  $_SERVER['KALABOX'] === 'on') {
 /**
  * Include a local settings file if it exists.
  */
-$local_settings = dirname(__FILE__) . '/settings.local.php';
+$local_settings = dirname(__FILE__) . '/local.settings.php';
 if (file_exists($local_settings)) {
   include $local_settings;
 }

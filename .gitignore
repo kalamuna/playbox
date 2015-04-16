@@ -1,7 +1,7 @@
 # Ignore paths that contain user-generated content.
 /sites/*/files
 /sites/*/private
-/sites/default/settings.local.php
+/sites/default/local.settings.php
 /files/*
 /cache
 
