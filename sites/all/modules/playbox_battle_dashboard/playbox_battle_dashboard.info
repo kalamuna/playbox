@@ -1,0 +1,6 @@
+name = Playbox Dashboard
+description = Enables users to manage their own battles through a dashboard
+core = 7.x
+0 version = 7.x-1.0
+project = playbox_battles
+dependencies[] = playbox_battles
