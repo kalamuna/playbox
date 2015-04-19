@@ -15,10 +15,11 @@ function playbox_admin_init() {
   // Load CSS
   $playbox_admin_color = _get_field($user->field_color);
   if(empty($playbox_admin_color)) $playbox_admin_color = variable_get('playbox_admin_color');
+  $colors = _playbox_admin_get_colors();
   
   $playbox_admin_disco = _get_field($user->field_disco);
-  if(empty($playbox_admin_color)) $playbox_admin_color = variable_get('playbox_admin_color');
-  $colors = _playbox_admin_get_colors();
+  if(empty($playbox_admin_disco)) $playbox_admin_disco = variable_get('playbox_admin_disco');
+  
   // ternary operator syntax
   $css_file = (isset($playbox_admin_color)) ? $playbox_admin_color : 'cerulean';
   // in regular ole if/then/else
