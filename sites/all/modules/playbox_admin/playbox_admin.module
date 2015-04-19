@@ -9,31 +9,26 @@
  * Implements hook_init()
  */
 function playbox_admin_init() {
+  // Load color & disco information and expose to JavaScript, which handles the actual color changing
+  // See Disco Party Time! in custom.js
   global $user;
-  $user = user_load($user->uid);
-  
-  // Load CSS
+  $user = user_load($user->uid);  
   $playbox_admin_color = _get_field($user->field_color);
   if(empty($playbox_admin_color)) $playbox_admin_color = variable_get('playbox_admin_color');
   
   $playbox_admin_disco = _get_field($user->field_disco);
   if(empty($playbox_admin_color)) $playbox_admin_color = variable_get('playbox_admin_color');
   $colors = _playbox_admin_get_colors();
-  // ternary operator syntax
-  $css_file = (isset($playbox_admin_color)) ? $playbox_admin_color : 'cerulean';
-  // in regular ole if/then/else
-  /*
-  if (isset($playbox_admin_color)) {
-    $css_file = $playbox_admin_color;
-  }
-  else {
-    $css_file = 'cerulean';
-  }
-  */
-  if($playbox_admin_disco == 1){
-    $css_file = array_rand($colors);
-  }
-  drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/' . $css_file . '.css');
+
+  $data = array(
+    'playboxadmin' => array(
+      'colors' => $colors,
+      'disco' => $playbox_admin_disco,
+	  'path' => drupal_get_path('module', 'playbox_admin') . '/css/',
+	  'default_color' => $playbox_admin_color
+    )
+  );
+  drupal_add_js($data, 'setting');
 }
 
 /*
