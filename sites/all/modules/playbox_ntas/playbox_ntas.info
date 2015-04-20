@@ -1,0 +1,8 @@
+name = Playbox NTAS
+description = Playbox integration with National Terrorism Advisory System.
+core = 7.x
+version = 7.0-1.0
+package = Playbox
+
+dependencies[] = playbox_vice_president
+dependencies[] = playbox_battles
