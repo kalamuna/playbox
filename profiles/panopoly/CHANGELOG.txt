@@ -1,3 +1,72 @@
+Panopoly 7.x-1.21, 2015-04-29
+----------------------
+- Update Panopoly Core for Issue #2480383: Update Views to version 3.11 for SA-
+  CONTRIB-2015-103.
+- Update Panopoly Test for Issue #2236815 by segovia94, dsnopek: Set human-
+  readable names for all of Panopoly's image styles.
+- Update Panopoly Images for Issue #2236815 by segovia94, dsnopek: Set human-
+  readable names for all of Panopoly's image styles.
+- Update Panopoly Core, Admin, Pages and Test for Issue #2477319: Clean up
+  instances of deprecated layouts.
+- Update Panopoly WYSIWYG for Issue #2473365 by dsnopek: WYSIWYG format
+  shouldn't use "Convert line breaks into HTML" filter.
+- Update Panopoly Core for Issue #1962642 by Sheldon Rampton: Undefined index:
+  default_filename in defaultconfig_defaultconfig_components() (line 418.
+- Update Panopoly Core for Issue #2468989 by hanoii: Include views patch to fix
+  destination query string on ajax calls from views.
+- Update Panopoly Test for Issue #2476723 by dsnopek: Remove 'Radix' from the
+  label of each of the layouts.
+- Update Panopoly Theme for Issue #2476723 by dsnopek: Remove 'Radix' from the
+  label of each of the layouts.
+- Update Panopoly Images and Test for Issue #2476227 by dsnopek: Page full of
+  variables after changing layout.
+- Update Panopoly WYSIWYG for Issue #2476543 by dsnopek: <meta> tag getting
+  added to the WYSIWYG output.
+- Fix type-o in scripts/create_test_branch.py: panopoly_wyiswyg =>
+  panopoly_wysiwyg.
+- Update Panopoly Core for Issue #2444361 by mglaman: Update token module to
+  version 1.6.
+- Update Panopoly WYSIWYG for Issue #2451691 by mglaman: Update TinyMCE library
+  to 3.5.11.
+- Update Panopoly Core for Issue #2472693: Make theming FPPs sane.
+- Update Panopoly Test for Issue #2471995 by hefox: menu_rebuild removed, but
+  not variable that tracked if had been done.
+- Update Panopoly Core and profile for Issue #2468273 by dsnopek: Update to
+  Drupal 7.36.
+- Update Panopoly Core, Images, Widgets, Admin, Pages, Search and Test for Issue
+  #2446165: Update Features module to version 2.5.
+- The create_test_branch.py script should skip all but one upgrade test by
+  default.
+- Update Panopoly Images for Issue #2468445 by RobLoach, dsnopek: Panopoly
+  Images targets img elements.
+- Revert "Update Panopoly Images for Issue #2468445 by RobLoach, dsnopek:
+  Panopoly Images targets img elements".
+- Update Panoploy WYSIWYG for Issue #2460217 by mcrittenden: LinkIt is broken
+  when changing to WYSIWYG editor after save.
+- Update Panopoly Magic for Issue #2261061 by segovia94, dsnopek, hernani: Allow
+  panopoly magic to affect other forms.
+- Update Panopoly Images and WYSIWYG for Issue #2287805 by ergophobe, dsnopek,
+  cornifex, mglaman: Caption filter does not work with Quarter Size image format
+  - or with floated captions.
+- Update Panopoly WYSIWYG for Issue #2456919 by ergophobe: Caption filter not
+  properly converting singe quotes to entities.
+- Update Panopoly Widgets for Issue #2463395 by dsnopek: Content Item widget
+  initial preview is confusing.
+- Update Panopoly Magic for Issue #2463389 by dsnopek: PHP notice when adding
+  Image pane as an editor.
+- Update Panopoly Admin for Issue #2461077 by dshields, dsnopek: Hiding the Body
+  field label breaks the summary toggle.
+- Update Panopoly Core for Issue #2455789: Errors when viewing pages with
+  fieldable panels panes with visibility rules.
+- Update Panopoly Widgets for Issue #2459229 by dsnopek: Document names in the
+  Media "Library" overflow outside of their boxes.
+- Update Panopoly Widgets for Issue #2459195 by dsnopek: "File name" filter in
+  Media "Library" loses focus after each keystroke.
+- Update Panopoly Widgets for Issue #2458747 by dsnopek: Media browser tabs give
+  little indication that a tab is selected.
+- Start testing upgrades from the 1.20 release.
+- Restored drupal-org.make after the 1.20 release.
+
 Panopoly 7.x-1.20, 2015-03-25
 ----------------------
 - Update Panopoly Pages for Issue #2456635 by candelas, dsnopek:

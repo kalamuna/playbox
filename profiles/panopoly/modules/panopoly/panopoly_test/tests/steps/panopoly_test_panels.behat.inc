@@ -55,4 +55,14 @@ class PanelsSubContext extends BehatContext implements DrupalSubContextInterface
     $this->waitForIPEtoActivate();
   }
 
+  /**
+   * @When /^(?:|I )change layout with the Panels IPE$/
+   *
+   * Open 'Change layout' dialog if it's available on the current page.
+   */
+  public function changeLayoutIPE() {
+    $this->getSession()->getPage()->clickLink('Change layout');
+    $this->getSession()->wait(5000, 'jQuery(".panels-choose-layout").length === 0');
+  }
+
 }

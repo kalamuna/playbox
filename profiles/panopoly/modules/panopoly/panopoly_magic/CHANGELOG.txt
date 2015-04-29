@@ -1,3 +1,8 @@
+Panopoly Magic 7.x-1.21, 2015-04-29
+----------------------------
+- Allow panopoly magic to affect other forms.
+- PHP notice when adding Image pane as an editor.
+
 Panopoly Magic 7.x-1.20, 2015-03-25
 ----------------------------
 - CHANGELOG.txt updates for 1.19 went wrong.

@@ -1,3 +1,11 @@
+Panopoly Widgets 7.x-1.21, 2015-04-29
+------------------------------
+- Update Features module to version 2.5.
+- Content Item widget initial preview is confusing.
+- Document names in the Media "Library" overflow outside of their boxes.
+- "File name" filter in Media "Library" loses focus after each keystroke.
+- Media browser tabs give little indication that a tab is selected.
+
 Panopoly Widgets 7.x-1.20, 2015-03-25
 ------------------------------
 - CHANGELOG.txt updates for 1.19 went wrong.

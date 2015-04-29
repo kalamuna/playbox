@@ -24,8 +24,10 @@ projects[fieldable_panels_panes][version] = 1.5
 projects[fieldable_panels_panes][subdir] = contrib
 projects[fieldable_panels_panes][patch][2283263] = http://drupal.org/files/issues/fieldable_panels_panes-n2283263-5.patch
 projects[fieldable_panels_panes][patch][2256503] = http://www.drupal.org/files/issues/fieldable_panels_panes-n2256503-12-backport-fpp15.patch
-projects[fieldable_panels_panes][patch][2415427] = https://www.drupal.org/files/issues/fieldable_panels_pane-avoid-reload-2415427-4.patch
+projects[fieldable_panels_panes][patch][2415427] = http://www.drupal.org/files/issues/fieldable_panels_pane-avoid-reload-2415427-4.patch
 projects[fieldable_panels_panes][patch][2146479] = http://www.drupal.org/files/issues/2146479-admin-menu-map-conflict.patch
+projects[fieldable_panels_panes][patch][2463965] = http://www.drupal.org/files/issues/fieldable_panels_panes-title-visibility-rules-2463965-1.patch
+projects[fieldable_panels_panes][patch][2304921] = http://www.drupal.org/files/issues/fpp_rendering-2304921-1.patch
 
 projects[pm_existing_pages][version] = 1.4
 projects[pm_existing_pages][subdir] = contrib
@@ -35,9 +37,10 @@ projects[fape][subdir] = contrib
 
 ; Views Magic
 
-projects[views][version] = 3.10
+projects[views][version] = 3.11
 projects[views][subdir] = contrib
 projects[views][patch][2037469] = http://drupal.org/files/views-exposed-sorts-2037469-1.patch
+projects[views][patch][1036962] = http://drupal.org/files/issues/views-ajax-nginx-1036962-71.patch
 
 projects[views_autocomplete_filters][version] = 1.1
 projects[views_autocomplete_filters][subdir] = contrib
@@ -55,7 +58,7 @@ projects[pathauto][version] = 1.2
 projects[pathauto][subdir] = contrib
 projects[pathauto][patch][936222] = http://drupal.org/files/issues/pathauto-persist-936222-195-pathauto-state.patch
 
-projects[token][version] = 1.5
+projects[token][version] = 1.6
 projects[token][subdir] = contrib
 
 projects[entity][version] = 1.6
@@ -87,7 +90,7 @@ projects[apps][version] = 1.0-beta20
 projects[apps][subdir] = contrib
 projects[apps][patch][2430915] = https://www.drupal.org/files/issues/apps-drush-default-apps-2430915-1.patch
 
-projects[features][version] = 2.3
+projects[features][version] = 2.5
 projects[features][subdir] = contrib
 
 projects[strongarm][version] = 2.0
@@ -99,6 +102,7 @@ projects[defaultconfig][patch][2042799] = http://drupal.org/files/default_config
 projects[defaultconfig][patch][2043307] = http://drupal.org/files/defaultconfig_include_features_file.patch
 projects[defaultconfig][patch][2008178] = http://drupal.org/files/defaultconfig-rebuild-filters-2008178-4_0.patch
 projects[defaultconfig][patch][1861054] = http://drupal.org/files/fix-defaultconfig_rebuild_all.patch
+projects[defaultconfig][patch][1900574] = http://drupal.org/files/1900574.defaultconfig.undefinedindex_11.patch
 
 projects[defaultcontent][version] = 1.0-alpha9
 projects[defaultcontent][subdir] = contrib

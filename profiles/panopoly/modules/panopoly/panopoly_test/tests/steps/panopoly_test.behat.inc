@@ -29,7 +29,6 @@ class TestSubContext extends BehatContext implements DrupalSubContextInterface {
     return 'test';
   }
 
-  protected $menu_rebuilt = FALSE;
   protected $private_path_overridden = FALSE;
 
   /**

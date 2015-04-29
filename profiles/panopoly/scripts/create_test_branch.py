@@ -24,7 +24,7 @@ PANOPOLY_COMPONENT_MAP = {
     'Theme': 'panopoly_theme',
     'Users': 'panopoly_users',
     'Widgets': 'panopoly_widgets',
-    'WYSIWYG': 'panopoly_wyiswyg',
+    'WYSIWYG': 'panopoly_wysiwyg',
 }
 
 PANOPOLY_GITHUB_REPO = 'git@github.com:panopoly/panopoly.git'
@@ -81,12 +81,15 @@ def makefile_replace_patches(filename, patch_files):
         for line in lines:
             fd.write(line)
 
-def travisyml_skip_upgrade_tests(filename):
+def travisyml_skip_upgrade_tests(filename, skip_all=True):
     with open(filename, 'rt') as fd:
         data = yaml.load(fd)
 
     # Remove all but the first 'env' entry. The rest are upgrade tests.
-    data['env'] = [data['env'][0]]
+    if skip_all:
+        data['env'] = [data['env'][0]]
+    else:
+        data['env'] = data['env'][0:2]
 
     with open(filename, 'wt') as fd:
         yaml.dump(data, fd)
@@ -117,8 +120,7 @@ def git_patch_branch(git_repo, old_branch, new_branch, patch_files, issue_number
         makefile_replace_patches('drupal-org.make', patch_files)
 
         # Remove the upgrade tests if requested.
-        if skip_upgrade_tests:
-            travisyml_skip_upgrade_tests('.travis.yml')
+        travisyml_skip_upgrade_tests('.travis.yml', skip_all=skip_upgrade_tests)
 
         # Make commit message.
         if issue_number:

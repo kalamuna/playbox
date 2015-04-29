@@ -16,6 +16,7 @@ dependencies[] = taxonomy
 dependencies[] = text
 dependencies[] = views
 dependencies[] = views_content
+stylesheets[all][] = panopoly-test.css
 features[ctools][] = panelizer:panelizer:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
@@ -89,14 +90,16 @@ features[variable][] = panelizer_node:panopoly_test_landing_page_allowed_layouts
 features[variable][] = panelizer_node:panopoly_test_landing_page_allowed_types_default
 features[variable][] = panelizer_node:panopoly_test_landing_page_default
 features[variable][] = panelizer_node:panopoly_test_page:page_manager_selection
+features[variable][] = panelizer_node:panopoly_test_page_allowed_layouts_default
+features[variable][] = panelizer_node:panopoly_test_page_allowed_types_default
 features[views_view][] = panopoly_test_magic_view_modes
 features_exclude[dependencies][panopoly_pages] = panopoly_pages
 features_exclude[dependencies][panelizer] = panelizer
 hidden = 1
 
-; Information added by Drupal.org packaging script on 2015-03-25
-version = "7.x-1.20"
+; Information added by Drupal.org packaging script on 2015-04-29
+version = "7.x-1.21"
 core = "7.x"
 project = "panopoly_test"
-datestamp = "1427310800"
+datestamp = "1430338711"
 

@@ -60,7 +60,8 @@ function panopoly_test_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-panopoly_test_page-field_featured_categories'
+  // Exported field_instance:
+  // 'node-panopoly_test_page-field_featured_categories'
   $field_instances['node-panopoly_test_page-field_featured_categories'] = array(
     'bundle' => 'panopoly_test_page',
     'default_value' => NULL,
