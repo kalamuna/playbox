@@ -20,12 +20,16 @@ function playbox_admin_init() {
   $playbox_admin_disco = _get_field($user->field_disco);
   if(empty($playbox_admin_disco)) $playbox_admin_disco = variable_get('playbox_admin_disco');
 
+  //Add site color.  If disco mode is enabled then custom.js in playbox_theme will change colors periodically
+  $css_path = drupal_get_path('module', 'playbox_admin') . '/css/';
+  drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/'.$playbox_admin_color.'.css');
+
   $data = array(
     'playboxadmin' => array(
       'colors' => $colors,
       'disco' => $playbox_admin_disco,
-	  'path' => drupal_get_path('module', 'playbox_admin') . '/css/',
-	  'default_color' => $playbox_admin_color
+      'path' => $css_path,
+      'default_color' => $playbox_admin_color
     )
   );
   drupal_add_js($data, 'setting');

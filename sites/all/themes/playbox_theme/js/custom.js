@@ -107,16 +107,14 @@
 	Disco Party Time!
 	==============================================*/
 	$( document ).ready(function(){
-		//Set default color
-		var default_color = Drupal.settings.playboxadmin.default_color;
-		var enabled_colors = [default_color];
-		add_disco_sheet(default_color);
-		
 		//If disco mode is enabled, periodically swap colors
 		if(Drupal.settings.playboxadmin.disco == 1){
+			var default_color = Drupal.settings.playboxadmin.default_color;
+			var enabled_colors = [default_color];
 			var colors = Drupal.settings.playboxadmin.colors;
 			var random_color = '';
-			var last_color = default_color;			
+			var last_color = default_color;		
+			var interval = 3000;	
 			
 			setInterval(function(){
 				//pick a random color and disable all other colors, but don't pick the same color twice
@@ -136,7 +134,7 @@
 					enabled_colors.push(random_color);
 					add_disco_sheet(random_color);
 				}
-			}, 1000)
+			}, interval)
 		}
 	});
 	
