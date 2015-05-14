@@ -30,5 +30,32 @@ function playbox_admin_user_default_permissions() {
     'module' => 'playbox_battle_author',
   );
 
+  // Exported permission: 'create playbox_battle content'.
+  $permissions['create playbox_battle content'] = array(
+    'name' => 'create playbox_battle content',
+    'roles' => array(
+      'battle_author' => 'battle_author',
+    ),
+    'module' => 'playbox_battle_author',
+  );
+
+  // Exported permission: 'edit own playbox_battle content'.
+  $permissions['edit own playbox_battle content'] = array(
+    'name' => 'edit own playbox_battle content',
+    'roles' => array(
+      'battle_author' => 'battle_author',
+    ),
+    'module' => 'playbox_battle_author',
+  );
+  
+  // Exported permission: 'delete own playbox_battle content'.
+  $permissions['delete own playbox_battle content'] = array(
+    'name' => 'delete own playbox_battle content',
+    'roles' => array(
+      'battle_author' => 'battle_author',
+    ),
+    'module' => 'playbox_battle_author',
+  );
+
   return $permissions;
 }
