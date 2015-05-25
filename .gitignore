@@ -48,3 +48,7 @@ Thumbs.db
 vendor
 composer.lock
 
+# SYNCTHING #
+#############
+.stfolder
+.stignore
