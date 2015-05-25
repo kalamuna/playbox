@@ -9,25 +9,30 @@
  * Implements hook_init()
  */
 function playbox_admin_init() {
-  // Load CSS
-  $playbox_admin_color = variable_get('playbox_admin_color');
-  $playbox_admin_disco = variable_get('playbox_admin_disco');
+  // Load color & disco information and expose to JavaScript, which handles the actual color changing
+  // See Disco Party Time! in custom.js
+  global $user;
+  $user = user_load($user->uid);  
+  $playbox_admin_color = _get_field($user->field_color);
+  if(empty($playbox_admin_color)) $playbox_admin_color = variable_get('playbox_admin_color');
   $colors = _playbox_admin_get_colors();
-  // ternary operator syntax
-  $css_file = (isset($playbox_admin_color)) ? $playbox_admin_color : 'cerulean';
-  // in regular ole if/then/else
-  /*
-  if (isset($playbox_admin_color)) {
-    $css_file = $playbox_admin_color;
-  }
-  else {
-    $css_file = 'cerulean';
-  }
-  */
-  if($playbox_admin_disco == 1){
-    $css_file = array_rand($colors);
-  }
-  drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/' . $css_file . '.css');
+  
+  $playbox_admin_disco = _get_field($user->field_disco);
+  if(empty($playbox_admin_disco)) $playbox_admin_disco = variable_get('playbox_admin_disco');
+
+  //Add site color.  If disco mode is enabled then custom.js in playbox_theme will change colors periodically
+  $css_path = drupal_get_path('module', 'playbox_admin') . '/css/';
+  drupal_add_css(drupal_get_path('module', 'playbox_admin') . '/css/'.$playbox_admin_color.'.css');
+
+  $data = array(
+    'playboxadmin' => array(
+      'colors' => $colors,
+      'disco' => $playbox_admin_disco,
+      'path' => $css_path,
+      'default_color' => $playbox_admin_color
+    )
+  );
+  drupal_add_js($data, 'setting');
 }
 
 /*
@@ -49,6 +54,15 @@ function playbox_admin_menu() {
     'description' => t('Configure global settings for Playbox'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('playbox_admin_form'),
+    'access arguments' => array('administer playbox global settings'),
+  );
+  
+  $items['admin/config/playbox/user-settings'] = array(
+    'title' => 'User Settings',
+    'description' => t('Configure user settings for Playbox'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('playbox_user_form'),
+    'access arguments' => array('change user playbox settings'),
     'access callback' => TRUE,
   );
 
@@ -59,9 +73,15 @@ function playbox_admin_menu() {
  * Implements hook_views_default_views_alter()
  */
 function playbox_admin_views_pre_view(&$view) {
-  $playbox_fav_president = variable_get('playbox_admin_president');
+  global $user;
+  $user = user_load($user->uid);
+  
+  $playbox_fav_president = _get_field($user->field_favorite_president, array('return' => 'target_id'));
+  if(empty($playbox_fav_president)) $playbox_fav_president = variable_get('playbox_admin_president');
   $playbox_admin_president_nid = $playbox_fav_president['entity_id'];
-  $playbox_fav_robot = variable_get('playbox_admin_boss');
+  
+  $playbox_fav_robot = _get_field($user->field_favorite_robot, array('return' => 'target_id'));
+  if(empty($playbox_fav_robot)) $playbox_fav_robot = variable_get('playbox_admin_boss');
   $playbox_admin_boss_nid = $playbox_fav_robot['entity_id'];
   if ($view->name == 'playbox_presidents') {
     if (isset($playbox_admin_president_nid)) {
@@ -88,10 +108,14 @@ function playbox_admin_views_pre_view(&$view) {
  */
 function playbox_admin_permission() {
   return array(
-    'administer my module' => array(
+    'administer playbox global settings' => array(
       'title' => t('Administer Playbox Global Settings'),
       'description' => t('Perform administration tasks for Playbox Global Settings'),
     ),
+    'change user playbox settings' => array(
+      'title' => t('Change User Playbox Settings'),
+      'description' => t('Change settings for Playbox User Settings'),
+    )
   );
 }
 
@@ -143,6 +167,7 @@ function playbox_admin_form($form, &$form_state) {
     '#default_value' => variable_get('playbox_admin_president')
   );
 
+
   $form['playbox_global_settings']['playbox_admin_boss'] = array(
     '#type' => 'entityreference',
     '#title' => t('Who is your favorite boss?'),
@@ -179,8 +204,204 @@ function playbox_admin_form($form, &$form_state) {
   return $form;
 }
 
+/*
+ * Clears the theme cache when settings are changes
+ */
 function playbox_admin_submit($form, &$form_state) {
   if (variable_get('cache', 0)) {
     drupal_theme_rebuild();
   }
 }
+
+/*
+ * Playbox admin form definition
+ */
+function playbox_user_form($form, &$form_state) {
+  global $user;
+  $uid = $user->uid;
+  $user = user_load($uid);
+  #dpm($user);
+  
+  $default = _get_field($user->field_favorite_president, array('return' => 'target_id'));
+  if(empty($default)) $default = variable_get('playbox_admin_president');
+  
+  $form['field_favorite_president'] = array(
+    '#type' => 'entityreference',
+    '#title' => t('Who is your favorite president?'),
+    '#era_entity_type' => 'node',
+    '#era_bundles' => array('playbox_president'),
+    '#era_cardinality' => 1,
+    '#era_query_settings' => array(
+      'limit' => 15,
+      ),
+    '#default_value' => $default
+  );
+
+  $default = _get_field($user->field_favorite_robot, array('return' => 'target_id'));
+  if(empty($default)) $default = variable_get('playbox_admin_boss');
+  
+  $form['field_favorite_robot'] = array(
+    '#type' => 'entityreference',
+    '#title' => t('Who is your favorite robot?'),
+    '#era_entity_type' => 'node',
+    '#era_bundles' => array('playbox_robot'),
+    '#era_cardinality' => 1,
+    '#era_query_settings' => array(
+      'limit' => 15,
+    ),
+    '#default_value' => $default,
+  );
+
+  $default = _get_field($user->field_color);
+  if(empty($default)) $default = variable_get('playbox_admin_color');
+  
+  $form['field_color'] = array(
+    '#type' => 'select',
+    '#title' => t('What is your favorite color?'),
+    '#options' => _playbox_admin_get_colors(),
+    '#empty_option' => 'Select a color',
+    '#default_value' => $default,
+    '#states' => array(
+      // Hide the color select when disco mode is checked.
+      'disabled' => array(
+        ':input[name="field_disco"]' => array('checked' => TRUE),
+      ),
+    ),
+  );
+
+  $default = _get_field($user->field_disco);
+  if(empty($default)) $default = variable_get('playbox_admin_disco');
+  
+  $form['field_disco'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Put site into Disco Mode?'),
+    '#default_value' => $default,
+  );
+
+  $form = system_settings_form($form);
+  return $form;
+}
+
+/*
+ * Implements hook_form_FORM_ID_alter()
+ */
+function playbox_admin_form_playbox_user_form_alter(&$form, &$form_state, $form_id) {
+  $form['field_color']['#empty_option'] = t('Choose a color');
+  $form['#submit'][] = 'playbox_user_submit';
+  $form['field_favorite_president']['#attributes']['class'][] = 'form-control';
+  $form['field_favorite_robot']['#attributes']['class'][] = 'form-control';
+}
+
+/*
+ * On submit of playbox_user form
+ * Saves form data into user entity
+ * Clears the theme cache when settings are changes
+ */
+function playbox_user_submit($form, &$form_state) {
+  
+  global $user;
+  #dpm($form);
+  #dpm($user);
+
+  //make edits to user
+  $text = $form['field_favorite_president']['#value'];
+  preg_match('#\((.*?)\)#', $text, $match);
+  $president = $match[1];
+  
+  $text = $form['field_favorite_robot']['#value'];
+  preg_match('#\((.*?)\)#', $text, $match);
+  $robot = $match[1];
+  
+  $edit = array(
+    'field_favorite_president' => array(
+      LANGUAGE_NONE => array(
+        0 => array(
+          'target_id' => $president,
+        ),
+      ),
+    ),
+    'field_favorite_robot' => array(
+      LANGUAGE_NONE => array(
+        0 => array(
+          'target_id' => $robot,
+        ),
+      ),
+    ),
+    'field_color' => array(
+      LANGUAGE_NONE => array(
+        0 => array(
+          'value' => $form['field_color']['#value'],
+        ),
+      ),
+    ),
+    'field_disco' => array(
+      LANGUAGE_NONE => array(
+        0 => array(
+          'value' => $form['field_disco']['#value'],
+        ),
+      ),
+    ),
+    
+  );
+  
+  user_save($user, $edit);
+}
+
+
+/*
+ * Custom print field function which can return the value for a single value field without markup
+ * Does not work with multivalued fields
+ */
+function _get_field($field, $options = array()){
+	$default_options = array(
+		'lang' => 'en'//desired language defaults to 'en' then LANGUAGE_NONE
+		,'return' => 'value'//return value, can specify others such as 'uri'
+	);
+	$options = array_merge($default_options, $options);
+	$return = '';
+
+	//if field is just a string value, use that
+	if(is_string($field)){
+		$return = $field;
+	}
+
+	//check if field is even valid
+	elseif(is_array($field)){
+		//check if field doesnt even have a language
+		if(!empty($field[0])){
+			if(!empty($field[0]['raw'])){
+				$return = $field[0]['raw'][$options['return']];
+			}else{
+				$return = $field[0][$options['return']];
+			}
+		}
+		//check if prefered language is available
+		elseif(!empty($field[$options['lang']])){
+			if(!empty($field[$options['lang']]['raw'])){
+				$return = $field[$options['lang']]['raw'][$options['return']];
+			}else{
+				$return = $field[$options['lang']][0][$options['return']];
+			}
+		}
+		//else default to LANGUAGE_NONE value
+		else{
+			//added just to handle field collections or data pulls with different langs than their parent. May screw things up
+			if(!empty($field['en'])) $field[LANGUAGE_NONE] = $field['en'];
+			if(!empty($field['spa'])) $field[LANGUAGE_NONE] = $field['spa'];
+
+
+			if(!empty($field[LANGUAGE_NONE])){
+
+
+				if(!empty($field[LANGUAGE_NONE]['raw'])){
+					$return = $field[LANGUAGE_NONE][0]['raw'][$options['return']];
+				}else{
+					$return = $field[LANGUAGE_NONE][0][$options['return']];
+				}
+			}
+		}
+	}
+
+	return $return;
+}
+

@@ -19,7 +19,7 @@ function playbox_scores_menu() {
 
   $items['scores'] = array(
     'title' => 'Scores',
-    'description' => 'Configure settings',
+    'description' => 'View scores',
     'page callback' => 'playbox_scores_scores_page',
     'access arguments' => array('access content'),
   );

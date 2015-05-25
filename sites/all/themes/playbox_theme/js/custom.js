@@ -103,5 +103,59 @@
 	Handle logo swapping for large screens
 	==============================================*/
   
+	/*============================================
+	Disco Party Time!
+	==============================================*/
+	$( document ).ready(function(){
+		//If disco mode is enabled, periodically swap colors
+		if(Drupal.settings.playboxadmin.disco == 1){
+			var default_color = Drupal.settings.playboxadmin.default_color;
+			var enabled_colors = [default_color];
+			var colors = Drupal.settings.playboxadmin.colors;
+			var random_color = '';
+			var last_color = default_color;		
+			var interval = 3000;	
+			
+			setInterval(function(){
+				//pick a random color and disable all other colors, but don't pick the same color twice
+				random_color = pickRandomObjectProperty(colors);
+				while(random_color == last_color){
+					random_color = pickRandomObjectProperty(colors);
+				}
+				last_color = random_color;
+				$('link.playbox-css-disco').attr('disabled', 'disabled');
+				
+				if($.inArray(random_color, enabled_colors) > -1){
+					//If the CSS sheet is already added just enable it
+					$('link.playbox-css-disco.'+random_color).removeAttr('disabled')
 
+				}else{
+					//Else add a new enabled sheet and add to color list
+					enabled_colors.push(random_color);
+					add_disco_sheet(random_color);
+				}
+			}, interval)
+		}
+	});
+	
+	/*
+	 * Used to add disco stylesheets from above "Disco Party Time!" to not duplicate code
+	 */
+	function add_disco_sheet(color){
+		var path = Drupal.settings.playboxadmin.path;
+		$('body').append('<link href="'+path+color+'.css" rel="stylesheet" class="playbox-css-disco '+color+'" />');
+	}
+	
+	/*
+	 * Picks a random value from an object
+	 * http://stackoverflow.com/questions/2532218/pick-random-property-from-a-javascript-object
+	 */
+	function pickRandomObjectProperty(obj) {
+		var result;
+		var count = 0;
+		for (var prop in obj)
+			if (Math.random() < 1/++count)
+			   result = prop;
+		return result;
+	}
 }(jQuery));
