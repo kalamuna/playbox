@@ -36,7 +36,10 @@ function playbox_battle_dashboard(){
   }
   
   //See my battles
-  //$dashboard .= views_embed_view('playbox_battles', 'my_battles');
+  $my_battles = views_get_view('playbox_battles');
+  $my_battles->set_display('my_battles');
+  $dashboard .= '<h2>'.$my_battles->get_title().'</h2>';
+  $dashboard .= $my_battles->preview();
   
   //See chosen team
   //TODO if user has permission
