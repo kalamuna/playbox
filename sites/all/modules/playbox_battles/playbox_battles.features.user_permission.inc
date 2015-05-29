@@ -13,7 +13,9 @@ function playbox_battles_user_default_permissions() {
   // Exported permission: 'create playbox_battle content'.
   $permissions['create playbox_battle content'] = array(
     'name' => 'create playbox_battle content',
-    'roles' => array(),
+    'roles' => array(
+      'Battle Curator' => 'Battle Curator',
+    ),
     'module' => 'node',
   );
 
@@ -41,7 +43,9 @@ function playbox_battles_user_default_permissions() {
   // Exported permission: 'edit own playbox_battle content'.
   $permissions['edit own playbox_battle content'] = array(
     'name' => 'edit own playbox_battle content',
-    'roles' => array(),
+    'roles' => array(
+      'Battle Curator' => 'Battle Curator',
+    ),
     'module' => 'node',
   );
 
