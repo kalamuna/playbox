@@ -1,4 +1,5 @@
-.jumbotron .battler-battle .playbox-portrait-featured {
+.jumbotron .battler-battle .playbox-portrait-featured,
+.other-battles .battler-battle .playbox-portrait-featured{
   margin-bottom: 40px;
   border: 15px solid #F06096;
   display: inline;
@@ -10,7 +11,8 @@
   opacity: .8;
 }
 
-.jumbotron .battler-battle  img.playbox-portrait-featured {
+.jumbotron .battler-battle  img.playbox-portrait-featured,
+.other-battles .battler-battle  img.playbox-portrait-featured{
   box-shadow: none;
 }
 
@@ -63,4 +65,47 @@
 
 .battler-battle .battler-nickname {
   color: #ffffff;
+}
+
+/*
+ * Other Battles overrides
+ */
+
+#services .pane-title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 2em;
+}
+
+.other-battles .battler-battle .playbox-portrait-featured {
+  border: 10px solid #1D2026;
+  background-color: #1D2026;
+}
+
+.other-battles .battler-battle .battler-battle-name h2 {
+  font-size: 2em;
+}
+
+.other-battles .battler-battle .battler-battle-bio {
+  font-size: 1em;
+}
+
+.other-battles .battler-battle .battler-vs-label {
+  font-size: 2.666em;
+  margin-top: .75em;
+}
+
+.other-battles .battler-box .battler-vote-robot,
+.other-battles .battler-box .battler-vote-president {
+  font-size: 5em;
+  padding-top: .3em;
+}
+
+.other-battles .battler-battle .battler-nickname {
+  color: initial;
+  font-size: 1em;
+}
+
+.other-battles .gridcol {
+  padding-bottom: 0;
 }

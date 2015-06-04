@@ -31,6 +31,18 @@ function playbox_battles_theme($existing, $type, $theme, $path) {
     'arguments' => array('view' => NULL, 'options' => NULL, 'row' => NULL),
   );
 
+  $themes['views_view_fields__playbox_battles__playbox_battles_list_1'] = array(
+    'template' => 'views-view-fields--playbox-battles--playbox-battles-featured-1',
+    'original hook' => 'views_view_fields',
+    'path' => drupal_get_path('module', 'playbox_battles') . '/templates',
+    'preprocess functions' => array(
+      'template_preprocess',
+      'template_preprocess_views_view_fields',
+      'playbox_battles_preprocess_views_view_fields__playbox_battles__playbox_battles_featured_1',
+    ),
+    'arguments' => array('view' => NULL, 'options' => NULL, 'row' => NULL),
+  );
+
   return $themes;
 }
 
