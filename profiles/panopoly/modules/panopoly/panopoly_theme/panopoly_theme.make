@@ -10,7 +10,7 @@ projects[radix_layouts][patch][2476723] = https://www.drupal.org/files/issues/ra
 
 ; Summon the Power of Respond.js
 
-projects[respondjs][version] = 1.4
+projects[respondjs][version] = 1.5
 projects[respondjs][subdir] = contrib
 
 libraries[respondjs][download][type] = git

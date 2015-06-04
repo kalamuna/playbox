@@ -156,6 +156,7 @@
   -webkit-border-radius: 5px;
   border: 1px solid #EEEEEE !important;
   border-radius: 5px;
+  vertical-align: bottom;
 }
 
 #modalContent .panels-section-column-categories .content-type-button a:active {
@@ -206,8 +207,8 @@
 }
 
 #modal-content fieldset.widget-preview {
-  margin-top: 3em;
-  margin-bottom: 4em;
+  margin-top: 2em;
+  margin-bottom: 5em;
   -webkitborder-top-right-radius: 0;
   -moz-border-topright-radius: 0;
   border-top-right-radius: 0;
@@ -327,7 +328,8 @@
 
 #modalContent .widget-preview-title .content-type-button span {
   width: auto;
-  padding: 0 0 0 10px;
+  padding: 0 0 0 5px;
+  top: 0;
 }
 
 #modal-content .widget-preview-title .content-type-button a {
@@ -393,12 +395,16 @@
 
 #modal-content .panels-section-columns,
 #modal-content .panels-categories-description {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   overflow: visible;
   border: 1px solid #CECECA;
   border-right: none;
   height: 100%;
   margin: 0;
   margin-top: 1px;
+  padding-top: 1em;
   overflow-y: auto;
 }
 
@@ -549,4 +555,66 @@
   -webkit-box-shadow: 0 0 0 0 #fff;
   -moz-box-shadow: 0 0 0 0 #fff;
   box-shadow: 0 0 0 0 #fff;
+}
+
+#modal-content .content-wrapper {
+  position: relative;
+  padding: 5px 0px;
+}
+
+#modal-content .content-wrapper .content-type-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -10px;
+}
+
+#modal-content .content-wrapper .content-type-button a {
+  background: #999;
+  float: left;
+  color: white;
+  padding: 5px 10px;
+  opacity: 0;
+}
+
+#modal-content .content-wrapper .content-type-button a img {
+  display: none;
+}
+
+#modal-content .content-wrapper .content-type-button a span {
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+}
+
+#modal-content .content-wrapper .content-type-button a:hover,
+#modal-content .content-wrapper .content-type-button a:focus {
+  background: #2fa6e5;
+}
+
+#modal-content .content-wrapper > a {
+  background: transparent;
+  border: none;
+  color: #666;
+  text-shadow: none;
+  margin: 0;
+  padding: 0px 10px 0px 10px;
+  text-align: left;
+  cursor: pointer;
+}
+
+#modal-content .content-wrapper > a:hover,
+#modal-content .content-wrapper > a:focus {
+  color: #000;
+}
+
+#modal-content .content-wrapper:hover {
+  background-color: #f1f1f1;
+}
+
+#modal-content .content-wrapper:hover .content-type-button a,
+#modal-content .content-wrapper > a:focus + .content-type-button a,
+#modal-content .content-wrapper .content-type-button a:focus {
+  opacity: 1;
 }

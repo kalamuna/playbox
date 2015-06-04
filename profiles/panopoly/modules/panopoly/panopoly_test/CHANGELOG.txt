@@ -1,3 +1,19 @@
+Panopoly Test 7.x-1.22, 2015-06-04
+---------------------------
+- Only show one widget preview at a time when adding content in panels.
+- Update to latest Fieldable Panels Panes (FPP).
+- Upgrade to Behat 3 / Drupal Extension 3.
+- Write Behat test for autocomplete on "Add content item" widget.
+- Editing body of node in FAPE via the IPE doesn't save changes.
+- Style settings form breaks 'managed_file' elements, puts 'Cancel' button in
+  'General Settings' fieldset, and gives PHP notices on region style settings.
+- Add Behat tests for demo content pulled in via panopoly_demo and Migrate.
+- "@Then /^I should see the "([^"]*)" button$/" notice on $region.
+- Write Behat test for hiding seldom used pane styles via Panopoly Magic.
+- Undefined events don't have definition but afterStep still called, errors out.
+- Provide a way for Views to opt out of allowing the "Display type" to be
+  changed on the pane settings.
+
 Panopoly Test 7.x-1.21, 2015-04-29
 ---------------------------
 - Set human-readable names for all of Panopoly's image styles.

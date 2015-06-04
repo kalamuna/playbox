@@ -2,12 +2,34 @@ Feature: Add content item
   In order to put in a particular content item on a page
   As a site administrator
   I need to be able to choose which content item
- 
+
+  @api @javascript @panopoly_widgets
+  Scenario: Content item autocomplete should only offer nodes of the selected type
+    Given I am logged in as a user with the "administrator" role
+      And Panopoly magic live previews are disabled
+      And "panopoly_test_page" content:
+      | title       | body      | created            | status |
+      | Test Page 1 | Test body | 01/01/2001 11:00am |      1 |
+      And I am viewing a landing page
+    When I customize this page with the Panels IPE
+      And I click "Add new pane"
+      And I click "Add content item" in the "CTools modal" region
+    Then I should see "Configure new Add content item"
+    When I select "- Any -" from "exposed[type]"
+      And I select the first autocomplete option for "test" on the "exposed[title]" field
+    Then the "exposed[title]" field should contain "Test Page 1"
+    When I select "Test Page" from "exposed[type]"
+      And I select the first autocomplete option for "test" on the "exposed[title]" field
+    Then the "exposed[title]" field should contain "Test Page 1"
+    When I select "Content Page" from "exposed[type]"
+      And I select the first autocomplete option for "test" on the "exposed[title]" field
+    Then the "exposed[title]" field should not contain "Test Page 1"
+
   @api @javascript @panopoly_widgets
   Scenario: Add content item (as "Fields")
     Given I am logged in as a user with the "administrator" role
-      And Panopoly magic live previews are disabled
-      And "panopoly_test_page" nodes:
+    And Panopoly magic live previews are disabled
+    And "panopoly_test_page" content:
       | title       | body      | created            | status |
       | Test Page 1 | Test body | 01/01/2001 11:00am |      1 |
       And I am viewing a landing page
@@ -31,7 +53,7 @@ Feature: Add content item
   Scenario: Add content item (as "Content")
     Given I am logged in as a user with the "administrator" role
       And Panopoly magic live previews are disabled
-      And "panopoly_test_page" nodes:
+      And "panopoly_test_page" content:
       | title       | body      | created            | status |
       | Test Page 1 | Test body | 01/01/2001 11:00am |      1 |
       And I am viewing a landing page
@@ -65,7 +87,7 @@ Feature: Add content item
   Scenario: Title override should work for all view modes
     Given I am logged in as a user with the "administrator" role
       And Panopoly magic live previews are disabled
-      And "panopoly_test_page" nodes:
+      And "panopoly_test_page" content:
       | title       | body      | created            | status |
       | Test Page 1 | Test body | 01/01/2001 11:00am |      1 |
       And I am viewing a landing page
@@ -102,7 +124,7 @@ Feature: Add content item
   Scenario: Title override should work with non-Panelizer content types
     Given I am logged in as a user with the "administrator" role
       And Panopoly magic live previews are disabled
-      And "panopoly_test_page_simple" nodes:
+      And "panopoly_test_page_simple" content:
       | title       | body      | created            | status |
       | Test Page 1 | Test body | 01/01/2001 11:00am |      1 |
       And I am viewing a landing page
@@ -139,7 +161,7 @@ Feature: Add content item
   Scenario: Content item widget continues to work after renaming content
     Given I am logged in as a user with the "administrator" role
       And Panopoly magic live previews are disabled
-      And "panopoly_test_page" nodes:
+      And "panopoly_test_page" content:
       | title       | body      | created            | status |
       | Test Page 1 | Test body | 01/01/2001 11:00am |      1 |
       And I am viewing a landing page

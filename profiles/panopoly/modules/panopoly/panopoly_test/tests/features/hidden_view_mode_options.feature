@@ -7,6 +7,7 @@ Feature: Hidden view mode options
   Scenario: Make sure that the right view modes are hidden by default
     Given I am logged in as a user with the "administrator" role
       And Panopoly magic live previews are disabled
+      And Panopoly magic add content previews are disabled
       And I run drush "vdel" "panopoly_magic_hidden_view_mode_options -y"
       And I am viewing a landing page
     When I customize this page with the Panels IPE
@@ -28,6 +29,7 @@ Feature: Hidden view mode options
   Scenario: Configure which view modes are available on Views
     Given I am logged in as a user with the "administrator" role
       And Panopoly magic live previews are disabled
+      And Panopoly magic add content previews are disabled
       And I run drush "vdel" "panopoly_magic_hidden_view_mode_options -y"
       And I visit "/admin/panopoly/settings/panopoly_magic"
     When I click "Show Advanced"
@@ -55,6 +57,7 @@ Feature: Hidden view mode options
   Scenario: With vanilla Panopoly, we shouldn't see the 'View mode' selector on FPPs
     Given I am logged in as a user with the "administrator" role
       And Panopoly magic live previews are manual
+      And Panopoly magic add content previews are disabled
       And I run drush "vdel" "panopoly_magic_hidden_view_mode_options -y"
       And I am viewing a landing page
     When I customize this page with the Panels IPE
@@ -67,6 +70,7 @@ Feature: Hidden view mode options
   Scenario: Configure which view modes are available on FPPs
     Given I am logged in as a user with the "administrator" role
       And Panopoly magic live previews are disabled
+      And Panopoly magic add content previews are disabled
       And I run drush "vdel" "panopoly_magic_hidden_view_mode_options -y"
       And I visit "/admin/panopoly/settings/panopoly_magic"
     When I click "Show Advanced"

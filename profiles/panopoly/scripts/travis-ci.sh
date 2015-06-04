@@ -94,14 +94,16 @@ system_install() {
 
   # Get Selenium
   header Downloading Selenium
-  wget http://selenium-release.storage.googleapis.com/2.41/selenium-server-standalone-2.41.0.jar
+  wget http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar
  
   # Disable sendmail
   echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
   # Enable APC
-  echo "extension=apc.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  echo "apc.shm_size=256M" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  if [[ $TRAVIS_PHP_VERSION < "5.5" ]]; then
+    echo "extension=apc.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+    echo "apc.shm_size=256M" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  fi
 
   # Increase the MySQL connection timeout on the PHP end.
   echo "mysql.connect_timeout=3000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
@@ -163,7 +165,7 @@ before_tests() {
 
   # Run the selenium server
   header Starting selenium
-  java -jar selenium-server-standalone-2.41.0.jar -Dwebdriver.chrome.driver=`pwd`/chromedriver > /dev/null 2>&1 &
+  java -jar selenium-server-standalone-2.45.0.jar -Dwebdriver.chrome.driver=`pwd`/chromedriver > /dev/null 2>&1 &
   echo $! > /tmp/selenium-server-pid
   wait_for_port 4444
 }
@@ -176,7 +178,9 @@ run_tests() {
   header Running tests
 
   # Make the Travis tests repos agnostic by injecting drupal_root with BEHAT_PARAMS
-  export BEHAT_PARAMS="extensions[Drupal\\DrupalExtension\\Extension][drupal][drupal_root]=$BUILD_TOP/drupal"
+  BEHAT_PARAMS='{"extensions":{"Drupal\\DrupalExtension":{"drupal":{"drupal_root":"BUILD_TOP/drupal"}}}}'
+  BEHAT_PARAMS=`echo $BEHAT_PARAMS | sed -e s#BUILD_TOP#$BUILD_TOP#`
+  export BEHAT_PARAMS
 
   cd drupal/profiles/panopoly/modules/panopoly/panopoly_test/tests
 

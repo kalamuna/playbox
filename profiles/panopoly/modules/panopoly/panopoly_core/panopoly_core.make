@@ -7,10 +7,12 @@ core = 7.x
 
 projects[ctools][version] = 1.7
 projects[ctools][subdir] = contrib
+projects[ctools][patch][2280853] = http://www.drupal.org/files/issues/ctools-keyboard-trap-2280853-37.patch
 
 projects[panels][version] = 3.5
 projects[panels][subdir] = contrib
 projects[panels][patch][2448825] = https://www.drupal.org/files/issues/panels-export-indentation-2448825-1.patch
+projects[panels][patch][2390803] = https://www.drupal.org/files/issues/panels-focus-add-content-tab-2390803-13.patch
 
 projects[panels_breadcrumbs][version] = 2.2
 projects[panels_breadcrumbs][subdir] = contrib
@@ -20,14 +22,8 @@ projects[panelizer][subdir] = contrib
 projects[panelizer][patch][1623536] = http://drupal.org/files/issues/array-to-object-on-update-1623536-26.patch
 projects[panelizer][patch][2416505] = http://www.drupal.org/files/issues/panelizer-search_api-2416505-3.patch
 
-projects[fieldable_panels_panes][version] = 1.5
+projects[fieldable_panels_panes][version] = 1.6
 projects[fieldable_panels_panes][subdir] = contrib
-projects[fieldable_panels_panes][patch][2283263] = http://drupal.org/files/issues/fieldable_panels_panes-n2283263-5.patch
-projects[fieldable_panels_panes][patch][2256503] = http://www.drupal.org/files/issues/fieldable_panels_panes-n2256503-12-backport-fpp15.patch
-projects[fieldable_panels_panes][patch][2415427] = http://www.drupal.org/files/issues/fieldable_panels_pane-avoid-reload-2415427-4.patch
-projects[fieldable_panels_panes][patch][2146479] = http://www.drupal.org/files/issues/2146479-admin-menu-map-conflict.patch
-projects[fieldable_panels_panes][patch][2463965] = http://www.drupal.org/files/issues/fieldable_panels_panes-title-visibility-rules-2463965-1.patch
-projects[fieldable_panels_panes][patch][2304921] = http://www.drupal.org/files/issues/fpp_rendering-2304921-1.patch
 
 projects[pm_existing_pages][version] = 1.4
 projects[pm_existing_pages][subdir] = contrib
@@ -72,7 +68,7 @@ projects[transliteration][subdir] = contrib
 
 ; Field modules
 
-projects[date][version] = 2.8
+projects[date][version] = 2.9-rc1
 projects[date][subdir] = contrib
 
 projects[entityreference][version] = 1.1
@@ -86,9 +82,8 @@ projects[link][subdir] = contrib
 
 ; Harness the Power of Features and Apps with Default Content
 
-projects[apps][version] = 1.0-beta20
+projects[apps][version] = 1.0-rc1
 projects[apps][subdir] = contrib
-projects[apps][patch][2430915] = https://www.drupal.org/files/issues/apps-drush-default-apps-2430915-1.patch
 
 projects[features][version] = 2.5
 projects[features][subdir] = contrib
@@ -116,6 +111,13 @@ projects[migrate][subdir] = "contrib"
 projects[migrate_extras][version] = "2.5"
 projects[migrate_extras][type] = "module"
 projects[migrate_extras][subdir] = "contrib"
+
+; jQuery Update was moved to Panopoly Core, but is left in Panopoly Admin's
+; .make file to retain a stable 1.x branch of Panopoly. See the following URL
+; for more information: http://drupal.org/node/2492811
+projects[jquery_update][version] = 2.3
+projects[jquery_update][subdir] = contrib
+projects[jquery_update][patch][1448490] = http://www.drupal.org/files/issues/jquery-update-remove-states-js-override-1448490-58-do-not-test.patch
 
 ; Recommended Modules
 projects[devel][version] = 1.5

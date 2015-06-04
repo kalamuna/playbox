@@ -85,6 +85,10 @@ def travisyml_skip_upgrade_tests(filename, skip_all=True):
     with open(filename, 'rt') as fd:
         data = yaml.load(fd)
 
+    # We always drop the matrix -> include.
+    if data.has_key('matrix') and data['matrix'].has_key('include'):
+        del data['matrix']['include']
+
     # Remove all but the first 'env' entry. The rest are upgrade tests.
     if skip_all:
         data['env'] = [data['env'][0]]

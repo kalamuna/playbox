@@ -7,7 +7,7 @@ Feature: Add landing page
     Given I am logged in as a user with the "administrator" role
     When I visit "/node/add/panopoly-landing-page"
       And I fill in the following:
-        | Title         | Testing [random] landing page title |
+        | Title         | Testing landing page title |
 
   @api @panopoly_pages
   Scenario: Add a landing page
@@ -15,4 +15,4 @@ Feature: Add landing page
     # don't use 'save_draft', and this makes this test compatible with them.
     #When I press "Publish"
     When I press "edit-submit"
-    Then the "h1" element should contain "Testing [random:1] landing page title"
+    Then the "h1" element should contain "Testing landing page title"

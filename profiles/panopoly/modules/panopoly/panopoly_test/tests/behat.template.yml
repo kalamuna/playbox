@@ -3,10 +3,15 @@ imports:
 
 default:
   extensions:
-    Behat\MinkExtension\Extension:
-      base_url: http://${drupal.uri}
-    Drupal\DrupalExtension\Extension:
+    Behat\MinkExtension:
+      base_url: http://mydrupalsite.com
+      files_path: './profiles/panopoly/modules/panopoly/panopoly_test/tests'
+    Drupal\DrupalExtension:
       drush:
-        root: ${drush.root}
+        root: '/path/to/drupal/root'
       drupal:
         drupal_root: '/path/to/drupal/root'
+      # Look in the profile modules directory and pull in module subcontexts.
+      subcontexts:
+        paths:
+          - "./profiles/panopoly"

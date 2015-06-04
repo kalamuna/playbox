@@ -1,19 +1,27 @@
 default:
-  paths:
-    features: 'features'
-  filters:
-    tags: "~@chrome"
+  suites:
+    default:
+      paths: 
+        features: 'features'
+      filters:
+        tags: "~@chrome"
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MarkupContext
+        - Drupal\DrupalExtension\Context\DrushContext
   extensions:
-    Behat\MinkExtension\Extension:
+    Behat\MinkExtension:
       goutte: ~
       selenium2: ~
-      # base_url: http://${drupal.uri}
-      files_path: ./
-    Drupal\DrupalExtension\Extension:
+      #base_url: http://mydrupalsite.com
+      #files_path: './profiles/panopoly/modules/panopoly/panopoly_test/tests'
+    Drupal\DrupalExtension:
       blackbox: ~
-      # drush:
-      #  root: ${drush.root}
-      # drupal:
+      #drush:
+      #  root: '/path/to/drupal/root'
+      #drupal:
       #  drupal_root: '/path/to/drupal/root'
       api_driver: 'drupal'
       region_map:
@@ -53,17 +61,16 @@ default:
         Footer fourth column: ".region-footer-fourthcolumn"
         Footer: ".region-footer"
         Search: "#search-form"
-      # Look in the profile modules directory and pull in module subcontexts.
-      subcontexts:
-        paths:
-          - "../../../"
+        Panopoly Magic Style Settings: "#panels-edit-style-settings-form #edit-general-settings"
 
 # Setup for Google Chrome only tests.
 chrome:
-  filters:
-    tags: "@chrome"
+  suites:
+    default:
+      filters:
+        tags: "@chrome"
   extensions:
-    Behat\MinkExtension\Extension:
+    Behat\MinkExtension:
       selenium2:
         browser: chrome
         capabilities: {"browser": "chrome", "browserName": "chrome", "browserVersion": "ANY", "version": "ANY"}

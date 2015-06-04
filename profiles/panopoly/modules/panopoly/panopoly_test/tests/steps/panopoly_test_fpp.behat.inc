@@ -3,28 +3,35 @@
  * @file
  * Provide Behat step-definitions for Fieldable Panels Panes.
  *
- * @todo This should become fieldable_panels_panes.behat.inc in the Panels module!
+ * @todo This should become fieldable_panels_panes.behat.inc in the Fieldable Panels Panes module!
  */
 
 use Drupal\DrupalExtension\Context\DrupalSubContextInterface;
-use Behat\Behat\Context\BehatContext;
+use Drupal\DrupalDriverManager;
+use Drupal\DrupalExtension\Context\RawDrupalContext;
+use Drupal\DrupalExtension\Hook\Scope\AfterUserCreateScope;
 
-class FieldablePanelsPanesSubContext extends BehatContext implements DrupalSubContextInterface {
+class FieldablePanelsPanesSubContext extends RawDrupalContext implements DrupalSubContextInterface {
+
+  /**
+   * Contains the DrupalDriverManager.
+   *
+   * @var \Drupal\DrupalDriverManager
+   */
+  private $drupal;
+
+  /**
+   * An array of Drupal users created by other contexts.
+   *
+   * @var array
+   */
+  protected $external_users = array();
+
   /**
    * Initializes context.
    */
-  public function __construct(array $parameters = array()) {
-  }
-
-  public static function getAlias() {
-    return 'fieldable_panels_panes';
-  }
-
-  /**
-   * Get the session from the parent context.
-   */
-  protected function getSession() {
-    return $this->getMainContext()->getSession();
+  public function __construct(DrupalDriverManager $drupal) {
+    $this->drupal = $drupal;
   }
 
   /**
@@ -55,7 +62,74 @@ class FieldablePanelsPanesSubContext extends BehatContext implements DrupalSubCo
   }
 
   /**
-   * @Then /^fieldable panels pane "([^"]*)" should have (\d+) revisions?$/
+   * Record all the users created during this scenario.
+   *
+   * We need to use this hook so we can get users created in steps on other
+   * contexts (most probably the DrupalContext).
+   *
+   * @AfterUserCreate
+   */
+  public function afterUserCreate(AfterUserCreateScope $scope) {
+    $user = $scope->getEntity();
+    $this->external_users[$user->name] = $user;
+  }
+
+  /**
+   * Get a list of UIDs.
+   *
+   * @return
+   *   An array of numeric UIDs of users created by Given... steps during this scenario.
+   */
+  public function getUIDs() {
+    $uids = array();
+    foreach ($this->external_users as $user) {
+      $uids[] = $user->uid;
+    }
+    return $uids;
+  }
+
+  /**
+   * Cleans up FPPs.
+   *
+   * @AfterScenario @api
+   */
+  public function cleanFPPs($event) {
+    $fpids = array();
+
+    // Get UIDs of users created during this scenario.
+    $uids = $this->getUIDs();
+    if (!empty($uids)) {
+      // Find any FPPs created by the test users.
+      // First, get a list of FPPs with their first revision VID.
+      $fpp_vids = db_query('SELECT min(vid) AS vid FROM {fieldable_panels_panes_revision} GROUP BY fpid')->fetchAll();
+      $vids = array();
+      if (!empty($fpp_vids)) {
+        foreach ($fpp_vids as $vid) {
+          $vids[] = $vid->vid;
+        }
+        // Then, check whether that first revision was created by a current test user.
+        $fpp_fpids = db_query('SELECT fpid FROM {fieldable_panels_panes_revision} WHERE vid IN (:vids) AND uid IN (:uids)', array(':uids' => $uids, ':vids' => $vids))->fetchAll();
+        if (!empty($fpp_fpids)) {
+          foreach ($fpp_fpids as $fpid) {
+            $fpids[] = $fpid->fpid;
+          }
+        }
+      }
+      // Add FPPs created by users to the $fpps variable.
+      $fpids = array_unique($fpids);
+    }
+
+    // Delete any fieldable panels panes that were created by test users or a Given step.
+    foreach ($fpids as $fpid) {
+      fieldable_panels_panes_delete($fpid);
+    }
+
+    // Clear out the list.
+    $this->external_users = array();
+  }
+
+  /**
+   * @Then fieldable panels pane :admin_title should have :expected_count revision(s)
    *
    * @todo: Can we only allow this to work with @api tests?
    */
@@ -70,7 +144,7 @@ class FieldablePanelsPanesSubContext extends BehatContext implements DrupalSubCo
   }
 
   /**
-   * @Given /^I am viewing revision (\d+) of fieldable panels pane "([^"]*)"$/
+   * @Given I am viewing revision :revision_number of fieldable panels pane :admin_title
    *
    * @todo: Can we only allow this to work with @api tests?
    */
@@ -81,6 +155,6 @@ class FieldablePanelsPanesSubContext extends BehatContext implements DrupalSubCo
     $vid = $revisions[$revision_number - 1]->vid;
     $path = "admin/structure/fieldable-panels-panes/view/{$fpp->fpid}/revision/$vid";
 
-    $this->getSession()->visit($this->getMainContext()->locatePath($path));
+    $this->getSession()->visit($this->locatePath($path));
   }
 }

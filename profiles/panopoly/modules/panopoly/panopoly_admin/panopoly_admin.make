@@ -46,6 +46,9 @@ projects[breakpoints][subdir] = contrib
 projects[admin_menu][version] = 3.0-rc5
 projects[admin_menu][subdir] = contrib
 
+; jQuery Update was moved to Panopoly Core, but is left in Panopoly Admin's
+; .make file to retain a stable 1.x branch of Panopoly. See the following URL
+; for more information: http://drupal.org/node/2492811
 projects[jquery_update][version] = 2.3
 projects[jquery_update][subdir] = contrib
 projects[jquery_update][patch][1448490] = http://www.drupal.org/files/issues/jquery-update-remove-states-js-override-1448490-58-do-not-test.patch

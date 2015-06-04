@@ -7,28 +7,27 @@
  */
 
 use Drupal\DrupalExtension\Context\DrupalSubContextInterface;
-use Behat\Behat\Context\BehatContext;
+use Drupal\DrupalDriverManager;
+use Drupal\DrupalExtension\Context\RawDrupalContext;
 
-class MediaSubContext extends BehatContext implements DrupalSubContextInterface {
+class MediaSubContext extends RawDrupalContext implements DrupalSubContextInterface {
+
+  /**
+   * Contains the DrupalDriverManager.
+   *
+   * @var \Drupal\DrupalDriverManager
+   */
+  private $drupal;
+
   /**
    * Initializes context.
    */
-  public function __construct(array $parameters = array()) {
-  }
-
-  public static function getAlias() {
-    return 'media';
+  public function __construct(DrupalDriverManager $drupal) {
+    $this->drupal = $drupal;
   }
 
   /**
-   * Get the session from the parent context.
-   */
-  protected function getSession() {
-    return $this->getMainContext()->getSession();
-  }
-
-  /**
-   * @When /^I click the fake "([^"]*)" button$/
+   * @When I click the fake :text button
    */
   public function iClickTheFakeButton($text) {
     // Media style selector "buttons" are A tags with no href, so not findable

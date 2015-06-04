@@ -1,3 +1,77 @@
+Panopoly 7.x-1.22, 2015-06-04
+----------------------
+- Drop support for updating from Panopoly version that were release more than a
+  year ago.
+- Update Panopoly Images for Issue #2401473 by dsnopek: Update to latest
+  ManualCrop 7.x-1.22-dev.
+- Update Panopoly Magic and Test for Issue #2155377 by dsnopek, sylus, mpotter,
+  cboyden: Only show one widget preview at a time when adding content in panels.
+- Update Panopoly Core for Issue #2499273: Include Panels and CTools patches for
+  improved keyboard accessibility.
+- Update Panopoly Core, Magic and Test for Issue #2483265 by dsnopek: Update to
+  latest Fieldable Panels Panes (FPP).
+- Update Panopoly Test for Issue #2371247 by dsnopek, cboyden: Upgrade to Behat
+  3 / Drupal Extension 3.
+- Update to Drupal 7.37.
+- Update Panopoly Core and Admin for Issue #2492811 by RobLoach, dsnopek: Move
+  jquery_update to panopoly_core.make and .info.
+- Update Panopoly Widgets for Issue #2458677 by mglaman: Add locale language
+  filter to "Add content item" widget View.
+- Update Panopoly Test for Issue #2374827 by dsnopek, Shawn DeArmond: Write
+  Behat test for autocomplete on "Add content item" widget.
+- Update Panopoly Core for Issue #2492841 by RobLoach: Switch from
+  hook_pre_render_styles() to hook_library_alter().
+- Update scripts/create_test_branch.py for the addition of the 5.5 and 5.6 jobs.
+- Run Travis-CI tests with PHP 5.5 and 5.6 as well.
+- Update Panopoly Magic and Test for Issue #2459163 by mglaman, dsnopek: Editing
+  body of node in FAPE via the IPE doesn't save changes.
+- Update Panopoly WYSIWYG for Issue #2491521 by dsnopek: Warning when content
+  includes duplicate IDs and a user defined text format that allows them.
+- Update Panopoly Widgets for Issue #2445119 by dsnopek: Update Media to
+  2.0-alpha4.
+- Update Panopoly Magic and Test for Issue #2477469 by dsnopek, mglaman: Style
+  settings form breaks 'managed_file' elements, puts 'Cancel' button in 'General
+  Settings' fieldset, and gives PHP notices on region style settings.
+- Update Panopoly Magic for Issue #2491593 by dsnopek: Visual regression on 'Add
+  content' dialog for the top-level widget buttons.
+- Update Panopoly Test for Issue #2430975 by Shawn DeArmond: Add Behat tests for
+  demo content pulled in via panopoly_demo and Migrate.
+- Revert "Update Panopoly Core for Issue #2456255 by dsnopek: Update
+  views_autocomplete_filters to version 1.2".
+- Update Panopoly Core for Issue #2316531 by cornifex: Update Date to 2.9-rc1.
+- Update Panopoly Test for Issue #2489630 by mglaman: "@Then /^I should see the
+  "([^"]*)" button$/" notice on $region.
+- Update Panopoly Test for Issue #2489354 by caschbre: Write Behat test for
+  hiding seldom used pane styles via Panopoly Magic.
+- Revert "Update Panopoly Test for Issue #2489354 by caschbre: Write Behat test
+  for hiding seldom used pane styles via Panopoly Magic".
+- Update Panopoly Core for Issue #2466935 by mglaman, hefox: Update apps to rc1.
+- Update Panopoly Widgets for Issue #2424709 by joegraduate: Update 'menu_block'
+  module to 2.5.
+- Update Panopoly Core for Issue #2456255 by dsnopek: Update
+  views_autocomplete_filters to version 1.2.
+- Update Panopoly Images for Issue #2486713 by ergophobe: Caption filter doesn't
+  select the correct image size when an image's size is manually adjusted.
+- Update Panopoly Images for Issue #2489320 by junaidpv: panopoly_images module
+  pass incorrect arguments when calling watchdog() inside hook_init()
+  implementaion.
+- Update Panopoly Admin for Issue #2484733 by uladzimir.karol: Replace 'und'
+  with the constant LANGUAGE_NONE for multi language site in panopoly_admin.
+- Update Panopoly Search for Issue #2485081 by dobe: Alter Search Form Submit.
+- Update Panopoly Test for Issue #2481145 by hefox: Undefined events don't have
+  definition but afterStep still called, errors out.
+- Update Panopoly Widgets for Issue #2480835 by dsnopek: Spotlight widget
+  shouldn't assume that image exists when rendering.
+- Revert "Update Panopoly Widgets for Issue #2479569: Update tablefield to
+  version 2.4".
+- Update Panopoly Magic and Test for Issue #2468371 by dsnopek, cboyden: Provide
+  a way for Views to opt out of allowing the "Display type" to be changed on the
+  pane settings.
+- Update Panopoly Widgets for Issue #2479569: Update tablefield to version 2.4.
+- Update Panopoly Theme for Issue #2453093: Update respondjs to version 1.5.
+- Start testing upgrades from the 1.21 release.
+- Restored drupal-org.make after the 1.21 release.
+
 Panopoly 7.x-1.21, 2015-04-29
 ----------------------
 - Update Panopoly Core for Issue #2480383: Update Views to version 3.11 for SA-
