@@ -1,0 +1,55 @@
+<?php
+/**
+ * @file
+ * Code that provides demo content when enabling the Playbox Emergency feature.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function playbox_emergency_enable (){
+  $node = new stdClass();  // Create a new node object
+  $node->type = 'vice_president';  // Content type
+  $node->language = LANGUAGE_NONE;  // Or e.g. 'en' if locale is enabled
+  node_object_prepare($node);  //Set some default values
+
+  $node->title = 'Thomas Cox';
+
+  $node->status = 1;   // (1 or 0): published or unpublished
+  $node->promote = 0;  // (1 or 0): promoted to front page or not
+  $node->sticky = 0;  // (1 or 0): sticky at top of lists or not
+  $node->comment = 1;  // 2 = comments open, 1 = comments closed, 0 = comments hidden
+// Add author of the node
+  $node->uid = 1;
+
+  $path = 'vice-president/thomas-cox';
+  $node->path = array('alias' => $path);
+// Save the node
+  node_save($node);
+
+  $portrait = file_save_data(file_get_contents(drupal_get_path('module', 'playbox_emergency') . '/img/demo.jpg'), 'public://demo.jpg');
+
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $node_wrapper->field_playbox_portrait->file->set($portrait);
+  $node_wrapper->field_playbox_nickname->set('Demo');
+  $node_wrapper->field_playbox_bio->set('Master slayer of code');
+  $node_wrapper->field_playbox_powers[0]->set('Conquering/99');
+  $node_wrapper->save();
+  $vp_nid = $node_wrapper->getIdentifier();
+
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', 'presidents')
+    ->propertyCondition('title', 'George Washington')
+    ->range(0,1)
+    ->execute();
+
+  if (!empty($entities['node'])) {
+    $node = node_load(reset(array_keys($entities['node'])));
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    $node_wrapper->field_running_mate->set($vp_nid);
+    $node_wrapper->save();
+  }
+
+  variable_set('playbox_admin_emergency', TRUE);
+}
