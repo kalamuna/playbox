@@ -10,6 +10,55 @@
 function playbox_emergency_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-playbox_president-field_running_mate'
+  $field_instances['node-playbox_president-field_running_mate'] = array(
+    'bundle' => 'playbox_president',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Whenever the Homeland Security threat level is high or very high all the Presidents on the site are swapped out for their VPs.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 4,
+      ),
+      'featured' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_running_mate',
+    'label' => 'Running Mate',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'node-playbox_vice_president-field_playbox_bio'
   $field_instances['node-playbox_vice_president-field_playbox_bio'] = array(
     'bundle' => 'playbox_vice_president',
@@ -256,8 +305,10 @@ function playbox_emergency_field_default_field_instances() {
   t('Nickname');
   t('Portrait');
   t('Powers');
+  t('Running Mate');
   t('This contains a suitable portrait of the US President. ');
   t('This is an example of a power for a playbox character and the strength of that power. For example "Extreme Legislation: 76%". Each character will have 4 powers and you need input them like this "POWER/STRENGTH". Real world example: "Mega Buster/87". ');
+  t('Whenever the Homeland Security threat level is high or very high all the Presidents on the site are swapped out for their VPs.');
 
   return $field_instances;
 }
