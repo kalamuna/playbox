@@ -48,7 +48,9 @@ function kalatheme_preprocess_views_view_grid(&$variables) {
     if ($responsive_toggle_off) {
       $variables['options']['columns_' . $tier] = 1;
     }
-    if ($variables['gridsize'] % $variables['options']['columns_' . $tier] === 0) {
+    if (!empty($variables['options']['columns_' . $tier]) &&
+      $variables['gridsize'] % $variables['options']['columns_' . $tier] === 0
+    ) {
       $variables[$tier] = $variables['gridsize'] / $variables['options']['columns_' . $tier];
     }
   }
