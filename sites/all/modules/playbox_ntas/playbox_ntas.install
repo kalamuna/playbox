@@ -1,0 +1,75 @@
+<?php
+/**
+ * @file
+ * Code that provides demo content when enabling the Playbox Emergency feature.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function playbox_ntas_enable () {
+
+  // This fixes issues with trying to create content of our newly created
+  // content type in the playbox_emergency feature.
+  features_rebuild();
+
+  $node = new stdClass();  // Create a new node object.
+  $node->type = 'playbox_vice_president';  // Content type
+  $node->language = LANGUAGE_NONE;  // Or e.g. 'en' if locale is enabled
+  node_object_prepare($node);  // Set some default values.
+
+  $node->title = 'Thomas Cox';
+
+  $node->status = 1;   // (1 or 0): published or unpublished
+  $node->promote = 0;  // (1 or 0): promoted to front page or not
+  $node->sticky = 0;   // (1 or 0): sticky at top of lists or not
+  $node->comment = 1;  // 2 = comments open, 1 = comments closed, 0 = comments hidden
+  // Add author of the node.
+  $node->uid = 1;
+
+  // Set path.
+  $path = 'vice-president/thomas-cox';
+  $node->path = array('alias' => $path);
+
+  // Load node_wrapper.
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+
+  // Set portrait image.
+  $file = file_save_data(file_get_contents(drupal_get_path('module', 'playbox_ntas') . '/img/demo.jpg'), 'public://playbox/demo.jpg');
+  $node_wrapper->field_playbox_portrait = (array) $file;
+
+  // Set other misc. fields.
+  $node_wrapper->field_playbox_nickname = 'Demo';
+  $node_wrapper->field_playbox_bio = 'Master slayer of code';
+  $node_wrapper->field_playbox_powers = array('Conquering/99');
+
+  // Save the node.
+  $node_wrapper->save();
+  $vp_nid = $node_wrapper->getIdentifier();
+
+  // Lookup Andrew Jackson and George Washingon - without the t.
+  // These are the two presidents currently in battle.
+  $president_array = array(
+    'Andrew Jackson',
+    'George Washingon'
+  );
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', 'playbox_president')
+    ->propertyCondition('title', $president_array, 'IN')
+    ->execute();
+
+  // Set President's Running Mate to demo content.
+  if (!empty($entities['node'])) {
+    // Set entity reference on selected Presidents pointing to demo Vice President.
+    $presidents = node_load_multiple(array_keys($entities['node']));
+    foreach ($presidents as $president) {
+      $president_wrapper = entity_metadata_wrapper('node', $president);
+      $president_wrapper->field_running_mate = $vp_nid;
+      $president_wrapper->save();
+    }
+  }
+
+  // Turn on NTAS testing.
+  variable_set('playbox_admin_ntas', TRUE);
+}
