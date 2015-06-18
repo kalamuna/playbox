@@ -128,6 +128,21 @@ function panopoly_magic_theme($existing, $type, $theme, $path) {
     'panopoly_magic_stylizer_preview_form' => array(
       'render element' => 'form',
     ),
+    'panopoly_magic_preview' => array(
+      'variables' => array(
+        'title' => NULL,
+        'add_link' => NULL,
+        'preview' => NULL,
+        'single' => FALSE,
+      ),
+      'template' => 'panopoly-magic-preview',
+    ),
+    'panopoly_magic_preview_link' => array(
+      'variables' => array(
+        'preview_link' => NULL,
+        'add_link' => NULL
+      ),
+    ),
   );
 }
 
@@ -438,6 +453,8 @@ function panopoly_magic_form_alter(&$form, &$form_state, $form_id) {
 
       $preview_attributes = array(
         'class' => array(
+          'panopoly-magic-preview-button',
+          // Keeping old class name for backcompat with 3rd party themes.
           'widget-preview-button',
         ),
       );
@@ -585,24 +602,25 @@ function panopoly_magic_form_post_render_preview($output, $form) {
   }
   $content = $preview_callback($pane->type, $pane->subtype, $configuration, $keywords, $args, $context);
 
-  // Create the fieldset with appropriate content
-  $preview = array(
-    '#type' => 'fieldset',
-    '#title' => 'Preview',
-    '#attributes' => array(
-      'id' => 'panopoly-form-widget-preview',
-      'class' => array('widget-preview', 'widget-preview-single'),
-    ),
-    '#collapsible' => FALSE,
-    '#weight' => -100,
-  );
   if (!empty($content)) {
-    $preview['preview']['#markup'] = (!empty($style['render pane'])) ? theme($style['render pane'], array('content' => $content, 'pane' => $pane, 'display' => $display, 'style' => $style, 'settings' => $pane->style['settings'])) : theme('panels_pane', array('content' => $content, 'pane' => $pane, 'display' => $display));
+    // Wrap the widget content in the style plugin.
+    if (!empty($style['render pane'])) {
+      $content = theme($style['render pane'], array('content' => $content, 'pane' => $pane, 'display' => $display, 'style' => $style, 'settings' => $pane->style['settings']));
+    }
+    else {
+      $content = theme('panels_pane', array('content' => $content, 'pane' => $pane, 'display' => $display));
+    }
   }
   else {
-    $preview['preview']['#markup'] = t('[no preview]');
+    $content = t('[no preview]');
   }
-  return drupal_render($preview) . $output;
+
+  // Render the preview.
+  return theme('panopoly_magic_preview', array(
+    'title' => t('Preview'),
+    'preview' => $content,
+    'single' => TRUE,
+  )) . $output;
 }
 
 /**
@@ -1226,7 +1244,8 @@ function panopoly_magic_form_ctools_stylizer_edit_style_form_default_alter(&$for
 
     // Customize the settings preview button.
     $form['top box']['preview']['submit']['#attributes'] = array(
-      'class' => array('widget-preview-button', 'ctools-use-ajax', 'ctools-auto-submit-click'),
+      // Keeping 'widget-preview-button' class for backcompat with 3rd party themes.
+      'class' => array('panopoly-magic-preview-button', 'widget-preview-button', 'ctools-use-ajax', 'ctools-auto-submit-click'),
     );
 
     // Autosubmit the form.
@@ -1264,11 +1283,11 @@ function theme_panopoly_magic_stylizer_preview_form($vars) {
   }
 
   if (!empty($preview) && function_exists($preview)) {
-    $output = '<fieldset id="preview" class="widget-preview-single"><legend>' . t('Preview') . '</legend><div class="fieldset-wrapper">';
-    $output .= $preview($plugin, $settings);
-    $output .= drupal_render_children($form);
-    $output .= '</div></fieldset>';
-    return $output;
+    return theme('panopoly_magic_preview', array(
+      'title' => t('Preview'),
+      'preview' => $preview($plugin, $settings) . drupal_render_children($form),
+      'single' => TRUE,
+    ));
   }
 }
 
@@ -1492,29 +1511,45 @@ function _panopoly_magic_render_add_content_link($vars, $content_type, $title) {
   ));
 }
 
+/**
+ * Prepares variables for theme_panopoly_magic_preview().
+ */
+function template_preprocess_panopoly_magic_preview(&$vars) {
+  if (!empty($vars['single'])) {
+    // The id really should be 'panopoly-magic-preview' but don't want to
+    // break 3rd party themes or modules that depend on it.
+    $vars['attributes_array']['id'] = 'panopoly-form-widget-preview';
+    $vars['classes_array'][] = 'panopoly-magic-preview-single';
+  }
+
+  // For backcompat with themes that depend on the old class names.
+  $vars['classes_array'][] = 'widget-preview';
+  if (!empty($vars['single'])) {
+    $vars['classes_array'][] = 'widget-preview-single';
+  }
+}
 
 /**
- * Helper function to render the Panels add content link or preview (or both).
+ * Prepares variables for theme_panopoly_magic_preview_link().
  */
-function _panopoly_magic_render_link_or_preview($title, $link = '', $preview = FALSE) {
-  // @todo: These would be easier to read as templates.
-  $html = '';
-  if ($preview) {
-    $html .= '<fieldset class="widget-preview">';
-    $html .= '<legend>';
-    $html .= '<div class="widget-preview-title">' . $link . '</div>';
-    $html .= '<span class="fieldset-legend">' . $title . '</span>';
-    $html .= '</legend>';
-    $html .= '<div class="fieldset-wrapper">' . $preview . '</div>';
-    $html .= '</fieldset>';
-  }
-  else {
-    $html .= '<div class="content-wrapper">';
-    $html .= $title;
-    $html .= $link;
-    $html .= '</div>';
-  }
+function template_preprocess_panopoly_magic_preview_link(&$vars) {
+  $vars['classes_array'][] = 'panopoly-magic-preview-link';
+  $vars['classes_array'][] = 'clearfix';
+}
 
+/** 
+ * Returns HTML for a preview link.
+ */
+function theme_panopoly_magic_preview_link($vars) {
+  // Since we're a theme function and not a template, template_preprocess()
+  // won't run and we have to deal with 'classes_array' directly.
+  $classes = implode(' ', $vars['classes_array']);
+
+  $html = '';
+  $html .= '<div class="' . $classes . '">';
+  $html .= $vars['preview_link'];
+  $html .= $vars['add_link'];
+  $html .= '</div>';
   return $html;
 }
 
@@ -1554,7 +1589,11 @@ function panopoly_magic_process_panels_add_content_modal(&$vars) {
       $add_content_link = !empty($title) ? _panopoly_magic_render_add_content_link($vars, $content[$title], $title) : '';
       $preview = !empty($vars['preview_single']) ? $vars['preview_single'] : t('No Preview');
 
-      $vars['columns'][0] = _panopoly_magic_render_link_or_preview($legend_title, $add_content_link, $preview);
+      $vars['columns'][0] = theme('panopoly_magic_preview', array(
+        'title' => $legend_title,
+        'add_link' => $add_content_link,
+        'preview' => $preview,
+      ));
     }
 
     // Read the column data with our preview functionality
@@ -1566,11 +1605,18 @@ function panopoly_magic_process_panels_add_content_modal(&$vars) {
       $add_content_link = _panopoly_magic_render_add_content_link($vars, $content[$title], $title);
 
       if ($use_preview == PANOPOLY_ADD_PREVIEW_SINGLE) {
-        $vars['columns'][$which] .= _panopoly_magic_render_link_or_preview($legend_title, $add_content_link);
+        $vars['columns'][$which] .= theme('panopoly_magic_preview_link', array(
+          'preview_link' => $legend_title,
+          'add_link' => $add_content_link,
+        ));
       }
       else {
         $preview = !empty($content[$title]['preview']) ? $content[$title]['preview'] : t('No Preview');
-        $vars['columns'][$which] .= _panopoly_magic_render_link_or_preview($legend_title, $add_content_link, $preview);
+        $vars['columns'][$which] .= theme('panopoly_magic_preview', array(
+          'title' => $legend_title,
+          'add_link' => $add_content_link,
+          'preview' => $preview,
+        ));
       }
     }
   }

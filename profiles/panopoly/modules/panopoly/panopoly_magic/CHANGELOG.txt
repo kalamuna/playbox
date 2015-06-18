@@ -1,3 +1,7 @@
+Panopoly Magic 7.x-1.23, 2015-06-17
+----------------------------
+- Generate preview markup in a theme function/template.
+
 Panopoly Magic 7.x-1.22, 2015-06-04
 ----------------------------
 - Only show one widget preview at a time when adding content in panels.

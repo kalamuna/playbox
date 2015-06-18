@@ -1,3 +1,30 @@
+Panopoly 7.x-1.23, 2015-06-17
+----------------------
+- Update Panopoly Test for Issue #2507897: Commit composer.lock to increase test
+  performance and consistancy.
+- Update to Drupal 7.38 for SA-CORE-2015-002.
+- Update Panopoly Core and Admin for Issue #2507781: Update to jquery_update 2.6
+  for SA-CONTRIB-2015-123.
+- Update Panopoly Magic and Test for Issue #2496027 by dsnopek: Generate preview
+  markup in a theme function/template.
+- Update Panopoly Core, Admin and Widgets for Issue #2235081 by dsnopek,
+  RobLoach, hefox: Update jquery_update to version 2.5.
+- Update Panopoly Core for Issue #2477391 by hefox, mpotter: Update Features to
+  version 2.6-rc1.
+- Update Panopoly Theme for Issue #2503921 by joegraduate: Update to
+  radix_layouts 3.4.
+- Update Panopoly Widgets for Issue #2499289 by dsnopek, lsolesen, cboyden:
+  Spotlight titles without descriptions wrapping to a second line.
+- Update Panopoly Admin for Issue #2449855 by hefox, mglaman: Patch breakpoints
+  so it doesn't make cache clear slow on sites with enabled themes not using
+  breakpoints.
+- Update Panopoly Widgets for Issue #2499979 by joegraduate, mglaman: Update
+  menu_block to version 2.6.
+- Update Panopoly Pages for Issue #2500351 by mglaman: SQL Integrity constraint
+  thrown for Panopoly Landing Page permissions on upgrade.
+- Start testing upgrades from the 1.22 release.
+- Restored drupal-org.make after the 1.22 release.
+
 Panopoly 7.x-1.22, 2015-06-04
 ----------------------
 - Drop support for updating from Panopoly version that were release more than a

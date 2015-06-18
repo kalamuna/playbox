@@ -352,3 +352,83 @@ Feature: Live preview
     When I am viewing revision 2 of fieldable panels pane "Testing FPP revisions"
     Then I should see "Widget title 2"
       And I should see "Widget content 2"
+
+  @api @javascript @panopoly_magic
+  Scenario: There should be NO live preview when configuring region style
+    Given I am logged in as a user with the "administrator" role
+      And Panopoly magic live previews are automatic
+      And I am viewing a "panopoly_test_page" with the title "Testing region style"
+    When I customize this page with the Panels IPE
+      And I click "Region style" in the "Bryant Content" region
+    Then I should see "Style Settings"
+      And I should not see "Preview" in the "CTools modal" region
+    When I select the radio button "Panopoly Test: Style with settings" with the id "edit-style-panopoly-test-settings-style"
+      And I press the "Next" button
+    Then I should see "General Settings"
+      But I should not see "Preview" in the "CTools modal" region
+
+  @api @javascript @panopoly_magic
+  Scenario: Live preview should work when configuring a pane style
+    Given I am logged in as a user with the "administrator" role
+      And Panopoly magic live previews are automatic
+    # We need to use the 'body_only' panel so that the first pane has some
+    # content. Otherwise, it won't render the style plugin!
+    When I visit "/node/add/panopoly-test-page"
+      And I fill in the following:
+        | Title               | Testing title                     |
+        | Full page override  | node:panopoly_test_page:body_only |
+        | Editor              | plain_text                        |
+        | body[und][0][value] | Testing body                      |
+      And I press "edit-submit"
+    Then I should see "Testing body"
+    # Ok, now let's style it.
+    When I customize this page with the Panels IPE
+      And I click "Style" in the "Boxton Content" region
+    Then I should see "Style Settings"
+      And I should see "Preview" in the "CTools modal" region
+      And I should not see "This widget is patentedly awesome!"
+    When I select the radio button "Panopoly Test: Style with settings" with the id "edit-style-panopoly-test-settings-style"
+      And I wait for live preview to finish
+    Then I should see "This widget is patentedly awesome!"
+    When I press the "Next" button
+    Then I should see "General Settings"
+      And I should see "Preview" in the "CTools modal" region
+      And I should see "This widget is patentedly awesome!"
+    When I select "Terrible" from "Quality of this widget"
+      And I wait for live preview to finish
+    Then I should see "Avert your eyes! It's not even worth to cast your gaze upon this widget."
+
+  @api @javascript @panopoly_magic
+  Scenario: Manual live preview should work when configuring a pane style
+    Given I am logged in as a user with the "administrator" role
+      And Panopoly magic live previews are manual
+    # We need to use the 'body_only' panel so that the first pane has some
+    # content. Otherwise, it won't render the style plugin!
+    When I visit "/node/add/panopoly-test-page"
+      And I fill in the following:
+        | Title               | Testing title                     |
+        | Full page override  | node:panopoly_test_page:body_only |
+        | Editor              | plain_text                        |
+        | body[und][0][value] | Testing body                      |
+      And I press "edit-submit"
+    Then I should see "Testing body"
+    # Ok, now let's style it.
+    When I customize this page with the Panels IPE
+      And I click "Style" in the "Boxton Content" region
+    Then I should see "Style Settings"
+      And I should see "Preview" in the "CTools modal" region
+      And I should not see "This widget is patentedly awesome!"
+    When I select the radio button "Panopoly Test: Style with settings" with the id "edit-style-panopoly-test-settings-style"
+    Then I should not see "This widget is patentedly awesome!"
+    When I press "Update Preview"
+      And I wait for live preview to finish
+    Then I should see "This widget is patentedly awesome!"
+    When I press the "Next" button
+    Then I should see "General Settings"
+      And I should see "Preview" in the "CTools modal" region
+      And I should see "This widget is patentedly awesome!"
+    When I select "Terrible" from "Quality of this widget"
+    Then I should not see "Avert your eyes! It's not even worth to cast your gaze upon this widget."
+    When I press "Update Preview"
+      And I wait for live preview to finish
+    Then I should see "Avert your eyes! It's not even worth to cast your gaze upon this widget."

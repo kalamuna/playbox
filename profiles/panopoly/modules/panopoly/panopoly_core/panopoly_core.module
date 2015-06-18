@@ -141,24 +141,29 @@ function panopoly_core_css_alter() {
  */
 function panopoly_core_library_alter(&$libraries, $module) {
   if ($module == 'system') {
-    // Installs the jQuery.UI themeroller theme to the theme.
+    // Installs our custom jQuery UI theme.
     if (isset($libraries['ui'])) {
       if (isset($libraries['ui']['css']['misc/ui/jquery.ui.theme.css'])) {
         $libraries['ui']['css']['misc/ui/jquery.ui.theme.css']['data'] = drupal_get_path('module', 'panopoly_core') . '/css/panopoly-jquery-ui-theme.css';
       }
-    }
-
-    // Remove the Dialog CSS.
-    if (isset($libraries['ui.dialog'])) {
-      if (isset($libraries['ui.dialog']['css']['misc/ui/jquery.ui.dialog.css'])) {
-        unset($libraries['ui.dialog']['css']['misc/ui/jquery.ui.dialog.css']);
+      if (isset($libraries['ui']['css']['misc/ui/jquery.ui.core.css'])) {
+        unset($libraries['ui']['css']['misc/ui/jquery.ui.core.css']);
       }
     }
 
-    // Remove the Tabs CSS.
-    if (isset($libraries['ui.tabs'])) {
-      if (isset($libraries['ui.tabs']['css']['misc/ui/jquery.ui.tabs.css'])) {
-        unset($libraries['ui.tabs']['css']['misc/ui/jquery.ui.tabs.css']);
+    $jquery_ui_unnecessary_css = array(
+      'ui.button',
+      'ui.resizable',
+      'ui.selectable',
+      'ui.dialog',
+      'ui.tabs',
+    );
+
+    foreach ($jquery_ui_unnecessary_css as $name) {
+      if (isset($libraries[$name])) {
+        if (isset($libraries[$name]['css']["misc/ui/jquery.$name.css"])) {
+          unset($libraries[$name]['css']["misc/ui/jquery.$name.css"]);
+        }
       }
     }
   }

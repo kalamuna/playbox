@@ -20,7 +20,7 @@
         // will move the focus to the first widget by default.
         setTimeout(function () {
           var link_class = 'add-content-link-' + settings.panopoly_magic.pane_add_preview_subtype.replace(/_/g, '-') + '-icon-text-button';
-          $('#modal-content .content-wrapper .content-type-button a.' + link_class, context).focus();
+          $('#modal-content .panopoly-magic-preview-link .content-type-button a.' + link_class, context).focus();
         }, 0);
       }
     }
@@ -168,7 +168,7 @@
       .once('ctools-auto-submit')
       .bind('keyup blur', function (e) {
         var $element;
-        $element = $('.widget-preview .pane-title', context);
+        $element = $('.panopoly-magic-preview .pane-title', context);
 
         cancelSubmit(e.target.form, timer);
 

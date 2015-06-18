@@ -22,9 +22,7 @@ $plugin = array(
  */
 function theme_panopoly_test_settings_style_style_render_region($vars) {
   $output = '';
-//  $output .= '<div class="region region-' . $vars['region_id'] . '">';
   $output .= implode('<div class="panel-separator"></div>', $vars['panes']);
-//  $output .= '</div>';
   return $output;
 }
 
@@ -34,20 +32,37 @@ function theme_panopoly_test_settings_style_style_render_region($vars) {
  * @ingroup themeable
  */
 function theme_panopoly_test_settings_style_render_pane($vars) {
-  return render($vars['content']->content);
+  $content = $vars['content'];
+  $settings = $vars['settings'];
+
+  $output = '';
+
+  // Add a simple header we can detect from the tests.
+  if (empty($settings['add_text']) || $settings['add_text'] == 'awesome') {
+    $output .= '<p>' . t('This widget is patentedly awesome!') . '</p>';
+  }
+  elseif ($settings['add_text'] == 'terrible') {
+    $output .= '<p>' . t("Avert your eyes! It's not even worth to cast your gaze upon this widget.") . '</p>';
+  }
+
+  // Add the pane content.
+  $output .= render($content->content);
+
+  return $output;
 }
 
 /**
  * Settings form callback.
  */
-function panopoly_test_settings_style_style_settings_form($style_settings) {
-  $form['corner_location'] = array(
+function panopoly_test_settings_style_style_settings_form($settings) {
+  $form['add_text'] = array(
     '#type' => 'select',
-    '#title' => t('Generic setting select'),
+    '#title' => t('Quality of this widget'),
     '#options' => array(
-      'pane' => t('Generic option one'),
-      'panel' => t('Generic opton two'),
+      'awesome' => t('Awesome'),
+      'terrible' => t('Terrible'),
     ),
+    '#default_value' => !empty($settings['add_text']) ? $settings['add_text'] : 'awesome',
   );
 
   return $form;

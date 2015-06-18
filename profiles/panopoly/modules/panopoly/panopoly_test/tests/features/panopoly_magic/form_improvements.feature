@@ -37,29 +37,29 @@ Feature: Panopoly Magic improves the usability of forms (even without previews)
   @api @javascript @panopoly_magic
   Scenario: Ability to configure region styles that have settings.
     Given I am logged in as a user with the "administrator" role
-    And Panopoly magic live previews are disabled
-    And I am viewing a "panopoly_test_page" with the title "Testing region style"
+      And Panopoly magic live previews are disabled
+      And I am viewing a "panopoly_test_page" with the title "Testing region style"
     When I customize this page with the Panels IPE
       And I click "Region style" in the "Bryant Content" region
     Then I should see "Style Settings"
-      And I select the radio button "Panopoly Test: Style with settings" with the id "edit-style-panopoly-test-settings-style"
+    When I select the radio button "Panopoly Test: Style with settings" with the id "edit-style-panopoly-test-settings-style"
       And I press the "Next" button
     Then I should see "General Settings"
-      And I should see "Generic setting select"
+      And I should see "Quality of this widget"
       And I should not see the "#edit-cancel-style" element in the "Panopoly Magic Style Settings" region
       But I should see the "Cancel" button in the "CTools modal" region
 
   @api @javascript @panopoly_magic
   Scenario: Ability to configure pane styles that have settings.
     Given I am logged in as a user with the "administrator" role
-    And Panopoly magic live previews are disabled
-    And I am viewing a "panopoly_test_page" with the title "Testing pane style"
+      And Panopoly magic live previews are disabled
+      And I am viewing a "panopoly_test_page" with the title "Testing pane style"
     When I customize this page with the Panels IPE
-    And I click "Style" in the "Bryant Content" region
+      And I click "Style" in the "Bryant Content" region
     Then I should see "Style Settings"
-    And I select the radio button "Panopoly Test: Style with settings" with the id "edit-style-panopoly-test-settings-style"
-    And I press the "Next" button
+    When I select the radio button "Panopoly Test: Style with settings" with the id "edit-style-panopoly-test-settings-style"
+      And I press the "Next" button
     Then I should see "General Settings"
-    And I should see "Generic setting select"
-    And I should not see the "#edit-cancel-style" element in the "Panopoly Magic Style Settings" region
-    But I should see the "Cancel" button in the "CTools modal" region
+      And I should see "Quality of this widget"
+      And I should not see the "#edit-cancel-style" element in the "Panopoly Magic Style Settings" region
+      But I should see the "Cancel" button in the "CTools modal" region

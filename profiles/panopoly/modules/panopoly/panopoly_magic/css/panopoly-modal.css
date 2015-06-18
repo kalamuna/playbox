@@ -206,7 +206,7 @@
   padding: 0 0 10px;
 }
 
-#modal-content fieldset.widget-preview {
+#modal-content fieldset.panopoly-magic-preview {
   margin-top: 2em;
   margin-bottom: 5em;
   -webkitborder-top-right-radius: 0;
@@ -214,12 +214,12 @@
   border-top-right-radius: 0;
 }
 
-#modal-content fieldset.widget-preview-single {
+#modal-content fieldset.panopoly-magic-preview-single {
   margin-top: 10px;
   margin-bottom: 1em;
 }
 
-#modal-content fieldset.widget-preview-single .fieldset-wrapper {
+#modal-content fieldset.panopoly-magic-preview-single .fieldset-wrapper {
   font-size: 100%;
   max-width: 100%;
   overflow-y: auto;
@@ -227,7 +227,7 @@
   max-height: 375px;
 }
 
-#modal-content fieldset.widget-preview-single .fieldset-wrapper .panopoly-spotlight img {
+#modal-content fieldset.panopoly-magic-preview-single .fieldset-wrapper .panopoly-spotlight img {
   width: 100%;
 }
   
@@ -254,7 +254,7 @@
   border-top-right-radius: 4px;
 }
   
-#modal-content fieldset.widget-preview legend {
+#modal-content fieldset.panopoly-magic-preview legend {
   -moz-border-radius-topright: 0;
   -webkit-border-top-right-radius: 0;
   border-top-right-radius: 0;
@@ -285,7 +285,7 @@
   margin-top: 2.25em;
 }
 
-#modal-content .widget-preview .fieldset-wrapper {
+#modal-content .panopoly-magic-preview .fieldset-wrapper {
   max-width: 100%;
   overflow-y: auto;
   font-size: 75%;
@@ -294,17 +294,17 @@
   overflow-x: hidden;
 }
 
-#modal-content .widget-preview .fieldset-wrapper table tr.even td, 
-#modal-content .widget-preview .fieldset-wrapper table tr.odd td {
+#modal-content .panopoly-magic-preview .fieldset-wrapper table tr.even td, 
+#modal-content .panopoly-magic-preview .fieldset-wrapper table tr.odd td {
   padding: 3px 5px;
 }
 
-#modal-content .widget-preview .fieldset-wrapper h2 {
+#modal-content .panopoly-magic-preview .fieldset-wrapper h2 {
   font-size: 150%;
   margin-top: .25em;
 }
 
-#modal-content .widget-preview-single {
+#modal-content .panopoly-magic-preview-single {
   float: right;
   margin-left: 1em;
   margin-top: 0;
@@ -319,20 +319,20 @@
   text-align: right;
 }
 
-#modal-content .widget-preview-title {
+#modal-content .panopoly-magic-preview-title {
   position: absolute;
   right: -1px;
   top: -24px;
   font: bold 11px/23px 'Open Sans', 'Lucida Sans', 'Lucida Grande', Verdana, sans-serif;
 }
 
-#modalContent .widget-preview-title .content-type-button span {
+#modalContent .panopoly-magic-preview-title .content-type-button span {
   width: auto;
   padding: 0 0 0 5px;
   top: 0;
 }
 
-#modal-content .widget-preview-title .content-type-button a {
+#modal-content .panopoly-magic-preview-title .content-type-button a {
   display: inline-block;
   font: bold 11px/23px 'Open Sans', 'Lucida Sans', 'Lucida Grande',  Verdana, sans-serif;
   color: #fff;
@@ -360,8 +360,8 @@
   width: 60px;
 }
 
-#modal-content .widget-preview-title .content-type-button a:hover,
-#modal-content .widget-preview-title .content-type-button a:focus {
+#modal-content .panopoly-magic-preview-title .content-type-button a:hover,
+#modal-content .panopoly-magic-preview-title .content-type-button a:focus {
   background: #56CE00;
   background-image: linear-gradient(bottom, #408E00 0%, #56CE00 100%);
   background-image: -o-linear-gradient(bottom, #408E00 0%, #56CE00 100%);
@@ -377,7 +377,7 @@
   );
 }
 
-#modal-content .widget-preview-title .content-type-button a:active {
+#modal-content .panopoly-magic-preview-title .content-type-button a:active {
   background: #5DE000;
   background-image: linear-gradient(bottom, #5DE000 0%, #4BA700 100%);
   background-image: -o-linear-gradient(bottom, #5DE000 0%, #4BA700 100%);
@@ -441,7 +441,7 @@
   font-size: 1em;
 }
 
-#modal-content .widget-preview-title .content-type-button img, 
+#modal-content .panopoly-magic-preview-title .content-type-button img, 
 #modal-content .panels-add-content-modal > .panels-modal-add-category {
   display: none;
 }
@@ -454,8 +454,8 @@
   border: none;
 }
 
-#modal-content .widget-preview .fieldset-wrapper table img, 
-#modal-content .widget-preview .panopoly-image-featured {
+#modal-content .panopoly-magic-preview .fieldset-wrapper table img, 
+#modal-content .panopoly-magic-preview .panopoly-image-featured {
   width: 100%;
 }
 
@@ -557,19 +557,19 @@
   box-shadow: 0 0 0 0 #fff;
 }
 
-#modal-content .content-wrapper {
+#modal-content .panopoly-magic-preview-link {
   position: relative;
   padding: 5px 0px;
 }
 
-#modal-content .content-wrapper .content-type-button {
+#modal-content .panopoly-magic-preview-link .content-type-button {
   position: absolute;
   right: 10px;
   top: 50%;
   margin-top: -10px;
 }
 
-#modal-content .content-wrapper .content-type-button a {
+#modal-content .panopoly-magic-preview-link .content-type-button a {
   background: #999;
   float: left;
   color: white;
@@ -577,23 +577,23 @@
   opacity: 0;
 }
 
-#modal-content .content-wrapper .content-type-button a img {
+#modal-content .panopoly-magic-preview-link .content-type-button a img {
   display: none;
 }
 
-#modal-content .content-wrapper .content-type-button a span {
+#modal-content .panopoly-magic-preview-link .content-type-button a span {
   margin: 0;
   padding: 0;
   left: 0;
   top: 0;
 }
 
-#modal-content .content-wrapper .content-type-button a:hover,
-#modal-content .content-wrapper .content-type-button a:focus {
+#modal-content .panopoly-magic-preview-link .content-type-button a:hover,
+#modal-content .panopoly-magic-preview-link .content-type-button a:focus {
   background: #2fa6e5;
 }
 
-#modal-content .content-wrapper > a {
+#modal-content .panopoly-magic-preview-link > a {
   background: transparent;
   border: none;
   color: #666;
@@ -604,17 +604,17 @@
   cursor: pointer;
 }
 
-#modal-content .content-wrapper > a:hover,
-#modal-content .content-wrapper > a:focus {
+#modal-content .panopoly-magic-preview-link > a:hover,
+#modal-content .panopoly-magic-preview-link > a:focus {
   color: #000;
 }
 
-#modal-content .content-wrapper:hover {
+#modal-content .panopoly-magic-preview-link:hover {
   background-color: #f1f1f1;
 }
 
-#modal-content .content-wrapper:hover .content-type-button a,
-#modal-content .content-wrapper > a:focus + .content-type-button a,
-#modal-content .content-wrapper .content-type-button a:focus {
+#modal-content .panopoly-magic-preview-link:hover .content-type-button a,
+#modal-content .panopoly-magic-preview-link > a:focus + .content-type-button a,
+#modal-content .panopoly-magic-preview-link .content-type-button a:focus {
   opacity: 1;
 }

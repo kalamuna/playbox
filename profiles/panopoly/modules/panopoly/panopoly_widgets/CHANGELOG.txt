@@ -1,3 +1,9 @@
+Panopoly Widgets 7.x-1.23, 2015-06-17
+------------------------------
+- Update jquery_update to version 2.5.
+- Spotlight titles without descriptions wrapping to a second line.
+- Update menu_block to version 2.6.
+
 Panopoly Widgets 7.x-1.22, 2015-06-04
 ------------------------------
 - Add locale language filter to "Add content item" widget View.
