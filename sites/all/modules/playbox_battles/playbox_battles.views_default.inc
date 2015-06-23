@@ -210,6 +210,13 @@ function playbox_battles_views_default_views() {
   $handler->display->display_options['filters']['field_playbox_battle_completed_value']['value'] = array(
     0 => '0',
   );
+  /* Filter criterion: Views: Views Exclude Previous */
+  $handler->display->display_options['filters']['views_exclude_previous']['id'] = 'views_exclude_previous';
+  $handler->display->display_options['filters']['views_exclude_previous']['table'] = 'node';
+  $handler->display->display_options['filters']['views_exclude_previous']['field'] = 'views_exclude_previous';
+  $handler->display->display_options['filters']['views_exclude_previous']['value'] = array(
+    'node_load' => 'node_load',
+  );
 
   /* Display: List of onging Playbox Battles */
   $handler = $view->new_display('panel_pane', 'List of onging Playbox Battles', 'playbox_battles_list_1');
