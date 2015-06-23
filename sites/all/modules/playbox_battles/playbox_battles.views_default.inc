@@ -227,7 +227,9 @@ function playbox_battles_views_default_views() {
   $handler->display->display_options['display_description'] = 'A nice list of the ongoing playbox battles';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['style_options']['responsive_toggle'] = TRUE;
   $handler->display->display_options['style_options']['columns'] = '2';
+  $handler->display->display_options['style_options']['columns_sm'] = '2';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
