@@ -16,7 +16,10 @@ function playbox_battles_default_page_manager_pages() {
   $page->admin_title = 'Playbox Battles';
   $page->admin_description = 'This contains the page for all playbox battles. ';
   $page->path = 'battles';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Battles',

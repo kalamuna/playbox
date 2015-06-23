@@ -45,6 +45,11 @@ function playbox_battles_views_default_views() {
   $handler->display->display_options['relationships']['field_playbox_robot_target_id']['table'] = 'field_data_field_playbox_robot';
   $handler->display->display_options['relationships']['field_playbox_robot_target_id']['field'] = 'field_playbox_robot_target_id';
   $handler->display->display_options['relationships']['field_playbox_robot_target_id']['label'] = 'Related Robot';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_running_mate_target_id']['id'] = 'field_running_mate_target_id';
+  $handler->display->display_options['relationships']['field_running_mate_target_id']['table'] = 'field_data_field_running_mate';
+  $handler->display->display_options['relationships']['field_running_mate_target_id']['field'] = 'field_running_mate_target_id';
+  $handler->display->display_options['relationships']['field_running_mate_target_id']['relationship'] = 'field_playbox_president_target_id';
   /* Field: Content: Battle Completed */
   $handler->display->display_options['fields']['field_playbox_battle_completed']['id'] = 'field_playbox_battle_completed';
   $handler->display->display_options['fields']['field_playbox_battle_completed']['table'] = 'field_data_field_playbox_battle_completed';
@@ -162,6 +167,23 @@ function playbox_battles_views_default_views() {
   $handler->display->display_options['fields']['field_playbox_nickname_1']['ui_name'] = 'Robot Nickname';
   $handler->display->display_options['fields']['field_playbox_nickname_1']['label'] = '';
   $handler->display->display_options['fields']['field_playbox_nickname_1']['element_label_colon'] = FALSE;
+  /* Field: Content: Portrait */
+  $handler->display->display_options['fields']['field_playbox_portrait_2']['id'] = 'field_playbox_portrait_2';
+  $handler->display->display_options['fields']['field_playbox_portrait_2']['table'] = 'field_data_field_playbox_portrait';
+  $handler->display->display_options['fields']['field_playbox_portrait_2']['field'] = 'field_playbox_portrait';
+  $handler->display->display_options['fields']['field_playbox_portrait_2']['relationship'] = 'field_running_mate_target_id';
+  $handler->display->display_options['fields']['field_playbox_portrait_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_playbox_portrait_2']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_playbox_portrait_2']['settings'] = array(
+    'image_style' => 'playbox_portrait_featured',
+    'image_link' => '',
+  );
+  /* Field: Content: Nickname */
+  $handler->display->display_options['fields']['field_playbox_nickname_2']['id'] = 'field_playbox_nickname_2';
+  $handler->display->display_options['fields']['field_playbox_nickname_2']['table'] = 'field_data_field_playbox_nickname';
+  $handler->display->display_options['fields']['field_playbox_nickname_2']['field'] = 'field_playbox_nickname';
+  $handler->display->display_options['fields']['field_playbox_nickname_2']['relationship'] = 'field_running_mate_target_id';
+  $handler->display->display_options['fields']['field_playbox_nickname_2']['exclude'] = TRUE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
