@@ -27,6 +27,7 @@ CONFIGURATION AND FEATURES
 
 TRIVIAL CHANGE THAT WILL GET OVERWRITTEN AT SOME POINT
 ANOTHER TRIVIAL CHANGE THAT WILL GET OVERWRITTEN AT SOME POINT
+ANOTHER TRIVIAL CHANGE THAT WILL GET OVERWRITTEN AT SOME POINT
 
 Drupal core (what you get when you download and extract a drupal-x.y.tar.gz or
 drupal-x.y.zip file from http://drupal.org/project/drupal) has what you need to
