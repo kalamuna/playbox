@@ -128,8 +128,18 @@ input#edit-title {
   div#site-nav-center {
     text-align: center;
   }
+
 }
 
+@media screen and (max-width: 768px) {
+  /* Centering the president's images */
+  .views-field.views-field-field-playbox-portrait, .battler-rows-sidebar-area {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .jumbotron .playbox-portrait-featured { display: inline; }
+}
 
 /* Mobile devices < 375px */
 @media screen and ( max-width: 375px ){
