@@ -16,9 +16,12 @@ function panopoly_widgets_init() {
   // Load the seven theme CSS for the media browser. This is done
   // because the seven theme may not be the admin theme, but the
   // media browser assumes that it is....
-  if (arg(0) == 'media' && arg(1) == 'browser' && $GLOBALS['theme'] != 'seven') {
-    drupal_add_css(drupal_get_path('theme', 'seven') . '/reset.css', array('basename' => 'seven_reset', 'group' => CSS_THEME));
-    drupal_add_css(drupal_get_path('theme', 'seven') . '/style.css', array('basename' => 'seven_style', 'group' => CSS_THEME));
+  if (arg(0) == 'media' && arg(1) == 'browser') {
+    if ($GLOBALS['theme'] != 'seven') {
+      drupal_add_css(drupal_get_path('theme', 'seven') . '/reset.css', array('basename' => 'seven_reset', 'group' => CSS_THEME));
+      drupal_add_css(drupal_get_path('theme', 'seven') . '/style.css', array('basename' => 'seven_style', 'group' => CSS_THEME));
+    }
+
     drupal_add_css(drupal_get_path('module', 'panopoly_widgets') . '/panopoly-widgets-media-browser.css', array('group' => CSS_THEME));
   }
 }

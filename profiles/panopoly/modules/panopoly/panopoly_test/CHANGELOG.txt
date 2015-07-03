@@ -1,3 +1,7 @@
+Panopoly Test 7.x-1.24, 2015-07-02
+---------------------------
+- No changes since last release.
+
 Panopoly Test 7.x-1.23, 2015-06-17
 ---------------------------
 - Commit composer.lock to increase test performance and consistancy.

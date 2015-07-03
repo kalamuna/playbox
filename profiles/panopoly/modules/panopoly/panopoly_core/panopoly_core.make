@@ -44,9 +44,8 @@ projects[views_autocomplete_filters][patch][2277453] = http://drupal.org/files/i
 projects[views_autocomplete_filters][patch][2374709] = http://www.drupal.org/files/issues/views_autocomplete_filters-cache-2374709-2.patch
 projects[views_autocomplete_filters][patch][2317351] = http://www.drupal.org/files/issues/views_autocomplete_filters-content-pane-2317351-4.patch
 
-projects[views_bulk_operations][version] = 3.2
+projects[views_bulk_operations][version] = 3.3
 projects[views_bulk_operations][subdir] = contrib
-projects[views_bulk_operations][patch][2192775] = http://drupal.org/files/issues/views-bulk-operations-2192775-1_0.patch
 
 ; The Usual Suspects
 
@@ -85,7 +84,7 @@ projects[link][subdir] = contrib
 projects[apps][version] = 1.0-rc1
 projects[apps][subdir] = contrib
 
-projects[features][version] = 2.6-rc1
+projects[features][version] = 2.6
 projects[features][subdir] = contrib
 
 projects[strongarm][version] = 2.0
@@ -104,7 +103,7 @@ projects[defaultcontent][subdir] = contrib
 projects[defaultcontent][patch][1754428] = http://drupal.org/files/1754428-allow-node-export-alter.patch
 projects[defaultcontent][patch][1757782] = http://drupal.org/files/1757782-cannot-import-menu-hierarchy-8.patch
 
-projects[migrate][version] = "2.7"
+projects[migrate][version] = "2.8"
 projects[migrate][type] = "module"
 projects[migrate][subdir] = "contrib"
 

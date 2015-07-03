@@ -1,3 +1,26 @@
+Panopoly 7.x-1.24, 2015-07-02
+----------------------
+- Update Panopoly Core for Issue #2506371 by dsnopek, chrisgross, humansky:
+  Media dialog missing styles.
+- Update to Selenium 2.46.
+- Revert "Issue #2516882: Update to Selenium 2.46".
+- Update Panopoly Core for Issue #2516868 by dsnopek: Update to
+  views_bulk_operations 3.3 for SA-CONTRIB-2015-131.
+- Update Panopoly Core for Issue #2516872 by dsnopek: Update to Migrate 2.8 for
+  SA-CONTRIB-2015-130.
+- Update Panopoly Core and Widgets for Issue #2506371 by dsnopek, chrisgross,
+  humansky: Media dialog missing styles.
+- Update Panopoly Widgets for Issue #2510910 by humansky: Update to
+  media_youtube 3.0.
+- Update Panopoly Widgets for Issue #2514518 by dsnopek: Update to menu_block
+  2.7.
+- Update Panopoly Core for Issue #2477391 by hefox, mpotter: Update Features to
+  version 2.6.
+- Update Panopoly Theme for Issue #2093009 by dsnopek: Undefined index: active
+  in theme_panopoly_theme_panopoly_accordion_style_render_region(.
+- Start testing upgrades from the 1.23 release.
+- Restored drupal-org.make after the 1.23 release.
+
 Panopoly 7.x-1.23, 2015-06-17
 ----------------------
 - Update Panopoly Test for Issue #2507897: Commit composer.lock to increase test

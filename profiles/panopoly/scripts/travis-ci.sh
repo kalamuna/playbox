@@ -94,7 +94,7 @@ system_install() {
 
   # Get Selenium
   header Downloading Selenium
-  wget http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar
+  wget http://selenium-release.storage.googleapis.com/2.46/selenium-server-standalone-2.46.0.jar
  
   # Disable sendmail
   echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
@@ -165,7 +165,7 @@ before_tests() {
 
   # Run the selenium server
   header Starting selenium
-  java -jar selenium-server-standalone-2.45.0.jar -Dwebdriver.chrome.driver=`pwd`/chromedriver > /dev/null 2>&1 &
+  java -jar selenium-server-standalone-2.46.0.jar -Dwebdriver.chrome.driver=`pwd`/chromedriver > /dev/null 2>&1 &
   echo $! > /tmp/selenium-server-pid
   wait_for_port 4444
 }
