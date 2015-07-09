@@ -49,6 +49,18 @@ function panopoly_core_configure_form($form, &$form_state) {
     '#description' => t('Do you want Panopoly to append the page title to the site breadcrumb?'),
   );
 
+  $form['panopoly_core_override_jquery_ui_theme'] = array(
+    '#title' => t('Override jQuery UI theme provided by any theme'),
+    '#type' => 'select',
+    '#required' => TRUE,
+    '#options' => array(
+      '1' => 'Enabled',
+      '0' => 'Disabled',
+    ),
+    '#default_value' => variable_get('panopoly_core_override_jquery_ui_theme', 1),
+    '#description' => t('Panopoly provides a custom jQuery UI theme. If this option is disabled, it will only be used by themes that don\'t provide one of their own. However, if enabled, we\'ll override all themes.'),
+  );
+
   return system_settings_form($form);
 }
 
@@ -194,13 +206,12 @@ function panopoly_core_pre_render_styles($elements) {
     return $elements;
   }
 
-  $panopoly_core_theme = drupal_get_path('module', 'panopoly_core') . '/css/panopoly-jquery-ui-theme.css';
   $seven_theme = drupal_get_path('theme', 'seven') . '/jquery.ui.theme.css';
 
   // Always override the Seven theme's jQuery UI theme (because its for an
   // earlier version of jQuery UI and doesn't quite work right).
-  if ($css['misc/ui/jquery.ui.theme.css']['data'] === $seven_theme) {
-    $css['misc/ui/jquery.ui.theme.css']['data'] = $panopoly_core_theme;
+  if ($css['misc/ui/jquery.ui.theme.css']['data'] === $seven_theme || variable_get('panopoly_core_override_jquery_ui_theme', 1)) {
+    $css['misc/ui/jquery.ui.theme.css']['data'] = drupal_get_path('module', 'panopoly_core') . '/css/panopoly-jquery-ui-theme.css';
   }
 
   return $elements;

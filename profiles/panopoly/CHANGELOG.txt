@@ -1,3 +1,18 @@
+Panopoly 7.x-1.25, 2015-07-08
+----------------------
+- Update Panopoly Core for Issue #2525208 by dsnopek, hfarrier: Media dialog
+  broken (possible bug).
+- Update Panopoly Admin for Issue #2529416: Update to admin_views 1.5 for SA-
+  CONTRIB-2015-132.
+- Add phing-based build system to make it easier for contributors to build,
+  install and run tests.
+- Update Panopoly Widgets for Issue #2526330 by Andrew Edwards: Split spotlight
+  JS into it's own file.
+- Start testing upgrades from the 1.24 release.
+- Update Panopoly Test for Issue #2521644 by dsnopek: Allow video_widget.feature
+  to run under Firefox.
+- Restored drupal-org.make after the 1.24 release.
+
 Panopoly 7.x-1.24, 2015-07-02
 ----------------------
 - Update Panopoly Core for Issue #2506371 by dsnopek, chrisgross, humansky:
