@@ -3,6 +3,10 @@ language: php
 php:
   - 5.4
 
+# Forces our builds to run on Travis-CI's old infrastructure.
+# See Issue #2532134 about migrating to the new infrastructure!
+sudo: required
+
 mysql:
   database: drupal
   username: root
@@ -10,6 +14,7 @@ mysql:
 
 env:
   - UPGRADE=none     INSTALL_PANOPOLY_DEMO_FROM_APPS=1
+  - UPGRADE=7.x-1.25
   - UPGRADE=7.x-1.24
   - UPGRADE=7.x-1.23
   - UPGRADE=7.x-1.22

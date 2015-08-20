@@ -1,3 +1,10 @@
+Panopoly Test 7.x-1.26, 2015-08-19
+---------------------------
+- Errors on non-interactive install with drush site-install.
+- Error on install of Panopoly-based install profile: "Column 'module' cannot be
+  null" when profile starts with "e".
+- Update tablefield to version 2.4.
+
 Panopoly Test 7.x-1.25, 2015-07-08
 ---------------------------
 - Add phing-based build system to make it easier for contributors to build,

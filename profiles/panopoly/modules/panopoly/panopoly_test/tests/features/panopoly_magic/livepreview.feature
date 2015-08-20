@@ -15,12 +15,12 @@ Feature: Live preview
     When I fill in "Title" with "Widget title"
       And I wait for live preview to finish
     Then I should see "Widget title" in the "Live preview" region
-    When I fill in "tablefield_0_cell_0_0" with "c-1-r-1"
+    When I fill in "field_basic_table_table[und][0][tablefield][cell_0_0]" with "c-1-r-1"
       And I wait for live preview to finish
     # We need to check the table header case insensitively, because it's not
     # uncommon to make table headers capitalized.
     Then I should see text matching "/c-1-r-1/i" in the "Live preview" region
-    When I fill in "tablefield_0_cell_0_1" with "c-2-r-1"
+    When I fill in "field_basic_table_table[und][0][tablefield][cell_0_1]" with "c-2-r-1"
       And I wait for live preview to finish
     Then I should see text matching "/c-2-r-1/i" in the "Live preview" region
     # Test that we can make the title into a link

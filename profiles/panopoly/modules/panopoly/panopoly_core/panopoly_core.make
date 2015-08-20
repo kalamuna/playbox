@@ -5,9 +5,8 @@ core = 7.x
 
 ; Panels and Chaos Tools Magic
 
-projects[ctools][version] = 1.7
+projects[ctools][version] = 1.8
 projects[ctools][subdir] = contrib
-projects[ctools][patch][2280853] = http://www.drupal.org/files/issues/ctools-keyboard-trap-2280853-37.patch
 
 projects[panels][version] = 3.5
 projects[panels][subdir] = contrib
@@ -38,9 +37,8 @@ projects[views][subdir] = contrib
 projects[views][patch][2037469] = http://drupal.org/files/views-exposed-sorts-2037469-1.patch
 projects[views][patch][1036962] = http://drupal.org/files/issues/views-ajax-nginx-1036962-71.patch
 
-projects[views_autocomplete_filters][version] = 1.1
+projects[views_autocomplete_filters][version] = 1.2
 projects[views_autocomplete_filters][subdir] = contrib
-projects[views_autocomplete_filters][patch][2277453] = http://drupal.org/files/issues/ViewsAutocompleteFilters-no_results_on_some_environments-2277453-1.patch
 projects[views_autocomplete_filters][patch][2374709] = http://www.drupal.org/files/issues/views_autocomplete_filters-cache-2374709-2.patch
 projects[views_autocomplete_filters][patch][2317351] = http://www.drupal.org/files/issues/views_autocomplete_filters-content-pane-2317351-4.patch
 
@@ -81,7 +79,7 @@ projects[link][subdir] = contrib
 
 ; Harness the Power of Features and Apps with Default Content
 
-projects[apps][version] = 1.0-rc1
+projects[apps][version] = 1.0
 projects[apps][subdir] = contrib
 
 projects[features][version] = 2.6

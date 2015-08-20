@@ -1,3 +1,70 @@
+Panopoly 7.x-1.26, 2015-08-19
+----------------------
+- Revert "Update Panopoly Core for Issue #2474563 by mglaman: Need ctools patch
+  for calling node_view more than once".
+- Update Panopoly Core for Issue #2554189: Update to CTools 1.8 for SA-
+  CONTRIB-2015-141.
+- Update to Drupal 7.39 for SA-CORE-2015-003.
+- Update Panopoly Admin for Issue #2391243 by dsnopek, B-Prod: Multilingual
+  options for menu does not work.
+- Update Panopoly Admin for Issue #2185351 by dsnopek, caschbre: Does
+  panopoly_admin really depend on panopoly_theme?.
+- Update Panopoly Widgets for Issue #2314059 by Andrew Edwards, dsnopek,
+  nlambert, martin_q: Panopoly Widgets - support the Title module.
+- Composer.json build requirements should be require-dev and not require.
+- Update Panopoly Widgets for Issue #2534936 by ultimike: Counting Spotlight
+  clicks.
+- Update Panopoly Widgets for Issue #2498437 by dsnopek, mglaman, jfrederick:
+  Update media_vimeo to version 2.1.
+- Chrome tests failing on Travis-CI.
+- Update Panopoly Pages and Test for Issue #2497297 by jfrederick, dsnopek:
+  Errors on non-interactive install with drush site-install.
+- Update Panopoly Widgets for Issue #2456255 by dsnopek, mglaman: Update
+  views_autocomplete_filters to version 1.2.
+- Update Panopoly Core for Issue #2474563 by mglaman: Need ctools patch for
+  calling node_view more than once.
+- Update Panopoly Search for Issue #2044147 by populist, jfrederick: Have
+  panopoly_search SOLR intergration configured for node access by default.
+- Update Panopoly Widgets for Issue #2504829 by dsnopek, mglaman, mpotter,
+  Elijah Lynn: Update Vimeo configuration export.
+- Update Panopoly Search for Issue #2530866 by cboyden, jfrederick, Lowell:
+  Search indexes source code.
+- Update Panopoly Search for Issue #2500307 by mglaman, jfrederick: Update
+  search_api to 1.15 and search_api_solr to 1.7.
+- Update Panopoly Search for Issue #2117715 by dsnopek, yakoub, mglaman:
+  Redirect search block to our search_api-based search.
+- Update Panopoly Search for Issue #2534646 by dsnopek: Update from Panopoly
+  1.15 or older fails with "Table 'drupal.search_api_task' doesn't exist".
+- Update Panopoly Search for Issue #2434591 by caschbre: Check if
+  panopoly_search is enabled in panopoly_search update 7005.
+- Update Panopoly Search for Issue #2533504 by drunken monkey: Exported disabled
+  server "Solr Server" cannot have an index attached.
+- Update Panopoly Widgets for Issue #2528924 by dsnopek, cboyden, ultimike:
+  Spotlight accessibility regressions.
+- Update Panopoly Magic for Issue #2533064 by dsnopek: Live preview after image
+  upload breaks Spotlight (regression).
+- Update Panopoly Widgets for Issue #2532908 by dsnopek: Panopoly Widgets
+  overridden after upgrade to -dev.
+- Update Panopoly Core for Issue #2510944 by hefox, mglaman: Update Apps to 1.0.
+- Update Panopoly Widgets for Issue #2334041 by Andrew Edwards: Move rendering
+  of Spotlight formatter into theme template.
+- Update Panopoly Theme for Issue #2530966 by hart0554, Lowell: Accordion style
+  setting "-1" on active doesn't work with jquery ui => 1.9.
+- Add 'sudo: required' to our .travis.yml.
+- Update Panopoly Core and Test for Issue #2183937 by mglaman, tom friedhof,
+  fastangel, mcrittenden: Error on install of Panopoly-based install profile:
+  "Column 'module' cannot be null" when profile starts with "e".
+- Update Panopoly Core for Issue #1980348 by elliotc, ivymy, lsolesen: The
+  breadcrumb for create text & image shows ampersand as" &amp; ".
+- Update Panopoly Widgets, Magic and Test for Issue #2479569 by dsnopek,
+  mglaman: Update tablefield to version 2.4.
+- Update Panopoly WYSIWYG for Issue #2509988 by mglaman: Update to
+  image_resize_filter 1.15.
+- Update Panopoly WYSIWYG for Issue #2272721 by mglaman: Image Resize Filter
+  never utilized.
+- Start testing upgrades from the 1.25 release.
+- Restored drupal-org.make after the 1.25 release.
+
 Panopoly 7.x-1.25, 2015-07-08
 ----------------------
 - Update Panopoly Core for Issue #2525208 by dsnopek, hfarrier: Media dialog
