@@ -175,8 +175,9 @@ input#edit-title {
   color: #3A3C4A;
 }
 
+/* temporary fix to keep in line with off center page content */
 .battle-message {
-  margin-left: -30px;
+  margin-left: -30px; 
 }
 
 .battle-over {
