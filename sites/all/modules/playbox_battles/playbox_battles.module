@@ -72,7 +72,7 @@ function playbox_battles_preprocess_views_view_fields__playbox_battles__playbox_
     '#path' => "playbox-battles/vote/ajax/" . $nid . "/robot",
     '#options' => array(
       'attributes' => array(
-        'class' => 'use-ajax'
+        'class' => 'vote-link use-ajax'
       ),
       'html' => TRUE,
       'query' => $query,
@@ -118,11 +118,13 @@ function playbox_battles_theme_registry_alter(&$theme_registry) {
 }
 
 /**
- * Updates the vote total for a battler
+ * Updates the vote total for a battler and closes vote when winner
+ * has been declared
  */
 function playbox_battles_vote($ajax, $nid, $type) {
 
   $is_ajax = $ajax === 'ajax';
+  $winner_type = $loser_type = '';
 
   // Check if the type is correct
   if ($type != 'president' && $type != 'robot') {
@@ -152,27 +154,40 @@ function playbox_battles_vote($ajax, $nid, $type) {
   // Add a vote!
   $votes = $votes + 1;
   $node = node_load($nid);
-  $field = 'field_playbox_' . $type . '_votes';
+  $votes_field = 'field_playbox_' . $type . '_votes';
   $wrapper = entity_metadata_wrapper('node', $node);
-  $wrapper->{$field}->set($votes);
+  $wrapper->{$votes_field}->set($votes);
 
   $votes_to_win = $wrapper->field_playbox_votes_to_win->value();
 
-  if ($votes == $votes_to_win) {
+  $unvoted_type = ($type == 'president') ? 'robot' : 'president';  
+  $unvoted_votes_field = 'field_playbox_' . $unvoted_type . '_votes';
+  $unvoted_type_votes = $wrapper->{$unvoted_votes_field}->value();
+
+  // Check if (only one) has reached the required number of votes to win
+  // and we haven't already closed this battle
+  // - include "greater than" for historic battles in the system
+  if (($votes != $unvoted_type_votes) && (max($votes, $unvoted_type_votes) >= $votes_to_win) && !$wrapper->field_playbox_battle_completed->value()) {
+    // Work out the winner - which may not be the voted for battler
+    // in the case of historic data!
+    $winner_type = ($votes > $unvoted_type_votes) ? $type : $unvoted_type;
+    
     // Someone won, somone lost. Store this on the node.
     $wrapper->field_playbox_battle_completed->set(1);
     $president = $wrapper->field_playbox_president->value();
     $robot = $wrapper->field_playbox_robot->value();
 
-    if ($type == 'president') {
+    if ($winner_type == 'president') {
       // President won.
       $winner_nid = $president->nid;
       $loser_nid = $robot->nid;
+      $loser_type = 'robot';
     }
     else {
       // Robot won.
       $winner_nid = $robot->nid;
       $loser_nid = $president->nid;
+      $loser_type = 'president';
     }
 
     // Set the battle to complete and set a winner and loser.
@@ -188,8 +203,22 @@ function playbox_battles_vote($ajax, $nid, $type) {
   if ($is_ajax) {
     $commands = array();
 
+    // Update the displayed number of votes
     $selector = 'battler-vote-' . $type;
     $commands[] = ajax_command_replace('.' . $selector, '<span class="' . $selector . '">' . $votes . '</span>', $settings = NULL);
+    
+    // Update display if battle has been won
+    if ($wrapper->field_playbox_battle_completed->value()) {
+      // Disable vote links
+      $commands[] = ajax_command_invoke('.vote-link', 'attr', array('disabled','disabled'));
+      // Highlight the winner
+      $commands[] = ajax_command_invoke('.battler-vote-' . $winner_type, 'addClass', array('battle-winner'));
+      // Gray out the loser              
+      $commands[] = ajax_command_invoke('.battler-vote-' . $loser_type, 'addClass', array('battle-loser'));
+      // Add winner message
+      $winner = ($winner_type == 'president') ? $wrapper->field_playbox_president->label() : $wrapper->field_playbox_robot->label();
+      $commands[] = ajax_command_alert($winner . ' won the battle!');
+    }
 
     return array(
       '#type' => 'ajax',

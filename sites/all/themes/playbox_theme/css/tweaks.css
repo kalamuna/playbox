@@ -160,3 +160,16 @@ input#edit-title {
   }
 
 }
+
+/* Styling for finished battles */
+.vote-link[disabled] {
+  pointer-events: none;
+  cursor: default;
+}
+.battle-winner {
+  color: #18BC9C;
+}
+
+.battle-loser {
+  color: #3A3C4A;
+}
