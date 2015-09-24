@@ -217,7 +217,7 @@ function playbox_battles_vote($ajax, $nid, $type) {
       $commands[] = ajax_command_invoke('.battler-vote-' . $loser_type, 'addClass', array('battle-loser'));
       // Add winner message
       $winner = ($winner_type == 'president') ? $wrapper->field_playbox_president->label() : $wrapper->field_playbox_robot->label();
-      $commands[] = ajax_command_alert($winner . ' won the battle!');
+      $commands[] = ajax_command_prepend('.battler-vs', '<div class="battle-message"><span class="battle-over">' . $winner . ' is victorious!</span></div>', $settings = NULL);
     }
 
     return array(
