@@ -577,9 +577,7 @@ function batch_battle_reset_finished($success, $results, $operations) {
 function _playbox_battles_links() {
   $links_markup = '';
   $base_path = base_path();
-  
-  $links_markup .= '<div class="battle-admin">';
-    
+
   //Create new battles
   if(user_access('create playbox_battle content')){
     $links_markup .= '<h3><a href="'.$base_path.'node/add/playbox-battle" class="btn-link">Create new battles</a></h3>';
@@ -589,8 +587,6 @@ function _playbox_battles_links() {
   if(user_access('change user playbox settings')){
     $links_markup .= '<h3><a href="'.$base_path.'admin/config/playbox/user-settings" class="btn-link">Change user settings</a></h3>';
   }  
-  
-  $links_markup .= '</div>';
   
   return $links_markup;
 }  
