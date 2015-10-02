@@ -1,6 +1,6 @@
 <?php
 
-define('PLAYBOX_ADMIN_BATCH_LIMIT', '1'); 
+define('PLAYBOX_ADMIN_BATCH_LIMIT', '5'); 
 
 /**
  * @file
