@@ -6819,3 +6819,32 @@ input[type="color"]:focus,
 form#user-login {
   padding-top: 150px;
 }
+
+#btn-reset,
+#btn-reset:hover {
+  background: url("../img/btn-reset.png") no-repeat scroll 0 0 transparent;
+  display: block;
+  cursor: pointer;  
+  width: 298px;
+  height: 157px;  
+  border: none;
+  float: right;
+}
+
+#btn-reset:active,
+#btn-reset.active,
+#btn-reset.disabled,
+#btn-reset[disabled],
+#btn-reset:focus {
+  background: url("../img/btn-reset-focus.png") no-repeat scroll 0 0 transparent;
+  display: block;
+  cursor: pointer;  
+  width: 298px;
+  height: 157px;  
+  border: none;
+  float: right;
+}
+
+.battle-admin {
+  height: 120px;
+}

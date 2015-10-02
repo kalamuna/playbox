@@ -1,5 +1,7 @@
 <?php
 
+define('PLAYBOX_ADMIN_BATCH_LIMIT', '1'); 
+
 /**
  * @file
  * Code for the Playbox Global Settings module.
@@ -65,6 +67,14 @@ function playbox_admin_menu() {
     'access arguments' => array('change user playbox settings'),
     'access callback' => TRUE,
   );
+  
+  $items['admin/config/playbox/battle-management'] = array(
+    'title' => 'Battle Management',
+    'description' => t('Display, manage and reset published battles'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('playbox_battle_management_form'),  
+    'access arguments' => array('administer playbox battles'),
+  );  
 
   return $items;
 }
@@ -134,6 +144,10 @@ function playbox_admin_permission() {
     'change user playbox settings' => array(
       'title' => t('Change User Playbox Settings'),
       'description' => t('Change settings for Playbox User Settings'),
+    ),
+    'administer playbox battles' => array(
+      'title' => t('Access the Playbox Battle Management page'),
+      'description' => t('Administer battles and reset/randomize existing battles'),
     )
   );
 }
@@ -424,3 +438,184 @@ function _get_field($field, $options = array()){
 	return $return;
 }
 
+/**
+ * Playbox Battle Management form
+ * Renders the reset button and list of 
+ * existing battles in a form
+ */ 
+function playbox_battle_management_form($form, &$form_state) {    
+  // Be extra safe! Only add the reset button if the user can create content
+  if(user_access('create playbox_battle content')){
+    // Add confirmation warning message js
+    drupal_add_js('(function($){ $(function(){$("#btn-reset").click(function(){return confirm("Seriously, you want to RESET ALL BATTLES and RANDOMIZE ALL VOTES??!")});}); })(jQuery);', array('type' => 'inline'));    
+    // Add reset & randomize! button
+    $form['battle_reset'] = array(
+      '#type' => 'submit',
+      '#value' => t(''),
+      '#attributes' => array('id' => 'btn-reset'),
+      '#submit' => array('playbox_battles_reset'),
+    );
+  }
+  // Add markup for related admin links
+  $links_markup = _playbox_battles_links();
+  $form['battle_links'] = array(
+    '#markup' => $links_markup,
+  );
+  // Add markup for list of published battles
+  $battles_markup = _playbox_battles_list();
+  $form['battle_list'] = array(
+    '#markup' => $battles_markup,
+  );
+  
+  return $form;
+}
+
+/**
+ * Get list of nodes and then use BatchAPI to call reset
+ * and randomize process
+ */ 
+function playbox_battles_reset() {
+  // Use EFQ to get nids for published battles
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'playbox_battle')
+    ->propertyCondition('status', 1);
+
+  $result = $query->execute();
+  
+  // run batch process if we have some nids
+  if (!empty($result['node'])) {
+    $nids = array_keys($result['node']);  
+    $batch = array(
+      'operations' => array(
+        array('batch_battle_reset_process', array($nids)),
+        ),
+      'finished' => 'batch_battle_reset_finished',
+      'title' => t('Resetting battles and randomizing votes'),
+      'init_message' => t('The batch reset and randomization of all published battles begins now...'),
+      'progress_message' => t('Processed @current out of @total'),
+      'error_message' => t('The batch process has encountered a problem.'),
+    );
+
+    batch_set($batch);
+    // Send the user back to the management page when finished
+    batch_process('admin/config/playbox/battle-management'); 
+  } else {
+    drupal_set_message(t('Sorry, there are no published battles to reset!'));
+  } 
+}
+
+/**
+ * Batch process function to reset and randomize vote values for
+ * every published battle 
+ */
+function batch_battle_reset_process($nids, &$context) {  
+  if (!isset($context['sandbox']['progress'])) {  
+    $context['sandbox']['progress'] = 0;
+    $context['sandbox']['current_node'] = 0;
+    $context['sandbox']['max'] =  count($nids);
+  }
+  
+  $limit = PLAYBOX_ADMIN_BATCH_LIMIT;
+  $nid_slice = array_slice($nids, $context['sandbox']['progress'], $limit);  
+    
+  foreach ($nid_slice as $nid) {  
+    // use entity_metadata_wrapper to access & update each battle node
+    $node = node_load($nid, NULL, TRUE);
+    $wrapper  = entity_metadata_wrapper('node', $node);
+    
+    // reset completed to 0      
+    $wrapper->field_playbox_battle_completed->set(0);
+    // set robot and president vote numbers to random < win
+    $max_votes = $wrapper->field_playbox_votes_to_win->value() - 1;      
+    $wrapper->field_playbox_president_votes->set(rand(0, $max_votes));
+    $wrapper->field_playbox_robot_votes->set(rand(0, $max_votes));
+    // blank the winner/loser fields
+    $wrapper->field_playbox_winner->set(NULL);
+    $wrapper->field_playbox_loser->set(NULL);
+    
+    // Add a new revision for clarity and safety
+    $wrapper->revision->set(1);
+     
+    $wrapper->save();
+    
+    // Store some result for post-processing in the finished callback.
+    $context['results'][] = check_plain($node->title);
+
+    // Update our progress information.
+    $context['sandbox']['progress']++;
+    $context['sandbox']['current_node'] = $node->nid;
+    $context['message'] = t('Now processing %node', array('%node' => $node->title));      
+  }  
+  
+  // Inform the batch engine that we are not finished,
+  // and provide an estimation of the completion level we reached.
+  if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
+    $context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
+  }  
+}
+
+/**
+ * Handle completion of batch process
+ */ 
+function batch_battle_reset_finished($success, $results, $operations) {
+  if ($success) {
+    drupal_set_message(t('%results processed.', array('%results' => count($results))));
+  }
+  else {
+    $error_operation = reset($operations);
+    drupal_set_message(t('An error occurred while processing %error_operation with arguments: @arguments', array('%error_operation' => $error_operation[0], '@arguments' => print_r($error_operation[1], TRUE))), 'error');
+  }
+}
+
+
+/**
+ * Helper function to generate markup for displaying related
+ * battle admin links - basically taken from playbox_battles_dashboard
+ */ 
+function _playbox_battles_links() {
+  $links_markup = '';
+  $base_path = base_path();
+  
+  $links_markup .= '<div class="battle-admin">';
+    
+  //Create new battles
+  if(user_access('create playbox_battle content')){
+    $links_markup .= '<h3><a href="'.$base_path.'node/add/playbox-battle" class="btn-link">Create new battles</a></h3>';
+  }
+ 
+  //Change site-wide configuration
+  if(user_access('change user playbox settings')){
+    $links_markup .= '<h3><a href="'.$base_path.'admin/config/playbox/user-settings" class="btn-link">Change user settings</a></h3>';
+  }  
+  
+  $links_markup .= '</div>';
+  
+  return $links_markup;
+}  
+
+/**
+ * Helper function to generate markup for displaying list of all
+ * published battles
+ */ 
+function _playbox_battles_list() {
+  $battles_markup = '';
+  
+  // Render view table of "my battles" - only relevant if user 
+  // is allowed to create content
+  if(user_access('create playbox_battle content')){
+    $my_battles = views_get_view('playbox_battles');
+    $my_battles->set_display('my_battles');  
+    $battles_markup .= '<h2>'.$my_battles->get_title().'</h2>';
+    $battles_markup .= $my_battles->preview();
+  }
+  
+  // Render table of all battles
+  $all_battles = views_get_view('playbox_battles');
+  $all_battles->set_display('all_battles');  
+  $battles_markup .= '<h2>'.$all_battles->get_title().'</h2>';  
+  $battles_markup .= $all_battles->preview();
+  
+  return $battles_markup;  
+}
