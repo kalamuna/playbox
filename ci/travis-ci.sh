@@ -70,6 +70,8 @@ after-success() {
     git remote rm origin
     git remote add origin git@github.com:kalamuna/playbox.git
     git checkout $TRAVIS_BRANCH
+    # Pull in any remote changes
+    git pull upstream $TRAVIS_BRANCH
     #git commit -m "KALABOT MERGING COMMIT ${TRAVIS_COMMIT} FROM ${TRAVIS_REPO_SLUG} [ci skip]" --amend --author="Kala C. Bot <kalacommitbot@kalamuna.com>" --no-verify
     #git push origin $TRAVIS_BRANCH -f
     git push upstream $TRAVIS_BRANCH
