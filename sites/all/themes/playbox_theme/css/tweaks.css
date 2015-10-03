@@ -170,3 +170,33 @@ input#edit-title {
   }
 
 }
+
+/* Styling for finished battles */
+.vote-link[disabled] {
+  pointer-events: none;
+  cursor: default;
+}
+
+.battle-winner {
+  color: #18BC9C;
+}
+
+.battle-loser {
+  color: #3A3C4A;
+}
+
+/* temporary fix to keep in line with off center page content */
+.battle-message {
+  margin-left: -30px; 
+}
+
+.battle-over {
+  background-color: #18BC9C;
+  font-size: 1.2em;
+  display: block;
+  width: 50%;
+  text-align: center;  
+  margin: 0 auto;  
+  font-weight: 400;
+  text-transform: uppercase;  
+}
