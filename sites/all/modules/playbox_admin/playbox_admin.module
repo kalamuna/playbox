@@ -84,7 +84,7 @@ function playbox_admin_views_pre_view(&$view) {
       //use default favorite president
       $playbox_fav_president_var = variable_get('playbox_admin_president');
       if(!empty($playbox_fav_president_var)){
-        $playbox_fav_president = $playbox_fav_president['entity_id'];
+        $playbox_fav_president = $playbox_fav_president_var['entity_id'];
       }
     }
     $playbox_admin_president_nid = $playbox_fav_president;
@@ -94,7 +94,7 @@ function playbox_admin_views_pre_view(&$view) {
       //use default favorite robot
       $playbox_fav_robot_var = variable_get('playbox_admin_boss');
       if(!empty($playbox_fav_robot_var)){
-        $playbox_fav_robot = $playbox_fav_robot['entity_id'];
+        $playbox_fav_robot = $playbox_fav_robot_var['entity_id'];
       }
     }
     $playbox_admin_boss_nid = $playbox_fav_robot;
