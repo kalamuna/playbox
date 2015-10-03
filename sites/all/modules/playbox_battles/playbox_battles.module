@@ -31,6 +31,18 @@ function playbox_battles_theme($existing, $type, $theme, $path) {
     'arguments' => array('view' => NULL, 'options' => NULL, 'row' => NULL),
   );
 
+  $themes['views_view_fields__playbox_battles__playbox_battles_list_1'] = array(
+    'template' => 'views-view-fields--playbox-battles--playbox-battles-featured-1',
+    'original hook' => 'views_view_fields',
+    'path' => drupal_get_path('module', 'playbox_battles') . '/templates',
+    'preprocess functions' => array(
+      'template_preprocess',
+      'template_preprocess_views_view_fields',
+      'playbox_battles_preprocess_views_view_fields__playbox_battles__playbox_battles_featured_1',
+    ),
+    'arguments' => array('view' => NULL, 'options' => NULL, 'row' => NULL),
+  );
+
   return $themes;
 }
 
@@ -58,6 +70,8 @@ function playbox_battles_preprocess_views_view_fields__playbox_battles__playbox_
   // We need that ajax magixxx
   drupal_add_library('system', 'drupal.ajax');
   $nid = $variables['row']->nid;
+  $president_nid = $variables['row']->node_field_data_field_playbox_president_nid;
+  $robot_nid = $variables['row']->node_field_data_field_playbox_robot_nid;
 
   // Set up our ajax magix
   $query = array(
@@ -68,7 +82,7 @@ function playbox_battles_preprocess_views_view_fields__playbox_battles__playbox_
     '#theme' => 'link',
     '#title' => '',
     '#href' => '',
-    '#text' => '<span class="battler-vote-robot">' . render($variables['row']->field_field_playbox_robot_votes[0]['rendered']) . '</span>',
+    '#text' => '<span id="battler-'. $robot_nid . '" class="battler-vote-robot">' . render($variables['row']->field_field_playbox_robot_votes[0]['rendered']) . '</span>',
     '#path' => "playbox-battles/vote/ajax/" . $nid . "/robot",
     '#options' => array(
       'attributes' => array(
@@ -79,7 +93,7 @@ function playbox_battles_preprocess_views_view_fields__playbox_battles__playbox_
     ),
   );
   $variables['options']['president_votes'] = $variables['options']['robot_votes'];
-  $variables['options']['president_votes']['#text'] = '<span class="battler-vote-president">' . render($variables['row']->field_field_playbox_president_votes[0]['rendered']) . '</span>';
+  $variables['options']['president_votes']['#text'] = '<span id="battler-' . $president_nid . '" class="battler-vote-president">' . render($variables['row']->field_field_playbox_president_votes[0]['rendered']) . '</span>';
   $variables['options']['president_votes']['#path'] = "playbox-battles/vote/ajax/" . $nid . "/president";
 
   // Set some other stuff that might be useful but then again might be not useful at all
@@ -188,8 +202,9 @@ function playbox_battles_vote($ajax, $nid, $type) {
   if ($is_ajax) {
     $commands = array();
 
-    $selector = 'battler-vote-' . $type;
-    $commands[] = ajax_command_replace('.' . $selector, '<span class="' . $selector . '">' . $votes . '</span>', $settings = NULL);
+    $field = 'field_playbox_' . $type;
+    $selector = 'battler-' . $wrapper->{$field}->getIdentifier();
+    $commands[] = ajax_command_replace('#' . $selector, '<span id="' . $selector . '" class="battler-vote-' . $type . '">' . $votes . '</span>', $settings = NULL);
 
     return array(
       '#type' => 'ajax',

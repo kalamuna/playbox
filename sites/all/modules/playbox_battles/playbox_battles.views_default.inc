@@ -210,12 +210,31 @@ function playbox_battles_views_default_views() {
   $handler->display->display_options['filters']['field_playbox_battle_completed_value']['value'] = array(
     0 => '0',
   );
+  /* Filter criterion: Views: Views Exclude Previous */
+  $handler->display->display_options['filters']['views_exclude_previous']['id'] = 'views_exclude_previous';
+  $handler->display->display_options['filters']['views_exclude_previous']['table'] = 'node';
+  $handler->display->display_options['filters']['views_exclude_previous']['field'] = 'views_exclude_previous';
+  $handler->display->display_options['filters']['views_exclude_previous']['value'] = array(
+    'node_load' => 'node_load',
+  );
 
   /* Display: List of onging Playbox Battles */
   $handler = $view->new_display('panel_pane', 'List of onging Playbox Battles', 'playbox_battles_list_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Other Battles';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'other-battles';
   $handler->display->display_options['display_description'] = 'A nice list of the ongoing playbox battles';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['style_options']['responsive_toggle'] = TRUE;
+  $handler->display->display_options['style_options']['columns'] = '2';
+  $handler->display->display_options['style_options']['columns_sm'] = '2';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['pane_title'] = 'List of ongoing playbox battles';
   $handler->display->display_options['pane_description'] = 'A list of the ongoing playbox battles';
   $handler->display->display_options['pane_category']['name'] = 'Battles';
