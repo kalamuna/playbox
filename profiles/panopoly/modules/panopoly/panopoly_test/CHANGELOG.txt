@@ -1,3 +1,7 @@
+Panopoly Test 7.x-1.28, 2015-10-21
+---------------------------
+- Migrate to new Travis infrastructure.
+
 Panopoly Test 7.x-1.27, 2015-09-02
 ---------------------------
 - No changes since last release.

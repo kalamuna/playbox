@@ -7,6 +7,7 @@ core = 7.x
 
 projects[ctools][version] = 1.8
 projects[ctools][subdir] = contrib
+projects[ctools][patch][2209775] = https://www.drupal.org/files/issues/ctools-readd_access_callback_params-2209775-24.patch
 
 projects[panels][version] = 3.5
 projects[panels][subdir] = contrib
@@ -23,6 +24,8 @@ projects[panelizer][patch][2416505] = http://www.drupal.org/files/issues/paneliz
 
 projects[fieldable_panels_panes][version] = 1.7
 projects[fieldable_panels_panes][subdir] = contrib
+projects[fieldable_panels_panes][patch][2562717] = https://www.drupal.org/files/issues/fpp-empty-admin-title-2562717-2.patch
+projects[fieldable_panels_panes][patch][2381433] = https://www.drupal.org/files/issues/fieldable_panels_panes_patch-2381433-1_0.patch
 
 projects[pm_existing_pages][version] = 1.4
 projects[pm_existing_pages][subdir] = contrib
@@ -112,7 +115,7 @@ projects[migrate_extras][subdir] = "contrib"
 ; jQuery Update was moved to Panopoly Core, but is left in Panopoly Admin's
 ; .make file to retain a stable 1.x branch of Panopoly. See the following URL
 ; for more information: http://drupal.org/node/2492811
-projects[jquery_update][version] = 2.6
+projects[jquery_update][version] = 2.7
 projects[jquery_update][subdir] = contrib
 
 ; Recommended Modules

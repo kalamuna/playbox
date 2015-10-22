@@ -91,9 +91,9 @@ def travisyml_skip_upgrade_tests(filename, skip_all=True):
 
     # Remove all but the first 'env' entry. The rest are upgrade tests.
     if skip_all:
-        data['env'] = [data['env'][0]]
+        data['env']['matrix'] = [data['env']['matrix'][0]]
     else:
-        data['env'] = data['env'][0:2]
+        data['env']['matrix'] = data['env']['matrix'][0:2]
 
     with open(filename, 'wt') as fd:
         yaml.dump(data, fd)

@@ -51,6 +51,8 @@ class PanelsSubContext extends RawDrupalContext implements DrupalSubContextInter
    * @When I customize this page with the Panels IPE
    */
   public function customizeThisPageIPE() {
+    $this->getSession()->getDriver()->maximizeWindow();
+    $this->waitForIPEtoDeactivate();
     $this->getSession()->getPage()->clickLink('Customize this page');
     $this->waitForIPEtoActivate();
   }
@@ -61,8 +63,9 @@ class PanelsSubContext extends RawDrupalContext implements DrupalSubContextInter
    * @When I change layout with the Panels IPE
    */
   public function changeLayoutIPE() {
-    $this->getSession()->getPage()->clickLink('Change layout');
     $this->getSession()->wait(5000, 'jQuery(".panels-choose-layout").length === 0');
+    $this->getSession()->getPage()->clickLink('Change layout');
+    $this->getSession()->wait(5000, 'jQuery(".panels-choose-layout").length > 0');
   }
 
 }

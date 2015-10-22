@@ -1,3 +1,45 @@
+Panopoly 7.x-1.28, 2015-10-21
+----------------------
+- Update to Drupal 7.41 for SA-CORE-2015-004 and jquery_update for SA-
+  CONTRIB-2015-158.
+- Update Panopoly Admin for Issue #2557317 by visabhishek, rhuffstedtler: Remove
+  question mark from Enable/Disable link on pane library.
+- Drop support for updating from Panopoly version that were release more than a
+  year ago.
+- Update Panopoly Search for Issue #2560753 by amaisano: Search block pane
+  config ignores prompt override.
+- Revert "Update Panopoly Search for Issue #2560753 by amaisano: Search block
+  pane config ignores prompt override".
+- Update Panopoly Core for Issue #2583449 by LCM: Missing file access checks for
+  private files attached to Fieldable Panel Panes.
+- Update Panopoly Theme for Issue #2574491 by Alex Bukach: Don't rebuild
+  accordions on AJAX requests.
+- Update Panopoly Theme for Issue #2541838 by hart0554: Convert accordion
+  "heightAuto" to "heightStyle" for jQuery UI >= 1.9.
+- Update Panopoly WYSIWYG for Issue #2562983 by kekkis: Incorporate patch that
+  eases creating new text formats.
+- Update Panopoly Core for Issue #2562157: Can't distinguish reusable content
+  without admin title when previews are in single mode.
+- Update Panopoly Core for Issue #2559617 by mglaman: CTools "Undefined index:
+  access callback in ctools_entity_from_field_context()".
+- Update Panopoly Images for Issue #2558367 by uttamkotekar: Type-o findthe in
+  watchdog() text panopoly_images module.
+- Update to Selenium 2.47.1 to fix test stability issues.
+- Check-overridden.sh failing on Travis-CI.
+- Update Panopoly Admin for Issue #2552723 by B-Prod: Update to
+  simplified_menu_admin 1.0.
+- Update Panopoly Widgets for Issue #2528248 by dsnopek, chrisgross: Text on
+  tabs on Media Browser is lower than it is on other interfaces.
+- Update Panopoly Search for Issue #2565175 by cboyden: Performance issues when
+  indexing HTML-heavy sites.
+- Fix the create_test_branch.py script for the changes in .travis.yml.
+- Add back PHP 5.5 and 5.6 tests!.
+- Fix permissions on new script files.
+- Cache Drush and Composer on Travis for builds.
+- Migrate to new Travis infrastructure.
+- Start testing upgrades from the 1.27 release.
+- Restored drupal-org.make after the 1.27 release.
+
 Panopoly 7.x-1.27, 2015-09-02
 ----------------------
 - Update Panopoly Core for Issue #2562017: Update to fieldable_panels_panes
