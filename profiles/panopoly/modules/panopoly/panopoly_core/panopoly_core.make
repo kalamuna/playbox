@@ -5,7 +5,7 @@ core = 7.x
 
 ; Panels and Chaos Tools Magic
 
-projects[ctools][version] = 1.8
+projects[ctools][version] = 1.9
 projects[ctools][subdir] = contrib
 projects[ctools][patch][2209775] = https://www.drupal.org/files/issues/ctools-readd_access_callback_params-2209775-24.patch
 
@@ -13,6 +13,7 @@ projects[panels][version] = 3.5
 projects[panels][subdir] = contrib
 projects[panels][patch][2448825] = https://www.drupal.org/files/issues/panels-export-indentation-2448825-1.patch
 projects[panels][patch][2390803] = https://www.drupal.org/files/issues/panels-focus-add-content-tab-2390803-13.patch
+projects[panels][patch][1588212] = https://www.drupal.org/files/issues/panels-1588212-10.patch
 
 projects[panels_breadcrumbs][version] = 2.2
 projects[panels_breadcrumbs][subdir] = contrib
@@ -68,8 +69,9 @@ projects[transliteration][subdir] = contrib
 
 ; Field modules
 
-projects[date][version] = 2.9-rc1
+projects[date][version] = 2.9
 projects[date][subdir] = contrib
+projects[date][patch][2375235] = https://www.drupal.org/files/issues/calendar_pager_broken-2375235-35.patch
 
 projects[entityreference][version] = 1.1
 projects[entityreference][subdir] = contrib
@@ -85,18 +87,14 @@ projects[link][subdir] = contrib
 projects[apps][version] = 1.0
 projects[apps][subdir] = contrib
 
-projects[features][version] = 2.6
+projects[features][version] = 2.7
 projects[features][subdir] = contrib
 
 projects[strongarm][version] = 2.0
 projects[strongarm][subdir] = contrib
 
-projects[defaultconfig][version] = 1.0-alpha9
+projects[defaultconfig][version] = 1.0-alpha11
 projects[defaultconfig][subdir] = contrib
-projects[defaultconfig][patch][2042799] = http://drupal.org/files/default_config_delete_only_if_overriden.patch
-projects[defaultconfig][patch][2043307] = http://drupal.org/files/defaultconfig_include_features_file.patch
-projects[defaultconfig][patch][2008178] = http://drupal.org/files/defaultconfig-rebuild-filters-2008178-4_0.patch
-projects[defaultconfig][patch][1861054] = http://drupal.org/files/fix-defaultconfig_rebuild_all.patch
 projects[defaultconfig][patch][1900574] = http://drupal.org/files/1900574.defaultconfig.undefinedindex_11.patch
 
 projects[defaultcontent][version] = 1.0-alpha9
@@ -125,7 +123,7 @@ projects[devel][subdir] = contrib
 projects[distro_update][version] = 1.0-beta4
 projects[distro_update][subdir] = contrib
 
-projects[features_override][version] = 2.0-rc2
+projects[features_override][version] = 2.0-rc3
 projects[features_override][subdir] = contrib
 
 projects[uuid][version] = 1.0-alpha6

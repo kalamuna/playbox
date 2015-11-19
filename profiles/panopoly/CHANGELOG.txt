@@ -1,3 +1,30 @@
+Panopoly 7.x-1.29, 2015-11-18
+----------------------
+- Update Panopoly Widgets for Issue #2618206 by mpotter: Patching media for
+  opening multiple media browser popups.
+- Bah! We don't want to test only 7.x-1.29, but skip testing 8.x-2.x (otherwise
+  we lose the issue branch tests).
+- Update Panopoly Admin for Issue #2616342 by rajarju: User base_url for showing
+  site url over permalink field (label).
+- Update Panopoly Core for Issue #2610366 by mpotter: Panels patches for Atrium.
+- Update Panopoly Images for Issue #2573877 by Andrew_Mallis: tighten up media
+  browser thumbnails.
+- Merge branch '7.x-1.29' of git.drupal.org:project/panopoly into 7.x-1.29.
+- For now, only test the 7.x-1.29 branch.
+- Update Panopoly Widgets for Issue #2533688 by dsnopek: Update to Media
+  2.0-beta1 and File Entity 2.0-beta2.
+- Update Panopoly Core for Issue #2592731 by mpotter: Update Features 2.7 (and
+  Features Override).
+- Update Panopoly Core for Issue #2578219 by mglaman: Update defaultconfig to
+  version 1.0-alpha11.
+- Revert "Update Panopoly Core for Issue #2597273: Update to Pathauto 1.3".
+- Update Panopoly Core for Issue #2567483 by humansky: Update to Date 2.9.
+- Update Panopoly Core for Issue #2597273: Update to Pathauto 1.3.
+- Update Panopoly Core for Issue #2561733: Update to CTools 1.9.
+- Update Panopoly WYSIWYG for Issue #2553903: Update to Linkit 3.4.
+- Start testing upgrades from the 1.28 release.
+- Restored drupal-org.make after the 1.28 release.
+
 Panopoly 7.x-1.28, 2015-10-21
 ----------------------
 - Update to Drupal 7.41 for SA-CORE-2015-004 and jquery_update for SA-
