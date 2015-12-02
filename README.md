@@ -2,7 +2,7 @@
 
 Playbox! is a sandbox-proving-ground for people interested in working with us at [Kalamuna](http://www.kalamuna.com). It's a magnificent and collaborative code-garden where would-be code artists, site builder and designers play around and show what they've got. It's also a place to ask questions, collaborate and learn. It's kind of like [this](https://www.youtube.com/watch?v=8tJoIaXZ0rw). Think you've got what it takes to make good Internet? Make stuff in Playbox! now and find out.
 
-## Your Mission
+## Your Mission iuegiuweg
 
 You've been handed a Drupal 7 project called [Megaman Robots vs US Presidents](http://playbox.kalamuna.com) which was built by another development team. It is a [Minimal Lovable Product (MLP)](http://www.slideshare.net/spookstudio/the-minimum-loveable-product-31984451). This means that it has all the core functionality it needs to deliver value but it lacks the full suite of features it needs to be face-meltingly awesome.
 
