@@ -76,7 +76,7 @@ projects[date][patch][2375235] = https://www.drupal.org/files/issues/calendar_pa
 projects[entityreference][version] = 1.1
 projects[entityreference][subdir] = contrib
 
-projects[field_group][version] = 1.4
+projects[field_group][version] = 1.5
 projects[field_group][subdir] = contrib
 
 projects[link][version] = 1.3

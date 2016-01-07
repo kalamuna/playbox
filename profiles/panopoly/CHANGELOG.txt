@@ -1,3 +1,18 @@
+Panopoly 7.x-1.30, 2016-01-06
+----------------------
+- Update Panopoly Test for Issue #2645668: "Use an image from elsewhere on the
+  web" test failing.
+- Assign UID 1 to 'administrator' role on install.
+- Update Panopoly Core for Issue #2645654: Update field_group to 1.5 for SA-
+  CONTRIB-2016-001.
+- Update Panopoly Admin for Issue #2637004 by humansky: Default admin role.
+- Update Panopoly Widgets for Issue #2623662 by dsnopek: Access denied when
+  adding Media in WYSIWYG.
+- Update Panopoly Widgets for Issue #2617618 by dsnopek: Don't set default image
+  for image widget.
+- Start testing upgrades from the 1.29 release.
+- Restored drupal-org.make after the 1.29 release.
+
 Panopoly 7.x-1.29, 2015-11-18
 ----------------------
 - Update Panopoly Widgets for Issue #2618206 by mpotter: Patching media for

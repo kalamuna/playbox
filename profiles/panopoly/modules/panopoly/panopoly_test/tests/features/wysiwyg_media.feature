@@ -143,7 +143,7 @@ Feature: Add media using the rich text editor
       And I switch to the frame "mediaBrowser"
       And I click "Web"
     Then I should see "File URL or media resource"
-    When I fill in "File URL or media resource" with "https://www.drupal.org/files/druplicon.small_.png"
+    When I fill in "File URL or media resource" with "https://www.drupal.org/files/drupal_logo-blue.png"
       And I press "Next" in the "Media web tab" region
     Then I should see "Destination"
     # Select the destination (public/private files).
