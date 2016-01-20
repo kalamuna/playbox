@@ -16,12 +16,12 @@ Feature: Add table widget
   Scenario: Add table to a page
     When I fill in the following:
       | Title                 | Widget title |
-      | tablefield_0_cell_0_0 | c-1-r-1      |
-      | tablefield_0_cell_0_1 | c-2-r-1      |
-      | tablefield_0_cell_1_0 | c-1-r-2      |
-      | tablefield_0_cell_1_1 | c-2-r-2      |
-      | tablefield_0_cell_2_0 | c-1-r-3      |
-      | tablefield_0_cell_2_1 | c-2-r-3      |
+      | field_basic_table_table[und][0][tablefield][cell_0_0] | c-1-r-1      |
+      | field_basic_table_table[und][0][tablefield][cell_0_1] | c-2-r-1      |
+      | field_basic_table_table[und][0][tablefield][cell_1_0] | c-1-r-2      |
+      | field_basic_table_table[und][0][tablefield][cell_1_1] | c-2-r-2      |
+      | field_basic_table_table[und][0][tablefield][cell_2_0] | c-1-r-3      |
+      | field_basic_table_table[und][0][tablefield][cell_2_1] | c-2-r-3      |
       And I press "Save" in the "CTools modal" region
       And I press "Save"
       And I wait for the Panels IPE to deactivate
@@ -37,12 +37,12 @@ Feature: Add table widget
       And I press "Rebuild Table"
     Then I should see "Table structure rebuilt."
     When I fill in the following:
-      | tablefield_0_cell_0_0 | c-1-r-1 |
-      | tablefield_0_cell_0_1 | c-2-r-1 |
-      | tablefield_0_cell_0_2 | c-3-r-1 |
-      | tablefield_0_cell_1_0 | c-1-r-2 |
-      | tablefield_0_cell_1_1 | c-2-r-2 |
-      | tablefield_0_cell_1_2 | c-3-r-2 |
+      | field_basic_table_table[und][0][tablefield][cell_0_0] | c-1-r-1      |
+      | field_basic_table_table[und][0][tablefield][cell_0_1] | c-2-r-1      |
+      | field_basic_table_table[und][0][tablefield][cell_0_2] | c-3-r-1      |
+      | field_basic_table_table[und][0][tablefield][cell_1_0] | c-1-r-2      |
+      | field_basic_table_table[und][0][tablefield][cell_1_1] | c-2-r-2      |
+      | field_basic_table_table[und][0][tablefield][cell_1_2] | c-3-r-2      |
       And I press "Save" in the "CTools modal" region
       And I press "Save"
       And I wait for the Panels IPE to deactivate

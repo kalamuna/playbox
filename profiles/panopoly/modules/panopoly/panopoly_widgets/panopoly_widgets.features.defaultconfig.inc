@@ -10,9 +10,26 @@
 function panopoly_widgets_defaultconfig_features() {
   return array(
     'panopoly_widgets' => array(
+      'strongarm' => 'strongarm',
       'user_default_permissions' => 'user_default_permissions',
     ),
   );
+}
+
+/**
+ * Implements hook_defaultconfig_strongarm().
+ */
+function panopoly_widgets_defaultconfig_strongarm() {
+  $export = array();
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'media_wysiwyg_default_render';
+  $strongarm->value = 'field_attach';
+  $export['media_wysiwyg_default_render'] = $strongarm;
+
+  return $export;
 }
 
 /**
@@ -528,6 +545,16 @@ function panopoly_widgets_defaultconfig_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: 'use media wysiwyg'.
+  $permissions['use media wysiwyg'] = array(
+    'name' => 'use media wysiwyg',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'media_wysiwyg',
   );
 
   // Exported permission: 'view files'.

@@ -9,7 +9,7 @@ dependencies[] = defaultconfig
 dependencies[] = features
 dependencies[] = jquery_update
 dependencies[] = page_manager
-dependencies[] = panopoly_theme
+dependencies[] = radix_layouts
 dependencies[] = strongarm
 dependencies[] = views_bulk_operations
 scripts[] = panopoly-admin.js
@@ -36,13 +36,10 @@ features[page_manager_handlers][] = node_edit_panel_context
 features[page_manager_pages][] = panopoly_admin_layout_library
 features[page_manager_pages][] = panopoly_admin_page_library
 features[page_manager_pages][] = panopoly_admin_pane_library
-features[variable][] = jquery_update_jquery_version
-features[variable][] = user_admin_role
 
-
-; Information added by drush on 2015-01-13
-version = "7.x-1.14+0-dev"
+; Information added by Drupal.org packaging script on 2016-01-07
+version = "7.x-1.30"
 core = "7.x"
 project = "panopoly_admin"
-datestamp = "1421107390"
+datestamp = "1452140063"
 

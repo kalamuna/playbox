@@ -5,7 +5,7 @@ Feature: Link to page on the site
 
   Background:
     Given I am logged in as a user with the "administrator" role
-      And a "panopoly_test_page" node with the title "Linkit Target"
+      And a "panopoly_test_page" with the title "Linkit Target"
     When I visit "/node/add/panopoly-test-page"
       And I fill in the following:
         | Title  | Testing Linkit       |
@@ -17,7 +17,6 @@ Feature: Link to page on the site
       And I fill in "edit-linkit-search" with "target"
       And I wait 1 seconds
       And I press the "Tab" key in the "edit-linkit-search" field
-    Then the "edit-linkit-path" field should contain "/node/"
     When I click "Options" in the "Linkit modal" region
       And I fill in "edit-linkit-title" with "Testing title"
       And I press "Insert link"

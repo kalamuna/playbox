@@ -6,7 +6,7 @@ I want to be able to login
   Background:
     Given users:
     | name     | pass      | mail             | roles    |
-    | TestUser | ChangeMe! | foo@example.com  | 4        |
+    | TestUser | ChangeMe! | foo@example.com  | editor   |
  
   @standard_login @api
   Scenario: Editor is able to login

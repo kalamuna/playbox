@@ -3,7 +3,7 @@ Feature: Add image widget
   As a site administrator
   I need to be able to use the image widget
  
-  @api @javascript @panopoly_widgets
+  @api @javascript @panopoly_widgets @local_files
   Scenario: Add a image
     Given I am logged in as a user with the "administrator" role
       And Panopoly magic live previews are disabled

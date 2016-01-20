@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Panopoly Pages Search Result feature.
+ */
+
+include_once 'panopoly_pages_search_result.features.inc';
