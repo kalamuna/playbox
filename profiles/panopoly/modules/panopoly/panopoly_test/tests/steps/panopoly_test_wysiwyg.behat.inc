@@ -7,24 +7,23 @@
  */
 
 use Drupal\DrupalExtension\Context\DrupalSubContextInterface;
-use Behat\Behat\Context\BehatContext;
+use Drupal\DrupalDriverManager;
+use Drupal\DrupalExtension\Context\RawDrupalContext;
 
-class WysiwygSubContext extends BehatContext implements DrupalSubContextInterface {
+class WysiwygSubContext extends RawDrupalContext implements DrupalSubContextInterface {
+
+  /**
+   * Contains the DrupalDriverManager.
+   *
+   * @var \Drupal\DrupalDriverManager
+   */
+  private $drupal;
+
   /**
    * Initializes context.
    */
-  public function __construct(array $parameters = array()) {
-  }
-
-  public static function getAlias() {
-    return 'wysiwyg';
-  }
-
-  /**
-   * Get the session from the parent context.
-   */
-  protected function getSession() {
-    return $this->getMainContext()->getSession();
+  public function __construct(DrupalDriverManager $drupal) {
+    $this->drupal = $drupal;
   }
 
   /**
@@ -66,10 +65,19 @@ class WysiwygSubContext extends BehatContext implements DrupalSubContextInterfac
   protected function getWysiwygToolbar($instanceId, $editorType) {
     $driver = $this->getSession()->getDriver();
 
-    // TODO: This is tinyMCE specific. We should probably do a switch statement
-    // based on $editorType.
-    $toolbarElement = $driver->find("//div[@id='{$instanceId}_toolbargroup']");
-    $toolbarElement = !empty($toolbarElement) ? $toolbarElement[0] : NULL;
+    switch ($editorType) {
+      case 'tinymce':
+        $toolbarElement = $driver->find("//div[@id='{$instanceId}_toolbargroup']");
+        $toolbarElement = !empty($toolbarElement) ? $toolbarElement[0] : NULL;
+        break;
+
+      case 'markitup':
+        $elementId = 'markItUp' . ucfirst($instanceId);
+        $toolbarElement = $driver->find("//div[@id='{$elementId}']//div[@class='markItUpHeader']");
+        $toolbarElement = !empty($toolbarElement) ? $toolbarElement[0] : NULL;
+        break;
+    }
+
     if (!$toolbarElement) {
       throw new \Exception(sprintf('Toolbar for editor "%s" was not found on the page %s', $instanceId, $this->getSession()->getCurrentUrl()));
     }
@@ -78,15 +86,18 @@ class WysiwygSubContext extends BehatContext implements DrupalSubContextInterfac
   }
 
   /**
-   * @When /^I type "([^"]*)" in the "([^"]*)" WYSIWYG editor$/
+   * @When I type :text in the :instanceId WYSIWYG editor
    */
   public function iTypeInTheWysiwygEditor($text, $instanceId) {
     $instance = $this->getWysiwygInstance($instanceId);
+    // Necessary for some WYSIWYG editors (namely, markitup) to be focussed
+    // before instance.insert() will do anything.
+    $this->getSession()->executeScript("jQuery('#$instanceId').focus();");
     $this->getSession()->executeScript("$instance.insert(\"$text\");");
   }
 
   /**
-   * @When /^I fill in the "([^"]*)" WYSIWYG editor with "([^"]*)"$/
+   * @When I fill in the :instanceId WYSIWYG editor with :text
    */
   public function iFillInTheWysiwygEditor($instanceId, $text) {
     $instance = $this->getWysiwygInstance($instanceId);
@@ -94,7 +105,7 @@ class WysiwygSubContext extends BehatContext implements DrupalSubContextInterfac
   }
 
   /**
-   * @When /^I click the "([^"]*)" button in the "([^"]*)" WYSIWYG editor$/
+   * @When I click the :action button in the :instanceId WYSIWYG editor
    */
   public function iClickTheButtonInTheWysiwygEditor($action, $instanceId) {
     $driver = $this->getSession()->getDriver();
@@ -113,7 +124,7 @@ class WysiwygSubContext extends BehatContext implements DrupalSubContextInterfac
   }
 
   /**
-   * @When /^I click the "([^"]*)" element in the "([^"]*)" WYSIWYG editor$/
+   * @When I click the :cssSelector element in the :instanceId WYSIWYG editor
    */
   public function iClickTheElementInTheWysiwygEditor($cssSelector, $instanceId) {
     $instance = $this->getWysiwygInstance($instanceId);
@@ -132,7 +143,7 @@ class WysiwygSubContext extends BehatContext implements DrupalSubContextInterfac
   }
 
   /**
-   * @When /^I expand the toolbar in the "([^"]*)" WYSIWYG editor$/
+   * @When I expand the toolbar in the :instanceId WYSIWYG editor
    */
   public function iExpandTheToolbarInTheWysiwygEditor($instanceId) {
     $driver = $this->getSession()->getDriver();
@@ -156,9 +167,9 @@ class WysiwygSubContext extends BehatContext implements DrupalSubContextInterfac
   }
 
   /**
-   * @Then /^I should see "([^"]*)" in the "([^"]*)" WYSIWYG editor$/
+   * @Then I should see :text in the :instanceId WYSIWYG editor
    */
-  public function assertContentInWysiwygEditor($text, $tag, $region) {
+  public function assertContentInWysiwygEditor($text, $instanceId) {
     $instance = $this->getWysiwygInstance($instanceId);
     $content = $this->evaluateScript("return $instance.getContent()");
     if (strpos($text, $content) === FALSE) {
@@ -167,9 +178,9 @@ class WysiwygSubContext extends BehatContext implements DrupalSubContextInterfac
   }
 
   /**
-   * @Then /^I should not see "([^"]*)" in the "([^"]*)" WYSIWYG editor$/
+   * @Then I should not see :text in the :instanceId WYSIWYG editor
    */
-  public function assertContentNotInWysiwygEditor($text, $tag, $region) {
+  public function assertContentNotInWysiwygEditor($text, $instanceId) {
     $instance = $this->getWysiwygInstance($instanceId);
     $content = $this->evaluateScript("return $instance.getContent()");
     if (strpos($text, $content) !== FALSE) {

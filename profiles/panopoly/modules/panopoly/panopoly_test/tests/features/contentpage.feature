@@ -20,12 +20,12 @@ Feature: Add content page
     When I press "edit-submit"
     Then the "h1" element should contain "Testing title"
 
-  @api @javascript @panopoly_pages
+  @api @javascript @panopoly_pages @local_files
   Scenario: Add a Featured Image with incorrect dimensions
     When I attach the file "test-sm.png" to "files[field_featured_image_und_0]"
     Then I should see "The specified file test-sm.png could not be uploaded. The image is too small; the minimum dimensions are 300x200 pixels."
 
-  @api @javascript @panopoly_pages
+  @api @javascript @panopoly_pages @local_files
   Scenario: Add a Featured image
     # Revisting the page will not be necessary when https://drupal.org/node/2281709 is resolved
     When I visit "/node/add/panopoly-page"
