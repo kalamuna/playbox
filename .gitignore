@@ -1,8 +1,9 @@
 /tmp*
-/vendor
+/web/vendor
 /web/core
 /web/modules/contrib
 /web/themes/contrib
 /web/profiles/contrib
 /web/*.*
-/web/sites
+/web/sites/*.*
+/web/sites/default/default.*

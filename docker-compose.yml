@@ -1,0 +1,8 @@
+web:
+  build: .
+  restart: always
+  tty: true
+  ports:
+    - "8000:80"
+  volumes:
+    - ./web:/var/www/html
