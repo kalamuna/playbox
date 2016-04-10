@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9ebd1570ef4d7d7fc199e05d182a265a",
-    "content-hash": "3957f94bf214753ab8b4d2ad26dfbdea",
+    "hash": "2723aff7665534d29a17d867c04d21c7",
+    "content-hash": "5441e2a30ba4fba6a89ea1af41b65d11",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -819,6 +819,37 @@
             "description": "Built to use Bootstrap, a sleek, intuitive, and powerful front-end framework for faster and easier web development.",
             "homepage": "https://www.drupal.org/project/bootstrap",
             "time": "2016-03-01 22:10:15"
+        },
+        {
+            "name": "drupal/config_installer",
+            "version": "8.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/config_installer.git",
+                "reference": "5e23c37c3c723ace5d5bae3b0c0051172e4f3994"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/config_installer-8.x-1.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*"
+            },
+            "type": "drupal-profile",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Use configuration from another Drupal site to install a Drupal instance. Suitable for advanced users.",
+            "homepage": "https://www.drupal.org/project/config_installer",
+            "time": "2015-12-23 12:31:59"
         },
         {
             "name": "drupal/console",
