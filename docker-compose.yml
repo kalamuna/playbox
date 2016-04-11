@@ -8,6 +8,11 @@ web:
     - .:/var/www/html
   links:
     - db:database
+  environment:
+    MYSQL_DATABASE: drupal
+    MYSQL_USER: drupal
+    MYSQL_PASSWORD: drupal
+    MYSQL_HOST: database
 
 db:
   image: mariadb:10

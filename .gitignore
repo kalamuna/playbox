@@ -10,6 +10,8 @@
 /sites/*.*
 /sites/default/default.*
 /sites/default/files
+/sites/default/settings.php
+/sites/default/services.yml
 /sites/example.*
 /sites/development.services.yml
 /.csslintrc
