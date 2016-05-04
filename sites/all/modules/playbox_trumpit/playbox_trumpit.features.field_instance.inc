@@ -15,7 +15,7 @@ function playbox_trumpit_field_default_field_instances() {
     'bundle' => 'playbox_battle',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This is the quote that explains why the winner won and the loser lost.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -63,6 +63,7 @@ function playbox_trumpit_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('This is the quote that explains why the winner won and the loser lost.');
   t('Trumped');
 
   return $field_instances;
