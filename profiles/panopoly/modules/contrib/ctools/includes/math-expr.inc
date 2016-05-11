@@ -385,4 +385,3 @@ class ctools_math_expr_stack {
         return !empty($this->stack[$this->count-$n]) ? $this->stack[$this->count-$n] : NULL;
     }
 }
-

@@ -204,10 +204,6 @@ class ctools_context_required {
  */
 class ctools_context_optional extends ctools_context_required {
   var $required = FALSE;
-  /*function ctools_context_optional() {
-    $args = func_get_args();
-    call_user_func_array(array($this, 'ctools_context_required'), $args);
-  }*/
 
   /**
    * Add the 'empty' context which is possible for optional
