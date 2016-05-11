@@ -99,7 +99,7 @@ class ctools_math_expr {
         'sqrt','abs','ln','log',
         'time', 'ceil', 'floor', 'min', 'max', 'round');
 
-    function __construct() {
+    function ctools_math_expr() {
         // make the variables a little more accurate
         $this->v['pi'] = pi();
         $this->v['e'] = exp(1);
@@ -385,3 +385,4 @@ class ctools_math_expr_stack {
         return !empty($this->stack[$this->count-$n]) ? $this->stack[$this->count-$n] : NULL;
     }
 }
+
