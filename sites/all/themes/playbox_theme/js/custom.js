@@ -107,6 +107,19 @@
 	Disco Party Time!
 	==============================================*/
 	$( document ).ready(function(){
+    
+    // added for logo_bling
+    $('#logo-hover').click(function(){
+      $(this).hide( "slow", function() {
+        if (window.location.pathname != '/'){
+          window.location.href = "/";
+        } else {
+          $(this).css('text-indent', 0).html('You are home').show();
+        }
+      });
+    });
+
+    
 		//If disco mode is enabled, periodically swap colors
 		if(Drupal.settings.playboxadmin.disco == 1){
 			var default_color = Drupal.settings.playboxadmin.default_color;
