@@ -107,12 +107,16 @@
 	Disco Party Time!
 	==============================================*/
 	$( document ).ready(function(){
-    
+
+    // add some css settings based on dynamic logo settings
+    $('.ch-img-1').css('background-image', 'url(' + Drupal.settings.logo_white + ')');
+    $('.ch-info p').css('background-image', 'url(' + Drupal.settings.logo + ')');
+
     // added for logo_bling
     $('#logo-hover').click(function(){
       $(this).hide( "slow", function() {
-        if (window.location.pathname != '/'){
-          window.location.href = "/";
+        if (window.location.pathname != Drupal.settings.basePath){
+          window.location.href = Drupal.settings.basePath;
         } else {
           $(this).css('text-indent', 0).html('You are home').show();
         }
