@@ -40,6 +40,13 @@
 #stats-table {
   border: none;
 }
+
+@media only screen and (max-width: 480px) {
+  #stats-table {
+    margin:0;
+  }
+}
+
 #stats-table h2 {
   font-size: 72px;
   text-align: center;

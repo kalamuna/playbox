@@ -49,6 +49,12 @@
   font-weight: 600;
 }
 
+@media (max-width: 767px){
+  .battler-battle .battler-battle-name h2{
+    font-size: 32px;
+  }
+}
+
 .battler-battle .battler-battle-bio {
   opacity: .9;
   font-size: 1.337em;
