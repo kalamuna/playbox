@@ -133,7 +133,8 @@ input#edit-title {
 
 @media screen and (max-width: 768px) {
   /* Centering the president's images */
-  .views-field.views-field-field-playbox-portrait, .battler-rows-sidebar-area {
+  .views-field.views-field-field-playbox-portrait, .battler-rows-sidebar-area,
+  .battler-rows-main-content{
     text-align: center;
     margin: 0 auto;
   }

@@ -776,6 +776,12 @@ pre code {
   overflow-y: scroll;
 }
 
+/** Ovverride Panopoly styling in radix_layouts '.container .container' causing off-center content **/
+.container .container{
+  margin-left:auto;
+  margin-right: auto;
+}
+
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -886,6 +892,13 @@ pre code {
 
 .row:after {
   clear: both;
+}
+
+@media (max-width: 767px){
+  .row{
+    margin-left:0;
+    margin-right:0;
+  }
 }
 
 .col-xs-1,
@@ -1167,6 +1180,7 @@ pre code {
   }
   .col-sm-12 {
     width: 100%;
+    text-align:center;
   }
   .col-sm-11 {
     width: 91.66666666666666%;
