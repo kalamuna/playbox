@@ -11,6 +11,7 @@ stylesheets[all][] = css/styles.css
 stylesheets[all][] = css/syntax.css
 stylesheets[all][] = css/meflat-blue.css
 stylesheets[all][] = css/tweaks.css
+stylesheets[all][] = css/logo-bling.css
 
 scripts[] = js/jquery.easypiechart.js
 scripts[] = js/modernizr.min.js
@@ -41,4 +42,6 @@ fonts[google_fonts_api][] = "Titillium Web&subset=latin#700italic"
 fonts[google_fonts_api][] = "Titillium Web&subset=latin#900"
 fonts[google_fonts_api][] = "Titillium Web&subset=latin#italic"
 fonts[google_fonts_api][] = "Titillium Web&subset=latin#regular"
+
+settings[logo_white] = /sites/all/themes/playbox_theme/logo-white.svg
 

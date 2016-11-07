@@ -158,11 +158,20 @@
             <!-- ======= LOGO (for larger screens)========-->
             <?php if ($logo): ?>
               <div class='brand'>
-                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo" class="navbar-brand scrollto hidden-xs">
-                  <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" id="logo-dark" class="hidden" />
-                  <img src="<?php print $logo_white; ?>" alt="<?php print t('Home'); ?>" id="logo-white" />
-                </a>
-              </div>
+                
+                <!-- changed for logo-bling START -->
+                <ul class="ch-grid">                
+                  <li>
+                    <div class="ch-item ch-img-1" >
+                      <div class="ch-info">
+                        <p id="logo-hover" title="<?php print t('Home'); ?>"> <?php print t('Home'); ?></p>
+                      </div>
+                    </div>
+                  </li>  
+                </ul>
+                <!-- changed for logo-bling END -->
+                
+             </div>
             <?php endif; ?>
 
             <?php print theme('links__system_main_menu', array(
