@@ -232,7 +232,12 @@ function playbox_battles_vote($ajax, $nid, $type) {
       $commands[] = ajax_command_invoke('.battler-vote-' . $loser_type, 'addClass', array('battle-loser'));
       // Add winner message
       $winner = ($winner_type == 'president') ? $wrapper->field_playbox_president->label() : $wrapper->field_playbox_robot->label();
-      $commands[] = ajax_command_prepend('.battler-vs', '<div class="battle-message"><span class="battle-over">' . $winner . ' is victorious!</span></div>', $settings = NULL);
+      // Get loser name
+      $loser = ($loser_type == 'president') ? $wrapper->field_playbox_president->label() : $wrapper->field_playbox_robot->label();
+      drupal_add_js(drupal_get_path('theme', 'playbox_theme') . '/js/twitter.js');
+      $commands[] = ajax_command_prepend('.battler-vs', '<div class="battle-message"><span class="battle-over">' . $winner . ' is victorious! <a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?text=' . $winner . ' just won an epic battle against ' . $loser . '. Play other battles!&hashtags=playbox,kalamuna">
+Tweet</a></span></div>', $settings = NULL);
     }
 
     return array(
