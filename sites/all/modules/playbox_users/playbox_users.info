@@ -1,0 +1,9 @@
+name = Playbox Users
+core = 7.x
+package = Playbox
+version = 7.x-1.0-alpha1
+project = playbox_users
+dependencies[] = features
+dependencies[] = list
+features[features_api][] = api:2
+features[field_base][] = field_playbox_user_team
