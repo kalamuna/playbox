@@ -1,58 +1,146 @@
+# @file
+# .travis.yml - Drupal for Travis CI Integration
+#
+# Template provided by https://github.com/LionsAd/drupal_ti.
+#
+# Based for simpletest upon:
+#   https://github.com/sonnym/travis-ci-drupal-module-example
+
 language: php
+
+sudo: false
 
 php:
   - 5.4
 
-mysql:
-  database: drupal
-  username: root
-  encoding: utf8
-
-env:
-  - UPGRADE=none
-  - UPGRADE=7.x-1.15
-  - UPGRADE=7.x-1.14
-  - UPGRADE=7.x-1.13
-  - UPGRADE=7.x-1.12
-  - UPGRADE=7.x-1.11
-  - UPGRADE=7.x-1.10
-  - UPGRADE=7.x-1.9
-  - UPGRADE=7.x-1.8
-  - UPGRADE=7.x-1.6
-  - UPGRADE=7.x-1.5
-  - UPGRADE=7.x-1.4
-  - UPGRADE=7.x-1.2
-  - UPGRADE=7.x-1.1
-  - UPGRADE=7.x-1.0-rc5
-  - UPGRADE=7.x-1.0-rc4
-  - UPGRADE=7.x-1.0-rc3
-
 matrix:
   fast_finish: true
   allow_failures:
-    - env: UPGRADE=7.x-1.0-rc3
+    - php: 7
+    - php: hhvm
+  include:
+    - php: "5.5"
+      env: UPGRADE=none INSTALL_PANOPOLY_DEMO_FROM_APPS=1
+    - php: "5.6"
+      env: UPGRADE=none INSTALL_PANOPOLY_DEMO_FROM_APPS=1
+
+env:
+  global:
+    # add composer's global bin directory to the path
+    # see: https://github.com/drush-ops/drush#install---composer
+    - PATH="$PATH:$HOME/.composer/vendor/bin"
+
+    # Configuration variables.
+    - DRUPAL_TI_DISTRIBUTION_NAME="panopoly"
+    #- DRUPAL_TI_MODULE_NAME="[[[FILL THIS OUT]]]"
+    #- DRUPAL_TI_SIMPLETEST_GROUP="[[[FILL THIS OUT]]]"
+
+    # Define runners and environment vars to include before and after the
+    # main runners / environment vars.
+    #- DRUPAL_TI_SCRIPT_DIR_BEFORE="./.drupal_ti/before"
+    - DRUPAL_TI_SCRIPT_DIR_AFTER="./.drupal-ti"
+
+    # The environment to use, supported are: drupal-7, drupal-8
+    - DRUPAL_TI_ENVIRONMENT="drupal-7"
+
+    # Drupal specific variables.
+    - DRUPAL_TI_DB="drupal_travis_db"
+    - DRUPAL_TI_DB_URL="mysql://root:@127.0.0.1/drupal_travis_db"
+    # Note: Do not add a trailing slash here.
+    - DRUPAL_TI_WEBSERVER_URL="http://127.0.0.1"
+    # Note: http://cgit.drupalcode.org/panopoly_test/tree/tests/behat.travis.yml depends on that port.
+    - DRUPAL_TI_WEBSERVER_PORT="8888"
+
+    # Simpletest specific commandline arguments, the DRUPAL_TI_SIMPLETEST_GROUP is appended at the end.
+    - DRUPAL_TI_SIMPLETEST_ARGS="--verbose --color --concurrency 4 --url $DRUPAL_TI_WEBSERVER_URL:$DRUPAL_TI_WEBSERVER_PORT"
+
+    # === Behat specific variables.
+    # This is relative to $TRAVIS_BUILD_DIR
+    - DRUPAL_TI_BEHAT_DIR="./profiles/panopoly/modules/panopoly/panopoly_test/tests"
+    # These arguments are passed to the bin/behat command.
+    - DRUPAL_TI_BEHAT_ARGS=""
+    # Specify the filename of the behat.yml with the $DRUPAL_TI_DRUPAL_DIR variables.
+    # @todo This is ignored right now.
+    - DRUPAL_TI_BEHAT_YML="behat.travis.yml.dist"
+    # This is used to setup Xvfb.
+    - DRUPAL_TI_BEHAT_SCREENSIZE_COLOR="1024x768x24"
+    # The version of selenium that should be used.
+    - DRUPAL_TI_BEHAT_SELENIUM_VERSION="2.47.1"
+    - DRUPAL_TI_BEHAT_DRIVER="selenium"
+    # We use both chrome and firefox, but this makes chromedriver available.
+    - DRUPAL_TI_BEHAT_BROWSER="chrome"
+
+    # PHPUnit specific commandline arguments.
+    - DRUPAL_TI_PHPUNIT_ARGS=""
+
+    # Code coverage via coveralls.io
+    - DRUPAL_TI_COVERAGE="satooshi/php-coveralls:0.6.*"
+    # This needs to match your .coveralls.yml file.
+    - DRUPAL_TI_COVERAGE_FILE="build/logs/clover.xml"
+
+    # Debug options
+    #- DRUPAL_TI_DEBUG="-x -v"
+    # Set to "all" to output all files, set to e.g. "xvfb selenium" or "selenium",
+    # etc. to only output those channels.
+    #- DRUPAL_TI_DEBUG_FILE_OUTPUT="xvfb selenium webserver"
+
+    # Use a custom runner for now.
+    # @todo Move functionality back upstream.
+    - DRUPAL_TI_RUNNERS="panopoly-behat"
+    # [[[ SELECT ANY OR MORE OPTIONS ]]]
+    #- DRUPAL_TI_RUNNERS="phpunit"
+    #- DRUPAL_TI_RUNNERS="simpletest"
+    #- DRUPAL_TI_RUNNERS="behat"
+    #- DRUPAL_TI_RUNNERS="phpunit simpletest behat"
+  matrix:
+    - UPGRADE=none     INSTALL_PANOPOLY_DEMO_FROM_APPS=1
+    - UPGRADE=7.x-1.34
+    - UPGRADE=7.x-1.33
+    - UPGRADE=7.x-1.32
+    - UPGRADE=7.x-1.31
+    - UPGRADE=7.x-1.30
+    - UPGRADE=7.x-1.29
+    - UPGRADE=7.x-1.28
+    - UPGRADE=7.x-1.27
+    - UPGRADE=7.x-1.26
+    - UPGRADE=7.x-1.25
+    - UPGRADE=7.x-1.24
+    - UPGRADE=7.x-1.23
+    - UPGRADE=7.x-1.22
+    - UPGRADE=7.x-1.21
+
+# Cache Composer & Drush directories.
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - $HOME/.drush/cache
+
+mysql:
+  database: drupal_travis_db
+  username: root
+  encoding: utf8
+
+before_install:
+  - composer self-update
+  - composer global require "lionsad/drupal_ti:dev-master"
+  - drupal-ti before_install
 
 install:
-  # Make some variables available to the travis-ci.sh script.
-  - export UPDATE TRAVIS_BUILD_DIR
-
-  # Copy the script into a stable location.
-  - cp scripts/travis-ci.sh $HOME/
-
-  # Move to the directory above, where we should remain.
-  - cd ..
-
-  # Start by doing system installation.
-  - $HOME/travis-ci.sh system-install
+  - drupal-ti install
 
 before_script:
-  - $HOME/travis-ci.sh before-tests
+  - drupal-ti before_script
 
 script:
-  - $HOME/travis-ci.sh run-tests
+  - drupal-ti script
 
 after_script:
-  - $HOME/travis-ci.sh after-tests
+  - drupal-ti after_script
+
+# For now, don't test 8.x-2.x.
+branches:
+  except:
+    - 8.x-2.x
 
 notifications:
   email:

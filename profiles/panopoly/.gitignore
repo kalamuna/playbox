@@ -1,0 +1,6 @@
+# Artifacts from the build system
+bin
+vendor
+composer.phar
+build-temp
+build.properties
