@@ -23,7 +23,7 @@ function pantheon_apachesolr_help($path, $arg) {
       $output .= '<ol>';
       $output .= '<li>' . t('For each Pantheon environment (dev, test and live), post the desired schema.xml to the Apache Solr server using the <a href="@url">post schema</a> interface. Step-by-step instructions can be found in <a href="@desk">Apache Solr on Pantheon</a>.', array(
         '@url' => url('admin/config/search/pantheon/schema'),
-        '@desk' => url('http://helpdesk.getpantheon.com/customer/portal/articles/361249'),
+        '@desk' => url('https://www.getpantheon.com/docs/articles/sites/apache-solr/'),
       )) . '</p>';
       $output .= '</ol>';
 
@@ -191,8 +191,16 @@ function pantheon_apachesolr_post_schema_exec($schema) {
   );
   curl_setopt_array($ch, $opts);
   $response = curl_exec($ch);
+  $info = curl_getinfo($ch);
+  $success_codes = array(
+    '200',
+    '201',
+    '202',
+    '204'
+  );
+  $success = (in_array($info['http_code'], $success_codes));
   fclose($file);
-  if ($response == NULL) {
+  if (!$success) {
     watchdog('pantheon_apachesolr', 'Error !error posting !schema to !url', array(
       '!error' => curl_error($ch),
       '!schema' => $schema,
@@ -203,7 +211,7 @@ function pantheon_apachesolr_post_schema_exec($schema) {
     variable_set('pantheon_apachesolr_schema', $schema);
   }
 
-  return $response;
+  return $success;
 }
 
 /**
@@ -306,7 +314,6 @@ function pantheon_apachesolr_query_submit($form, &$form_state) {
   $host = PANTHEON_APACHESOLR_HOST;
   $path = 'sites/self/environments/'. variable_get('pantheon_environment', 'dev') .'/index';
   $url = 'https://'. $host .'/'. $path . $form_state['values']['query'];
-
 
   $ch = curl_init();
   curl_setopt_array($ch, pantheon_apachesolr_curlopts());
@@ -637,8 +644,9 @@ function pantheon_apachesolr_requirements($phase) {
     if ($pantheon_apachesolr_schema == '') {
       $requirements['pantheon_apachesolr']['severity'] = REQUIREMENT_ERROR;
       $requirements['pantheon_apachesolr']['value'] = t('Schema not posted!');
-      $requirements['pantheon_apachesolr']['description'] = t('You have not posted the schema.xml to the @pantheon_environment environment using the <a href="@url">post schema</a> interface.', array(
+      $requirements['pantheon_apachesolr']['description'] = t('You have not posted the schema.xml to the @pantheon_environment environment. Make sure you have <a href="@enableurl" target="_blank">enabled the Pantheon Apache Solr add on</a> and then <a href="@url">post your schema</a> using the module interface. ', array(
         '@url' => url('admin/config/search/pantheon/schema'),
+        '@enableurl' => 'https://www.getpantheon.com/docs/articles/sites/apache-solr/',
         '@pantheon_environment' => variable_get('pantheon_environment', 'dev'),
       ));
     }
