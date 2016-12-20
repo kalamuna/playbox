@@ -114,7 +114,10 @@ function playbox_battles_default_page_manager_pages() {
       'view_mode' => 'teaser',
     );
     $pane->cache = array();
-    $pane->style = array();
+    $pane->style = array(
+      'settings' => NULL,
+      'style' => 'default',
+    );
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
@@ -159,6 +162,63 @@ function playbox_battles_default_page_manager_pages() {
     $display->content['new-eebd9a2a-5adc-48db-8f12-d27256b638e5'] = $pane;
     $display->panels['row1'][0] = 'new-eebd9a2a-5adc-48db-8f12-d27256b638e5';
     $pane = new stdClass();
+    $pane->pid = 'new-6fb57121-8cb3-4d03-9681-09f65392ce8b';
+    $pane->panel = 'row2';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'playbox_battles-playbox_battles_list_2';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'items_per_page' => '10',
+      'fields_override' => array(
+        'field_playbox_battle_completed' => 0,
+        'field_playbox_winner' => 0,
+        'field_playbox_loser' => 0,
+        'title' => 1,
+        'field_playbox_portrait' => 1,
+        'field_playbox_president_votes' => 1,
+        'field_playbox_nickname' => 1,
+        'field_playbox_battle_bio' => 1,
+        'field_playbox_votes_to_win' => 0,
+        'field_playbox_portrait_1' => 1,
+        'field_playbox_robot_votes' => 1,
+        'field_playbox_nickname_1' => 1,
+        'field_playbox_portrait_2' => 0,
+        'field_playbox_nickname_2' => 0,
+      ),
+      'view_settings' => 'table',
+      'header_type' => 'none',
+      'view_mode' => 'teaser',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'style' => 'kalacustomize',
+      'settings' => array(
+        'devices' => array(
+          'hidden-xs' => 0,
+          'hidden-sm' => 0,
+          'hidden-md' => 0,
+          'hidden-lg' => 0,
+        ),
+        'pane_style' => array(
+          'clearfix' => 'clearfix',
+          'battler-nickname' => 'battler-nickname',
+          'pull-left' => 0,
+          'pull-right' => 0,
+          'jumbotron' => 0,
+          'well' => 0,
+          'battler-title' => 0,
+        ),
+      ),
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '6fb57121-8cb3-4d03-9681-09f65392ce8b';
+    $display->content['new-6fb57121-8cb3-4d03-9681-09f65392ce8b'] = $pane;
+    $display->panels['row2'][0] = 'new-6fb57121-8cb3-4d03-9681-09f65392ce8b';
+    $pane = new stdClass();
     $pane->pid = 'new-5f94c76c-e8f9-461a-b5cf-9ce9eb3576fd';
     $pane->panel = 'row2';
     $pane->type = 'playbox_static_instructions';
@@ -174,11 +234,11 @@ function playbox_battles_default_page_manager_pages() {
     $pane->style = array();
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
     $pane->locks = array();
     $pane->uuid = '5f94c76c-e8f9-461a-b5cf-9ce9eb3576fd';
     $display->content['new-5f94c76c-e8f9-461a-b5cf-9ce9eb3576fd'] = $pane;
-    $display->panels['row2'][0] = 'new-5f94c76c-e8f9-461a-b5cf-9ce9eb3576fd';
+    $display->panels['row2'][1] = 'new-5f94c76c-e8f9-461a-b5cf-9ce9eb3576fd';
     $pane = new stdClass();
     $pane->pid = 'new-771a40cd-4cbf-4a8a-9610-0534e8565d4a';
     $pane->panel = 'row4';
@@ -204,7 +264,7 @@ function playbox_battles_default_page_manager_pages() {
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
-  $pages['playbox_battles'] = $page;
+  $pages[''] = $page;
 
   return $pages;
 
