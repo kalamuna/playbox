@@ -1,0 +1,9 @@
+name = Playbox add Battle Widget
+description = Multistep form for starting battles your own damned self.
+core = 7.x
+package = Playbox
+dependencies[] = playbox_core
+dependencies[] = playbox_battles
+dependencies[] = playbox_presidents
+dependencies[] = playbox_robots
+stylesheets[all][] = 'css/playbox_add_battle.css'
