@@ -1,6 +1,6 @@
 # Playbox
 
-Playbox! is a sandbox-proving-ground for people interested in working with us at [Kalamuna](http://www.kalamuna.com). It's a magnificent and collaborative code-garden where would-be code artists, site builder and designers play around and show what they've got. It's also a place to ask questions, collaborate and learn. It's kind of like [this](https://www.youtube.com/watch?v=8tJoIaXZ0rw). Think you've got what it takes to make good Internet? Make stuff in Playbox! now and find out.
+Playbox! is a sandbox-proving-ground for people interested in working with us at [Kalamuna](http://www.kalamuna.com). It's a magnificent and collaborative code-garden where would-be code artists, site builder and designers play around and show what they've got. It's also a place to ask questions, collaborate and learn. It's kind of like [this](https://www.youtube.com/watch?v=t2VGpqq2-I8). Think you've got what it takes to make good Internet? Make stuff in Playbox! now and find out.
 
 ## Your Mission
 
