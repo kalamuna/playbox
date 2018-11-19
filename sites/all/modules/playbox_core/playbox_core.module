@@ -49,3 +49,11 @@ function playbox_core_field_formatter_view($entity_type, $entity, $field, $insta
   }
   return $element;
 }
+
+/**
+ * Enables the Trump It! module.
+ */
+function playbox_core_update_7200() {
+  //  Enable the Trump It! module.
+  module_enable(array('playbox_trumpit'));
+} // playbox_core_update_7200

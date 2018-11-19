@@ -1,0 +1,186 @@
+<?php
+/**
+ * @file
+ * Code for the Playbox TrumpIt feature.
+ */
+
+include_once 'playbox_trumpit.features.inc';
+
+/**
+ * @file
+ * Code for the Playbox TrumpIt! feature.
+ *
+ * Provides a button that gives users the option to 
+ * Save a form they are working on, AND return to the
+ * editing form in one step.
+ * 
+ * I find this quite usefull when entering a very long
+ * blog post, and my thumb hovering dangerously close to
+ * the mouse button that will take me "back" and lose all
+ * my entered changes/data.
+ * 
+ * No Kittens were harmed during the creation of this module.
+ */
+
+/**
+ * Provide online user help.
+ *
+ * @param $path
+ * @param $arg
+ * @return
+ *   Help text
+ */
+function playbox_trumpit_help($path, $arg) {
+  switch ($path) {
+    case 'admin/settings/playbox_trumpit':
+      return '<p>' . t('Trump It! adds a "Trump It!" button to the node add and edit forms.') . '</p>';
+    case 'admin/help#playbox_trumpit':
+      return '<p>' . t('Trump It! adds a "Trump It!" button to the node add and edit forms.') . '</p>';
+    default:
+      return '';
+  }
+}
+/**
+ * Implements hook_permission().
+ */
+function playbox_trumpit_permission() {
+  return array(
+    'use trump it' => array(
+      'title' => t('Use Trump It! Button'),
+      'description' => t('Display the Trump It! Button on the specified entity forms.'),
+    ),
+    'administer trump it' => array(
+      'title' => t('Administer Trump It!'),
+      'description' => t('Change the Trump It! configuration.'),
+    ),
+  );
+}
+/**
+ * Implements hook_menu().
+ */
+function playbox_trumpit_menu() {
+  $items = array();
+  $items['admin/config/playbox/trump-it'] = array(
+    'title' => 'Trump It! Settings',
+    'description' => 'Administer settings related to the Trump It! module.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('playbox_trumpit_admin_settings'),
+    'access arguments' => array('administer trump it'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'playbox_trumpit.admin.inc'
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function playbox_trumpit_form_node_form_alter(&$form, $form_state, $form_id) {
+
+
+  $form['field_playbox_trumped'][LANGUAGE_NONE][0]['#disabled'] = TRUE;
+
+  // if the type is not set, it's not a node and we are not interested
+  if (!isset($form['type']['#value']) || $form['type']['#value'] !== 'playbox_battle' ) {
+    return;
+  }
+
+  if( $form['field_playbox_battle_completed'][LANGUAGE_NONE]['#default_value'] > 0 ) {
+    return;
+  }
+
+
+  if (user_access('use trump it')) {
+
+    //add trump it btn
+    $form['actions']['trump_it'] = array(
+      '#type' => 'submit',
+      '#access' => user_access('use trump it'),
+      '#value' => t('Trump It!'),
+      '#submit' => array('redirect_trump_it_submit'),
+    );    
+  }  
+}
+/**
+ * Custom Submit Handler for Redirecting Save & Edit's to the node form after saving
+ *
+ * @param $form
+ * @param $form_state
+ */
+function redirect_trump_it_submit($form, &$form_state) {  
+
+  // First: decide randomly on the winner/loser, between the robot and president contestants
+  // Public-Opinion-Considerations: If more than 90% of the total votes are in favor of one candidate, pick the other!
+  $sum = $form_state['values']['field_playbox_president_votes'][LANGUAGE_NONE][0]['value'] + $form_state['values']['field_playbox_robot_votes'][LANGUAGE_NONE][0]['value'];
+  if( $sum > 0 ) {    
+    if( ( $form_state['values']['field_playbox_president_votes'][LANGUAGE_NONE][0]['value'] / $sum ) > 0.9 ) {
+	  $winner = $form_state['values']['field_playbox_robot'];
+	  $loser = $form_state['values']['field_playbox_president'];
+	}
+	else if( $form_state['values']['field_playbox_president_votes'][LANGUAGE_NONE][0]['value'] / $sum < 0.1 ) {
+	  $winner = $form_state['values']['field_playbox_president'];
+	  $loser = $form_state['values']['field_playbox_robot'];
+	}
+  }
+  if( !isset($winner) ){
+	if( rand(0,1) ){
+	  $winner = $form_state['values']['field_playbox_president'];
+	  $loser = $form_state['values']['field_playbox_robot'];
+	}
+	else {
+	  $winner = $form_state['values']['field_playbox_robot'];
+	  $loser = $form_state['values']['field_playbox_president'];
+	}
+  }  
+  // Set the values on the form
+  $form_state['values']['field_playbox_loser'] = $loser;
+  $form_state['values']['field_playbox_winner'] = $winner;
+  
+  // Second: pick a quote randomly from our arsenal, to trumpishly explain the decision
+  if ($phrases = variable_get('playbox_trumpit_phrases', 0)) {
+    $phrases = explode(PHP_EOL,$phrases);
+	$form_state['values']['field_playbox_trumped'][LANGUAGE_NONE][0]['value'] = $phrases[array_rand($phrases)];
+    $form_state['values']['field_playbox_battle_completed'][LANGUAGE_NONE][0]['value'] = true;
+  }
+  
+  // call default node save/submit function
+  node_form_submit($form, $form_state);
+  
+}
+
+function raks() {
+
+  if (variable_get('save_edit_unpublish_new_only', 0) && !$form_state['values']['nid']) {
+    $form_state['values']['status'] = 0;
+  }
+  // DO IT EVERY TIME Save & Edit is used. (Seems like a rare case)
+  elseif (variable_get('save_edit_unpublish', 0) && !variable_get('save_edit_unpublish_new_only', 0)) {
+    $form_state['values']['status'] = 0;
+  }
+  // WAIT... if someone clicked the Publish button, maybe we should retick that option now
+  if ($form_state['clicked_button']['#id'] == 'edit-save-edit-publish') {
+    $form_state['values']['status'] = 1;
+  }
+  // call default node save/submit function
+  node_form_submit($form, $form_state);
+  // only redirect if using the Save & Edit button
+  if ($form_state['clicked_button']['#id'] == 'edit-save-edit' || $form_state['clicked_button']['#id'] == 'edit-actions-save-edit') {
+    // change redirect location
+    if (isset($_REQUEST['destination'])) {
+      $form_state['redirect'] = url('node/' . $form_state['nid'] . '/edit',
+        array(
+          'query' => array(
+            'destination' => $_REQUEST['destination'],
+          ),
+          'absolute' => TRUE,
+        )
+      );
+      $_GET['destination'] = $form_state['redirect'];
+      unset($_REQUEST['destination']);
+    }
+    else {
+      // just go back to the form edit page, and dont worry about the redirect
+      $form_state['redirect'] = 'node/' . $form_state['nid'] . '/edit';
+    }
+  }
+}
