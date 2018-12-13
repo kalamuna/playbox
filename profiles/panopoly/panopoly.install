@@ -9,6 +9,7 @@
  */
 function panopoly_install() {
   _panopoly_install_help_block();
+  _panopoly_install_administrator_role();
 }
 
 /**
@@ -26,6 +27,13 @@ function panopoly_update_7102() {
     module_enable(array('block'));
   }
   _panopoly_install_help_block();
+}
+
+/**
+ * Assign user 1 the "administrator" role.
+ */
+function panopoly_update_7103() {
+  _panopoly_install_administrator_role();
 }
 
 /**
@@ -86,4 +94,18 @@ function _panopoly_install_help_block() {
 
   // Update the menu router information.
   menu_rebuild();
+}
+
+/**
+ * Helper function: Assign UID 1 to 'administrator' role.
+ */
+function _panopoly_install_administrator_role() {
+  // Load the administrator role created through features.
+  $admin_role = user_role_load_by_name('administrator');
+
+  // Assign user 1 the "administrator" role.
+  db_merge('users_roles')
+    ->key(array('uid' => 1, 'rid' => $admin_role->rid))
+    ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
+    ->execute();
 }

@@ -475,10 +475,6 @@ function file_ensure_htaccess() {
  *   already present. Defaults to FALSE.
  */
 function file_create_htaccess($directory, $private = TRUE, $force_overwrite = FALSE) {
-  if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
-    // Skip on Pantheon since we use nginx and this can hang.
-    return;
-  }
   if (file_uri_scheme($directory)) {
     $directory = file_stream_wrapper_uri_normalize($directory);
   }
@@ -1563,7 +1559,7 @@ function file_save_upload($form_field_name, $validators = array(), $destination 
     return FALSE;
   }
 
-  // Add in our check of the the file name length.
+  // Add in our check of the file name length.
   $validators['file_validate_name_length'] = array();
 
   // Call the validation functions specified by this function's caller.
@@ -1789,7 +1785,7 @@ function file_validate_is_image(stdClass $file) {
 /**
  * Verifies that image dimensions are within the specified maximum and minimum.
  *
- * Non-image files will be ignored. If a image toolkit is available the image
+ * Non-image files will be ignored. If an image toolkit is available the image
  * will be scaled to fit within the desired maximum dimensions.
  *
  * @param $file

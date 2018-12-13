@@ -1,0 +1,7 @@
+name = Panopoly Pages Search Result
+core = 7.x
+package = Features
+dependencies[] = panopoly_pages
+features[features_api][] = api:2
+features[features_override_items][] = variable.panelizer_defaults_node_panopoly_page
+features[features_overrides][] = variable.panelizer_defaults_node_panopoly_page.value|view modes|search_result

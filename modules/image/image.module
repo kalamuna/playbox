@@ -64,7 +64,7 @@ function image_help($path, $arg) {
       $effect = image_effect_definition_load($arg[7]);
       return isset($effect['help']) ? ('<p>' . $effect['help'] . '</p>') : NULL;
     case 'admin/config/media/image-styles/edit/%/effects/%':
-      $effect = ($arg[5] == 'add') ? image_effect_definition_load($arg[6]) : image_effect_load($arg[6], $arg[4]);
+      $effect = ($arg[5] == 'add') ? image_effect_definition_load($arg[6]) : image_effect_load($arg[7], $arg[5]);
       return isset($effect['help']) ? ('<p>' . $effect['help'] . '</p>') : NULL;
   }
 }
@@ -546,11 +546,6 @@ function image_field_update_instance($instance, $prior_instance) {
  *   The Drupal file path to the original image.
  */
 function image_path_flush($path) {
-  // Pantheon optimization: one bulk operation is better.
-  if (function_exists('pantheon_api_image_path_flush') && function_exists('pantheon_bulk_file_delete')) {
-    pantheon_api_image_path_flush($path);
-    return;
-  }
   $styles = image_styles();
   foreach ($styles as $style) {
     $image_path = image_style_path($style['name'], $path);
@@ -588,8 +583,10 @@ function image_styles() {
           $style['storage'] = IMAGE_STORAGE_DEFAULT;
           foreach ($style['effects'] as $key => $effect) {
             $definition = image_effect_definition_load($effect['name']);
-            $effect = array_merge($definition, $effect);
-            $style['effects'][$key] = $effect;
+            if ($definition) {
+              $effect = array_merge($definition, $effect);
+              $style['effects'][$key] = $effect;
+            }
           }
           $styles[$style_name] = $style;
         }
@@ -806,6 +803,8 @@ function image_style_options($include_empty = TRUE, $output = CHECK_PLAIN) {
  *
  * @param $style
  *   The image style
+ * @param $scheme
+ *   The file scheme, for example 'public' for public files.
  */
 function image_style_deliver($style, $scheme) {
   $args = func_get_args();
@@ -1032,7 +1031,15 @@ function image_style_url($style_name, $path) {
   // The token query is added even if the 'image_allow_insecure_derivatives'
   // variable is TRUE, so that the emitted links remain valid if it is changed
   // back to the default FALSE.
-  $token_query = array(IMAGE_DERIVATIVE_TOKEN => image_style_path_token($style_name, $original_uri));
+  // However, sites which need to prevent the token query from being emitted at
+  // all can additionally set the 'image_suppress_itok_output' variable to TRUE
+  // to achieve that (if both are set, the security token will neither be
+  // emitted in the image derivative URL nor checked for in
+  // image_style_deliver()).
+  $token_query = array();
+  if (!variable_get('image_suppress_itok_output', FALSE)) {
+    $token_query = array(IMAGE_DERIVATIVE_TOKEN => image_style_path_token($style_name, $original_uri));
+  }
 
   // If not using clean URLs, the image derivative callback is only available
   // with the query string. If the file does not exist, use url() to ensure
@@ -1044,8 +1051,12 @@ function image_style_url($style_name, $path) {
   }
 
   $file_url = file_create_url($uri);
-  // Append the query string with the token.
-  return $file_url . (strpos($file_url, '?') !== FALSE ? '&' : '?') . drupal_http_build_query($token_query);
+  // Append the query string with the token, if necessary.
+  if ($token_query) {
+    $file_url .= (strpos($file_url, '?') !== FALSE ? '&' : '?') . drupal_http_build_query($token_query);
+  }
+
+  return $file_url;
 }
 
 /**
