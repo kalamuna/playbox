@@ -1,0 +1,241 @@
+<?php
+
+module_load_include('inc', 'playbox_add_battle', 'includes/playbox_add_battle.navigation');
+module_load_include('inc', 'playbox_add_battle', 'includes/playbox_add_battle.validate');
+module_load_include('inc', 'playbox_add_battle', 'includes/playbox_add_battle.submit');
+
+
+/**
+ * Implements hook_menu().
+ */
+function playbox_add_battle_menu() {
+
+  $items = [];
+  $items['add-battle'] = [
+    'title' => 'Create a Battle',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['playbox_add_battle_form'],
+    'access arguments' => ['playbox add battle'],
+    'file' => 'includes/playbox_add_battle.form.inc',
+    'type' => MENU_NORMAL_ITEM,
+  ];
+
+  return $items;
+}
+
+function playbox_add_battle_permission() {
+  return [
+    'playbox add battle' => [
+      'title' => t('Add new battles'),
+      'description' => t('Create battles like a boss'),
+    ],
+  ];
+}
+
+/**
+ * Get published president or robot nodes.
+ *
+ * @param type $node_type
+ * @return type
+ */
+function playbox_add_battle_get_presidents_robots(&$node_type) {
+  // Get all published nodes of type playbox_president.
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', $node_type)
+    ->propertyCondition('status', 1);
+
+  $result = $query->execute();
+
+  return $result;
+}
+
+/**
+ * Create markup for displaying presidents and robots as radio input options.
+ *
+ * @param type $result
+ * @return type
+ */
+function playbox_add_battle_create_options(&$result) {
+  if (!empty($result['node'])) {
+    // Create an array we can pass as list of options to radio inputs.
+    $options = [];
+    // Get the node objects.
+    $nids = array_keys($result['node']);
+    $nodes = node_load_multiple($nids);
+    // Loop through nodes and create desired markup for each radio option.
+    foreach ($nodes as $node) {
+      // Image display variables.
+      $img_url = $node->field_playbox_portrait['und'][0]['uri'];
+      $portrait = image_style_url('playbox_portrait_normal', $img_url);
+      // Markup for each radio option.
+      $optionContent = '';
+//      $optionContent .= '<span class="battler-title text-center">' . $node->title . '</span>';
+      $optionContent .= '<img src="' . $portrait . '" class="playbox-portrait-normal" alt="' . $node->title . '" title="' . $node->title . '" />';
+      // Add markup to array.
+      $options[$node->nid] = $optionContent;
+    }
+  }
+  return $options;
+}
+
+/**
+ * Implementation of hook_theme().
+ */
+function playbox_add_battle_theme($existing, $type, $theme, $path) {
+  // Replace each dash with an underscore in the hook name.
+  $themes['node__playbox_battle'] = [
+    'template' => 'node--playbox-battle',
+    'original hook' => 'node',
+    'path' => drupal_get_path('module', 'playbox_add_battle') . '/templates',
+    'preprocess functions' => [
+      'template_preprocess',
+      'template_preprocess_node',
+      'playbox_add_battle_preprocess_node',
+    ],
+    'arguments' => [
+      'options' => NULL,
+      'node' => NULL],
+  ];
+
+  return $themes;
+}
+
+/**
+ * Implements template_preprocess_node()
+ */
+function playbox_add_battle_preprocess_node(&$variables) {
+
+  // Populate or override specific template variables based on node type
+  switch ($variables['type']) {
+
+    case 'playbox_battle': {
+
+      // We need that ajax magixxx
+      drupal_add_library('system', 'drupal.ajax');
+      $node = $variables['node'];
+      $nid = $node->nid;
+      $president_nid = $node->field_playbox_president['und'][0]['entity']->nid;
+      $robot_nid = $node->field_playbox_robot['und'][0]['entity']->nid;
+
+      // Set up our ajax magix
+      $query = [
+          'tok' => drupal_get_token('playbox_battles_vote_' . $nid),
+        ] + drupal_get_destination();
+      $variables['options']['robot_votes'] = [
+        '#type' => 'link',
+        '#theme' => 'link',
+        '#title' => '',
+        '#href' => '',
+        '#text' => '<span id="battler-' . $robot_nid . '" class="battler-vote-robot">' . render($node->field_playbox_robot_votes['und'][0]['value']) . '</span>',
+        '#path' => "playbox-battles/vote/ajax/" . $nid . "/robot",
+        '#options' => [
+          'attributes' => [
+            'class' => 'vote-link use-ajax'
+          ],
+          'html' => TRUE,
+          'query' => $query,
+        ],
+      ];
+      $variables['options']['president_votes'] = $variables['options']['robot_votes'];
+      $variables['options']['president_votes']['#text'] = '<span id="battler-' . $president_nid . '" class="battler-vote-president">' . render($node->field_playbox_president_votes['und'][0]['value']) . '</span>';
+      $variables['options']['president_votes']['#path'] = "playbox-battles/vote/ajax/" . $nid . "/president";
+
+      // Set some other stuff that might be useful but then again might be not useful at all
+      $variables['options']['president_attributes']['class'][] = 'battler-box';
+      $variables['options']['robot_attributes']['class'][] = 'battler-box';
+      if ($node->field_playbox_battle_completed['und'][0]['value'] == 1) {
+        if ($node->field_playbox_robot_votes['und'][0]['value'] == $node->field_playbox_votes_to_win['und'][0]['value']) {
+          $variables['options']['president_attributes']['class'][] = 'battler-battle-loser';
+          $variables['options']['robot_attributes']['class'][] = 'battler-battle-winner';
+        }
+        else {
+          $variables['options']['president_attributes']['class'][] = 'battler-battle-winner';
+          $variables['options']['robot_attributes']['class'][] = 'battler-battle-loser';
+        }
+      }
+
+      // Ensure styled image file is generated if it doesn't exist.
+      $style = image_style_load('playbox_portrait_featured');
+      // Presidents.
+      $president_portrait_uri = $node->field_playbox_president['und'][0]['entity']->field_playbox_portrait['und'][0]['uri'];
+      $president_derivative_uri = image_style_path($style['name'], $president_portrait_uri);
+      if (!file_exists($president_derivative_uri)) {
+        image_style_create_derivative($style, $president_portrait_uri, $president_derivative_uri);
+      }
+
+      // Robots.
+      $robot_portrait_uri = $node->field_playbox_robot['und'][0]['entity']->field_playbox_portrait['und'][0]['uri'];
+      $robot_derivative_uri = image_style_path($style['name'], $robot_portrait_uri);
+      if (!file_exists($robot_derivative_uri)) {
+        image_style_create_derivative($style, $robot_portrait_uri, $robot_derivative_uri);
+      }
+
+      break;
+    }
+
+  }
+}
+
+/**
+ * Implements hook_image_default_styles()
+ */
+function playbox_add_battle_image_default_styles() {
+  $styles = [];
+  $styles['avatar'] = [
+    'effects' => [
+      [
+        'name' => 'image_scale',
+        'data' => [
+          'width' => 300,
+          'upscale' => 1,
+        ],
+        'weight' => 0,
+      ],
+      [
+        'name' => 'image_crop',
+        'data' => [
+          'width' => 200,
+          'height' => 200,
+        ],
+        'weight' => 1,
+      ],
+    ],
+  ];
+
+  return $styles;
+}
+
+
+/**
+ * Custom block config for "Create New Battle" button placement.
+ * @return mixed
+ */
+function playbox_add_battle_block_info() {
+  $blocks['playbox_add_battle'] = [
+    'info' => t('Add New Battle button'),
+  ];
+
+  return $blocks;
+}
+
+/**
+ * Custom block markup for "Create New Battle" button.
+ * @return mixed
+ */
+function playbox_add_battle_block_view($delta = '') {
+
+  switch ($delta) {
+    case 'playbox_add_battle':
+
+      $block['content'] = '';
+
+      $block['content'] .= '<div class="text-center add-battle-btn">' . l(t('Add New Battle'), "add-battle",
+          ['attributes' => ['class' => ['btn', 'btn-success', 'btn-lg']]]) . '</div>';
+
+      break;
+  }
+
+  return $block;
+}
