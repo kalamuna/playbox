@@ -42,7 +42,7 @@ class ctools_context {
   var $restrictions = array();
   var $empty = FALSE;
 
-  function ctools_context($type = 'none', $data = NULL) {
+  function __construct($type = 'none', $data = NULL) {
     $this->type  = $type;
     $this->data  = $data;
     $this->title = t('Unknown context');
@@ -119,7 +119,7 @@ class ctools_context_required {
    * @param ...
    *   One or more keywords to use for matching which contexts are allowed.
    */
-  function ctools_context_required($title) {
+  function __construct($title) {
     $args = func_get_args();
     $this->title = array_shift($args);
 
@@ -199,10 +199,6 @@ class ctools_context_required {
  */
 class ctools_context_optional extends ctools_context_required {
   var $required = FALSE;
-  function ctools_context_optional() {
-    $args = func_get_args();
-    call_user_func_array(array($this, 'ctools_context_required'), $args);
-  }
 
   /**
    * Add the 'empty' context which is possible for optional
@@ -211,7 +207,7 @@ class ctools_context_optional extends ctools_context_required {
     $context = new ctools_context('any');
     $context->title      = t('No context');
     $context->identifier = t('No context');
-    $contexts = array_merge(array('empty' => $context), $contexts);
+    $contexts['empty'] = $context;
   }
 
   function filter($contexts) {
