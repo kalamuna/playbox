@@ -199,10 +199,6 @@ class ctools_context_required {
  */
 class ctools_context_optional extends ctools_context_required {
   var $required = FALSE;
-  function __construct() {
-    $args = func_get_args();
-    call_user_func_array(array($this, 'ctools_context_required'), $args);
-  }
 
   /**
    * Add the 'empty' context which is possible for optional
@@ -211,7 +207,7 @@ class ctools_context_optional extends ctools_context_required {
     $context = new ctools_context('any');
     $context->title      = t('No context');
     $context->identifier = t('No context');
-    $contexts = array_merge(array('empty' => $context), $contexts);
+    $contexts['empty'] = $context;
   }
 
   function filter($contexts) {
