@@ -1,0 +1,13 @@
+assets:
+  - playbox_live_2016-07-21T06-00-00_UTC_database.sql.gz
+steps:
+  - name: Making the Drupals
+    plugin: Drupal
+    database: playbox_live_2016-07-21T06-00-00_UTC_database.sql.gz
+    databaseGzipped: true
+  - name: Download stage_file_proxy
+    command: 'drush --root="/var/www/html" dl stage_file_proxy -y'
+  - name: Enable stage_file_proxy
+    command: 'drush --root="/var/www/html" en stage_file_proxy -y'
+  - name: Set stage_file_proxy to point at playbox.kalamuna.com
+    command: 'drush variable-set stage_file_proxy_origin "http://playbox.kalamuna.com"'
